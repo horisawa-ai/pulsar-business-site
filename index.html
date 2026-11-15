@@ -936,7 +936,19 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 #pg-biblioteca .lead{max-width:28ch}
 #pg-biblioteca .folds{width:100%;text-align:left}
 #pg-biblioteca .vit-hint{margin-bottom:-24px}
-#pg-biblioteca .fold{margin-top:30px}
+#pg-biblioteca .fold{margin-top:26px}
+/* pastas menores (pedido do Renan em 15/11/2026): cabem duas na tela do celular e ficam contidas no computador */
+#pg-biblioteca .fold .fr{padding:14px}
+#pg-biblioteca .fold .fr b{font-size:19px}
+#pg-biblioteca .fold .sh{padding:9px 11px}
+#pg-biblioteca .fold .sh b{font-size:11px}
+#pg-biblioteca .bib-tx p{font-size:13.5px;line-height:1.45}
+@container site (max-width:679px){
+  #pg-biblioteca .folds{grid-auto-columns:57%;padding-top:4px;gap:14px}
+  #pg-biblioteca .bib-row{grid-template-columns:1fr}
+  #pg-biblioteca .bib-pick{grid-template-columns:1fr}
+}
+@container site (min-width:680px){#pg-biblioteca .folds{max-width:840px;margin-inline:auto;gap:30px 24px}}
 .bib-tx{width:100%}
 .bib-tx p{text-align:left}
 .bib-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
@@ -1456,7 +1468,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   <button class="arrow" type="button" id="vaga-x" style="background:none;border-width:0 0 1px;justify-self:start">Fechar</button>
 </form></dialog>
 
-<dialog id="dl"><form id="dl-f" style="display:grid;gap:14px"><span class="label">Biblioteca</span><h3 class="subtitle" id="dl-t"></h3><div class="wl" style="max-width:none"><label for="dl-n">Nome</label><input id="dl-n" autocomplete="name" required><label for="dl-z">WhatsApp</label><input id="dl-z" inputmode="tel" autocomplete="tel" required></div><button class="btn" type="submit">Enviar e baixar</button><p class="ok" id="dl-ok" hidden>Pronto. No site real o download começa aqui.</p><button class="arrow" type="button" id="dl-x" style="background:none;border-width:0 0 1px;justify-self:start">Fechar</button></form></dialog>
+<dialog id="dl"><form id="dl-f" style="display:grid;gap:14px"><span class="label">Biblioteca</span><h3 class="subtitle" id="dl-t"></h3><div class="wl" style="max-width:none"><label for="dl-e">E-mail</label><input id="dl-e" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com" required><label for="dl-i">Instagram</label><input id="dl-i" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seuperfil" required></div><button class="btn" type="submit">Enviar e baixar</button><p class="ok" id="dl-ok" hidden>Pronto. No site real o download começa aqui.</p><button class="arrow" type="button" id="dl-x" style="background:none;border-width:0 0 1px;justify-self:start">Fechar</button></form></dialog>
 
 <dialog id="dlg"><div style="display:grid;gap:16px"><span class="label">Insights</span><h3 class="subtitle" id="dlg-t"></h3><div class="ph" style="aspect-ratio:4/5" id="dlg-ph">Print dos insights</div><button class="btn" id="dlg-x">Fechar</button></div></dialog>
 
@@ -2112,5 +2124,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794732822";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794732932";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
