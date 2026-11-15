@@ -990,7 +990,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus.<br><em>Ou te ensinar.</em></h1>
-        <p class="lead so-pc">Motion, animação clínica e cirúrgica, feitos pra explicar saúde em segundos.</p>
+        <p class="lead so-pc">Motion, animação 3D e vídeo cirúrgico, feitos pra explicar saúde em segundos.</p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">1,6 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Cápsula Endoscópica</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -1039,7 +1039,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       </article>
       <article class="tp-c mt-rv">
         <div class="tp-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><span>Tudo animado em 3D</span></div>
-        <div class="tp-t"><small>Tipo 2</small><h3>Clínico</h3><p>Cada cena é animada de verdade: o órgão funcionando, o remédio agindo, a doença acontecendo.</p>
+        <div class="tp-t"><small>Tipo 2</small><h3>Animação 3D</h3><p>Cada cena é animada de verdade: o órgão funcionando, o remédio agindo, a doença acontecendo.</p>
           <dl><div><dt>Bom pra</dt><dd>Prender a atenção e viralizar. É o estilo dos meus vídeos.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl></div>
       </article>
       <article class="tp-c mt-rv">
@@ -1065,9 +1065,9 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   <section class="sec tint" id="boxes"><div class="wrap">
     <div class="head"><span class="label">Os pacotes</span><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
     <div class="boxes">
-      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 vídeo clínico de 1 min</li><li>2 motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
-      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 vídeos clínicos de 1 min</li><li>4 motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
-      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 vídeos clínicos de 1 min</li><li>8 motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
+      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 vídeo em 3D de 1 min</li><li>2 motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
+      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 vídeos em 3D de 1 min</li><li>4 motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
+      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 vídeos em 3D de 1 min</li><li>8 motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
     </div>
     <div><button class="arrow" type="button" data-openbox="zero" style="background:none;border-width:0 0 1px">Prefiro montar o meu pacote</button></div>
   </div></section>
@@ -1788,11 +1788,11 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   rail("rail-home");rail("rail-bonus",VIRAIS.slice(0,4));
   $("dlg-x").onclick=function(){$("dlg").close()};
 
-  var TIPOS={motion:["Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas clínicas pra prender a atenção e continua em motion.","hernia"],completo:["Clínico","Todas as cenas animadas em 3D, como nos meus virais.","capsula"]};
+  var TIPOS={motion:["Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas em 3D pra prender a atenção e continua em motion.","hernia"],completo:["Animação 3D","Todas as cenas animadas em 3D, como nos meus virais.","capsula"]};
   var BONUS=[["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["placa","Placa e Parafusos"],["roer","Roer Unha"],["supositorio","Supositório",1],["garrafa","Garrafa",1],["colposcopia","Colposcopia",1]];
   var DUR={30:"30s",60:"1min",90:"1min30"};
   var P={motion:{30:150,60:250,90:320},hibrido:{30:280,60:450,90:580},completo:{30:450,60:700,90:900}};
-  var PAC={inicio:{n:"Início",d:"1 vídeo clínico + 2 motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 vídeos clínicos + 4 motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 vídeos clínicos + 8 motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
+  var PAC={inicio:{n:"Início",d:"1 vídeo em 3D + 2 motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 vídeos em 3D + 4 motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 vídeos em 3D + 8 motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
   var VOZ={"ia-f":["IA feminina","Incluída"],"ia-m":["IA masculina","Incluída"],minha:["Minha voz","Você grava e manda"]};
   var S={tipo:"completo",dur:60,q:1,lines:{},voz:"ia-f",prazo:"padrao",exp:1,bonus:[]};
   (function(){var h="";for(var t in TIPOS)h+='<button type="button" class="opt vid" data-tipo="'+t+'"><video class="thumb" src="assets/'+TIPOS[t][2]+'.mp4" poster="assets/'+TIPOS[t][2]+'.jpg" autoplay muted loop playsinline aria-hidden="true"></video><b>'+TIPOS[t][0]+'</b><span class="s">'+TIPOS[t][1]+'</span></button>';$("ch-tipo").innerHTML=h;
