@@ -133,7 +133,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* ---------- mídia ---------- */
 .reel{position:relative;border-radius:var(--r);overflow:hidden;background:var(--night);aspect-ratio:9/16;width:100%}
 .reel video,.reel img{width:100%;height:100%;object-fit:cover}
-.chip{position:absolute;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(12,10,9,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:6px 10px;border:0}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;color:#fff;background:rgba(12,10,9,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:6px 10px;border:0}
 .chip.tl{left:12px;top:12px}.chip.br{right:12px;bottom:12px;cursor:pointer;min-height:32px}
 .chip svg{width:12px;height:12px}
 .hero-media{max-width:280px;justify-self:center;width:100%}
@@ -182,7 +182,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .types .card h3,.types .card p{padding-inline:8px}
 @container site (min-width:880px){.types{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);margin-inline:0;padding-inline:0;overflow:visible}}
 .steps{display:grid;gap:0;border-top:1px solid var(--line)}
-.steps>div{display:grid;grid-template-columns:56px 1fr;gap:4px 16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.steps>div{display:grid;grid-template-columns:56px 1fr;gap:4px 16px;align-content:start;padding:22px 0;border-bottom:1px solid var(--line)}
 .steps .n{grid-row:1/3;font-family:var(--mono);font-size:12px;color:var(--gold);padding-top:8px}
 .steps h3{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.15}
 .steps p{color:var(--muted);font-size:15px}
@@ -197,8 +197,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .cstep>h3 span{color:var(--muted);font-style:italic;font-weight:400}
 .opts{display:grid;gap:10px}
 .opts.two{grid-template-columns:1fr 1fr}
-.opt{position:relative;display:grid;gap:3px;text-align:left;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:16px 44px 16px 16px;background:var(--card);transition:border-color .15s,box-shadow .15s}
-.opt::after{content:"";position:absolute;right:16px;top:18px;width:16px;height:16px;border-radius:50%;border:1px solid var(--line-2);transition:all .15s}
+.opt{position:relative;display:grid;gap:3px;align-content:start;text-align:left;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:16px 44px 16px 16px;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.opt::after{content:"";position:absolute;right:16px;top:18px;width:18px;height:18px;box-sizing:border-box;border-radius:50%;border:1px solid var(--line-2);transition:all .15s}
 .opt:hover{border-color:var(--muted)}
 .opt[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .opt[aria-pressed="true"]::after{border:5px solid var(--ink)}
@@ -218,6 +218,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .bstatus{font-size:14px;color:var(--muted)}
 .bstatus b{color:var(--ink);font-weight:500}
 @container site (min-width:880px){.opt.vid{grid-template-columns:1fr;padding:10px 10px 16px}.opt.vid .thumb{grid-row:auto;width:100%;margin-bottom:8px}.opt.vid::after{top:20px;right:20px;background:var(--card)}.opt.vid b,.opt.vid .s{padding-inline:6px}.opts.bns{grid-template-columns:repeat(4,1fr)}}
+.qty[hidden]{display:none}
+@container site (max-width:699px){html #ex-pills .pill,html[data-nav] #ex-pills .pill{padding-inline:7px;font-size:12.5px}}
 .qty{display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:10px 10px 10px 16px;background:var(--card)}
 .stepper{display:inline-flex;align-items:center;gap:2px}
 .stepper button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--card);font-size:20px;line-height:1;display:grid;place-items:center}
@@ -395,7 +397,7 @@ body.notas .nota{display:block}
 .rc{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:var(--night);border:4px solid var(--ink);backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .rc video{width:100%;height:100%;object-fit:cover;pointer-events:none}
 .rc::after{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--dim,0);transition:opacity .45s;pointer-events:none}
-.ring-cap{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.ring-cap{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted);text-align:center}
 @container site (min-width:880px){.ring{--rw:230px;perspective:1500px}}
 
 /* estilos de menu (painel "Ajustar visual") */
@@ -573,6 +575,7 @@ html[data-vit="capa"] .hero-top .stat,html[data-vit="vidrocf"] .hero-top .stat,h
 @container site (min-width:700px){.cf{--cw:300px;padding-block:44px 36px}.cf-nav{left:24px}.cf-nav.r{right:24px}}
 
 /* Vidro: porte do "Glassy Coverflow Carousel" (automate_flows), no modo pôster */
+.gc:focus-visible{outline:2px solid var(--gold);outline-offset:-4px;border-radius:28px}
 .gc{position:relative;isolation:isolate;margin-block:20px 8px;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));overflow:clip;padding-bottom:22px;color:var(--ink);outline:none}
 .gc-atm{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 50% 44%,color-mix(in srgb,var(--ink) 14%,var(--paper)),transparent 68%)}
 .gc-stage{position:relative;height:min(56svh,460px);display:flex;align-items:center;justify-content:center;perspective:1100px;transform-style:preserve-3d;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
@@ -597,7 +600,7 @@ html[data-vit="capa"] .hero-top .stat,html[data-vit="vidrocf"] .hero-top .stat,h
 .gc-dock .gc-play{background:color-mix(in srgb,var(--ink) 8%,transparent)}
 .gc-hint{margin:0;color:var(--muted);font-size:11px}
 .gc-dlg{padding:14px;width:min(420px,calc(100vw - 32px));max-width:none}
-.gc-dlg video{display:block;width:100%;max-height:60svh;aspect-ratio:9/16;object-fit:contain;background:#000;border-radius:10px}
+.gc-dlg video{display:block;width:min(100%,calc(60svh * 9 / 16));margin-inline:auto;max-height:60svh;aspect-ratio:9/16;object-fit:cover;background:var(--tint);border-radius:10px}
 .gc-dlg-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 2px 12px}
 .gc-dlg h3{margin:14px 4px 4px;font-family:var(--serif);font-weight:var(--serif-w);font-size:24px}
 .gc-dlg p{margin:0 4px 4px;font-size:13px;color:var(--muted)}
@@ -704,6 +707,8 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 #pg-mentoria .sec{padding-block:64px}
 .mt-c{justify-items:center;text-align:center}
 .mt-c .lead{margin-inline:auto}
+.mt-c .row{justify-content:center}
+#pg-inicio #ex-pills{margin-inline:auto}
 .mt-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
 .mt-pill i{width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .mt-hero{padding-top:18px!important}
@@ -718,7 +723,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .mt-fan figure:nth-child(3){transform:rotate(7deg) translate(-16%,5%)}
 .mt-fan figure:nth-child(2){flex-basis:40%;z-index:2}
 .mt-fan video,.mt-vid video{width:100%;height:100%;object-fit:cover;display:block}
-.mt-fan figcaption{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);white-space:nowrap;border-radius:999px;background:rgba(250,250,249,.92);color:var(--ink);font-size:11.5px;font-weight:600;padding:5px 11px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.mt-fan figcaption{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);white-space:normal;width:max-content;max-width:calc(100% - 16px);text-align:center;line-height:1.25;border-radius:12px;background:rgba(250,250,249,.92);color:var(--ink);font-size:11.5px;font-weight:600;padding:5px 11px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .mt-cap{font-size:13px;color:var(--muted);margin-top:6px}
 .mt-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:760px;margin-inline:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .mt-stats div{display:grid;gap:2px;padding:18px 6px;text-align:center}
@@ -757,8 +762,9 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .mt-steps details ul{margin:12px 0 2px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}
 .mt-steps details li{border:0;background:none;padding:0;border-radius:0;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
 .mt-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;text-align:left}
-.mt-b{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:20px 18px;display:grid;gap:8px;align-content:end;min-height:150px;min-width:0}
-.mt-b svg{width:26px;height:26px;color:var(--gold);align-self:start;margin-bottom:auto}
+.mt-b{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:20px 18px;display:grid;gap:8px;align-content:start;min-height:150px;min-width:0}
+.mt-b svg{width:26px;height:26px;color:var(--gold);align-self:start;margin-bottom:10px}
+.mt-b.g{align-content:end}
 .mt-b h3{font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.18}
 .mt-b p{font-size:13.5px;line-height:1.45;color:var(--muted)}
 .mt-b.g{grid-column:1/-1;padding:26px 22px;gap:12px;background:linear-gradient(160deg,#fff 0%,#f6f1e7 100%)}
@@ -780,7 +786,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .mt-fit .nao li::before{width:10px;height:0;border-left:0;border-bottom:1.5px solid var(--line-2);transform:none;top:10px}
 .mt-fit a{color:var(--ink);text-underline-offset:3px}
 .mt-quem{display:grid;gap:26px;align-items:center;justify-items:center;text-align:center}
-.mt-vid{width:min(62%,260px);aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#0c0a09;box-shadow:0 34px 50px -30px rgba(12,10,9,.6)}
+.mt-vid{width:min(62%,260px);aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--tint);box-shadow:0 34px 50px -30px rgba(12,10,9,.6)}
 .mt-quem p{font-size:17px;line-height:1.55;color:var(--muted);max-width:38ch}
 .mt-quem p b{color:var(--ink);font-weight:600}
 .mt-plan{width:100%;max-width:480px;margin-inline:auto;border:1px solid var(--line-2);border-radius:28px;background:var(--card);box-shadow:0 40px 70px -50px rgba(12,10,9,.45);overflow:hidden;text-align:center}
@@ -828,7 +834,8 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
   .mt-b{padding:26px 24px;min-height:190px}
   .mt-b h3{font-size:20px}.mt-b p{font-size:14.5px}
   .mt-b.g{grid-column:span 3;padding:40px 38px}
-  .mt-b.v{grid-column:span 1;aspect-ratio:auto}
+  .mt-b.v{grid-column:span 1;aspect-ratio:auto;position:relative}
+  .mt-b.v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .mt-b.z{grid-column:auto;min-height:190px}
   .mt-fit{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .mt-fit>div{padding:34px 32px}
@@ -880,7 +887,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .tp-n b{font-weight:500;margin-left:4px}
 @media (prefers-reduced-motion:reduce){.sqz{--sq-ms:0ms}.sqz-m.ken img{animation:none}}
 @media (hover:hover){.sqz-p[aria-selected="false"]:hover{flex-basis:calc(var(--sq-slat) + 34px)}}
-@container site (min-width:760px){
+@container site (min-width:1000px){
   .sqz{--sq-h:520px;--sq-slat:76px;--sq-gap:14px;grid-template-columns:minmax(0,560px) minmax(0,1fr);column-gap:56px;align-items:center}
   .sqz-top{grid-column:1/-1}
   .sqz-p{border-radius:18px}
@@ -904,7 +911,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .pl li{display:flex;align-items:flex-start;gap:9px;font-size:14.5px;line-height:1.35}
 .pl li svg{flex:none;margin-top:2px}
 .pl .btn{width:100%}
-@container site (min-width:760px){.pls{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl{padding:28px}}
+@container site (min-width:760px){.pls{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl{padding:28px}.pl-d{min-height:2lh}}
 /* ===== Skills: o que vem em cada uma ===== */
 .sk-in{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:7px;width:100%}
 .sk-in li{position:relative;padding-left:20px;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
@@ -1168,6 +1175,9 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .dl-c:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 26%,transparent)}
 .dl-c.erro{border-color:#b42318;box-shadow:0 0 0 1px #b42318}
 .dl-c.erro:focus-within{box-shadow:0 0 0 1px #b42318,0 0 0 4px rgba(180,35,24,.18)}
+.dl-er[hidden]{display:none}
+#vaga .wl input,#vaga .wl select{height:48px;border-radius:999px;padding:0 18px}
+#vaga .dl-er{margin:0}
 .dl-er{display:flex;align-items:center;gap:6px;margin:-3px 0 2px 18px;font-size:12.5px;font-weight:500;line-height:1.3;color:#b42318}
 .dl-er::before{content:"!";flex:none;display:grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#b42318;color:#fff;font-size:10.5px;font-weight:700;line-height:1}
 #dl .btn{width:100%;height:48px;min-height:0;padding-block:0}
@@ -1248,7 +1258,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
   @media (hover:hover){.bib-seta:not(:disabled):hover{border-color:var(--ink)}}
 }
 /* dois cartões lado a lado só quando cada um tem largura pra o texto respirar */
-@container site (min-width:900px){.bf-cards:not(.bf-cards--1){grid-template-columns:repeat(2,minmax(0,541px));gap:18px}}
+@container site (min-width:900px){.bf-cards:not(.bf-cards--1){grid-template-columns:repeat(2,minmax(0,541px));gap:18px}.bf-cards:not(.bf-cards--1) .bf-ct{align-self:start;padding-top:8px}}
 
 /*@@ACAD-CSS: página Academy. CSS novo desta área entra logo abaixo desta linha @@*/
 /* ===== Academy (refeita em 15/11/2026): três andares em tamanhos decrescentes. Primeiro e maior, o Curso Pulsar (é o que vende), com a aula
@@ -1264,7 +1274,7 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
    A Cormorant tem o olho menor que a fonte da casa: os tamanhos sobem uns 15% e o espaço entre letras abre, pra ler com o mesmo peso. */
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca){--ac-display:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif}
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title,.ac-t,.ac-cap h2,.bf-n,.dl-t){font-weight:600;letter-spacing:-.012em}
-html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title) em{font-style:italic;font-weight:500;letter-spacing:-.005em}
+html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title) em{font-style:normal;font-weight:500;letter-spacing:-.005em;display:inline-block;transform:skewX(-6deg)}
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) .display{font-size:clamp(51px,9.6cqw,104px);line-height:.95}
 html[data-acf="serifa"] #pg-academy .ac-s1 .display{font-size:clamp(39px,10.6cqw,51px);line-height:.96}
 html[data-acf="serifa"] #pg-academy .ac-s1 .ac-hd{gap:3px}
@@ -1628,7 +1638,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 .es-wl{display:grid;gap:10px;width:100%;max-width:420px;text-align:left}
 .es-f{display:grid;gap:6px;min-width:0}
 .es-fi{display:flex;align-items:baseline;gap:10px;height:48px;padding:0 18px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);cursor:text;-webkit-tap-highlight-color:transparent;transition:border-color .2s,box-shadow .2s}
-.es-fi span{flex:none;font-size:14px;line-height:46px;font-weight:500;color:var(--muted)}
+.es-fi span{flex:0 0 76px;font-size:14px;line-height:46px;font-weight:500;color:var(--muted)}
 .es-fi input{flex:1 1 auto;min-width:0;width:100%;height:46px;border:0;outline:0;border-radius:0;background:transparent;padding:0;margin:0;font-size:16px;line-height:1.2;color:var(--ink);-webkit-appearance:none;appearance:none}
 .es-fi input::placeholder{color:#a39d97;opacity:1}
 .es-fi input:focus-visible{outline:none}
@@ -1681,7 +1691,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 .lg-ic .lgp-anel{stroke-width:2;vector-effect:non-scaling-stroke}
 .lg-ic .lgp-l{stroke-dasharray:6 14}
 .lg-t{display:block}
-.lg-t small{display:none}
+.lg-t small{display:block;margin-top:1px;font:500 8px/1 var(--sans);letter-spacing:0;text-transform:lowercase;color:var(--gold);text-align:center}
 /* a lente: vidro mais espesso e mais claro que a barra */
 .lg-lens{position:absolute;left:var(--lg-pad);top:var(--lg-pad);width:0;height:calc(100% - 2 * var(--lg-pad));z-index:2;border-radius:999px;pointer-events:none;opacity:0;transform-origin:50% 50%;will-change:transform;
   background-color:rgba(255,255,255,.66);background-image:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.05) 55%,rgba(255,255,255,.3));
@@ -1804,13 +1814,13 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   <div class="wrap"></div></section>
 
   <section class="sec tint"><div class="wrap">
-    <div class="head"><h2 class="title">Toque e <em>descubra.</em></h2></div>
+    <div class="head mt-c"><h2 class="title">Toque e <em>descubra.</em></h2></div>
     <div class="pills" id="ex-pills" role="tablist" aria-label="O que tem aqui"></div>
     <div class="ex" id="ex" role="tabpanel"></div>
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <div class="head"><h2 class="title">Vídeos que <em>viralizaram.</em></h2></div>
+    <div class="head mt-c"><h2 class="title">Vídeos que <em>viralizaram.</em></h2></div>
     <div class="slider" id="rail-home"></div>
   </div></section>
 </main>
@@ -1818,7 +1828,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 <!-- ======================= BOX DE CONTEÚDOS ======================= -->
 <main class="pg" id="pg-box">
   <section class="sec" style="padding-bottom:48px"><div class="wrap">
-    <div class="head">
+    <div class="head mt-c">
       <h1 class="display">Seu conteúdo, <em>pronto.</em></h1>
       <p class="lead">Do roteiro ao vídeo final. Você aprova e posta.</p>
       <div class="row"><a class="btn" href="#tipos">Entender os três tipos</a><a class="arrow" href="#boxes">Ver os pacotes</a></div>
@@ -1829,7 +1839,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec tint" id="tipos"><div class="wrap">
-    <div class="head mt-rv"><h2 class="title">Três vídeos Pulsar. <em>Um pra cada objetivo.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
+    <div class="head mt-c mt-rv"><h2 class="title">Três vídeos Pulsar. <em>Um pra cada objetivo.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
     <div class="sqz mt-rv" id="sqz">
       <div class="sqz-top"><button type="button" class="sqz-a" data-by="-1" aria-label="Tipo anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M9.6 2.6 5.1 7.1h9.1v1.8H5.1l4.5 4.5-1.2 1.2-6-6L1.8 8l.6-.6 6-6 1.2 1.2Z"/></svg></button><button type="button" class="sqz-a" data-by="1" aria-label="Próximo tipo"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 2.6l4.5 4.5H1.800v1.800h9.100l-4.500 4.500 1.200 1.200 6-6 .600-.600-.600-.600-6-6-1.200 1.200Z"/></svg></button></div>
       <div class="sqz-row" role="tablist" aria-label="Tipos de vídeo">
@@ -1847,7 +1857,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec" id="como"><div class="wrap">
-    <div class="head"><h2 class="title">Como <em>funciona.</em></h2></div>
+    <div class="head mt-c"><h2 class="title">Como <em>funciona.</em></h2></div>
     <div class="steps">
       <div><span class="n">01</span><h3>Monte e pague.</h3><p>Escolha os vídeos logo abaixo.</p></div>
       <div><span class="n">02</span><h3>Eu faço o escopo.</h3><p>Roteiro, narração e o que cada cena mostra.</p></div>
@@ -1858,7 +1868,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec tint" id="boxes"><div class="wrap">
-    <div class="head"><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
+    <div class="head mt-c"><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
     <ul class="pls">
       <li class="pl"><div class="pl-h"><h3>Início</h3></div><p class="pl-d">Pra testar com o seu público.</p><p class="pl-p"><span class="num">3</span><small>vídeos</small></p><ul><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>1 Vídeo Pulsar de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>2 Pulsar Motion de 1 min</span></li></ul><button class="btn line" type="button" data-openbox="inicio">Ver valor</button></li>
       <li class="pl hi"><div class="pl-h"><h3>Essencial</h3><span class="pl-b">Recomendado</span></div><p class="pl-d">Pra manter o perfil ativo.</p><p class="pl-p"><span class="num">6</span><small>vídeos</small></p><ul><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>2 Vídeos Pulsar de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>4 Pulsar Motion de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>1 viral meu com a sua voz</span></li></ul><button class="btn" type="button" data-openbox="essencial">Ver valor</button></li>
@@ -1868,7 +1878,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec" id="montar" hidden><div class="wrap">
-    <div class="head"><h2 class="title">Monte o seu <em>pacote.</em></h2></div>
+    <div class="head mt-c"><h2 class="title">Monte o seu <em>pacote.</em></h2></div>
     <div class="cfg">
       <div style="display:grid;gap:44px">
         <div class="cstep"><h3>Comece por um pacote. <span>Ou do zero.</span></h3><div class="opts four" id="ch-pac"></div></div>
@@ -1882,7 +1892,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
         <div class="cstep"><h3>Bônus. <span>Escolha seu viral.</span></h3>
           <p class="bstatus" id="bonus-st"></p>
           <div class="opts bns" id="ch-bonus"></div>
-          <p class="muted small">Eu reedito o viral escolhido com a sua narração e o seu nome. Com 6 vídeos você escolhe 1; com 12, escolhe 2.</p>
+          <p class="muted small">Eu reedito o viral escolhido com a sua narração e o seu nome. Com 6 vídeos, você escolhe 1. Com 12, escolhe 2.</p>
         </div>
         <div class="cstep"><h3>Narração. <span>Qual voz?</span></h3><div class="opts three" id="ch-voz"></div></div>
         <div class="cstep"><h3>Prazo. <span>Precisa pra amanhã?</span></h3><div class="opts two" id="ch-prazo"></div>
@@ -1894,12 +1904,12 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <div class="head"><h2 class="title">Um viral meu, <em>com a sua voz.</em></h2><p class="lead">Com 6 vídeos ou mais, você escolhe um vídeo meu que já viralizou. Eu reedito com a sua narração e o seu nome. Com 12 vídeos, são dois.</p></div>
+    <div class="head mt-c"><h2 class="title">Um viral meu, <em>com a sua voz.</em></h2><p class="lead">Com 6 vídeos ou mais, você escolhe um vídeo meu que já viralizou. Eu reedito com a sua narração e o seu nome. Com 12 vídeos, são dois.</p></div>
     <div class="slider" id="rail-bonus"></div>
   </div></section>
 
   <section class="sec"><div class="wrap split" style="align-items:start">
-    <div class="head"><h2 class="title">Perguntas <em>frequentes.</em></h2></div>
+    <div class="head mt-c"><h2 class="title">Perguntas <em>frequentes.</em></h2></div>
     <div class="faq">
       <details><summary>Preciso gravar a narração?</summary><p>Não. Você escolhe voz de IA feminina ou masculina, ou grava com a sua voz. Se for gravar, você recebe um guia de como gravar com boa qualidade.</p></details>
       <details><summary>Quem escreve o roteiro?</summary><p>Eu. Você recebe o escopo de cada vídeo e aprova antes de eu começar.</p></details>
@@ -2007,9 +2017,9 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     <div class="head mt-c mt-rv"><h2 class="title">Terceirizar custa <em>todo mês.</em></h2></div>
     <div class="mt-ba mt-rv">
       <div><h3>Terceirizando</h3><ul>
-        <li>De R$ 1,5 mil a R$ 5 mil por mês em conteúdo pra clínica</li>
+        <li>De R$ 1,5 mil a R$ 5 mil por mês em conteúdo terceirizado</li>
         <li>Animação sob encomenda: de R$ 2 mil a R$ 5 mil por minuto</li>
-        <li>Você corrige a anatomia de quem não é da saúde</li>
+        <li>Você corrige o conteúdo de quem não conhece o seu assunto</li>
         <li>Parou de pagar, parou o conteúdo</li>
       </ul></div>
       <div class="sim"><h3>Aprendendo comigo</h3><ul>
@@ -2055,7 +2065,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   </div></section>
 
   <section class="sec tint"><div class="wrap mt-quem">
-    <div class="mt-vid mt-rv"><video data-src="assets/hernia.mp4" poster="assets/hernia.jpg" muted loop playsinline preload="none"></video></div>
+    <div class="mt-vid mt-rv"><video data-src="assets/est-hernia-hd.mp4" poster="assets/est-hernia-poster.jpg" muted loop playsinline preload="none"></video></div>
     <div class="head mt-c mt-rv"><h2 class="title">Renan <em>Horisawa.</em></h2><p>Sou o Renan, da Pulsar.Science. Faço vídeos de saúde em animação pra Reels, e <b>os meus mais vistos passaram de 5 milhões de visualizações cada.</b> Na mentoria eu abro a tela e te mostro como eu faço, do começo ao fim.</p></div>
   </div></section>
 
@@ -2142,7 +2152,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
             <button class="btn" type="submit">Baixar grátis</button>
           </form>
           <div class="dl-v" id="dl-v" hidden><button class="btn" type="button" id="dl-go">Baixar</button><p><span id="dl-quem"></span><button class="dl-lnk" type="button" id="dl-outro">Usar outro e-mail</button></p></div>
-          <div class="dl-ok" id="dl-ok" hidden><p class="dl-ok-t" id="dl-ok-t" tabindex="-1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="m10 16.5 4.2 4.2L22.5 12"/></svg><span>Pronto. O download já vai começar.</span></p><button class="btn line" type="button" id="dl-fim">Ver outros materiais</button><a class="arrow dl-curso" href="#curso">Conhecer o Curso Pulsar</a></div>
+          <div class="dl-ok" id="dl-ok" hidden><p class="dl-ok-t" id="dl-ok-t" tabindex="-1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="14"/><path d="m10 16.5 4.2 4.2L22.5 12"/></svg><span>Pronto. O download já vai começar.</span></p><button class="btn line" type="button" id="dl-fim">Ver outros materiais</button><a class="arrow dl-curso" href="#academy">Conhecer o Curso Pulsar</a></div>
         </div>
       </div>
     </div></div>
@@ -2295,7 +2305,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   <button class="arrow" id="tune-reset" type="button" style="justify-self:start;background:none;border-left:0;border-right:0;border-top:0">Voltar ao padrão</button>
 </section>
 
-<dialog id="vaga"><form id="vaga-f" style="display:grid;gap:14px">
+<dialog id="vaga"><form id="vaga-f" novalidate style="display:grid;gap:14px">
   <h3 class="subtitle">Mentoria <em>individual.</em></h3>
   <div id="vaga-valor" style="display:grid;gap:14px">
     <p class="muted small">Dois encontros de 6 horas, só você e eu, online e ao vivo. Tudo que eu uso fica com você.</p>
@@ -2309,11 +2319,12 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       <label for="vg-n">Nome</label><input id="vg-n" autocomplete="name" required>
       <label for="vg-z">WhatsApp</label><input id="vg-z" inputmode="tel" autocomplete="tel" required>
       <label for="vg-e">E-mail</label><input id="vg-e" type="email" autocomplete="email" required>
-      <label for="vg-a">Área de atuação</label><input id="vg-a" placeholder="Ex.: ortopedia, fisioterapia" required>
-      <label for="vg-o">O que você quer conseguir com os vídeos?</label><input id="vg-o" placeholder="Ex.: mais pacientes, autoridade">
+      <label for="vg-a">Área de atuação</label><input id="vg-a" placeholder="Ex.: nutrição, estética, educação" required>
+      <label for="vg-o">O que você quer conseguir com os vídeos?</label><input id="vg-o" placeholder="Ex.: mais seguidores, autoridade">
       <label for="vg-p">Como prefere pagar</label>
       <select id="vg-p"><option>À vista · R$ 6.699</option><option>10x de R$ 800</option><option>Quero conversar antes</option></select>
     </div>
+    <p class="dl-er" id="vg-er" hidden></p>
     <button class="btn" type="submit">Enviar pedido</button>
   </div>
   <div id="vaga-ok" hidden style="display:grid;gap:10px"><p class="ok" style="font-size:16px">Pedido enviado.</p><p class="muted small">Recebi seus dados e te chamo no WhatsApp pra combinar as datas dos encontros.</p></div>
@@ -2342,7 +2353,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     if(alvo==="montar"||alvo==="sum")$("montar").hidden=false;
     if(h==="comparar")cmpOn();else cmpOff();
     RINGS.forEach(function(r){r.lay()});LIQ.forEach(function(f){f()});
-    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else{window.scrollTo(0,0);$("screen").scrollTop=0}
+    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else{var de=document.documentElement;de.style.scrollBehavior="auto";window.scrollTo(0,0);$("screen").scrollTop=0;de.style.scrollBehavior=""}
   }
   window.addEventListener("hashchange",route);
   /* tocar no item do menu (ou na marca) da página em que a pessoa já está leva de volta ao topo */
@@ -2587,16 +2598,16 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       '<div class="gc-bottom"><div class="gc-info"><h3></h3><p></p></div><div class="gc-dock" role="group" aria-label="Controles"><span class="gc-pos" aria-hidden="true"></span><div class="gc-tr"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><button type="button" class="gc-play" data-a="play" aria-label="Passar sozinho" aria-pressed="false">'+IP+'</button><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div><p class="gc-hint">Arraste para explorar</p></div>'+
       '<dialog class="gc-dlg"><div class="gc-dlg-bar"><span class="label">Vídeo</span><button type="button" class="btn sm line" data-a="close">Fechar</button></div><video controls loop playsinline></video><h3></h3><p></p></dialog>';
     var stage=el.querySelector(".gc-stage"),cards=el.querySelectorAll(".gc-card"),dlg=el.querySelector(".gc-dlg"),dv=dlg.querySelector("video"),playB=el.querySelector(".gc-play");
-    function sub(i){var h=VIEWS[list[i][0]];return (h[1].indexOf("seguidor")>=0?"+":"")+fmt(h[0])+" "+h[1]}
+    function sub(i){var h=VIEWS[list[i][0]];if(h[2])return "";return (h[1].indexOf("seguidor")>=0?"+":"")+fmt(h[0])+" "+h[1]}
     function lay(){for(var i=0;i<n;i++){var d=wrap(i-index+n/2,n)-n/2,off=d+drag,ab=Math.abs(off),hide=Math.abs(d)>2,c=cards[i],st=c.style;
         st.transform="translate3d("+(off*step)+"px,0,"+(-Math.min(ab,3)*130)+"px) rotateY("+(-Math.max(-42,Math.min(42,off*30)))+"deg) scale("+(1-Math.min(ab,3)*.08)+")";
         st.opacity=hide?0:1;st.zIndex=10-Math.abs(d);st.pointerEvents=hide?"none":"";c.style.setProperty("--gc-shade",(Math.min(ab,2)*.19).toFixed(2));
         if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"Ver ":"Selecionar ")+list[i][1]);toca(c.querySelector("video"),d===0)}
-      el.querySelector(".gc-info h3").textContent=list[index][1];el.querySelector(".gc-info p").textContent=sub(index);
+      el.querySelector(".gc-info h3").textContent=list[index][1];var sp=el.querySelector(".gc-info p");sp.textContent=sub(index);sp.style.visibility=sp.textContent?"":"hidden";
       el.querySelector(".gc-pos").textContent=(index<9?"0":"")+(index+1)+" / "+(n<10?"0":"")+n}
     function sel(i){index=wrap(i,n);drag=0;lay();agenda()}
-    function agenda(){clearTimeout(tm);if(!playing||calmo)return;tm=setTimeout(function(){if(!dragging&&!dlg.open&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
-    function abre(i){dlg.querySelector("h3").textContent=list[i][1];dlg.querySelector("p").textContent=sub(i)+". Trecho de demonstração; no site final abre o vídeo inteiro, com som.";dv.src="assets/"+list[i][0]+".mp4";dlg.showModal();var q=dv.play();if(q&&q.catch)q.catch(function(){})}
+    function agenda(){clearTimeout(tm);if(!playing)return;tm=setTimeout(function(){if(!dragging&&!dlg.open&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
+    function abre(i){dlg.querySelector("h3").textContent=list[i][1];var dp=dlg.querySelector("p");dp.textContent=sub(i);dp.hidden=!dp.textContent;dv.src="assets/"+list[i][0]+".mp4";dlg.showModal();var q=dv.play();if(q&&q.catch)q.catch(function(){})}
     dlg.addEventListener("close",function(){dv.pause()});dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
     stage.addEventListener("pointerdown",function(e){if(!e.isPrimary||(e.pointerType==="mouse"&&e.button!==0))return;g={x:e.clientX,y:e.clientY,t:performance.now(),h:false}});
     stage.addEventListener("pointermove",function(e){if(!g)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;
@@ -2733,7 +2744,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   ring("ring-box",CATALOGO.slice().reverse(),function(i){$("ring-box-cap").textContent=CATALOGO[CATALOGO.length-1-i][1]},3500);
 
   /* explorador */
-  var EX={box:["Vídeos prontos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os pacotes","#box"],
+  var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os pacotes","#box"],
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Curso, materiais grátis e mentoria, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
@@ -2882,6 +2893,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     menu.addEventListener("keydown",function(e){if(e.key!=="ArrowDown"&&e.key!=="ArrowUp")return;e.preventDefault();
       var it=[].slice.call(menu.children),at=it.indexOf(document.activeElement);it[(at+(e.key==="ArrowDown"?1:-1)+it.length)%it.length].focus()});
     document.addEventListener("pointerdown",function(e){if(!menu.hidden&&!menu.contains(e.target)&&!vbtn.contains(e.target))abre(false)});
+    menu.addEventListener("focusout",function(e){if(!menu.contains(e.relatedTarget)&&e.relatedTarget!==vbtn)abre(false)});
     document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!menu.hidden){abre(false);vbtn.focus()}});
     $("es-parar").onclick=function(){reset(true)};$("es-ajustar").onclick=function(){reset(true)};$("es-outro").onclick=function(){reset(false)};
     /* o brilho do vidro segue o ponteiro */
@@ -2922,7 +2934,13 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   document.addEventListener("click",function(e){if(!e.target.closest("[data-vaga]"))return;$("vaga-valor").hidden=false;$("vaga-campos").hidden=true;$("vaga-ok").hidden=true;$("vaga").showModal()});
   /* o valor vem depois do clique: a janela mostra primeiro o valor, depois o formulário */
   $("vaga-ir").onclick=function(){$("vaga-valor").hidden=true;$("vaga-campos").hidden=false;var c=$("vg-n");if(c)c.focus()};
-  $("vaga-f").addEventListener("submit",function(e){e.preventDefault();$("vaga-campos").hidden=true;$("vaga-ok").hidden=false});
+  $("vaga-f").addEventListener("submit",function(e){e.preventDefault();var er=$("vg-er"),erro="",campo=null;
+    [["vg-n","Escreva o seu nome."],["vg-z","Digite o WhatsApp com DDD."],["vg-e","Confira o e-mail. Exemplo: voce@email.com"],["vg-a","Conte a sua área de atuação."]].forEach(function(c){var el=$(c[0]),v=el.value.trim(),ok=!!v;
+      if(c[0]==="vg-z")ok=/^\D*(\d\D*){10,13}$/.test(v);if(c[0]==="vg-e")ok=/^[^\s@]+@[^\s@]+\.[^\s@.]{2,}$/.test(v);
+      el.setAttribute("aria-invalid",String(!ok));if(!ok&&!campo){campo=el;erro=c[1]}});
+    if(campo){er.textContent=erro;er.hidden=false;campo.focus();return}
+    er.hidden=true;$("vaga-campos").hidden=true;$("vaga-ok").hidden=false});
+  (function(){var vg=$("vaga"),veu=false;vg.addEventListener("pointerdown",function(e){veu=e.target===vg});vg.addEventListener("click",function(e){if(e.target!==vg||!veu)return;var r=vg.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)vg.close()})})();
   $("vaga-x").onclick=function(){$("vaga").close()};
 
   /*@@GF-JS: componente da pasta de vidro + pastas de Prompts e Skills (área do agente GF) @@*/
@@ -3435,7 +3453,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       P.lx=lx(e);poe(perto(P.lx));acorda()});
     function solta(e,cancela){if(!P||e.pointerId!==P.id)return;var arr=P.drag,i=on;P=null;try{bar.releasePointerCapture(e.pointerId)}catch(x){}
       if(arr&&!cancela){semClique=true;setTimeout(function(){semClique=false},350);fx(i,60);
-        if(i!==cur){var h=its[i].getAttribute("href");if((location.hash||"#inicio")!==h)location.hash=h}}
+        var h=its[i].getAttribute("href");if((location.hash||"#inicio")!==h)location.hash=h;else{var sc=$("screen");try{if(sc)sc.scrollTo({top:0,behavior:calmo?"auto":"smooth"});window.scrollTo({top:0,behavior:calmo?"auto":"smooth"})}catch(x){window.scrollTo(0,0)}}}
       else if(arr||cancela)poe(cur);
       else setTimeout(function(){if(!P&&on!==cur){poe(cur);acorda()}},320);   /* toque que não virou clique: a lente volta */
       acorda()}
@@ -3627,5 +3645,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794759816";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794763166";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
