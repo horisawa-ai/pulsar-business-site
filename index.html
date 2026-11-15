@@ -2100,9 +2100,9 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     </header>
     <div class="ac-curso">
       <div class="ac-stage mt-rv">
-        <div class="ac-pile" aria-hidden="true"><i style="background-image:url(assets/est-hernia-poster.jpg)"></i><i style="background-image:url(assets/est-placa-poster.jpg)"></i></div>
+        <div class="ac-pile" aria-hidden="true"><i style="background-image:url(assets/est-neuronio-poster.jpg)"></i><i style="background-image:url(assets/est-intestino-poster.jpg)"></i></div>
         <div class="ac-frame">
-          <video data-src="assets/est-hpylori-hd.mp4" poster="assets/est-hpylori-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           <div class="ac-cap"><h2>Curso Pulsar</h2><p>Aula inaugural grátis · em breve</p></div>
           <button type="button" class="ac-pb" id="ac-pb" aria-label="Me avisa da aula inaugural"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
         </div>
@@ -2951,7 +2951,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Curso, materiais grátis e mentoria, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
-    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-hpylori-hd","Ver como vai ser","#maquina","est-hpylori-poster"]};
+    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-valvula-hd","Ver como vai ser","#maquina","est-valvula-poster"]};
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
     function show(k,fast){var e=EX[k],m=e[3].slice(2),med=e[3][0]==="v"?'<video src="assets/'+m+'.mp4" poster="assets/'+(e[6]||m)+'.jpg" autoplay muted loop playsinline></video>':'<img src="assets/'+m+'.jpg" alt="">';
       bar.querySelectorAll(".pill").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.ex===k))});
@@ -2964,10 +2964,10 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
      Porte para JS puro do "AI Prompt Input Box" (kedhareswer, 21st.dev), com os mesmos tempos do original. Nada é gerado de verdade: é a demonstração do produto. */
   (function(){var card=$("es-card");if(!card)return;
     /* exemplos em rodízio: [pedido, título do resultado, trecho limpo (assets/est-<nome>-hd.mp4 e -poster.jpg)] */
-    var EX=[["Um vídeo de 1 minuto explicando como a bactéria H. pylori ataca o estômago...","H. pylori","hpylori"],
-      ["Um vídeo mostrando como uma placa segura um osso quebrado...","Placa no osso","placa"],
-      ["Um vídeo explicando como se forma uma hérnia inguinal...","Hérnia inguinal","hernia"],
-      ["Um vídeo sobre as bactérias que vão pra boca quando você rói a unha...","Roer unha","roer"]];
+    var EX=[["Um vídeo de 1 minuto explicando por que o cotonete empurra a cera pra dentro do ouvido...","Cotonete","cotonete"],
+      ["Um vídeo mostrando como as válvulas das veias seguram o sangue e por que aparecem varizes...","Varizes","valvula"],
+      ["Um vídeo explicando como um remédio age entre os neurônios...","Sinapse","sinapse"],
+      ["Um vídeo sobre como o sangue leva oxigênio pro corpo inteiro...","Oxigênio no sangue","sangue"]];
     var N=5; /* etapas do registro */
     /* palavras que não contam na hora de dar nome ao vídeo de um pedido escrito pelo visitante */
     var VAZIAS=" um uma uns umas o a os as ao aos à às de do da dos das em no na nos nas num numa por pelo pela pra pro pras pros para com sem sobre entre até e ou mas que se como quando onde porque qual quem vídeo video vídeos videos minuto minutos min segundo segundos seg quero queria preciso gostaria faz faça fazer cria crie criar gera gere gerar monta monte montar me meu minha seu sua eu você voce explicando explica explique explicar mostrando mostra mostre mostrar falando fala fale falar contando conta conte contar é são ser está estão vai vão isso esse essa este esta funciona funcionam acontece acontecem serve servem curto curta rápido rápida simples meio meia dentro bem muito mais tudo todo toda cada também depois antes durante reel reels short shorts ";
@@ -4006,5 +4006,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794786404";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794786572";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
