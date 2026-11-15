@@ -1245,7 +1245,8 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
    A Cormorant tem o olho menor que a fonte da casa: os tamanhos sobem uns 15% e o espaço entre letras abre, pra ler com o mesmo peso. */
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca){--ac-display:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif}
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title,.ac-t,.ac-cap h2,.bf-n,.dl-t){font-weight:600;letter-spacing:-.012em}
-html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title) em{font-style:normal;font-weight:500;letter-spacing:-.005em;display:inline-block;transform:skewX(-6deg)}
+html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) :is(.display,.title) em{font-style:normal;font-weight:500;letter-spacing:-.005em}
+html[data-acf="serifa"] #pg-academy .ac-s1 .display{word-spacing:-.12em}
 html[data-acf="serifa"] :is(#pg-academy,#pg-biblioteca) .display{font-size:clamp(51px,9.6cqw,104px);line-height:.95}
 html[data-acf="serifa"] #pg-academy .ac-s1 .display{font-size:clamp(39px,10.6cqw,51px);line-height:.96}
 html[data-acf="serifa"] #pg-academy .ac-s1 .ac-hd{gap:3px}
@@ -4001,5 +4002,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794777258";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794784980";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
