@@ -1008,6 +1008,19 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 .pl li svg{flex:none;margin-top:2px}
 .pl .btn{width:100%}
 @container site (min-width:760px){.pls{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl{padding:28px}}
+/* Mentoria é a opção mais completa da Academy: vem por último, maior e em outro tom (dourado claro), sem preto */
+.ac-c.ac-top{background:linear-gradient(150deg,#fbf6ea 0%,#f1e4c8 100%);border-color:#d9c08a;box-shadow:0 0 0 1px #d9c08a}
+.ac-c.ac-top .ac-t small{color:#7c4a03}
+.ac-c.ac-top .ac-t p{color:#44403c}
+@container site (min-width:700px){
+  .ac-g{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ac-c.ac-top{grid-column:1/-1;grid-template-columns:minmax(0,38%) minmax(0,1fr);grid-template-rows:auto}
+  .ac-c.ac-top .ac-m{aspect-ratio:auto;min-height:340px}
+  .ac-c.ac-top .ac-t{align-content:center;padding:40px 48px;gap:12px}
+  .ac-c.ac-top .ac-t h2{font-size:52px}
+  .ac-c.ac-top .ac-t p{font-size:19px;max-width:30em}
+  .ac-c:not(.ac-top) .ac-m{aspect-ratio:16/10}
+}
 </style>
 </head>
 <body>
@@ -1153,12 +1166,8 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <main class="pg" id="pg-academy">
   <section class="sec ac-hero"><div class="wrap mt-c">
     <h1 class="display">Aprenda a fazer <em>os seus vídeos.</em></h1>
-    <p class="lead">Três jeitos de começar: comigo, no seu ritmo ou de graça.</p>
+    <p class="lead">Três jeitos de começar: no seu ritmo, de graça ou comigo.</p>
     <div class="ac-g">
-      <a class="ac-c mt-rv" href="#mentoria">
-        <div class="ac-m"><video data-src="assets/cerebro.mp4" poster="assets/cerebro.jpg" muted loop playsinline preload="none"></video></div>
-        <div class="ac-t"><small>Individual · ao vivo</small><h2>Mentoria</h2><p>Dois encontros só comigo. Você sai com o seu primeiro vídeo pronto.</p><span class="ac-go">Ver a mentoria</span></div>
-      </a>
       <div class="ac-c mt-rv">
         <div class="ac-m"><video data-src="assets/placa.mp4" poster="assets/placa.jpg" muted loop playsinline preload="none"></video></div>
         <div class="ac-t"><small>Em breve</small><h2>Curso</h2><p>As aulas gravadas, pra você fazer no seu ritmo.</p>
@@ -1168,6 +1177,10 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       <a class="ac-c mt-rv" href="#biblioteca">
         <div class="ac-m"><img src="assets/area-cardiologia.jpg" alt=""></div>
         <div class="ac-t"><small>Grátis</small><h2>Biblioteca</h2><p>Atlas, guia rápido e apostilas por área pra baixar.</p><span class="ac-go">Abrir a biblioteca</span></div>
+      </a>
+      <a class="ac-c ac-top mt-rv" href="#mentoria">
+        <div class="ac-m"><video data-src="assets/cerebro.mp4" poster="assets/cerebro.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="ac-t"><small>O mais completo · individual e ao vivo</small><h2>Mentoria</h2><p>Eu te passo tudo: o que eu sei, o que eu errei e o que eu aprendi. Só você e eu, e você sai com o seu primeiro vídeo pronto.</p><span class="ac-go">Ver a mentoria</span></div>
       </a>
     </div>
   </div></section>
@@ -2099,5 +2112,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794732544";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794732822";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
