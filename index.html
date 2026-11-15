@@ -949,7 +949,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 .pg:not(#pg-inicio)>.sec:first-child{padding-top:20px}
 @container site (min-width:700px){.pg:not(#pg-inicio)>.sec:first-child{padding-top:44px}}
 /* ===== Vídeos: os três tipos explicados antes dos pacotes ===== */
-.tp{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
+.tp{display:grid;align-items:start;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
 .tp::-webkit-scrollbar{display:none}
 .tp-c{scroll-snap-align:start;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
 .tp-m{position:relative;aspect-ratio:4/3.6;background:#0c0a09;overflow:hidden}
@@ -990,7 +990,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus.<br><em>Ou te ensinar.</em></h1>
-        <p class="lead so-pc">Motion, animação 3D e vídeo cirúrgico, feitos pra explicar saúde em segundos.</p>
+        <p class="lead so-pc">Vídeos da Pulsar, feitos pra explicar saúde em segundos.</p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">1,6 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Cápsula Endoscópica</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -1019,7 +1019,6 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <main class="pg" id="pg-box">
   <section class="sec" style="padding-bottom:48px"><div class="wrap">
     <div class="head">
-      <span class="label">Vídeos prontos</span>
       <h1 class="display">Seu conteúdo, <em>pronto.</em></h1>
       <p class="lead">Do roteiro ao vídeo final. Você aprova e posta.</p>
       <div class="row"><a class="btn" href="#tipos">Entender os três tipos</a><a class="arrow" href="#boxes">Ver os pacotes</a></div>
@@ -1030,22 +1029,22 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   </div></section>
 
   <section class="sec tint" id="tipos"><div class="wrap">
-    <div class="head mt-rv"><span class="label">Antes de escolher</span><h2 class="title">Três tipos de vídeo. <em>Veja a diferença.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
+    <div class="head mt-rv"><h2 class="title">Três vídeos Pulsar. <em>Um pra cada objetivo.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
     <div class="tp" id="tp">
       <article class="tp-c mt-rv">
         <div class="tp-m ken"><img src="assets/hpylori.jpg" alt=""><span>Imagem que ganha movimento</span></div>
-        <div class="tp-t"><small>Tipo 1</small><h3>Motion</h3><p>Cada cena é uma imagem pronta que ganha movimento de câmera, texto e som.</p>
-          <dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Postar com frequência.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 3"><i class="on"></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl></div>
+        <div class="tp-t"><small>Pra postar sempre</small><h3>Pulsar Motion</h3><p>As imagens da Pulsar ganham movimento de câmera, texto e som.</p>
+          <dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Manter o perfil vivo toda semana.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 3"><i class="on"></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl></div>
       </article>
       <article class="tp-c mt-rv">
-        <div class="tp-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><span>Tudo animado em 3D</span></div>
-        <div class="tp-t"><small>Tipo 2</small><h3>Animação 3D</h3><p>Cada cena é animada de verdade: o órgão funcionando, o remédio agindo, a doença acontecendo.</p>
-          <dl><div><dt>Bom pra</dt><dd>Prender a atenção e viralizar. É o estilo dos meus vídeos.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl></div>
+        <div class="tp-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><span>Tudo animado</span></div>
+        <div class="tp-t"><small>O que viraliza</small><h3>Vídeo Pulsar</h3><p>Cada cena animada de verdade, do começo ao fim. É o vídeo que passou de 1,6 milhão de visualizações.</p>
+          <dl><div><dt>Bom pra</dt><dd>Parar o dedo de quem está rolando e trazer gente nova.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl></div>
       </article>
       <article class="tp-c mt-rv">
         <div class="tp-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video><span>Cirurgia passo a passo</span></div>
-        <div class="tp-t"><small>Tipo 3</small><h3>Cirúrgico</h3><p>Mostra o procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</p>
-          <dl><div><dt>Bom pra</dt><dd>Cirurgiões: mostrar a técnica e tirar o medo do paciente.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 3"><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Preço</dt><dd>O mais alto. É onde mais se refaz até ficar certo.</dd></div></dl></div>
+        <div class="tp-t"><small>O mais detalhado</small><h3>Pulsar Cirúrgico</h3><p>O procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</p>
+          <dl><div><dt>Bom pra</dt><dd>Mostrar uma técnica e tirar o medo de quem vai passar por ela.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 3"><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Preço</dt><dd>O mais alto. É onde mais se refaz até ficar certo.</dd></div></dl></div>
       </article>
     </div>
     <p class="muted small">Durações de 30s, 1min ou 1min30. A versão final pode ficar alguns segundos abaixo (30s pode sair com 28 ou 29s).</p>
@@ -1065,9 +1064,9 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   <section class="sec tint" id="boxes"><div class="wrap">
     <div class="head"><span class="label">Os pacotes</span><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
     <div class="boxes">
-      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 vídeo em 3D de 1 min</li><li>2 motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
-      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 vídeos em 3D de 1 min</li><li>4 motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
-      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 vídeos em 3D de 1 min</li><li>8 motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
+      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 Vídeo Pulsar de 1 min</li><li>2 Pulsar Motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
+      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 Vídeos Pulsar de 1 min</li><li>4 Pulsar Motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
+      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 Vídeos Pulsar de 1 min</li><li>8 Pulsar Motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
     </div>
     <div><button class="arrow" type="button" data-openbox="zero" style="background:none;border-width:0 0 1px">Prefiro montar o meu pacote</button></div>
   </div></section>
@@ -1123,7 +1122,6 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= MENTORIA ======================= -->
 <main class="pg" id="pg-academy">
   <section class="sec ac-hero"><div class="wrap mt-c">
-    <span class="mt-pill"><i></i>Pulsar Academy</span>
     <h1 class="display">Aprenda a fazer <em>os seus vídeos.</em></h1>
     <p class="lead">Três jeitos de começar: comigo, no seu ritmo ou de graça.</p>
     <div class="ac-g">
@@ -1148,9 +1146,8 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <main class="pg" id="pg-mentoria">
   <section class="sec mt-hero"><div class="wrap mt-c">
     <a class="ac-back" href="#academy">Pulsar Academy</a>
-    <span class="mt-pill"><i></i>Mentoria individual · online e ao vivo</span>
     <h1 class="display">Em dois encontros, o seu primeiro <em>vídeo pronto.</em></h1>
-    <p class="lead">Só você e eu, na sua área. Você aprende fazendo e sai sabendo repetir sozinho.</p>
+    <p class="lead">Só você e eu, ao vivo, na sua área. Você aprende fazendo e sai sabendo repetir sozinho.</p>
     <div class="mt-cta"><button class="btn" type="button" data-vaga>Quero minha vaga</button><small>Você preenche, eu te chamo no WhatsApp.</small></div>
     <div class="mt-fan">
       <figure><video data-src="assets/cerebro.mp4" poster="assets/cerebro.jpg" muted loop playsinline preload="none"></video></figure>
@@ -1230,7 +1227,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
   <section class="sec" id="mentoria-preco"><div class="wrap mt-c">
     <div class="mt-plan mt-rv">
-      <div><span class="mt-pill"><i></i>Mentoria individual</span><h2>Dois encontros. Um vídeo seu pronto.</h2><p class="sub">Só você e eu, online e ao vivo.</p></div>
+      <div><h2 style="margin-top:0">Mentoria individual</h2><p class="sub">Dois encontros, só você e eu, online e ao vivo.</p></div>
       <div><div class="pr num"><small>10x</small>R$ 800</div><p class="av">ou <b class="num">R$ 6.699</b> à vista</p><span class="ec num">À vista você economiza R$ 1.301</span>
         <button class="btn" type="button" data-vaga>Quero minha vaga</button><p class="dep">Você preenche, eu te chamo no WhatsApp. Não paga nada agora.</p></div>
       <div class="inc"><span>O que vem junto</span><ul><li>2 encontros individuais de 6 horas</li><li>Todas as minhas Skills do Claude</li><li>Atlas personalizado pra sua área</li><li>Apostila do seu acompanhamento</li><li>Guia rápido Pulsar</li><li>Meu WhatsApp pessoal depois dos encontros</li></ul></div>
@@ -1258,7 +1255,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= PROMPTS ======================= -->
 <main class="pg" id="pg-prompts">
   <section class="sec"><div class="wrap split">
-    <div class="head"><span class="label">Prompts</span><h1 class="display">Os prompts <em>que eu uso.</em></h1><p class="lead">Folhas prontas por tema: a imagem de cada cena e o movimento do vídeo.</p></div>
+    <div class="head"><h1 class="display">Os prompts <em>que eu uso.</em></h1><p class="lead">Folhas prontas por tema: a imagem de cada cena e o movimento do vídeo.</p></div>
     <div class="hero-media"><img src="assets/area-dermatologia.jpg" alt="Capa Dermatologia: corte de pele dentro de um bloco de cristal" style="border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%"></div>
   </div></section>
   <section class="sec tint"><div class="wrap">
@@ -1271,7 +1268,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= SKILLS ======================= -->
 <main class="pg" id="pg-skills">
   <section class="sec"><div class="wrap split">
-    <div class="head"><span class="label">Skills</span><h1 class="display">As Skills por trás <em>dos meus vídeos.</em></h1><p class="lead">Você instala no Claude e ele passa a trabalhar do meu jeito, do roteiro ao vídeo pronto.</p><div class="row"><a class="btn" href="#skills-lista">Ver as Skills</a></div></div>
+    <div class="head"><h1 class="display">As Skills por trás <em>dos meus vídeos.</em></h1><p class="lead">Você instala no Claude e ele passa a trabalhar do meu jeito, do roteiro ao vídeo pronto.</p><div class="row"><a class="btn" href="#skills-lista">Ver as Skills</a></div></div>
     <div class="term" aria-label="Ilustração de uso">
       <span class="u">você</span><span>quero um vídeo sobre hérnia de disco</span>
       <span class="u">pulsar labs master</span>
@@ -1293,7 +1290,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <main class="pg" id="pg-biblioteca">
   <section class="sec"><div class="wrap">
     <a class="ac-back" href="#academy">Pulsar Academy</a>
-    <div class="head"><span class="label">Biblioteca · grátis</span><h1 class="display">Materiais <em>grátis.</em></h1><p class="lead">Abra uma pasta e leve o que quiser.</p></div>
+    <div class="head"><h1 class="display">Materiais <em>grátis.</em></h1><p class="lead">Abra uma pasta e leve o que quiser.</p></div>
     <p class="vit-hint">Toque numa pasta pra abrir</p>
     <div class="folds" id="folds-bib"></div>
   </div></section>
@@ -1788,11 +1785,11 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   rail("rail-home");rail("rail-bonus",VIRAIS.slice(0,4));
   $("dlg-x").onclick=function(){$("dlg").close()};
 
-  var TIPOS={motion:["Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas em 3D pra prender a atenção e continua em motion.","hernia"],completo:["Animação 3D","Todas as cenas animadas em 3D, como nos meus virais.","capsula"]};
+  var TIPOS={motion:["Pulsar Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas animadas pra prender a atenção e continua em motion.","hernia"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
   var BONUS=[["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["placa","Placa e Parafusos"],["roer","Roer Unha"],["supositorio","Supositório",1],["garrafa","Garrafa",1],["colposcopia","Colposcopia",1]];
   var DUR={30:"30s",60:"1min",90:"1min30"};
   var P={motion:{30:150,60:250,90:320},hibrido:{30:280,60:450,90:580},completo:{30:450,60:700,90:900}};
-  var PAC={inicio:{n:"Início",d:"1 vídeo em 3D + 2 motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 vídeos em 3D + 4 motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 vídeos em 3D + 8 motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
+  var PAC={inicio:{n:"Início",d:"1 Vídeo Pulsar + 2 Pulsar Motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 Vídeos Pulsar + 4 Pulsar Motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 Vídeos Pulsar + 8 Pulsar Motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
   var VOZ={"ia-f":["IA feminina","Incluída"],"ia-m":["IA masculina","Incluída"],minha:["Minha voz","Você grava e manda"]};
   var S={tipo:"completo",dur:60,q:1,lines:{},voz:"ia-f",prazo:"padrao",exp:1,bonus:[]};
   (function(){var h="";for(var t in TIPOS)h+='<button type="button" class="opt vid" data-tipo="'+t+'"><video class="thumb" src="assets/'+TIPOS[t][2]+'.mp4" poster="assets/'+TIPOS[t][2]+'.jpg" autoplay muted loop playsinline aria-hidden="true"></video><b>'+TIPOS[t][0]+'</b><span class="s">'+TIPOS[t][1]+'</span></button>';$("ch-tipo").innerHTML=h;
