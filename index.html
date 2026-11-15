@@ -948,32 +948,66 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 /* primeira seção de cada página encosta no menu, sem faixa vazia (pedido do Renan em 15/11/2026) */
 .pg:not(#pg-inicio)>.sec:first-child{padding-top:20px}
 @container site (min-width:700px){.pg:not(#pg-inicio)>.sec:first-child{padding-top:44px}}
-/* ===== Vídeos: os três tipos explicados antes dos pacotes ===== */
-.tp{display:grid;align-items:start;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
-.tp::-webkit-scrollbar{display:none}
-.tp-c{scroll-snap-align:start;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
-.tp-m{position:relative;aspect-ratio:4/3.6;background:#0c0a09;overflow:hidden}
-.tp-m video,.tp-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.tp-m.ken img{animation:tpKen 9s ease-in-out infinite alternate}
+/* ===== Vídeos: os três tipos num carrossel que espreme (porte para CSS e JS puros do "Squeeze Carousel", de yura, 21st.dev):
+   um painel aberto, os outros viram tiras; tocar numa tira abre ela e o texto de baixo troca junto ===== */
+.sqz{--sq-h:clamp(300px,96cqw,420px);--sq-slat:46px;--sq-gap:8px;--sq-ms:1000ms;--sq-ease:cubic-bezier(.16,1,.3,1);display:grid;gap:18px;width:100%}
+.sqz-top{display:flex;justify-content:flex-end;gap:8px}
+.sqz-a{width:36px;height:36px;border-radius:8px;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center;cursor:pointer;transition:opacity .2s}
+.sqz-a:hover{opacity:.85}
+.sqz-row{display:flex;gap:var(--sq-gap);height:var(--sq-h);min-width:0}
+.sqz-p{position:relative;isolation:isolate;flex:0 1 var(--sq-slat);min-width:0;height:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:#0c0a09;cursor:pointer;transition:flex-grow var(--sq-ms) var(--sq-ease),flex-basis var(--sq-ms) var(--sq-ease)}
+.sqz-p[aria-selected="true"]{flex-grow:1;cursor:default}
+.sqz-p:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.sqz-m{position:absolute;top:0;bottom:0;left:50%;width:var(--sq-ow,100%);min-width:100%;transform:translateX(-50%)}
+.sqz-m video,.sqz-m img{width:100%;height:100%;object-fit:cover;display:block}
+.sqz-m.ken img{animation:tpKen 9s ease-in-out infinite alternate}
 @keyframes tpKen{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.22) translate(-3%,3%)}}
-.tp-m span{position:absolute;left:12px;bottom:12px;border-radius:999px;background:rgba(250,250,249,.92);color:var(--ink);font-size:11.5px;font-weight:600;padding:5px 11px}
-.tp-t{padding:18px 18px 20px;display:grid;gap:8px;align-content:start}
-.tp-t small{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-.tp-t h3{font-family:var(--serif);font-weight:600;letter-spacing:-.03em;font-size:28px;line-height:1.05}
-.tp-t p{font-size:14.5px;line-height:1.45;color:var(--muted)}
-.tp-t dl{margin:8px 0 0;display:grid}
-.tp-t dl div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line)}
-.tp-t dt{font-size:12px;color:var(--muted);line-height:1.35}
-.tp-t dd{margin:0;font-size:13.5px;line-height:1.35;font-weight:500}
+.sqz-ov{position:absolute;inset:auto 0 0 0;padding:44px 16px 14px;text-align:left;color:#fff;font-size:15px;font-weight:600;letter-spacing:-.01em;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);opacity:0;transition:opacity var(--sq-ms) var(--sq-ease);pointer-events:none}
+.sqz-p[aria-selected="true"] .sqz-ov{opacity:1}
+.sqz-vl{position:absolute;inset:0;display:grid;place-items:center;background:rgba(12,10,9,.38);color:#fff;font-size:13px;font-weight:600;letter-spacing:.01em;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;transition:opacity .5s ease;pointer-events:none}
+.sqz-p[aria-selected="true"] .sqz-vl{opacity:0}
+.sqz-cap{display:grid}
+.sqz-c{grid-area:1/1;display:grid;gap:16px;align-content:start;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--sq-ms) var(--sq-ease),visibility var(--sq-ms)}
+.sqz-c.on{opacity:1;visibility:visible;pointer-events:auto}
+.sqz-c p{font-size:17px;line-height:1.5;text-wrap:balance;max-width:34em}
+.sqz-c p b{font-weight:600;color:var(--ink)}
+.sqz-c p span{color:var(--muted)}
+.sqz-c dl{margin:0;display:grid}
+.sqz-c dl div{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;padding:11px 0;border-top:1px solid var(--line-2)}
+.sqz-c dl div:last-child{border-bottom:1px solid var(--line-2)}
+.sqz-c dt{font-size:12.5px;color:var(--muted);line-height:1.35}
+.sqz-c dd{margin:0;font-size:14px;line-height:1.35;font-weight:500}
+.sqz-c .btn{justify-self:start}
 .tp-n{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .tp-n i{width:16px;height:6px;border-radius:3px;border:1.5px solid var(--ink);box-sizing:border-box}
 .tp-n i.on{background:var(--ink)}
 .tp-n b{font-weight:500;margin-left:4px}
-@media (prefers-reduced-motion:reduce){.tp-m.ken img{animation:none}}
+@media (prefers-reduced-motion:reduce){.sqz{--sq-ms:0ms}.sqz-m.ken img{animation:none}}
+@media (hover:hover){.sqz-p[aria-selected="false"]:hover{flex-basis:calc(var(--sq-slat) + 34px)}}
 @container site (min-width:760px){
-  .tp{align-items:stretch;grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-columns:auto;gap:18px;overflow:visible;margin-inline:0;padding-inline:0}
-  .tp-t{padding:26px 26px 28px}.tp-t h3{font-size:34px}.tp-t p{font-size:15.5px}
+  .sqz{--sq-h:520px;--sq-slat:76px;--sq-gap:14px;grid-template-columns:minmax(0,560px) minmax(0,1fr);column-gap:56px;align-items:center}
+  .sqz-top{grid-column:1/-1}
+  .sqz-p{border-radius:18px}
+  .sqz-vl{font-size:15px}
+  .sqz-ov{font-size:18px;padding:60px 22px 20px}
+  .sqz-c p{font-size:24px;line-height:1.35;letter-spacing:-.015em}
+  .sqz-c dt{font-size:13.500px}.sqz-c dd{font-size:15.500px}
+  .sqz-c dl div{grid-template-columns:150px minmax(0,1fr);padding:14px 0}
 }
+/* ===== Pacotes: cartões de plano (porte do bloco "Pricing", de kevingirelli, 21st.dev): o recomendado leva anel, não fundo preto ===== */
+.pls{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.pl{border:1px solid var(--line-2);background:var(--card);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(12,10,9,.05)}
+.pl.hi{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.pl-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.pl-h h3{font-size:18px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.pl-b{border-radius:999px;background:var(--ink);color:var(--paper);font-size:11.5px;font-weight:600;padding:3px 10px}
+.pl-d{font-size:14px;color:var(--muted);margin-top:-8px}
+.pl-p{font-family:var(--serif);font-size:40px;font-weight:600;letter-spacing:-.035em;line-height:1}
+.pl ul{margin:0;padding:0;list-style:none;display:grid;gap:11px;flex:1;align-content:start}
+.pl li{display:flex;align-items:flex-start;gap:9px;font-size:14.5px;line-height:1.35}
+.pl li svg{flex:none;margin-top:2px}
+.pl .btn{width:100%}
+@container site (min-width:760px){.pls{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl{padding:28px}}
 </style>
 </head>
 <body>
@@ -981,7 +1015,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
 <header class="nav"><div class="nav-in">
   <a class="brand" href="#inicio" aria-label="pulsar labz, início"><b>pulsar</b><i>.</i><em>labz</em></a>
-  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Vídeos prontos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Estúdio <small>em breve</small></a></nav>
+  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#inicio">Início</a><a class="pill" href="#box">Vídeos prontos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Estúdio <small>em breve</small></a></nav>
 </div></header>
 
 <!-- ======================= INÍCIO ======================= -->
@@ -1030,22 +1064,18 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
   <section class="sec tint" id="tipos"><div class="wrap">
     <div class="head mt-rv"><h2 class="title">Três vídeos Pulsar. <em>Um pra cada objetivo.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
-    <div class="tp" id="tp">
-      <article class="tp-c mt-rv">
-        <div class="tp-m ken"><img src="assets/hpylori.jpg" alt=""><span>Imagem que ganha movimento</span></div>
-        <div class="tp-t"><small>Pra postar sempre</small><h3>Pulsar Motion</h3><p>As imagens da Pulsar ganham movimento de câmera, texto e som.</p>
-          <dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Manter o perfil vivo toda semana.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 3"><i class="on"></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl></div>
-      </article>
-      <article class="tp-c mt-rv">
-        <div class="tp-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><span>Tudo animado</span></div>
-        <div class="tp-t"><small>O que viraliza</small><h3>Vídeo Pulsar</h3><p>Cada cena animada de verdade, do começo ao fim. É o vídeo que passou de 1,6 milhão de visualizações.</p>
-          <dl><div><dt>Bom pra</dt><dd>Parar o dedo de quem está rolando e trazer gente nova.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl></div>
-      </article>
-      <article class="tp-c mt-rv">
-        <div class="tp-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video><span>Cirurgia passo a passo</span></div>
-        <div class="tp-t"><small>O mais detalhado</small><h3>Pulsar Cirúrgico</h3><p>O procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</p>
-          <dl><div><dt>Bom pra</dt><dd>Mostrar uma técnica e tirar o medo de quem vai passar por ela.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 3"><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Preço</dt><dd>O mais alto. É onde mais se refaz até ficar certo.</dd></div></dl></div>
-      </article>
+    <div class="sqz mt-rv" id="sqz">
+      <div class="sqz-top"><button type="button" class="sqz-a" data-by="-1" aria-label="Tipo anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M9.6 2.6 5.1 7.1h9.1v1.8H5.1l4.5 4.5-1.2 1.2-6-6L1.8 8l.6-.6 6-6 1.2 1.2Z"/></svg></button><button type="button" class="sqz-a" data-by="1" aria-label="Próximo tipo"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 2.6l4.5 4.5H1.800v1.800h9.100l-4.500 4.500 1.200 1.200 6-6 .600-.600-.600-.600-6-6-1.200 1.200Z"/></svg></button></div>
+      <div class="sqz-row" role="tablist" aria-label="Tipos de vídeo">
+        <button type="button" class="sqz-p" role="tab" data-i="0" aria-selected="true" aria-label="Pulsar Motion"><span class="sqz-m ken"><img src="assets/hpylori.jpg" alt=""></span><span class="sqz-ov">Pulsar Motion</span><span class="sqz-vl">Pulsar Motion</span></button>
+        <button type="button" class="sqz-p" role="tab" data-i="1" aria-selected="false" aria-label="Vídeo Pulsar" tabindex="-1"><span class="sqz-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Vídeo Pulsar</span><span class="sqz-vl">Vídeo Pulsar</span></button>
+        <button type="button" class="sqz-p" role="tab" data-i="2" aria-selected="false" aria-label="Pulsar Cirúrgico" tabindex="-1"><span class="sqz-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Pulsar Cirúrgico</span><span class="sqz-vl">Pulsar Cirúrgico</span></button>
+      </div>
+      <div class="sqz-cap" aria-live="polite">
+      <div class="sqz-c" data-i="0"><p><b>Pulsar Motion.</b> <span>As imagens da Pulsar ganham movimento de câmera, texto e som.</span></p><dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Manter o perfil vivo toda semana.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 3"><i class="on"></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl><a class="btn" href="#boxes">Ver os pacotes</a></div>
+      <div class="sqz-c" data-i="1" aria-hidden="true"><p><b>Vídeo Pulsar.</b> <span>Cada cena animada de verdade, do começo ao fim. É o vídeo que passou de 1,6 milhão de visualizações.</span></p><dl><div><dt>Bom pra</dt><dd>Parar o dedo de quem está rolando e trazer gente nova.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl><a class="btn" href="#boxes">Ver os pacotes</a></div>
+      <div class="sqz-c" data-i="2" aria-hidden="true"><p><b>Pulsar Cirúrgico.</b> <span>O procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</span></p><dl><div><dt>Bom pra</dt><dd>Mostrar uma técnica e tirar o medo de quem vai passar por ela.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 3"><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Preço</dt><dd>O mais alto. É onde mais se refaz até ficar certo.</dd></div></dl><a class="btn" href="#boxes">Ver os pacotes</a></div>
+      </div>
     </div>
     <p class="muted small">Durações de 30s, 1min ou 1min30. A versão final pode ficar alguns segundos abaixo (30s pode sair com 28 ou 29s).</p>
   </div></section>
@@ -1063,11 +1093,11 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
   <section class="sec tint" id="boxes"><div class="wrap">
     <div class="head"><span class="label">Os pacotes</span><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
-    <div class="boxes">
-      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 Vídeo Pulsar de 1 min</li><li>2 Pulsar Motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
-      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 Vídeos Pulsar de 1 min</li><li>4 Pulsar Motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
-      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 Vídeos Pulsar de 1 min</li><li>8 Pulsar Motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
-    </div>
+    <ul class="pls">
+      <li class="pl"><div class="pl-h"><h3>Início</h3></div><p class="pl-d">Pra testar com o seu público.</p><p class="pl-p num">R$ 1.100</p><ul><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>1 Vídeo Pulsar de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>2 Pulsar Motion de 1 min</span></li></ul><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></li>
+      <li class="pl hi"><div class="pl-h"><h3>Essencial</h3><span class="pl-b">Recomendado</span></div><p class="pl-d">Pra manter o perfil ativo.</p><p class="pl-p num">R$ 2.000</p><ul><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>2 Vídeos Pulsar de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>4 Pulsar Motion de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>1 viral meu com a sua voz</span></li></ul><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></li>
+      <li class="pl"><div class="pl-h"><h3>Presença</h3></div><p class="pl-d">Pra virar referência na sua área.</p><p class="pl-p num">R$ 3.600</p><ul><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>4 Vídeos Pulsar de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>8 Pulsar Motion de 1 min</span></li><li><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>2 virais meus com a sua voz</span></li></ul><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></li>
+    </ul>
     <div><button class="arrow" type="button" data-openbox="zero" style="background:none;border-width:0 0 1px">Prefiro montar o meu pacote</button></div>
   </div></section>
 
@@ -1884,14 +1914,15 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
   /* menu "Waterline": porte para JS puro do Liquid Navbar (Nimbus UI, guglielmogiannattasio.it), enviado pelo Renan via 21st.dev */
   function nimbus(nav){var PAD=14;
-    var IC={box:'<path d="M3.5 8 12 3.5 20.5 8v8L12 20.5 3.5 16Z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/>',
+    var IC={inicio:'<path d="M4 10.500 12 4l8 6.500V19a1 1 0 0 1-1 1h-4.500v-5.500h-5V20H5a1 1 0 0 1-1-1Z"/>',
+      box:'<path d="M3.5 8 12 3.5 20.5 8v8L12 20.5 3.5 16Z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/>',
       academy:'<path d="M2.500 9.500 12 5l9.500 4.500L12 14Z"/><path d="M6.500 11.700v4.500c1.600 1.400 3.500 2.100 5.500 2.100s3.900-.700 5.500-2.100v-4.500M21.500 9.500v5"/>',
       prompts:'<path d="M11 3.5l1.8 4.9 4.9 1.800-4.900 1.800L11 16.900l-1.800-4.900-4.900-1.800 4.900-1.800Z"/><path d="M18.500 15.500v5M16 18h5"/>',
       skills:'<path d="M13 3 5.500 13.500H11l-1 7.500 7.500-10.500H12Z"/>',
       biblioteca:'<path d="M4.500 5.500c2.500-1 5-1 7.500.500 2.500-1.500 5-1.500 7.500-.500v13c-2.500-1-5-1-7.500.500-2.500-1.500-5-1.500-7.500-.500Z"/><path d="M12 6v13"/>',
       maquina:'<rect x="3.500" y="5" width="17" height="14" rx="3"/><path d="M10.500 9.500v5l4.500-2.500Z"/>'};
-    var FX={box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
-    var SH={box:"Vídeos",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Estúdio"};
+    var FX={inicio:"pop",box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
+    var SH={inicio:"Início",box:"Vídeos",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Estúdio"};
     function mk(t,c){var e=document.createElement(t);e.className=c;e.setAttribute("aria-hidden","true");return e}
     var glass=mk("span","nimbus-glass"),cv=mk("canvas","nimbus-water"),dp=mk("span","nimbus-drop");
     var s={a:{x:0,v:0},b:{x:0,v:0},sy:{s:1,v:0},lead:0,lagFrom:0,sats:[],rips:[],t:{x:0,cy:0,q:0,r:21},q:0,mouse:{x:0,y:0,s:0,on:false},moving:false,split:false,ready:false,has:false,w:0,h:0,visible:true,reduce:calmo,raf:0,last:0,time:0,glc:null};
@@ -2047,7 +2078,17 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}})},{threshold:.18});
     [].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){rv.observe(x)});
     var vd=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})},{threshold:.25});
-    [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){vd.observe(v)})});
+    [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){if(!v.closest(".sqz"))vd.observe(v)})});
+  /* carrossel que espreme (tipos de vídeo): abre o painel tocado, troca o texto e só toca o vídeo do painel aberto */
+  (function(){var el=$("sqz");if(!el)return;var ps=[].slice.call(el.querySelectorAll(".sqz-p")),cs=[].slice.call(el.querySelectorAll(".sqz-c")),row=el.querySelector(".sqz-row"),at=0,vis=false;
+    function mede(){var cs2=getComputedStyle(el),sl=parseFloat(cs2.getPropertyValue("--sq-slat"))||46,g=parseFloat(cs2.getPropertyValue("--sq-gap"))||8,w=row.clientWidth;if(w)el.style.setProperty("--sq-ow",(w-(ps.length-1)*(sl+g))+"px")}
+    function toca(){ps.forEach(function(b,i){var v=b.querySelector("video");if(!v)return;if(i===at&&vis){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})}
+    function vai(i){at=(i+ps.length)%ps.length;ps.forEach(function(b,k){b.setAttribute("aria-selected",String(k===at));b.tabIndex=k===at?0:-1});cs.forEach(function(c,k){c.classList.toggle("on",k===at);if(k===at)c.removeAttribute("aria-hidden");else c.setAttribute("aria-hidden","true")});toca()}
+    row.addEventListener("click",function(e){var b=e.target.closest(".sqz-p");if(b)vai(+b.dataset.i)});
+    el.querySelector(".sqz-top").addEventListener("click",function(e){var b=e.target.closest(".sqz-a");if(b)vai(at+(+b.dataset.by))});
+    row.addEventListener("keydown",function(e){var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();vai(at+d);ps[at].focus()});
+    if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)mede();toca()},{threshold:.2}).observe(el);else vis=true;
+    window.addEventListener("resize",mede);if(window.ResizeObserver)new ResizeObserver(mede).observe(row);mede();vai(0)})();
   $("ac-av").addEventListener("submit",function(e){e.preventDefault();this.hidden=true;$("ac-ok").hidden=false});
   window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
 
