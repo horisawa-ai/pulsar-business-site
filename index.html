@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>pulsar.business</title>
+<title>Pulsar Labz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Pulsar Business">
+<meta name="apple-mobile-web-app-title" content="Pulsar Labz">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
@@ -765,8 +765,8 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 .mt-c .lead{margin-inline:auto}
 .mt-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
 .mt-pill i{width:6px;height:6px;border-radius:50%;background:var(--gold)}
-.mt-hero{padding-top:40px!important}
-.mt-hero .wrap{gap:20px}
+.mt-hero{padding-top:18px!important}
+.mt-hero .wrap{gap:16px}
 .mt-hero .display{font-size:clamp(33px,9.2cqw,44px);line-height:1.05;max-width:13em}
 .mt-hero .lead{max-width:32ch;font-weight:400}
 .mt-cta{display:grid;gap:10px;justify-items:center}
@@ -867,7 +867,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 @media (prefers-reduced-motion:reduce){.mt-rv{opacity:1;transform:none;transition:none}.mt-say .w{color:var(--ink);transition:none}}
 @container site (min-width:700px){
   #pg-mentoria .sec{padding-block:104px}
-  .mt-hero{padding-top:72px!important}
+  .mt-hero{padding-top:40px!important}
   .mt-hero .wrap{gap:26px}
   .mt-hero .display{font-size:clamp(54px,5.8cqw,82px);line-height:1.02}
   .mt-hero .lead{max-width:40ch;font-size:20px}
@@ -898,11 +898,11 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   .mt-faq summary{font-size:22px}
 }
 /* ===== Academy: a escola reúne Mentoria, Curso e Biblioteca ===== */
-.ac-hero{padding-top:40px!important}
-.ac-hero .wrap{gap:20px}
+.ac-hero{padding-top:18px!important}
+.ac-hero .wrap{gap:16px}
 .ac-hero .display{font-size:clamp(33px,9.2cqw,44px);line-height:1.05;max-width:12em}
 .ac-hero .lead{max-width:30ch;font-weight:400}
-.ac-g{display:grid;gap:12px;width:100%;margin-top:10px;text-align:left}
+.ac-g{display:grid;gap:12px;width:100%;margin-top:4px;text-align:left}
 .ac-c{display:grid;grid-template-columns:36% minmax(0,1fr);border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;text-decoration:none;color:inherit;min-width:0;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,opacity .7s ease}
 a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,9,.4)}
 .ac-m{background:#0c0a09;min-height:172px;position:relative}
@@ -920,7 +920,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 .ac-back::before{content:"\2190  "}
 #pg-biblioteca .ac-back{justify-self:start}
 @container site (min-width:700px){
-  .ac-hero{padding-top:72px!important}.ac-hero .wrap{gap:26px}
+  .ac-hero{padding-top:40px!important}.ac-hero .wrap{gap:22px}
   .ac-hero .display{font-size:clamp(54px,5.8cqw,82px);line-height:1.02}
   .ac-hero .lead{max-width:44ch;font-size:20px}
   .ac-g{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
@@ -945,14 +945,17 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 .bib-pick .btn{min-height:44px;padding:9px 18px;font-size:14px}
 .bib-pick select{min-width:0;-webkit-appearance:none;appearance:none;border:1px solid var(--line-2);border-radius:999px;padding:10px 36px 10px 16px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%2378716c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.500 6 6.500 11 1.500'/%3E%3C/svg%3E") no-repeat right 15px center/11px auto}
 @container site (min-width:700px){#pg-biblioteca .lead{max-width:40ch}}
+/* primeira seção de cada página encosta no menu, sem faixa vazia (pedido do Renan em 15/11/2026) */
+.pg:not(#pg-inicio)>.sec:first-child{padding-top:20px}
+@container site (min-width:700px){.pg:not(#pg-inicio)>.sec:first-child{padding-top:44px}}
 </style>
 </head>
 <body>
 <div class="device" id="device"><div class="sb" aria-hidden="true"><span>9:41</span><span class="ic"><svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg><svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1.5 4.2a9.4 9.4 0 0 1 13 0M4 6.9a5.8 5.8 0 0 1 8 0"/><circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" stroke="currentColor" opacity=".4"/><rect x="2.2" y="2.2" width="19.6" height="8.6" rx="2.2" fill="currentColor"/><path d="M25 4.4v4.2c.8-.3 1.4-1.1 1.4-2.1S25.800 4.700 25 4.400Z" fill="currentColor" opacity=".45"/></svg></span></div><div class="screen" id="screen">
 
 <header class="nav"><div class="nav-in">
-  <a class="brand" href="#inicio" aria-label="pulsar business, início"><b>pulsar</b><i>.</i><em>business</em></a>
-  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Box de Conteúdos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Máquina de Vídeos <small>em breve</small></a></nav>
+  <a class="brand" href="#inicio" aria-label="pulsar labz, início"><b>pulsar</b><i>.</i><em>labz</em></a>
+  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Vídeos prontos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Máquina de Vídeos <small>em breve</small></a></nav>
 </div></header>
 
 <!-- ======================= INÍCIO ======================= -->
@@ -1093,7 +1096,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       <div class="ac-c mt-rv">
         <div class="ac-m"><video data-src="assets/placa.mp4" poster="assets/placa.jpg" muted loop playsinline preload="none"></video></div>
         <div class="ac-t"><small>Em breve</small><h2>Curso</h2><p>As aulas gravadas, pra você fazer no seu ritmo.</p>
-          <form class="ac-av" id="ac-av"><input id="ac-z" inputmode="tel" autocomplete="tel" placeholder="WhatsApp" aria-label="Seu WhatsApp" required><button class="btn sm" type="submit">Me avisa</button></form>
+          <form class="ac-av" id="ac-av"><input id="ac-z" inputmode="tel" autocomplete="tel" placeholder="Seu número" aria-label="Seu WhatsApp" required><button class="btn sm" type="submit">Me avisa</button></form>
           <p class="ac-ok" id="ac-ok" hidden>Anotado. Eu te aviso quando abrir.</p></div>
       </div>
       <a class="ac-c mt-rv" href="#biblioteca">
@@ -1305,7 +1308,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 </main>
 
 <footer class="foot"><div class="wrap">
-  <a class="brand" href="#inicio" aria-label="pulsar business, início"><b>pulsar</b><i>.</i><em>business</em></a>
+  <a class="brand" href="#inicio" aria-label="pulsar labz, início"><b>pulsar</b><i>.</i><em>labz</em></a>
   <span>Pulsar.Science · Instagram · WhatsApp</span>
   <span>Preços podem mudar. Prazos contados a partir da aprovação do escopo e da entrega da narração.</span>
 </div></footer>
@@ -1853,7 +1856,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       biblioteca:'<path d="M4.500 5.500c2.500-1 5-1 7.500.500 2.500-1.500 5-1.500 7.500-.500v13c-2.500-1-5-1-7.500.500-2.500-1.500-5-1.500-7.500-.500Z"/><path d="M12 6v13"/>',
       maquina:'<rect x="3.500" y="5" width="17" height="14" rx="3"/><path d="M10.500 9.500v5l4.500-2.500Z"/>'};
     var FX={box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
-    var SH={box:"Box",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
+    var SH={box:"Vídeos",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
     function mk(t,c){var e=document.createElement(t);e.className=c;e.setAttribute("aria-hidden","true");return e}
     var glass=mk("span","nimbus-glass"),cv=mk("canvas","nimbus-water"),dp=mk("span","nimbus-drop");
     var s={a:{x:0,v:0},b:{x:0,v:0},sy:{s:1,v:0},lead:0,lagFrom:0,sats:[],rips:[],t:{x:0,cy:0,q:0,r:21},q:0,mouse:{x:0,y:0,s:0,on:false},moving:false,split:false,ready:false,has:false,w:0,h:0,visible:true,reduce:calmo,raf:0,last:0,time:0,glc:null};
