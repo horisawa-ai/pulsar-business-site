@@ -955,7 +955,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
 <header class="nav"><div class="nav-in">
   <a class="brand" href="#inicio" aria-label="pulsar labz, início"><b>pulsar</b><i>.</i><em>labz</em></a>
-  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Vídeos prontos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Máquina de Vídeos <small>em breve</small></a></nav>
+  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Vídeos prontos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Estúdio <small>em breve</small></a></nav>
 </div></header>
 
 <!-- ======================= INÍCIO ======================= -->
@@ -1264,7 +1264,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= MÁQUINA DE VÍDEOS ======================= -->
 <main class="pg" id="pg-maquina">
   <section class="sec night"><div class="wrap split">
-    <div class="head"><span class="label">Máquina de Vídeos · em breve</span><h1 class="display">Descreva o vídeo. <em>Receba pronto.</em></h1><p class="lead">Mais de 2.000 cenas de saúde. Você escreve o tema, o sistema monta o vídeo com narração.</p></div>
+    <div class="head"><span class="label">Estúdio · em breve</span><h1 class="display">Descreva o vídeo. <em>Receba pronto.</em></h1><p class="lead">Mais de 2.000 cenas de saúde. Você escreve o tema, o sistema monta o vídeo com narração.</p></div>
     <div class="stack">
       <div class="reel"><img src="assets/placa.jpg" alt=""></div>
       <div class="reel mid"><img src="assets/soluco.jpg" alt=""></div>
@@ -1275,7 +1275,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="head"><span class="label">Demonstração</span><h2 class="title">Escolha um tema. <em>Veja as cenas.</em></h2></div>
     <div class="pills" id="mq-pills" role="tablist" aria-label="Temas de exemplo"></div>
     <div class="mq" id="mq"></div>
-    <p class="muted small">A máquina junta as cenas que combinam com o tema, escreve o roteiro e coloca a narração. Aqui é só uma demonstração com cenas de exemplo.</p>
+    <p class="muted small">O Estúdio junta as cenas que combinam com o tema, escreve o roteiro e coloca a narração. Aqui é só uma demonstração com cenas de exemplo.</p>
   </div></section>
   <section class="sec"><div class="wrap">
     <div class="head"><span class="label">Como vai funcionar</span><h2 class="title">Quatro passos, <em>nenhuma edição.</em></h2></div>
@@ -1694,7 +1694,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Mentoria individual, curso e materiais grátis, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
-    maquina:["Máquina de Vídeos","Descreva o vídeo. <em>Receba pronto.</em>","Uma máquina que monta vídeos a partir de mais de 2.000 cenas. Em breve.","v:soluco","Ver como vai ser","#maquina"]};
+    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Um estúdio que monta vídeos a partir de mais de 2.000 cenas. Em breve.","v:soluco","Ver como vai ser","#maquina"]};
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
     function show(k,fast){var e=EX[k],m=e[3].slice(2),med=e[3][0]==="v"?'<video src="assets/'+m+'.mp4" poster="assets/'+m+'.jpg" autoplay muted loop playsinline></video>':'<img src="assets/'+m+'.jpg" alt="">';
       bar.querySelectorAll(".pill").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.ex===k))});
@@ -1856,7 +1856,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       biblioteca:'<path d="M4.500 5.500c2.500-1 5-1 7.500.500 2.500-1.500 5-1.500 7.500-.500v13c-2.500-1-5-1-7.500.500-2.500-1.500-5-1.500-7.500-.500Z"/><path d="M12 6v13"/>',
       maquina:'<rect x="3.500" y="5" width="17" height="14" rx="3"/><path d="M10.500 9.500v5l4.500-2.500Z"/>'};
     var FX={box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
-    var SH={box:"Vídeos",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
+    var SH={box:"Vídeos",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Estúdio"};
     function mk(t,c){var e=document.createElement(t);e.className=c;e.setAttribute("aria-hidden","true");return e}
     var glass=mk("span","nimbus-glass"),cv=mk("canvas","nimbus-water"),dp=mk("span","nimbus-drop");
     var s={a:{x:0,v:0},b:{x:0,v:0},sy:{s:1,v:0},lead:0,lagFrom:0,sats:[],rips:[],t:{x:0,cy:0,q:0,r:21},q:0,mouse:{x:0,y:0,s:0,on:false},moving:false,split:false,ready:false,has:false,w:0,h:0,visible:true,reduce:calmo,raf:0,last:0,time:0,glc:null};
