@@ -948,6 +948,32 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 /* primeira seção de cada página encosta no menu, sem faixa vazia (pedido do Renan em 15/11/2026) */
 .pg:not(#pg-inicio)>.sec:first-child{padding-top:20px}
 @container site (min-width:700px){.pg:not(#pg-inicio)>.sec:first-child{padding-top:44px}}
+/* ===== Vídeos: os três tipos explicados antes dos pacotes ===== */
+.tp{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px}
+.tp::-webkit-scrollbar{display:none}
+.tp-c{scroll-snap-align:start;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.tp-m{position:relative;aspect-ratio:4/3.6;background:#0c0a09;overflow:hidden}
+.tp-m video,.tp-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tp-m.ken img{animation:tpKen 9s ease-in-out infinite alternate}
+@keyframes tpKen{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.22) translate(-3%,3%)}}
+.tp-m span{position:absolute;left:12px;bottom:12px;border-radius:999px;background:rgba(250,250,249,.92);color:var(--ink);font-size:11.5px;font-weight:600;padding:5px 11px}
+.tp-t{padding:18px 18px 20px;display:grid;gap:8px;align-content:start}
+.tp-t small{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.tp-t h3{font-family:var(--serif);font-weight:600;letter-spacing:-.03em;font-size:28px;line-height:1.05}
+.tp-t p{font-size:14.5px;line-height:1.45;color:var(--muted)}
+.tp-t dl{margin:8px 0 0;display:grid}
+.tp-t dl div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.tp-t dt{font-size:12px;color:var(--muted);line-height:1.35}
+.tp-t dd{margin:0;font-size:13.5px;line-height:1.35;font-weight:500}
+.tp-n{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.tp-n i{width:16px;height:6px;border-radius:3px;border:1.5px solid var(--ink);box-sizing:border-box}
+.tp-n i.on{background:var(--ink)}
+.tp-n b{font-weight:500;margin-left:4px}
+@media (prefers-reduced-motion:reduce){.tp-m.ken img{animation:none}}
+@container site (min-width:760px){
+  .tp{grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-columns:auto;gap:18px;overflow:visible;margin-inline:0;padding-inline:0}
+  .tp-t{padding:26px 26px 28px}.tp-t h3{font-size:34px}.tp-t p{font-size:15.5px}
+}
 </style>
 </head>
 <body>
@@ -964,7 +990,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus.<br><em>Ou te ensinar.</em></h1>
-        <p class="lead so-pc">Animação 3D, motion e vídeo completo, feitos pra explicar saúde em segundos.</p>
+        <p class="lead so-pc">Motion, animação clínica e cirúrgica, feitos pra explicar saúde em segundos.</p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">1,6 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Cápsula Endoscópica</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -993,22 +1019,34 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <main class="pg" id="pg-box">
   <section class="sec" style="padding-bottom:48px"><div class="wrap">
     <div class="head">
-      <span class="label">Box de Conteúdos</span>
+      <span class="label">Vídeos prontos</span>
       <h1 class="display">Seu conteúdo, <em>pronto.</em></h1>
       <p class="lead">Do roteiro ao vídeo final. Você aprova e posta.</p>
-      <div class="row"><a class="btn" href="#boxes">Ver os boxes</a><a class="arrow" href="#como">Como funciona</a></div>
+      <div class="row"><a class="btn" href="#tipos">Entender os três tipos</a><a class="arrow" href="#boxes">Ver os pacotes</a></div>
     </div>
   </div>
   <div class="ring" id="ring-box" aria-label="Vitrine giratória: arraste para os lados"><div class="ring-in"></div></div>
   <div class="wrap"><div class="ring-cap" id="ring-box-cap"></div>
   </div></section>
 
-  <section class="sec tint"><div class="wrap">
-    <div class="head"><span class="label">Formatos</span><h2 class="title">Três tipos. <em>Um pra cada ideia.</em></h2></div>
-    <div class="types">
-      <div class="card"><div class="reel"><video src="assets/arrepio.mp4" poster="assets/arrepio.jpg" autoplay muted loop playsinline></video></div><h3 class="subtitle">Motion</h3><p class="muted small">Cada cena é uma imagem que ganha movimento. O mais em conta.</p></div>
-      <div class="card"><div class="reel"><video src="assets/hernia.mp4" poster="assets/hernia.jpg" autoplay muted loop playsinline></video></div><h3 class="subtitle">Híbrido</h3><p class="muted small">Começa com cenas em vídeo pra prender a atenção e continua em motion.</p></div>
-      <div class="card"><div class="reel"><video src="assets/capsula.mp4" poster="assets/capsula.jpg" autoplay muted loop playsinline></video></div><h3 class="subtitle">Vídeo completo</h3><p class="muted small">Todas as cenas em vídeo animado, como nos meus virais.</p></div>
+  <section class="sec tint" id="tipos"><div class="wrap">
+    <div class="head mt-rv"><span class="label">Antes de escolher</span><h2 class="title">Três tipos de vídeo. <em>Veja a diferença.</em></h2><p class="lead">O que muda de um pro outro é quanto de animação cada cena leva. É isso que define o preço.</p></div>
+    <div class="tp" id="tp">
+      <article class="tp-c mt-rv">
+        <div class="tp-m ken"><img src="assets/hpylori.jpg" alt=""><span>Imagem que ganha movimento</span></div>
+        <div class="tp-t"><small>Tipo 1</small><h3>Motion</h3><p>Cada cena é uma imagem pronta que ganha movimento de câmera, texto e som.</p>
+          <dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Postar com frequência.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 3"><i class="on"></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl></div>
+      </article>
+      <article class="tp-c mt-rv">
+        <div class="tp-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><span>Tudo animado em 3D</span></div>
+        <div class="tp-t"><small>Tipo 2</small><h3>Clínico</h3><p>Cada cena é animada de verdade: o órgão funcionando, o remédio agindo, a doença acontecendo.</p>
+          <dl><div><dt>Bom pra</dt><dd>Prender a atenção e viralizar. É o estilo dos meus vídeos.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 3"><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl></div>
+      </article>
+      <article class="tp-c mt-rv">
+        <div class="tp-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video><span>Cirurgia passo a passo</span></div>
+        <div class="tp-t"><small>Tipo 3</small><h3>Cirúrgico</h3><p>Mostra o procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</p>
+          <dl><div><dt>Bom pra</dt><dd>Cirurgiões: mostrar a técnica e tirar o medo do paciente.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 3"><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Preço</dt><dd>O mais alto. É onde mais se refaz até ficar certo.</dd></div></dl></div>
+      </article>
     </div>
     <p class="muted small">Durações de 30s, 1min ou 1min30. A versão final pode ficar alguns segundos abaixo (30s pode sair com 28 ou 29s).</p>
   </div></section>
@@ -1025,25 +1063,25 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   </div></section>
 
   <section class="sec tint" id="boxes"><div class="wrap">
-    <div class="head"><span class="label">Os boxes</span><h2 class="title">Escolha o seu <em>box.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
+    <div class="head"><span class="label">Os pacotes</span><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
     <div class="boxes">
-      <div class="bx"><span class="label">Box 01</span><h3 class="subtitle">Início</h3><ul><li>1 vídeo completo de 1 min</li><li>2 motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este box</button></div>
-      <div class="bx hi"><span class="label">Box 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 vídeos completos de 1 min</li><li>4 motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este box</button></div>
-      <div class="bx"><span class="label">Box 03</span><h3 class="subtitle">Presença</h3><ul><li>4 vídeos completos de 1 min</li><li>8 motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este box</button></div>
+      <div class="bx"><span class="label">Pacote 01</span><h3 class="subtitle">Início</h3><ul><li>1 vídeo clínico de 1 min</li><li>2 motion de 1 min</li></ul><div class="pr num">R$ 1.100</div><button class="btn line" type="button" data-openbox="inicio">Quero este pacote</button></div>
+      <div class="bx hi"><span class="label">Pacote 02</span><h3 class="subtitle">Essencial</h3><ul><li>2 vídeos clínicos de 1 min</li><li>4 motion de 1 min</li><li class="ok">+ 1 viral meu com a sua voz</li></ul><div class="pr num">R$ 2.000</div><button class="btn" type="button" data-openbox="essencial">Quero este pacote</button></div>
+      <div class="bx"><span class="label">Pacote 03</span><h3 class="subtitle">Presença</h3><ul><li>4 vídeos clínicos de 1 min</li><li>8 motion de 1 min</li><li class="ok">+ 2 virais meus com a sua voz</li></ul><div class="pr num">R$ 3.600</div><button class="btn line" type="button" data-openbox="presenca">Quero este pacote</button></div>
     </div>
-    <div><button class="arrow" type="button" data-openbox="zero" style="background:none;border-width:0 0 1px">Prefiro montar o meu box</button></div>
+    <div><button class="arrow" type="button" data-openbox="zero" style="background:none;border-width:0 0 1px">Prefiro montar o meu pacote</button></div>
   </div></section>
 
   <section class="sec" id="montar" hidden><div class="wrap">
-    <div class="head"><span class="label">Sob medida</span><h2 class="title">Monte o seu <em>box.</em></h2></div>
+    <div class="head"><span class="label">Sob medida</span><h2 class="title">Monte o seu <em>pacote.</em></h2></div>
     <div class="cfg">
       <div style="display:grid;gap:44px">
-        <div class="cstep"><h3>Comece por um box. <span>Ou do zero.</span></h3><div class="opts four" id="ch-pac"></div></div>
+        <div class="cstep"><h3>Comece por um pacote. <span>Ou do zero.</span></h3><div class="opts four" id="ch-pac"></div></div>
         <div class="cstep"><h3>Tipo. <span>Qual a diferença?</span></h3><div class="opts three" id="ch-tipo"></div></div>
         <div class="cstep"><h3>Duração. <span>Quanto tempo?</span></h3><div class="opts three" id="ch-dur"></div></div>
         <div class="cstep"><h3>Quantidade.</h3>
           <div class="qty"><span id="sel-desc" class="small"></span><span class="stepper"><button type="button" id="q-" aria-label="Menos um">&minus;</button><output id="q" class="num">1</output><button type="button" id="q+" aria-label="Mais um">+</button></span></div>
-          <button class="btn line" type="button" id="add">Adicionar ao box</button>
+          <button class="btn line" type="button" id="add">Adicionar ao pacote</button>
           <div class="bag" id="bag"></div>
         </div>
         <div class="cstep"><h3>Bônus. <span>Escolha seu viral.</span></h3>
@@ -1060,7 +1098,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     </div>
   </div></section>
 
-  <section class="sec night"><div class="wrap">
+  <section class="sec"><div class="wrap">
     <div class="head"><span class="label">Bônus com 6 vídeos ou mais</span><h2 class="title">Um viral meu, <em>com a sua voz.</em></h2><p class="lead">Você escolhe um vídeo meu que já viralizou. Eu reedito com a sua narração e o seu nome. Com 12 vídeos, são dois.</p></div>
     <div class="slider" id="rail-bonus"></div>
   </div></section>
@@ -1181,7 +1219,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="head mt-c mt-rv"><span class="label">Pra quem é</span><h2 class="title">Antes de pedir <em>a vaga.</em></h2></div>
     <div class="mt-fit mt-rv">
       <div><h3>É pra você se</h3><ul><li>Você quer produzir os próprios vídeos</li><li>Quer parar de depender de agência</li><li>Topa praticar entre os encontros</li></ul></div>
-      <div class="nao"><h3>Não é pra você se</h3><ul><li>Você só quer o vídeo pronto. Aí o caminho é o <a href="#box">Box de Conteúdos</a></li><li>Não tem tempo pra praticar</li></ul></div>
+      <div class="nao"><h3>Não é pra você se</h3><ul><li>Você só quer o vídeo pronto. Aí o caminho é o <a href="#box">Vídeos prontos</a></li><li>Não tem tempo pra praticar</li></ul></div>
     </div>
   </div></section>
 
@@ -1389,7 +1427,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   var CHART='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 13V8M8 13V3M13 13V6"/></svg>';
 
   var pages=["inicio","box","academy","mentoria","prompts","skills","biblioteca","maquina","comparar"];
-  var anchors={boxes:"box",montar:"box",resumo:"box",como:"box","mentoria-preco":"mentoria","skills-lista":"skills"};
+  var anchors={boxes:"box",tipos:"box",montar:"box",resumo:"box",como:"box","mentoria-preco":"mentoria","skills-lista":"skills"};
   function route(){
     var h=(location.hash||"#inicio").slice(1),alvo=null;
     if(anchors[h]){alvo=h==="resumo"?"sum":h;h=anchors[h]}
@@ -1690,7 +1728,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   ring("ring-box",CATALOGO.slice().reverse(),function(i){$("ring-box-cap").textContent=CATALOGO[CATALOGO.length-1-i][1]},3500);
 
   /* explorador */
-  var EX={box:["Box de Conteúdos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os boxes","#box"],
+  var EX={box:["Vídeos prontos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os pacotes","#box"],
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Mentoria individual, curso e materiais grátis, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
@@ -1750,11 +1788,11 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   rail("rail-home");rail("rail-bonus",VIRAIS.slice(0,4));
   $("dlg-x").onclick=function(){$("dlg").close()};
 
-  var TIPOS={motion:["Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas em vídeo pra prender a atenção e continua em motion.","hernia"],completo:["Vídeo completo","Todas as cenas em vídeo animado, como nos meus virais.","capsula"]};
+  var TIPOS={motion:["Motion","Cada cena é uma imagem que ganha movimento. O mais em conta.","arrepio"],hibrido:["Híbrido","Começa com cenas clínicas pra prender a atenção e continua em motion.","hernia"],completo:["Clínico","Todas as cenas animadas em 3D, como nos meus virais.","capsula"]};
   var BONUS=[["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["placa","Placa e Parafusos"],["roer","Roer Unha"],["supositorio","Supositório",1],["garrafa","Garrafa",1],["colposcopia","Colposcopia",1]];
   var DUR={30:"30s",60:"1min",90:"1min30"};
   var P={motion:{30:150,60:250,90:320},hibrido:{30:280,60:450,90:580},completo:{30:450,60:700,90:900}};
-  var PAC={inicio:{n:"Início",d:"1 vídeo completo + 2 motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 vídeos completos + 4 motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 vídeos completos + 8 motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
+  var PAC={inicio:{n:"Início",d:"1 vídeo clínico + 2 motion, de 1 min cada",p:1100,l:{completo60:1,motion60:2}},essencial:{n:"Essencial",d:"2 vídeos clínicos + 4 motion, de 1 min cada",p:2000,l:{completo60:2,motion60:4},b:"+ 1 viral com sua voz"},presenca:{n:"Presença",d:"4 vídeos clínicos + 8 motion, de 1 min cada",p:3600,l:{completo60:4,motion60:8},b:"+ 2 virais com sua voz"}};
   var VOZ={"ia-f":["IA feminina","Incluída"],"ia-m":["IA masculina","Incluída"],minha:["Minha voz","Você grava e manda"]};
   var S={tipo:"completo",dur:60,q:1,lines:{},voz:"ia-f",prazo:"padrao",exp:1,bonus:[]};
   (function(){var h="";for(var t in TIPOS)h+='<button type="button" class="opt vid" data-tipo="'+t+'"><video class="thumb" src="assets/'+TIPOS[t][2]+'.mp4" poster="assets/'+TIPOS[t][2]+'.jpg" autoplay muted loop playsinline aria-hidden="true"></video><b>'+TIPOS[t][0]+'</b><span class="s">'+TIPOS[t][1]+'</span></button>';$("ch-tipo").innerHTML=h;
@@ -1791,8 +1829,8 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     var falta=n<3?3-n:n<6?6-n:n<12?12-n:0;
     var prox=n<3?"Com 3 vídeos o valor de cada um começa a cair.":n<6?"Mais "+falta+" e entra 1 viral meu com a sua voz.":n<12?"Mais "+falta+" e entram 2 virais meus com a sua voz.":"Você está no melhor valor por vídeo.";
     var bon=n>=12?"2 virais reeditados com sua voz":n>=6?"1 viral reeditado com sua voz":"";
-    $("sum").innerHTML='<span class="label">Resumo</span><h3 id="resumo">Seu box'+(pk?' <em class="muted" style="font-weight:400">'+PAC[pk].n+'</em>':'')+'</h3>'+
-      (n?'':'<p class="muted small">Escolha um box ou adicione vídeos.</p>')+
+    $("sum").innerHTML='<span class="label">Resumo</span><h3 id="resumo">Seu pacote'+(pk?' <em class="muted" style="font-weight:400">'+PAC[pk].n+'</em>':'')+'</h3>'+
+      (n?'':'<p class="muted small">Escolha um pacote ou adicione vídeos.</p>')+
       '<div class="l"><span>'+n+(n===1?' vídeo':' vídeos')+'</span><span class="num">'+brl(sub)+'</span></div>'+
       (dv?'<div class="l ok"><span>Desconto por quantidade</span><span class="num">&minus; '+brl(dv)+'</span></div>':'')+
       (ev?'<div class="l"><span>Expresso ('+ne+')</span><span class="num">+ '+brl(ev)+'</span></div>':'')+
@@ -1815,7 +1853,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     else if(b.id==="q+")S.q=Math.min(30,S.q+1);
     else if(b.id==="e-")S.exp=Math.max(1,S.exp-1);
     else if(b.id==="e+")S.exp=Math.min(2,S.exp+1);
-    else if(b.id==="add"){var key=S.tipo+S.dur;S.lines[key]=(S.lines[key]||0)+S.q;S.q=1;b.textContent="Adicionado";setTimeout(function(){b.textContent="Adicionar ao box"},1200)}
+    else if(b.id==="add"){var key=S.tipo+S.dur;S.lines[key]=(S.lines[key]||0)+S.q;S.q=1;b.textContent="Adicionado";setTimeout(function(){b.textContent="Adicionar ao pacote"},1200)}
     else return;
     render();
   });
@@ -2006,7 +2044,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(EMB&&!FIXA)window.addEventListener("resize",function(){var n=window.innerWidth>=700?"site":"cel";if(document.documentElement.getAttribute("data-view")!==n)setView(n)});
   /* duas telas abertas (prévia lado a lado): o que muda no "Ajustar visual" de uma vale pra outra */
   /* Mentoria: vídeos só tocam na tela, blocos entram ao rolar e a frase do medo acende palavra por palavra */
-  ["pg-mentoria","pg-academy"].forEach(function(pid){var pg=$(pid);if(!pg||!window.IntersectionObserver){if(pg)[].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){x.classList.add("in")});return}
+  ["pg-mentoria","pg-academy","pg-box"].forEach(function(pid){var pg=$(pid);if(!pg||!window.IntersectionObserver){if(pg)[].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){x.classList.add("in")});return}
     [].forEach.call(pg.querySelectorAll("[data-say]"),function(h){var i=0;(function anda(no){[].slice.call(no.childNodes).forEach(function(k){
       if(k.nodeType===3){var fr=document.createDocumentFragment();k.nodeValue.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){fr.appendChild(document.createTextNode(" "));return}var w=document.createElement("span");w.className="w";w.style.setProperty("--i",i++);w.textContent=t;fr.appendChild(w)});no.replaceChild(fr,k)}else if(k.nodeType===1)anda(k)})})(h)});
     var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}})},{threshold:.18});
