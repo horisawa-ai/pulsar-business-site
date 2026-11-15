@@ -362,9 +362,6 @@ body.notas .nota{display:block}
 @container site (min-width:880px){.boxes{grid-template-columns:repeat(3,1fr)}}
 
 /* skills e máquina */
-.term{background:var(--card);color:var(--ink);border:1px solid var(--line-2);box-shadow:0 30px 60px -44px rgba(12,10,9,.35);border-radius:var(--r);padding:24px;display:grid;gap:10px;font-family:var(--mono);font-size:12.5px;line-height:1.6}
-.term .u{color:var(--muted)}
-.term .k{color:var(--gold)}
 .covers.wide{grid-template-columns:1fr 1fr}
 .covers .get{border:0;background:transparent;padding:0;font-size:13px;text-decoration:underline;color:var(--ink)}
 @container site (min-width:880px){.covers.wide{grid-template-columns:repeat(4,1fr)}}
@@ -435,13 +432,6 @@ html[data-vit="tela"] .hero-top .stat{display:none}
 .full .ov u{text-decoration:none;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-night)}
 
 
-/* ---------- v5: fileiras de pastas de vidro (Prompts e Skills). A pasta em si é o componente GF, no fim do CSS ---------- */
-.folds{display:grid;gap:36px 28px;grid-template-columns:1fr;justify-items:start}
-@container site (min-width:640px){.folds{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@container site (min-width:980px){.folds{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.fd{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;width:100%;max-width:340px;align-content:start}
-.fd .tx{display:grid;gap:8px;justify-items:start}
-
 
 /* ---------- v6: menu de vidro com gota ---------- */
 html[data-nav="vidro"] .pills{position:relative;isolation:isolate;background:color-mix(in srgb,var(--ink) 5%,transparent);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);box-shadow:inset 0 1px 1px rgba(255,255,255,.85),inset 0 0 0 1px rgba(255,255,255,.4),0 10px 26px -16px rgba(12,10,9,.4)}
@@ -485,11 +475,9 @@ html[data-nav="vidro"] .pills{background:color-mix(in srgb,var(--ink) 4%,transpa
 
 /* ---------- v8: no celular, grupos de cartões viram fileira de arrastar ---------- */
 @container site (max-width:679px){
-  .grid.g2:not(.wrap),.grid.g3,.grid.g4,.cmp,.boxes,.folds,.skills>.grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px));justify-items:stretch}
-  .grid.g2:not(.wrap)::-webkit-scrollbar,.grid.g3::-webkit-scrollbar,.grid.g4::-webkit-scrollbar,.cmp::-webkit-scrollbar,.boxes::-webkit-scrollbar,.folds::-webkit-scrollbar,.skills>.grid::-webkit-scrollbar{display:none}
-  .grid.g2:not(.wrap)>*,.grid.g3>*,.grid.g4>*,.cmp>*,.boxes>*,.folds>*,.skills>.grid>*{scroll-snap-align:start}
-  .folds{grid-auto-columns:76%}
-  .fd{max-width:none}
+  .grid.g2:not(.wrap),.grid.g3,.grid.g4,.cmp,.boxes,.skills>.grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));padding-inline:max(20px,env(safe-area-inset-left,0px));scroll-padding-inline:max(20px,env(safe-area-inset-left,0px));justify-items:stretch}
+  .grid.g2:not(.wrap)::-webkit-scrollbar,.grid.g3::-webkit-scrollbar,.grid.g4::-webkit-scrollbar,.cmp::-webkit-scrollbar,.boxes::-webkit-scrollbar,.skills>.grid::-webkit-scrollbar{display:none}
+  .grid.g2:not(.wrap)>*,.grid.g3>*,.grid.g4>*,.cmp>*,.boxes>*,.skills>.grid>*{scroll-snap-align:start}
   .card,.bx{padding:20px}
   .skills .main{padding:26px 20px}
   .card li,.bx li{padding:8px 0;font-size:14px}
@@ -912,10 +900,6 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .pl li svg{flex:none;margin-top:2px}
 .pl .btn{width:100%}
 @container site (min-width:760px){.pls{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.pl{padding:28px}.pl-d{min-height:2lh}}
-/* ===== Skills: o que vem em cada uma ===== */
-.sk-in{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:7px;width:100%}
-.sk-in li{position:relative;padding-left:20px;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
-.sk-in li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:5px;border-left:1.7px solid var(--gold);border-bottom:1.7px solid var(--gold);transform:rotate(-45deg)}
 /* ===== vitrine "Vidro líquido" ===== */
 .lq{position:relative;width:100%;display:grid;justify-items:center;gap:2px;outline:none;-webkit-tap-highlight-color:transparent}
 .lq canvas{display:block;width:100%;height:clamp(360px,104cqw,470px);touch-action:pan-y;-webkit-user-select:none;user-select:none}
@@ -1021,19 +1005,6 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .gf[data-entered] .gf-sheet{transition-delay:calc(var(--gf-depth)*40ms),0s,calc(.18s + var(--gf-depth)*90ms),calc(.18s + var(--gf-depth)*90ms)}
 .gf[data-entered] .gf-front{transition-delay:0s,.42s,.42s}
 @media (prefers-reduced-motion:reduce){.gf,.gf *,.gf *::before,.gf *::after{transition-duration:0s!important;transition-delay:0s!important;animation:none!important}.gf-tilt{transform:none}}
-/* ===== as fileiras de pastas de Prompts e Skills ===== */
-.fd-hint{font-size:15px;line-height:1.5;color:var(--muted);transition:opacity .3s ease}
-@container site (min-width:700px){.fd-hint{font-size:16.5px}}
-.sec:has(.folds .gf[data-open]) :is(.fd-hint,.vit-hint){opacity:0;transition:opacity .3s ease}
-/* até 1219px a margem lateral da página é de 20px: o leque aberto se espalha um pouco menos (28 em vez de 40) pra folha do canto não passar da borda da tela */
-@container site (max-width:1219px){.folds .gf[data-open]{--gf-spread:28px}}
-@container site (max-width:679px){
-  /* fileira que rola de lado: ela corta o que sai pra cima, então a folga do leque fica dentro de cada pasta, em % da largura dela */
-  .fd{padding-top:15.5%}
-  #folds-prompts .fd{padding-block:6.5% 16%}
-  #folds-prompts{margin-block:-4.94% -28px}
-  #folds-skills{margin-top:-11.78%}
-}
 
 /*@@BIB-CSS: página Biblioteca. CSS novo desta área entra logo abaixo desta linha @@*/
 /* ===== Biblioteca: três pastas que abrem de verdade, a bandeja com os arquivos de cada uma e a janela pra baixar.
@@ -1773,6 +1744,199 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 @keyframes lgEstoura{0%{opacity:0;transform:scale(.1)}40%{opacity:1;transform:scale(1.5)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.3)}}
 
 /*@@PS-CSS: páginas Prompts e Skills. CSS novo desta área entra logo abaixo desta linha @@*/
+.pp .gf-meta{font-family:var(--sans);letter-spacing:0;font-size:13px}
+:is(.pp,.sk-l,#sd-vis) .gf-sheet-meta{display:none}
+/* ===== Prompts e Skills (refeitas em 15/11/2026). Abertura centralizada, como Academy, Biblioteca e Estúdio. A pasta é o componente GF (não mexer nele aqui).
+   Prompts: no celular cada área é uma linha (pasta à esquerda, nome à direita) e a bandeja abre logo abaixo dela; no computador as pastas ficam lado a lado e a bandeja é uma só, embaixo.
+   Skills: a conversa de exemplo na fonte da casa, as duas Skills com a pasta e a janela do "Ver valor" (o preço só aparece nela) ===== */
+:is(#pg-prompts,#pg-skills){--ps-gl:max(20px,env(safe-area-inset-left,0px));--ps-gr:max(20px,env(safe-area-inset-right,0px));--ps-ease:cubic-bezier(.22,1,.36,1);--ps-mola:cubic-bezier(.34,1.36,.5,1)}
+:is(#pg-prompts,#pg-skills) [hidden]{display:none!important}
+:is(#pg-prompts,#pg-skills) :is(a,button){-webkit-tap-highlight-color:transparent}
+:is(#pg-prompts,#pg-skills) .nota{justify-self:center;margin-top:28px;text-align:left}
+.ps-w{justify-items:center;text-align:center;gap:0}
+.ps-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.ps-hd{display:grid;gap:10px;justify-items:center}
+.ps-hd .display{font-size:clamp(33px,9.2cqw,44px);line-height:1.05;max-width:11em}
+.ps-hd .lead{max-width:30ch;font-weight:400;text-wrap:balance}
+@container site (min-width:700px){.ps-hd{gap:16px}.ps-hd .display{font-size:clamp(54px,5.8cqw,82px);line-height:1.02}.ps-hd .lead{max-width:44ch;font-size:20px}}
+/* no toque não existe "passar o mouse": sem isto o botão ficava com a cor de hover presa depois do toque */
+@media (hover:none){:is(#pg-prompts,#pg-skills) .btn:not(.line):hover{background:var(--ink)}:is(#pg-prompts,#pg-skills) .btn.line:hover{background:transparent;color:var(--ink)}}
+
+/* ----- Prompts: linhas (celular) ----- */
+.pp{--pp-w:clamp(144px,38.2cqw,170px);--pp-lado:0;display:grid;grid-template-columns:minmax(0,1fr);width:100%;margin-top:12px;text-align:left}
+/* a linha de uma área. O texto desce a folga que a pasta guarda em cima (16% da largura), pra ficar no meio do corpo dela */
+.pp-r{position:relative;display:grid;grid-template-columns:var(--pp-w) minmax(0,1fr);column-gap:16px;align-items:center;cursor:pointer;-webkit-user-select:none;user-select:none}
+.pp-p{min-width:0}
+.pp-tx{display:grid;gap:5px;min-width:0;margin-top:calc(var(--pp-w)*.16)}
+.pp-n{font-family:var(--ac-display,var(--serif));font-weight:600;font-size:clamp(22px,6.6cqw,26px);line-height:1.05;letter-spacing:-.03em}
+.pp-c{font-size:12.5px;font-weight:500;line-height:1.3;color:var(--gold)}
+.pp-d{font-size:14.5px;line-height:1.4;color:var(--muted);text-wrap:balance}
+.pp .gf-label{display:none}
+/* no papel do leque fica só o nome da folha: a segunda linha ("cena por cena") empurrava o nome pra reticências na pasta de 230 a 260px */
+.pp .gf-sheet-meta{display:none}
+/* na pasta pequena do celular o nome de uma folha não cabe na faixa que sobra atrás da folha da frente (a perna do "p" sumia): ali o leque vai sem nome.
+   Os nomes estão logo abaixo (na bandeja, em Prompts) ou ao lado (em Skills). As linhas do papel sobem pro lugar do nome */
+@container site (max-width:699px){:is(.pp,.sk-l) .gf-sheet-head{display:none}:is(.pp,.sk-l) .gf-lines{top:20px}}
+/* bandeja: abre e fecha pela altura (o JS anima), o miolo entra com um leve deslize */
+.pp-tray{overflow:hidden}
+.pp-tray.pronta,.pp-tray.sai{overflow:visible}
+.pp-tray.sai{position:relative;z-index:1;pointer-events:none}
+.pp-in{display:grid;padding:12px 0 22px;opacity:0;transform:translateY(-8px);transition:opacity .2s ease,transform .45s var(--ps-ease)}
+.pp-tray.on .pp-in{opacity:1;transform:none;transition:opacity .35s ease .1s,transform .55s var(--ps-ease) .05s}
+.pp-fl{list-style:none;margin:0;padding:0;display:grid;border:1px solid var(--line-2);border-radius:22px;background:var(--card)}
+.pp-fl li{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:14px;row-gap:1px;align-items:center;padding:13px 18px 13px 16px}
+.pp-fl li+li{border-top:1px solid var(--line)}
+.pp-fl svg{grid-row:1/3;display:block;width:32px;height:40px;overflow:visible}
+.pp-fl b{align-self:end;font-size:16px;font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--ink)}
+.pp-fl span{align-self:start;font-size:14px;line-height:1.4;color:var(--muted)}
+.pp-go{margin-top:12px}
+.pp-tray.on .pp-fl li{animation:pp-surge .55s var(--ps-ease) backwards}
+.pp-tray.on .pp-fl li:nth-child(2){animation-delay:.05s}.pp-tray.on .pp-fl li:nth-child(3){animation-delay:.1s}
+@keyframes pp-surge{from{opacity:0;transform:translateY(10px)}}
+/* a folha de papel do ícone, com o desenho do que vai nela */
+.pp-pa{fill:#fff;stroke:var(--line-2);stroke-width:1.2;filter:drop-shadow(0 6px 8px rgba(12,10,9,.08))}
+.pp-pd{fill:var(--tint);stroke:var(--line-2);stroke-width:1.2;stroke-linejoin:round}
+.pp-pg{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pp-pg .ch{fill:var(--gold);stroke:none}
+
+/* ----- Prompts: computador. 3 + 2 (a segunda linha no meio) até caber 5 numa linha com o nome legível no vidro (a partir de 980px, pasta de 172 a 212px) ----- */
+@container site (min-width:700px){
+  .pp{--pp-lado:1;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:clamp(16px,2.4cqw,28px);row-gap:20px;max-width:900px;margin-top:34px;padding-inline:clamp(4px,1.2cqw,16px)}
+  .pp-r{grid-template-columns:minmax(0,1fr);row-gap:10px;justify-items:center;align-content:start;text-align:center}
+  .pp-r:nth-of-type(1){grid-area:1/1/2/3}.pp-r:nth-of-type(2){grid-area:1/3/2/5}.pp-r:nth-of-type(3){grid-area:1/5/2/7}
+  .pp-r:nth-of-type(4){grid-area:2/2/3/4}.pp-r:nth-of-type(5){grid-area:2/4/3/6}
+  .pp-p{width:100%;max-width:260px}
+  .pp-tx{margin-top:0;justify-items:center}
+  .pp-n,.pp-c{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .pp-d{font-size:16px;max-width:22ch}
+  .pp .gf-label{display:flex}
+  .pp-tray{grid-row:3;grid-column:1/-1}
+  .pp-in{justify-items:center;padding:24px 0 6px}
+  .pp-fl{grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:880px;border-radius:26px}
+  .pp-fl li{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;row-gap:3px;padding:26px 20px 24px}
+  .pp-fl li+li{border-top:0;border-left:1px solid var(--line)}
+  .pp-fl svg{grid-row:auto;width:38px;height:48px;margin-bottom:12px}
+  .pp-fl b{align-self:auto;font-size:17px}
+  .pp-fl span{align-self:auto;font-size:15px}
+  .pp-go{margin-top:20px;padding-inline:28px}
+}
+@container site (min-width:980px){
+  .pp{grid-template-columns:repeat(5,minmax(0,212px));justify-content:center;column-gap:clamp(18px,2cqw,24px);max-width:none;padding-inline:clamp(4px,1.2cqw,16px)}
+  .pp-r:nth-of-type(n){grid-row:1}
+  .pp-r:nth-of-type(1){grid-column:1}.pp-r:nth-of-type(2){grid-column:2}.pp-r:nth-of-type(3){grid-column:3}.pp-r:nth-of-type(4){grid-column:4}.pp-r:nth-of-type(5){grid-column:5}
+  .pp-tray{grid-row:2}
+  .pp-d{font-size:15.5px}
+}
+
+/* ----- Skills: a conversa de exemplo ----- */
+.sk-cv{display:grid;gap:16px;width:100%;max-width:440px;margin:22px 0 0;padding:18px 18px 20px;border:1px solid var(--line-2);border-radius:22px;background:var(--card);box-shadow:0 30px 60px -44px rgba(12,10,9,.35);text-align:left}
+.sk-eu{justify-self:end;max-width:92%;text-wrap:balance;padding:10px 15px;border-radius:20px 20px 6px 20px;background:var(--tint);font-size:15px;line-height:1.4;color:var(--ink)}
+.sk-ia{display:grid;gap:12px}
+.sk-quem{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;line-height:1.3;color:var(--ink-2)}
+.sk-av{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:linear-gradient(150deg,#fbf6ea 0%,#f1e4c8 100%);box-shadow:inset 0 0 0 1px #d9c08a;color:var(--gold)}
+.sk-av svg{display:block;width:13px;height:13px}
+.sk-et{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.sk-et li{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:12px;align-items:center;font-size:15px;line-height:1.35;color:var(--ink)}
+.sk-et i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);background:var(--card);font:600 11.5px/1 var(--sans);font-style:normal;color:var(--ink);font-variant-numeric:tabular-nums}
+/* as linhas entram uma por vez quando o cartão aparece (o JS põe data-st="pre" e depois "in"). Sem JS ou com movimento reduzido, tudo já completo */
+.sk-cv .sk-a{transition:opacity .5s ease,transform .7s var(--ps-ease),filter .5s ease;transition-delay:calc(var(--i,0)*340ms)}
+.sk-cv[data-st="pre"] .sk-a{opacity:0;transform:translateY(10px);filter:blur(4px);transition:none}
+@media (prefers-reduced-motion:reduce){.sk-cv .sk-a{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}}
+
+/* ----- Skills: as duas, uma embaixo da outra no celular ----- */
+.sk-l{--sk-w:clamp(144px,38.2cqw,170px);display:grid;grid-template-columns:minmax(0,1fr);width:100%;margin-top:30px;text-align:left}
+.sk-c{display:grid;grid-template-columns:var(--sk-w) minmax(0,1fr);grid-template-areas:"p tx" "i i" "b b";column-gap:16px;align-items:center;min-width:0}
+.sk-c+.sk-c{margin-top:30px;padding-top:4px;border-top:1px solid var(--line)}
+.sk-p{grid-area:p;min-width:0}
+.sk-tx{grid-area:tx;display:grid;gap:6px;min-width:0;margin-top:calc(var(--sk-w)*.16)}
+.sk-n{font-family:var(--ac-display,var(--serif));font-weight:600;font-size:clamp(22px,6.6cqw,26px);line-height:1.05;letter-spacing:-.03em}
+.sk-d{font-size:14.5px;line-height:1.42;color:var(--muted);text-wrap:balance}
+.sk-i{grid-area:i;list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.sk-i li{position:relative;padding-left:26px;font-size:15px;line-height:1.4;color:var(--ink-2);text-wrap:balance}
+.sk-i li::before{content:"";position:absolute;left:3px;top:6px;width:11px;height:6px;border-left:1.8px solid var(--gold);border-bottom:1.8px solid var(--gold);transform:rotate(-45deg)}
+.sk-b{grid-area:b;width:100%;margin-top:18px}
+.sk-c .gf-label{display:none}
+
+/* ----- Skills: as duas lado a lado no computador. Nome, lista e botão nas mesmas linhas da grade (subgrid) ----- */
+@container site (min-width:700px){
+  .sk-cv{max-width:520px;margin-top:34px;padding:26px 28px 28px;border-radius:26px;gap:18px}
+  .sk-eu{font-size:16px;padding:11px 17px}
+  .sk-et li{font-size:16px}
+  .sk-l{--sk-w:240px;grid-template-columns:repeat(2,minmax(0,380px));grid-template-rows:repeat(4,auto);justify-content:center;column-gap:clamp(32px,6cqw,88px);margin-top:64px;text-align:center}
+  .sk-c{grid-row:span 4;grid-template-rows:subgrid;grid-template-columns:minmax(0,1fr);grid-template-areas:none;justify-items:center;align-items:start;row-gap:0}
+  .sk-c+.sk-c{margin-top:0;padding-top:0;border-top:0}
+  .sk-p{grid-area:auto;width:min(var(--sk-w),100%)}
+  .sk-tx{grid-area:auto;margin-top:14px;justify-items:center;gap:8px}
+  .sk-n{font-size:34px}
+  .sk-d{font-size:16.5px;line-height:1.5;max-width:25ch;text-wrap:balance}
+  .sk-i{grid-area:auto;width:fit-content;max-width:100%;margin-top:20px;gap:9px;text-align:left}
+  .sk-i li{font-size:15.5px}
+  .sk-b{grid-area:auto;align-self:end;width:auto;min-width:200px;margin-top:26px}
+}
+
+/* ----- Skills: o cartão dourado da Mentoria ----- */
+.sk-all{display:grid;gap:6px;justify-items:center;width:100%;max-width:520px;margin-top:40px;padding:24px 22px;border:1px solid #d9c08a;border-radius:22px;background:linear-gradient(150deg,#fbf6ea 0%,#f1e4c8 100%);color:inherit;text-align:center;text-decoration:none;transition:opacity .7s ease,transform .5s var(--ps-ease),box-shadow .4s ease}
+.sk-all-t{font-family:var(--ac-display,var(--serif));font-weight:600;font-size:26px;line-height:1.05;letter-spacing:-.03em;text-wrap:balance}
+.sk-all-t em{font-style:normal;color:var(--muted);white-space:nowrap}
+.sk-all-d{font-size:15px;line-height:1.5;color:#44403c;max-width:26ch;text-wrap:balance}
+.sk-ir{margin-top:6px;font-size:15px;font-weight:600;line-height:1.3}
+.sk-ir::after{content:"\2192";display:inline-block;margin-left:7px;transition:transform .3s var(--ps-ease)}
+.sk-all:active{transform:scale(.985)}
+.sk-all:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:22px}
+@media (hover:hover){.sk-all.in:hover{transform:translateY(-3px);box-shadow:0 26px 50px -38px rgba(87,56,8,.6)}.sk-all:hover .sk-ir::after{transform:translateX(4px)}}
+@container site (min-width:700px){.sk-all{max-width:640px;margin-top:64px;padding:32px 36px;border-radius:26px}.sk-all-t{font-size:34px}.sk-all-d{font-size:16.5px;max-width:none}.sk-all:focus-visible{border-radius:26px}}
+
+/* ----- Skills: a janela do "Ver valor". No celular, folha que sobe de baixo; no computador, janela central (a mesma linguagem da janela da Biblioteca) ----- */
+#sk-dlg{--sd-folha:1;position:fixed;inset:auto auto var(--sd-b,0px) var(--sd-l,0px);width:var(--sd-w,100%);max-width:none;height:auto;max-height:calc(var(--sd-h,100vh)*.92);margin:0;padding:0;border:0;border-radius:24px 24px 0 0;background:var(--paper);color:var(--ink);overflow:hidden;box-shadow:0 -30px 70px -40px rgba(12,10,9,.45);touch-action:pan-y}
+@supports (height:100dvh){#sk-dlg{max-height:calc(var(--sd-h,100dvh)*.92)}}
+#sk-dlg[open]{display:flex;flex-direction:column;animation:sd-sobe .5s cubic-bezier(.23,1,.32,1) backwards}
+#sk-dlg.sai{animation:sd-desce .26s cubic-bezier(.4,0,1,1) forwards}
+#sk-dlg.sd--moldura{border-radius:24px 24px 46px 46px}
+#sk-dlg::backdrop{background:rgba(41,37,36,.3);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);opacity:var(--sd-v,1);animation:sd-veu .3s ease backwards}
+#sk-dlg.sai::backdrop{animation:sd-veu-sai .26s ease forwards}
+@keyframes sd-sobe{from{transform:translateY(105%)}}
+@keyframes sd-desce{to{transform:translateY(105%)}}
+@keyframes sd-veu{from{opacity:0}}
+@keyframes sd-veu-sai{to{opacity:0}}
+@keyframes sd-entra{from{opacity:0;transform:scale(.96)}}
+@keyframes sd-sai{to{opacity:0;transform:scale(.98)}}
+.sd-grab{flex:none;display:grid;place-items:center;height:20px;padding-top:6px;cursor:grab;touch-action:none}
+.sd-grab::before{content:"";width:40px;height:5px;border-radius:3px;background:var(--line-2)}
+.sd-x{position:absolute;top:10px;right:10px;z-index:3;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:#ecebe8;color:var(--ink-2);display:grid;place-items:center;transition:background .2s ease}
+.sd-x::after{content:"";position:absolute;inset:-6px}
+@media (hover:hover){.sd-x:hover{background:#dfddd9}}
+.sd-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.sd-g{display:grid;grid-template-columns:112px minmax(0,1fr);grid-template-areas:"vis head" "body body";column-gap:16px;align-items:center;padding:4px var(--ps-gr) calc(18px + env(safe-area-inset-bottom,0px)) var(--ps-gl);text-align:left}
+.sd-vis{grid-area:vis;min-width:0}
+.sd-body{display:contents}
+.sd-head{grid-area:head;display:grid;gap:5px;min-width:0;margin-top:calc(112px*.16);padding-right:30px}
+.sd-k{font-size:12.5px;font-weight:500;line-height:1.3;color:var(--gold)}
+.sd-t{font-family:var(--ac-display,var(--serif));font-weight:600;font-size:26px;line-height:1.05;letter-spacing:-.03em;outline:none}
+.sd-d{grid-column:1/-1;margin-top:12px;font-size:15px;line-height:1.5;color:var(--muted);text-wrap:balance}
+.sd-i{grid-column:1/-1;list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.sd-i li{position:relative;padding-left:26px;font-size:15px;line-height:1.4;color:var(--ink-2);text-wrap:balance}
+.sd-i li::before{content:"";position:absolute;left:3px;top:6px;width:11px;height:6px;border-left:1.8px solid var(--gold);border-bottom:1.8px solid var(--gold);transform:rotate(-45deg)}
+.sd-pr{grid-column:1/-1;margin-top:20px;padding:20px 16px;border:1px solid var(--line-2);border-radius:20px;background:var(--card);text-align:center}
+.sd-pr b{display:block;font-family:var(--serif);font-weight:600;letter-spacing:-.04em;font-size:48px;line-height:1}
+.sd-go{grid-column:1/-1;width:100%;height:48px;min-height:0;margin-top:12px;padding-block:0}
+@container site (min-width:700px){
+  #sk-dlg{--sd-folha:0;inset:0;margin:auto;width:min(760px,calc(100cqw - 48px));height:fit-content;border-radius:26px;box-shadow:0 50px 110px -50px rgba(12,10,9,.55)}
+  #sk-dlg[open]{animation:sd-entra .35s cubic-bezier(.23,1,.32,1) backwards}
+  #sk-dlg.sai{animation:sd-sai .2s ease forwards}
+  .sd-grab{display:none}
+  .sd-x{top:14px;right:14px}
+  .sd-g{grid-template-columns:300px minmax(0,1fr);grid-template-areas:none;column-gap:0;align-items:stretch;padding:0}
+  .sd-vis{grid-area:auto;display:grid;place-items:center;padding:28px 30px 34px;background:var(--tint)}
+  .sd-vis .gf{width:240px}
+  .sd-body{display:grid;align-content:center;min-width:0;padding:44px 40px 40px 36px}
+  .sd-head{grid-area:auto;margin-top:0;padding-right:24px}
+  .sd-t{font-size:34px}
+  .sd-d{margin-top:12px;font-size:16.5px}
+  .sd-i{margin-top:16px}
+  .sd-i li{font-size:15.5px}
+  .sd-pr{margin-top:24px}
+  .sd-pr b{font-size:54px}
+}
 
 /*@@FIM-CSS@@*/
 </style>
@@ -2097,34 +2261,68 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 
 <!-- ======================= PROMPTS ======================= -->
 <main class="pg" id="pg-prompts">
-  <section class="sec"><div class="wrap split">
-    <div class="head"><h1 class="display">Os prompts <em>que eu uso.</em></h1><p class="lead">Folhas prontas por tema: a imagem de cada cena e o movimento do vídeo.</p></div>
-    <div class="hero-media"><img src="assets/area-dermatologia.jpg" alt="Capa Dermatologia: corte de pele dentro de um bloco de cristal" style="border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%"></div>
-  </div></section>
-  <section class="sec tint"><div class="wrap">
-    <div class="head"><h2 class="title">Escolha <em>a sua área.</em></h2><p class="fd-hint">Toque numa pasta pra abrir.</p></div>
-    <div class="folds" id="folds-prompts"></div>
+  <section class="sec"><div class="wrap ps-w">
+    <header class="ps-hd">
+      <h1 class="display">Os prompts <em>que eu uso.</em></h1>
+      <p class="lead">Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.</p>
+    </header>
+    <div class="pp" id="pp"></div>
   </div></section>
 </main>
 
 <!-- ======================= SKILLS ======================= -->
 <main class="pg" id="pg-skills">
-  <section class="sec"><div class="wrap split">
-    <div class="head"><h1 class="display">As Skills por trás <em>dos meus vídeos.</em></h1><p class="lead">Você instala no Claude e ele passa a trabalhar do meu jeito, do roteiro ao vídeo pronto.</p><div class="row"><a class="btn" href="#skills-lista">Ver as Skills</a></div></div>
-    <div class="term" aria-label="Ilustração de uso">
-      <span class="u">você</span><span>quero um vídeo sobre hérnia de disco</span>
-      <span class="u">pulsar labs master</span>
-      <span><span class="k">01</span> roteiro em 6 cenas</span>
-      <span><span class="k">02</span> estética escolhida</span>
-      <span><span class="k">03</span> prompts de imagem e de vídeo</span>
-      <span><span class="k">04</span> narração e montagem</span>
+  <section class="sec"><div class="wrap ps-w">
+    <header class="ps-hd">
+      <h1 class="display">As Skills por trás <em>dos meus vídeos.</em></h1>
+      <p class="lead">Você instala no Claude e ele passa a trabalhar do meu jeito, do roteiro ao vídeo pronto.</p>
+    </header>
+    <figure class="sk-cv" id="sk-cv" aria-label="Exemplo de conversa com a Skill Pulsar Labs Master">
+      <p class="sk-eu sk-a" style="--i:0"><span class="ps-sr">Você: </span>Quero um vídeo sobre hérnia de disco</p>
+      <div class="sk-ia">
+        <p class="sk-quem sk-a" style="--i:2"><span class="sk-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span>Pulsar Labs Master</p>
+        <ol class="sk-et">
+          <li class="sk-a" style="--i:3"><i aria-hidden="true">1</i>Roteiro em 6 cenas</li>
+          <li class="sk-a" style="--i:4"><i aria-hidden="true">2</i>Estética escolhida</li>
+          <li class="sk-a" style="--i:5"><i aria-hidden="true">3</i>Prompts de imagem e de vídeo</li>
+          <li class="sk-a" style="--i:6"><i aria-hidden="true">4</i>Narração e montagem</li>
+        </ol>
+      </div>
+    </figure>
+    <div class="sk-l" id="skills-lista">
+      <article class="sk-c" data-sk="master">
+        <div class="sk-p"></div>
+        <div class="sk-tx"><h2 class="sk-n">Pulsar Labs Master</h2><p class="sk-d">Ela te guia do roteiro ao vídeo pronto, etapa por etapa, só com o que eu já testei.</p></div>
+        <ul class="sk-i"><li>Roteiros nas estruturas que já viralizaram</li><li>As 12 estéticas da Pulsar</li><li>Prompts prontos pra Kling, Veo, Grok e Higgsfield</li><li>Narração e montagem, passo a passo</li></ul>
+        <button class="btn line sk-b" type="button" data-sk="master" aria-haspopup="dialog" aria-label="Ver valor da Pulsar Labs Master">Ver valor</button>
+      </article>
+      <article class="sk-c" data-sk="motion">
+        <div class="sk-p"></div>
+        <div class="sk-tx"><h2 class="sk-n">Motion de Imagens</h2><p class="sk-d">Transforma imagens paradas em vídeo com movimento.</p></div>
+        <ul class="sk-i"><li>Você manda as imagens</li><li>Ela devolve o vídeo com movimento</li></ul>
+        <button class="btn line sk-b" type="button" data-sk="motion" aria-haspopup="dialog" aria-label="Ver valor da Motion de Imagens">Ver valor</button>
+      </article>
     </div>
+    <a class="sk-all mt-rv" href="#mentoria">
+      <h2 class="sk-all-t">Todas as Skills, <em>de uma vez.</em></h2>
+      <p class="sk-all-d">Na mentoria elas vêm todas incluídas e configuradas com você.</p>
+      <span class="sk-ir">Conhecer a mentoria</span>
+    </a>
   </div></section>
-  <section class="sec tint" id="skills-lista"><div class="wrap">
-    <div class="head"><h2 class="title">Escolha <em>a sua.</em></h2><p class="fd-hint">Toque numa pasta pra ver o que ela entrega.</p></div>
-    <div class="folds" id="folds-skills"></div>
-    <div class="card" style="background:linear-gradient(150deg,#fbf6ea 0%,#f1e4c8 100%);border-color:#d9c08a"><h3 class="subtitle">Todas as Skills, <em>de uma vez.</em></h3><p class="small muted">Na mentoria elas vêm todas incluídas e configuradas com você.</p><div class="row"><a class="arrow" href="#mentoria">Conhecer a mentoria</a></div></div>
-  </div></section>
+  <dialog id="sk-dlg" aria-labelledby="sd-t" aria-describedby="sd-d">
+    <div class="sd-grab" aria-hidden="true"></div>
+    <button class="sd-x" id="sd-x" type="button" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="sd-scroll" id="sd-scroll"><div class="sd-g">
+      <div class="sd-vis" id="sd-vis" aria-hidden="true"></div>
+      <div class="sd-body">
+        <div class="sd-head"><h2 class="sd-t" id="sd-t" tabindex="-1"></h2></div>
+        <p class="sd-d" id="sd-d"></p>
+        <ul class="sd-i" id="sd-i"></ul>
+        <p class="sd-pr"><span class="ps-sr">Valor: </span><b class="num" id="sd-v"></b></p>
+        <button class="btn sd-go" type="button" id="sd-go">Quero esta Skill</button>
+      </div>
+    </div></div>
+  </dialog>
 </main>
 
 <!-- ======================= BIBLIOTECA ======================= -->
@@ -3037,14 +3235,172 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 
   /* Prompts e Skills: cada pasta mostra as folhas que vêm dentro. As folhas aqui são enfeite: a pasta abre e fecha no toque */
   /*@@PS-JS: páginas Prompts e Skills (área do agente PS) @@*/
-  function pasta(t,meta,art,files,mais){var o={label:t,meta:meta,image:"assets/"+art+".jpg",files:files.map(function(f){return {name:f[0],meta:f[1]}})},k;if(mais)for(k in mais)o[k]=mais[k];return GF.html(o)}
-  var FOLHAS=[["Prompt de imagem","cena por cena"],["Prompt de vídeo","movimento"],["Narração","roteiro"]];
-  $("folds-prompts").innerHTML=[["Cardiologia","area-cardiologia"],["Dermatologia","area-dermatologia"],["Fisioterapia","area-fisioterapia"],["Odontologia","area-odontologia"],["Nutrição","area-nutricao"]].map(function(a,i){
-    return '<figure class="fd">'+pasta(a[0],"folhas de prompts",a[1],FOLHAS,{id:a[1],delay:i%3*120})+'</figure>'}).join("");
-  $("folds-skills").innerHTML=[["Pulsar Labs Master","Ela te guia do roteiro ao vídeo pronto, etapa por etapa, só com o que eu já testei.","capsula",[["Roteiro","em cenas"],["Estética","12 estilos"],["Prompts","imagem e vídeo"],["Narração","e montagem"]],"R$ 97",["Roteiros nas estruturas que já viralizaram","As 12 estéticas da Pulsar","Prompts prontos pra Kling, Veo, Grok e Higgsfield","Narração e montagem, passo a passo"]],
-    ["Motion de Imagens","Transforma imagens paradas em vídeo com movimento.","arrepio",[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]],"R$ 19,90",["Você manda as imagens","Ela devolve o vídeo com movimento"]]].map(function(k,i){
-    return '<figure class="fd">'+pasta(k[0],"Skill 0"+(i+1),k[2],k[3],{id:"skill-"+(i+1),delay:i*120})+'<div class="tx"><p class="muted small">'+k[1]+'</p><ul class="sk-in">'+k[5].map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul><p class="price num">'+k[4]+'</p><button class="btn line" type="button">Quero esta Skill</button></div></figure>'}).join("");
-  GF.mount($("folds-prompts"));GF.mount($("folds-skills"));
+  /* Prompts e Skills. As pastas são o componente GF, usado só pela API (GF.html, GF.mount, GF.open e os eventos), sem mexer nele.
+     Prompts: tocar numa área abre o leque e a bandeja com as três folhas (uma aberta por vez, sem pulo da página). O botão da bandeja leva pra Biblioteca.
+     Skills: a conversa entra linha por linha quando aparece. "Ver valor" abre a janela com o valor: o preço só existe aqui no JS e só vai pra página no clique. */
+  (function(){
+    if(typeof GF==="undefined")return;
+    var pp=$("pp"),skl=$("skills-lista"),cv=$("sk-cv"),sd=$("sk-dlg");
+
+    /* ---------- relógio e área visível (o mesmo jeito da Biblioteca) ---------- */
+    function bez(t){var u=t,i,x,d; /* cubic-bezier(.22,1,.36,1), a curva de entrada da casa */
+      for(i=0;i<6;i++){x=3*(1-u)*(1-u)*u*.22+3*(1-u)*u*u*.36+u*u*u-t;d=3*(1-u)*(1-u)*.22+6*(1-u)*u*.14+3*u*u*.64;if(Math.abs(d)<1e-6)break;u-=x/d}
+      u=Math.max(0,Math.min(1,u));return 3*(1-u)*(1-u)*u+3*(1-u)*u*u+u*u*u}
+    function anima(ms,passo,fim){var t0=0,id=0,vivo=true;
+      function q(t){if(!vivo)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/ms);passo(bez(p));if(p<1)id=requestAnimationFrame(q);else{vivo=false;fim()}}
+      id=requestAnimationFrame(q);return {para:function(){vivo=false;cancelAnimationFrame(id)}}}
+    /* a área que a pessoa enxerga: da base da barra do menu (que fica grudada em cima) até o fim da tela, ou da moldura de celular quando o site está nela */
+    function porta(){var sc=$("screen"),bar=document.querySelector("#navpills .lg-bar"),dk=document.querySelector(".dock"),P={el:null,t:0,b:window.innerHeight,z:1,f:24},r;
+      if(sc){P.z=parseFloat(getComputedStyle(sc).zoom)||1;if(sc.scrollHeight>sc.clientHeight+1&&/auto|scroll/.test(getComputedStyle(sc).overflowY)){P.el=sc;r=sc.getBoundingClientRect();P.t=r.top;P.b=Math.min(P.b,r.bottom)}}
+      if(bar){r=bar.getBoundingClientRect();if(r.height&&r.top<(P.t+P.b)/2&&r.bottom>P.t)P.t=r.bottom}
+      /* respiro embaixo: 24px, ou o bastante pra não parar atrás dos botões flutuantes de revisão enquanto eles existirem */
+      if(dk&&!P.el){r=dk.getBoundingClientRect();if(r.height&&r.top<P.b)P.f=Math.max(P.f,P.b-r.top+12)}
+      return P}
+    function onde(P){return P.el?P.el.scrollTop:(window.pageYOffset||document.documentElement.scrollTop||0)}
+    function rola(P,d){if(P.el){P.el.scrollTop+=d;return}try{window.scrollBy({top:d,left:0,behavior:"instant"})}catch(x){window.scrollBy(0,d)}}
+    var solto=false;["wheel","touchmove"].forEach(function(n){window.addEventListener(n,function(){solto=true},{passive:true})});
+
+    /* ---------- Prompts ---------- */
+    if(pp){
+      var AREAS=[["cardiologia","Cardiologia","Coração e circulação."],["dermatologia","Dermatologia","Pele e cabelo."],["fisioterapia","Fisioterapia","Músculos e articulações."],["odontologia","Odontologia","Dentes e gengiva."],["nutricao","Nutrição","Alimentos e digestão."]];
+      /* as três folhas de cada área: nome, segunda linha (no papel do leque), frase (na bandeja) e o desenho do ícone */
+      var FOLHAS=[["Prompt de imagem","cena por cena","A imagem de cada cena.",'<rect x="8" y="17.5" width="16" height="13" rx="2.4"/><path d="m8.8 28.6 4.5-4.5 3.3 3.3 2.3-2.3 4.4 4.4"/><circle class="ch" cx="19.4" cy="21.4" r="1.5"/>'],
+        ["Prompt de vídeo","movimento","O movimento de cada cena.",'<rect x="8" y="17.5" width="16" height="13" rx="2.4"/><path class="ch" d="M14.2 20.8v6.4l5.3-3.2Z"/>'],
+        ["Narração","roteiro","O roteiro falado do vídeo.",'<path d="M9.4 22.6v3M12.7 20.2v7.8M16 18.4v11.4M19.3 20.6v7M22.6 22.6v3"/>']];
+      var papel=function(g){return '<svg viewBox="0 0 32 40" aria-hidden="true" focusable="false"><path class="pp-pa" d="M5 .75h16.4l9.85 9.85V35A4.25 4.25 0 0 1 27 39.25H5A4.25 4.25 0 0 1 .75 35V5A4.25 4.25 0 0 1 5 .75Z"/><path class="pp-pd" d="M21.4 .75V6.4a4.2 4.2 0 0 0 4.2 4.2h5.65Z"/><g class="pp-pg">'+g+'</g></svg>'};
+      pp.innerHTML=AREAS.map(function(a,i){
+        return '<article class="pp-r" data-id="'+a[0]+'"><div class="pp-p">'+GF.html({id:a[0],label:a[1],meta:"3 folhas",image:"assets/area-"+a[0]+".jpg",hold:true,delay:i*90,
+            files:FOLHAS.map(function(f){return {name:f[0],meta:f[1]}})})+'</div>'+
+          '<div class="pp-tx"><h2 class="pp-n">'+a[1]+'</h2><p class="pp-c">3 folhas</p><p class="pp-d">'+a[2]+'</p></div></article>'+
+          '<div class="pp-tray" id="pp-tray-'+a[0]+'" role="region" aria-label="O que vem na pasta '+a[1]+'" hidden><div class="pp-in"><ul class="pp-fl">'+
+            FOLHAS.map(function(f){return '<li>'+papel(f[3])+'<b>'+f[0]+'</b><span>'+f[2]+'</span></li>'}).join("")+
+          '</ul><a class="btn line pp-go" href="#biblioteca">Ver uma folha de exemplo, grátis</a></div></div>'}).join("");
+      GF.mount(pp);
+      [].forEach.call(pp.querySelectorAll(".pp-r"),function(r){var b=r.querySelector(".gf-hit");if(b)b.setAttribute("aria-controls","pp-tray-"+r.getAttribute("data-id"))});
+
+      /* abrir e fechar: a altura das bandejas e a rolagem andam juntas, no mesmo relógio */
+      var aberta=null,an=null,DUR=520;
+      var tray=function(id){return $("pp-tray-"+id)};
+      var lado=function(){return getComputedStyle(pp).getPropertyValue("--pp-lado").trim()==="1"};
+      /* quanto o leque aberto (3 folhas) passa da caixa da pasta pra cima: 5,5% da largura dela */
+      var sobe=function(r){var g=r.querySelector(".gf"),w=g?g.getBoundingClientRect().width:0;return Math.round(w*.055+6)};
+      var troca=function(novo){ /* novo: a área que fica aberta, ou null pra fechar tudo */
+        if(an){an.para();an=null}
+        var L=lado(),tn=novo?tray(novo):null,lin=novo?pp.querySelector('.pp-r[data-id="'+novo+'"]'):null,it=[],ha=0,P=porta(),y0=onde(P),T=0,segue=false,r0=lin?lin.getBoundingClientRect().top:0;
+        /* de onde cada peça parte. No computador as bandejas dividem a mesma casa: a que sai some no lugar e a que entra parte da altura dela */
+        [].forEach.call(pp.querySelectorAll(".pp-tray"),function(t){if(t===tn||t.hidden)return;var h=t.getBoundingClientRect().height;t.classList.remove("on","pronta");
+          if(L&&tn){ha=Math.max(ha,h);t.classList.add("sai");it.push({el:t,p:"height",de:0,para:0,some:1})}else{t.classList.remove("sai");it.push({el:t,p:"height",de:h,para:0,some:1})}});
+        /* no celular a linha aberta desce um pouco, pro leque não encostar na linha de cima */
+        [].forEach.call(pp.querySelectorAll(".pp-r"),function(r){var m=parseFloat(r.style.marginTop)||0,alvo=!L&&r===lin?sobe(r):0;if(m!==alvo)it.push({el:r,p:"marginTop",de:m,para:alvo});else if(!alvo)r.style.marginTop=""});
+        if(tn){var h0=tn.hidden?0:tn.getBoundingClientRect().height;tn.hidden=false;tn.classList.remove("sai","pronta");it.push({el:tn,p:"height",de:Math.max(h0,ha),para:0,abre:1})}
+        function poe(e){it.forEach(function(x){x.el.style[x.p]=(x.de+(x.para-x.de)*e).toFixed(2)+"px"})}
+        /* monta o desenho final sem pintar, só pra medir; depois volta ao ponto de partida */
+        it.forEach(function(x){x.el.style[x.p]=x.abre?"auto":x.para+"px"});
+        if(tn){var hn=tn.getBoundingClientRect().height;it.forEach(function(x){if(x.abre)x.para=hn})}
+        /* a linha tocada fica onde está na tela. A página só anda o necessário pra bandeja caber, sem o leque entrar embaixo do menu */
+        if(lin&&tn&&P.z===1){var R=lin.getBoundingClientRect().top,G=lin.querySelector(".gf").getBoundingClientRect().top-sobe(lin),B=tn.getBoundingClientRect().bottom,
+            d=Math.min(Math.max(0,B-(P.b-P.f)),G-(P.t+8));T=R-d;segue=true}
+        poe(0);if(onde(P)!==y0)rola(P,y0-onde(P));
+        if(tn){void tn.offsetWidth;tn.classList.add("on")}
+        solto=false;
+        function quadro(e){poe(e);if(segue&&!solto){var dd=lin.getBoundingClientRect().top-(r0+(T-r0)*e);if(Math.abs(dd)>.4)rola(P,dd)}}
+        function fim(){an=null;it.forEach(function(x){
+          if(x.some){x.el.hidden=true;x.el.style.height="";x.el.classList.remove("sai")}
+          else if(x.abre){x.el.style.height="";x.el.classList.add("pronta")}
+          else if(!x.para)x.el.style[x.p]=""})}
+        if(calmo){quadro(1);fim()}else an=anima(DUR,quadro,fim)};
+
+      pp.addEventListener("gf:open",function(e){var g=e.target,id=e.detail.id;aberta=id;
+        [].forEach.call(pp.querySelectorAll(".gf[data-open]"),function(o){if(o!==g)GF.open(o,false)});troca(id)});
+      pp.addEventListener("gf:close",function(e){if(aberta!==e.detail.id)return;aberta=null;troca(null)});
+      /* a linha inteira abre e fecha a pasta (o que vem de dentro da pasta ela mesma resolve) */
+      pp.addEventListener("click",function(e){var t=e.target,r;if(!t.closest)return;
+        if(t.closest(".pp-go")){irFolha=Date.now();return}
+        r=t.closest(".pp-r");if(r&&!t.closest(".gf")){var g=r.querySelector(".gf");if(g)GF.open(g,!g.hasAttribute("data-open"))}});
+      /* Escape com o foco dentro da bandeja fecha a pasta e devolve o foco pra ela */
+      pp.addEventListener("keydown",function(e){var t=e.target,g;if((e.key!=="Escape"&&e.keyCode!==27)||!aberta||!t.closest||!t.closest(".pp-tray"))return;
+        g=pp.querySelector('.pp-r[data-id="'+aberta+'"] .gf');if(!g)return;GF.open(g,false);g=g.querySelector(".gf-hit");if(g)g.focus()});
+      /* se a tela muda de formato com uma pasta aberta, a folga de cima da linha acompanha */
+      window.addEventListener("resize",function(){if(an||!aberta)return;var L=lado();
+        [].forEach.call(pp.querySelectorAll(".pp-r"),function(r){var v=!L&&r.getAttribute("data-id")===aberta?sobe(r):0;r.style.marginTop=v?v+"px":""})});
+      /* "Ver uma folha de exemplo, grátis": vai pra Biblioteca e já abre a pasta da Folha de prompts (pela API da pasta, sem mexer na Biblioteca) */
+      var irFolha=0;
+      window.addEventListener("hashchange",function(){var ok=irFolha&&Date.now()-irFolha<4000&&(location.hash||"")==="#biblioteca";irFolha=0;if(!ok)return;
+        setTimeout(function(){var g=document.querySelector('#bib .bf[data-id="folha"] .gf');if(g&&!g.hasAttribute("data-open"))GF.open(g,true)},calmo?60:650)});
+    }
+
+    /* ---------- Skills ---------- */
+        /* pos: o pedaço da imagem que aparece atrás da pasta (a cápsula e a lente; no Arrepio, sem o título de cima e sem a assinatura do rodapé) */
+    var SK={master:{img:"capsula",pos:"50% 74%",valor:"R$ 97",folhas:[["Roteiro","em cenas"],["Estética","12 estilos"],["Prompts","imagem e vídeo"],["Narração","e montagem"]]},
+      motion:{img:"arrepio",pos:"50% 40%",valor:"R$ 19,90",folhas:[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]]}};
+    function folhasDe(k){return SK[k].folhas.map(function(f){return {name:f[0],meta:f[1]}})}
+    if(skl){
+      [].forEach.call(skl.querySelectorAll(".sk-c"),function(c,i){var k=c.getAttribute("data-sk"),s=SK[k],p=c.querySelector(".sk-p");if(!s||!p)return;
+        p.innerHTML=GF.html({id:"sk-"+k,label:c.querySelector(".sk-n").textContent,image:"assets/"+s.img+".jpg",imagePos:s.pos,files:folhasDe(k),labelHidden:true,delay:i*120})});
+      GF.mount(skl);
+    }
+
+    /* a conversa: cada linha entra quando o cartão aparece na tela. Volta a tocar sempre que a pessoa abre a página das Skills */
+    if(cv&&!calmo&&window.IntersectionObserver){var cvIo=null;
+      var cvArma=function(){if(cvIo)cvIo.disconnect();cv.setAttribute("data-st","pre");
+        cvIo=new IntersectionObserver(function(es){if(!es[0].isIntersecting)return;cvIo.disconnect();cvIo=null;setTimeout(function(){cv.setAttribute("data-st","in")},180)},{threshold:.45});cvIo.observe(cv)};
+      cvArma();
+      window.addEventListener("hashchange",function(){if((location.hash||"")==="#skills")cvArma()});
+    }
+
+    /* a janela do "Ver valor". No celular é uma folha que sobe de baixo (desce com o dedo); no computador, janela central */
+    if(sd&&skl){
+      var dTit=$("sd-t"),dD=$("sd-d"),dI=$("sd-i"),dV=$("sd-v"),dVis=$("sd-vis"),dSc=$("sd-scroll"),quem=null,tSai=0,tFx=0,noVeu=false;
+      var folhaSd=function(){return getComputedStyle(sd).getPropertyValue("--sd-folha").trim()==="1"};
+      /* dentro da moldura de celular (no computador) a folha se encaixa na tela do aparelho, não na janela do navegador */
+      var encaixa=function(){var dv=$("device"),sc=$("screen"),st=sd.style,m=!!dv&&!!sc&&parseFloat(getComputedStyle(dv).borderTopWidth)>0,r;sd.classList.toggle("sd--moldura",m);
+        if(m){r=sc.getBoundingClientRect();st.setProperty("--sd-l",r.left+"px");st.setProperty("--sd-w",r.width+"px");st.setProperty("--sd-b",Math.max(0,window.innerHeight-r.bottom)+"px");st.setProperty("--sd-h",r.height+"px")}
+        else["--sd-l","--sd-w","--sd-b","--sd-h"].forEach(function(k){st.removeProperty(k)})};
+      var abreSk=function(k,bt){var s=SK[k],c=skl.querySelector('.sk-c[data-sk="'+k+'"]'),g;if(!s||!c)return;quem=bt||null;
+        dTit.textContent=c.querySelector(".sk-n").textContent;dD.textContent=c.querySelector(".sk-d").textContent;dI.innerHTML="";
+        [].forEach.call(c.querySelectorAll(".sk-i li"),function(li){var e=document.createElement("li");e.textContent=li.textContent;dI.appendChild(e)});
+        dV.textContent=s.valor;
+        clearTimeout(tSai);tSai=0;clearTimeout(tFx);sd.classList.remove("sai");sd.style.transform="";sd.style.transition="";sd.style.removeProperty("--sd-v");encaixa();dSc.scrollTop=0;
+        if(!sd.open){if(sd.showModal)sd.showModal();else sd.setAttribute("open","")}
+        /* a pasta da Skill, de enfeite: no celular ela espia ao lado do nome, no computador abre o leque com as etapas */
+        dVis.innerHTML=GF.html({id:"sd-"+k,label:dTit.textContent,image:"assets/"+s.img+".jpg",imagePos:s.pos,files:folhasDe(k),decor:true,labelHidden:true,appear:false});GF.mount(dVis);
+        g=dVis.querySelector(".gf");
+        if(g){var liga=function(){if(folhaSd())g.classList.add("gf--peek");else g.setAttribute("data-open","")};if(calmo)liga();else tFx=setTimeout(liga,folhaSd()?420:300)}
+        try{dTit.focus({preventScroll:true})}catch(x){}};
+      /* fecha com a saída animada; a janela só sai de verdade (close) quando a animação acaba. "depois" roda com ela já fechada */
+      var fechaSk=function(depois){if(!sd.open||tSai)return;var fim=function(){if(sd.open)sd.close();if(depois)depois()};
+        if(calmo||!sd.animate){fim();return}
+        /* fecha no fim da animação de saída, ou no relógio, o que vier primeiro */
+        var pronto=function(e){if(e&&e.target!==sd)return;sd.removeEventListener("animationend",pronto);if(!tSai)return;clearTimeout(tSai);tSai=0;fim()};
+        sd.classList.add("sai");sd.addEventListener("animationend",pronto);tSai=setTimeout(pronto,260)};
+      sd.addEventListener("close",function(){clearTimeout(tSai);tSai=0;clearTimeout(tFx);sd.classList.remove("sai");sd.style.transform="";sd.style.removeProperty("--sd-v");dVis.innerHTML="";
+        if(quem&&document.documentElement.contains(quem)&&quem.offsetParent){try{quem.focus({preventScroll:true})}catch(x){}}quem=null});
+      skl.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".sk-b");if(b)abreSk(b.getAttribute("data-sk"),b)});
+      $("sd-x").addEventListener("click",function(){fechaSk()});
+      $("sd-go").addEventListener("click",function(){fechaSk(function(){aviso("No site final, aqui abre o pagamento.")})});
+      sd.addEventListener("cancel",function(e){e.preventDefault();fechaSk()});
+      /* toque fora: só fecha se o toque começou e terminou no fundo */
+      sd.addEventListener("pointerdown",function(e){noVeu=e.target===sd});
+      sd.addEventListener("click",function(e){if(e.target!==sd||!noVeu)return;var r=sd.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)fechaSk()});
+      sd.addEventListener("wheel",function(e){if(e.target===sd)e.preventDefault()},{passive:false});
+      window.addEventListener("hashchange",function(){if(sd.open)sd.close()});
+      window.addEventListener("resize",function(){if(sd.open)encaixa()});
+      /* no celular a folha desce com o dedo: puxar pra baixo fecha (só quando o miolo está no topo) */
+      (function(){var y0=0,x0=0,dy=0,pode=false,puxa=false,ly=0,lt=0,vel=0;
+        sd.addEventListener("touchstart",function(e){pode=false;puxa=false;if(e.touches.length!==1||e.target===sd||calmo||!folhaSd())return;
+          y0=ly=e.touches[0].clientY;x0=e.touches[0].clientX;lt=e.timeStamp;dy=0;vel=0;pode=dSc.scrollTop<=0||!!e.target.closest(".sd-grab")},{passive:true});
+        sd.addEventListener("touchmove",function(e){var y=e.touches[0].clientY,d=y-y0;
+          if((e.target===sd||dSc.scrollHeight<=dSc.clientHeight+1)&&e.cancelable)e.preventDefault();
+          if(!pode)return;
+          if(!puxa){if(d<-4){pode=false;return}if(d>0&&e.cancelable)e.preventDefault();if(d>7&&d>Math.abs(e.touches[0].clientX-x0))puxa=true;else return}
+          if(e.cancelable)e.preventDefault();if(e.timeStamp>lt){vel=(y-ly)/(e.timeStamp-lt);ly=y;lt=e.timeStamp}dy=Math.max(0,d);
+          sd.style.transition="none";sd.style.transform="translateY("+dy+"px)";sd.style.setProperty("--sd-v",String(Math.max(.25,1-dy/420)))},{passive:false});
+        function solta(){if(!puxa)return;puxa=false;pode=false;
+          if(dy>120||(vel>.5&&dy>24)){fechaSk();return}
+          sd.style.transition="transform .4s cubic-bezier(.23,1,.32,1)";sd.style.transform="";sd.style.removeProperty("--sd-v");setTimeout(function(){sd.style.transition=""},420)}
+        sd.addEventListener("touchend",solta);sd.addEventListener("touchcancel",solta)})();
+    }
+  })();
   /*@@/PS-JS@@*/
   /*@@/GF-JS@@*/
 
@@ -3645,5 +4001,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794763166";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794777258";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
