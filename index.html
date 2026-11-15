@@ -2810,13 +2810,17 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     dlg.addEventListener("close",function(){dv.pause()});dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
     stage.addEventListener("pointerdown",function(e){if(!e.isPrimary||(e.pointerType==="mouse"&&e.button!==0))return;g={x:e.clientX,y:e.clientY,t:performance.now(),h:false}});
     stage.addEventListener("pointermove",function(e){if(!g)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;
-      if(!g.h&&Math.abs(dy)>12&&Math.abs(dy)>Math.abs(dx)){g=null;return}
+      if(!g.h&&Math.abs(dy)>12&&Math.abs(dx)<Math.abs(dy)*.7){g=null;return}
       if(!g.h&&Math.abs(dx)>8){g.h=true;try{stage.setPointerCapture(e.pointerId)}catch(x){}dragging=true;stage.setAttribute("data-dragging","")}
       if(g.h){drag=Math.max(-1.2,Math.min(1.2,dx/step));lay()}});
     function up(e,cancel){var st=g;g=null;if(st&&st.h){var dx=e.clientX-st.x,vel=Math.abs(dx)/Math.max(1,performance.now()-st.t);
         if(!cancel&&(Math.abs(dx)>Math.min(55,cw*.18)||(Math.abs(dx)>14&&vel>.35)))index=wrap(index+(dx<0?1:-1),n);supp=performance.now()+300}
       drag=0;dragging=false;stage.removeAttribute("data-dragging");lay();agenda()}
     stage.addEventListener("pointerup",function(e){up(e,false)});stage.addEventListener("pointercancel",function(e){up(e,true)});
+    /* no celular: decide a direção no começo do gesto; se for pro lado, a página não rola junto (antes o iPhone puxava a página pra baixo e cancelava a troca) */
+    var tq=null;stage.addEventListener("touchstart",function(e){var t=e.touches[0];tq=e.touches.length===1?{x:t.clientX,y:t.clientY,lock:0}:null},{passive:true});
+    stage.addEventListener("touchmove",function(e){if(!tq)return;var t=e.touches[0],dx=t.clientX-tq.x,dy=t.clientY-tq.y;if(!tq.lock&&(Math.abs(dx)>5||Math.abs(dy)>5))tq.lock=Math.abs(dx)>=Math.abs(dy)*.7?1:2;if(tq.lock===1&&e.cancelable)e.preventDefault()},{passive:false});
+    stage.addEventListener("touchend",function(){tq=null},{passive:true});stage.addEventListener("touchcancel",function(){tq=null},{passive:true});
     el.addEventListener("click",function(e){var a=e.target.closest("[data-a]");
       if(a){var k=a.dataset.a;if(k==="prev")sel(index-1);else if(k==="next")sel(index+1);else if(k==="close")dlg.close();
         else if(k==="play"){playing=!playing;playB.setAttribute("aria-pressed",String(playing));playB.innerHTML=playing?IS:IP;agenda()}return}
@@ -4002,5 +4006,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794784980";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794786404";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
