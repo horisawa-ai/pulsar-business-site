@@ -647,10 +647,10 @@ html[data-vit="capa"] .hero-top .stat,html[data-vit="vidrocf"] .hero-top .stat{d
 .gc-stage{position:relative;height:min(56svh,460px);display:flex;align-items:center;justify-content:center;perspective:1100px;transform-style:preserve-3d;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
 .gc-stage[data-dragging]{cursor:grabbing}
 .gc-floor{position:absolute;bottom:0;left:50%;width:min(600px,80cqw);height:35px;transform:translate(-50%);background:radial-gradient(ellipse,color-mix(in srgb,var(--ink) 40%,transparent),transparent 70%);filter:blur(12px);pointer-events:none}
-.gc-card{position:absolute;width:var(--gc-cw,220px);margin:0;padding:6px;display:block;border:1px solid var(--line-2);border-radius:14px;background:var(--card);box-shadow:inset 0 1px color-mix(in srgb,var(--ink) 8%,transparent),0 18px 32px color-mix(in srgb,var(--ink) 40%,transparent);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .5s ease;will-change:transform;cursor:pointer}
-.gc-card[data-active]{box-shadow:inset 0 1px color-mix(in srgb,var(--ink) 12%,transparent),0 22px 40px color-mix(in srgb,var(--ink) 50%,transparent)}
+.gc-card{position:absolute;width:var(--gc-cw,220px);margin:0;padding:4px;display:block;border:0;border-radius:16px;background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),0 0 0 .5px rgba(12,10,9,.1),0 18px 32px color-mix(in srgb,var(--ink) 26%,transparent);-webkit-backface-visibility:hidden;backface-visibility:hidden;transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .5s ease;will-change:transform;cursor:pointer}
+.gc-card[data-active]{box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 0 0 .5px rgba(12,10,9,.12),0 24px 44px color-mix(in srgb,var(--ink) 34%,transparent)}
 .gc-stage[data-dragging] .gc-card{transition:none}
-.gc-poster{display:block;position:relative;width:100%;aspect-ratio:9/16;overflow:hidden;border-radius:9px;background:var(--night)}
+.gc-poster{display:block;position:relative;width:100%;aspect-ratio:9/16;overflow:hidden;border-radius:12px;background:var(--night)}
 .gc-poster video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .gc-shade{position:absolute;inset:0;background:var(--ink);opacity:var(--gc-shade,0);transition:opacity .4s;pointer-events:none}
 .gc-watch{position:absolute;bottom:14px;left:50%;transform:translate(-50%);display:flex;align-items:center;gap:8px;min-height:40px;white-space:nowrap;border-radius:24px;padding:8px 14px;background:color-mix(in srgb,var(--card) 94%,transparent);border:1px solid var(--line-2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:600 12px/1 var(--sans);color:var(--ink);opacity:0;transition:opacity .2s}
@@ -1033,6 +1033,59 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   .ac-c.ac-top .ac-t p{font-size:19px;max-width:30em}
   .ac-c:not(.ac-top) .ac-m{aspect-ratio:16/10}
 }
+/* ===== Skills: o que vem em cada uma ===== */
+.sk-in{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:7px;width:100%}
+.sk-in li{position:relative;padding-left:20px;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
+.sk-in li::before{content:"";position:absolute;left:2px;top:5px;width:10px;height:5px;border-left:1.7px solid var(--gold);border-bottom:1.7px solid var(--gold);transform:rotate(-45deg)}
+/* ===== Estúdio: cartão de comando (porte do "Video Generator Card") + quadro de geração (segue o "Video Generation"), tudo claro ===== */
+.es-hero{padding-top:18px!important}
+.es-hero .wrap{gap:16px}
+.es-hero .display{font-size:clamp(33px,9.2cqw,44px);line-height:1.05;max-width:11em}
+.es-hero .lead{max-width:30ch;font-weight:400}
+.es{display:grid;gap:14px;width:100%;margin-top:6px;justify-items:center}
+.es-chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.es-chips .pill[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.es-grid{display:grid;gap:14px;width:100%;max-width:440px;text-align:left}
+.vg{border:1px solid var(--line-2);border-radius:16px;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 30px 60px -34px rgba(12,10,9,.45);overflow:hidden}
+.vg-h{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:600}
+.vg-h em{margin-left:auto;font-style:normal;font-weight:500;color:var(--muted)}
+.vg-dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.vg-b{padding:16px;display:grid;gap:14px}
+.vg-sb{display:flex;gap:8px}
+.vg-sb span{flex:1 1 0;max-width:80px;aspect-ratio:1;border-radius:10px;background:#e7e5e4 center/cover no-repeat;transition:transform .3s}
+.vg-sb span:hover{transform:scale(1.05)}
+.vg textarea{width:100%;min-height:80px;resize:none;border:1px solid var(--line-2);border-radius:10px;background:rgba(250,250,249,.6);padding:10px 12px;font:inherit;font-size:16px;line-height:1.4;color:var(--ink)}
+.vg textarea:focus{outline:2px solid color-mix(in srgb,var(--ink) 40%,transparent);outline-offset:1px}
+.vg-t{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.vg-l{display:flex;align-items:center;gap:4px}
+.vg-i{width:36px;height:36px;display:grid;place-items:center;border-radius:8px;color:var(--ink-2)}
+.vg-tg{display:flex;gap:4px;background:var(--tint);padding:4px;border-radius:8px;font-size:13px;font-weight:500;color:var(--muted)}
+.vg-tg span{padding:4px 9px;border-radius:6px}
+.vg-tg .on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(12,10,9,.12)}
+.vg-go{width:36px;height:36px;border-radius:8px;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center;cursor:pointer;transition:opacity .2s,transform .15s}
+.vg-go:hover{opacity:.88}.vg-go:active{transform:scale(.96)}
+.gn{display:grid;gap:6px;align-content:start}
+.gn-p{font-size:15px;line-height:1.4;font-weight:500;color:var(--ink)}
+.gn-m{font-size:12.5px;color:var(--muted)}
+.gn-f{position:relative;margin-top:6px;aspect-ratio:1;border-radius:14px;overflow:hidden;background:#e7e5e4}
+.gn-blur,.gn-img{position:absolute;inset:0}
+.gn-blur{background:center/cover no-repeat;transform:scale(1.08);transition:opacity .5s ease}
+.gn-img{transition:clip-path .3s linear,transform .7s cubic-bezier(.23,1,.32,1);transform:scale(1.02)}
+.gn-img video{width:100%;height:100%;object-fit:cover;display:block}
+.gn-scan{position:absolute;left:0;right:0;height:1px;background:rgba(255,255,255,.9);box-shadow:0 0 12px 2px rgba(255,255,255,.5);opacity:0}
+.gn-st{position:absolute;left:10px;bottom:10px;border-radius:999px;background:rgba(250,250,249,.92);color:var(--ink);font-size:12px;font-weight:600;padding:5px 11px;font-variant-numeric:tabular-nums}
+.gn[data-st="idle"] .gn-blur,.gn[data-st="fila"] .gn-blur{opacity:.55}
+.gn[data-st="gerando"] .gn-scan{opacity:1}
+.gn[data-st="pronto"] .gn-blur{opacity:0}
+.gn[data-st="pronto"] .gn-img{transform:none}
+@container site (min-width:760px){
+  .es-hero{padding-top:40px!important}.es-hero .wrap{gap:22px}
+  .es-hero .display{font-size:clamp(54px,5.8cqw,82px);line-height:1.02}
+  .es-hero .lead{max-width:44ch;font-size:20px}
+  .es{gap:20px;margin-top:14px}
+  .es-grid{grid-template-columns:minmax(0,440px) minmax(0,380px);max-width:none;width:auto;gap:44px;align-items:center}
+  .gn-p{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -1258,7 +1311,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   <section class="sec tint"><div class="wrap mt-c">
     <div class="head mt-c mt-rv"><span class="label">O que você leva</span><h2 class="title">Tudo que eu uso <em>fica com você.</em></h2></div>
     <div class="mt-bento">
-      <div class="mt-b g mt-rv"><h3>Todas as minhas <em>Skills do Claude.</em></h3><p>As mesmas dos meus vídeos, configuradas com você. Elas guiam do roteiro ao prompt de cada cena.</p><div class="mt-tags"><span>Pulsar Labs Master</span><span>CGI Clínico</span><span>Motion de imagens</span><span>e as outras</span></div></div>
+      <div class="mt-b g mt-rv"><h3>Todas as minhas <em>Skills do Claude.</em></h3><p>As mesmas dos meus vídeos, configuradas com você. Elas guiam do roteiro ao prompt de cada cena.</p><div class="mt-tags"><span>Pulsar Labs Master</span><span>Motion de imagens</span><span>e as outras</span></div></div>
       <div class="mt-b v mt-rv"><video data-src="assets/olho.mp4" poster="assets/olho.jpg" muted loop playsinline preload="none"></video></div>
       <div class="mt-b mt-rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg><h3>Atlas da sua área.</h3><p>Estéticas, materiais e luz certos pro seu tema.</p></div>
       <div class="mt-b mt-rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg><h3>Sua apostila.</h3><p>Tudo que vimos, escrito no seu tema.</p></div>
@@ -1337,7 +1390,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     <div class="head"><span class="label">O que cada uma faz</span><h2 class="title">Escolha <em>a sua.</em></h2></div>
     <p class="vit-hint" style="text-align:left">Toque numa pasta pra ver o que ela entrega</p>
     <div class="folds" id="folds-skills"></div>
-    <div class="card" style="background:var(--night);color:var(--on-night);border-color:var(--night)"><h3 class="subtitle">Todas as Skills, <em>de uma vez.</em></h3><p class="small" style="color:var(--muted-night)">Na mentoria elas vêm todas incluídas e configuradas com você.</p><div class="row"><a class="arrow" href="#mentoria">Conhecer a mentoria</a></div></div>
+    <div class="card" style="background:linear-gradient(150deg,#fbf6ea 0%,#f1e4c8 100%);border-color:#d9c08a"><h3 class="subtitle">Todas as Skills, <em>de uma vez.</em></h3><p class="small muted">Na mentoria elas vêm todas incluídas e configuradas com você.</p><div class="row"><a class="arrow" href="#mentoria">Conhecer a mentoria</a></div></div>
   </div></section>
 </main>
 
@@ -1353,25 +1406,38 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
 <!-- ======================= MÁQUINA DE VÍDEOS ======================= -->
 <main class="pg" id="pg-maquina">
-  <section class="sec night"><div class="wrap split">
-    <div class="head"><span class="label">Estúdio · em breve</span><h1 class="display">Descreva o vídeo. <em>Receba pronto.</em></h1><p class="lead">Mais de 2.000 cenas de saúde. Você escreve o tema, o sistema monta o vídeo com narração.</p></div>
-    <div class="stack">
-      <div class="reel"><img src="assets/placa.jpg" alt=""></div>
-      <div class="reel mid"><img src="assets/soluco.jpg" alt=""></div>
-      <div class="reel"><img src="assets/roer.jpg" alt=""></div>
+  <section class="sec es-hero"><div class="wrap mt-c">
+    <h1 class="display">Descreva o vídeo. <em>Receba pronto.</em></h1>
+    <p class="lead">Gere seus vídeos com um comando. É o jeito mais em conta de ter vídeo da Pulsar.</p>
+    <div class="es" id="es">
+      <div class="es-chips" id="es-chips" role="group" aria-label="Temas de exemplo"></div>
+      <div class="es-grid">
+        <div class="vg">
+          <div class="vg-h"><span class="vg-dot" aria-hidden="true"></span><span>Estúdio</span><em>Em breve</em></div>
+          <div class="vg-b">
+            <div class="vg-sb" id="es-sb" aria-label="Cenas escolhidas"></div>
+            <textarea id="es-tx" rows="3" aria-label="Descreva o vídeo" placeholder="Descreva o vídeo que você quer..."></textarea>
+            <div class="vg-t">
+              <span class="vg-l"><span class="vg-i" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="vg-i" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+                <span class="vg-tg" aria-hidden="true"><span>30s</span><span class="on">1 min</span></span></span>
+              <button type="button" class="vg-go" id="es-go" aria-label="Gerar o vídeo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="gn" id="es-gn" data-st="idle" aria-live="polite">
+          <p class="gn-p" id="es-p">O vídeo aparece aqui.</p>
+          <p class="gn-m">9:16 · 1 min · 1080p · narração de IA</p>
+          <div class="gn-f"><div class="gn-blur" id="es-blur"></div><div class="gn-img" id="es-img"><video id="es-v" muted loop playsinline preload="none"></video></div><i class="gn-scan" id="es-scan" aria-hidden="true"></i><span class="gn-st" id="es-st">Toque na seta pra gerar</span></div>
+        </div>
+      </div>
+      <p class="muted small">Demonstração com cenas de exemplo. No Estúdio de verdade você escreve o tema e ele monta o vídeo com narração.</p>
     </div>
-  </div></section>
-  <section class="sec tint"><div class="wrap">
-    <div class="head"><span class="label">Demonstração</span><h2 class="title">Escolha um tema. <em>Veja as cenas.</em></h2></div>
-    <div class="pills" id="mq-pills" role="tablist" aria-label="Temas de exemplo"></div>
-    <div class="mq" id="mq"></div>
-    <p class="muted small">O Estúdio junta as cenas que combinam com o tema, escreve o roteiro e coloca a narração. Aqui é só uma demonstração com cenas de exemplo.</p>
   </div></section>
   <section class="sec"><div class="wrap">
     <div class="head"><span class="label">Como vai funcionar</span><h2 class="title">Quatro passos, <em>nenhuma edição.</em></h2></div>
     <div class="steps">
       <div><span class="n">01</span><h3>Escreva o tema.</h3><p>Do jeito que você explicaria pro paciente.</p></div>
-      <div><span class="n">02</span><h3>O sistema escolhe as cenas.</h3><p>Entre mais de 2.000 takes catalogados.</p></div>
+      <div><span class="n">02</span><h3>O Estúdio escolhe as cenas.</h3><p>Do acervo da Pulsar, as que combinam com o tema.</p></div>
       <div><span class="n">03</span><h3>Narração sua ou de IA.</h3><p>Você manda o áudio ou escolhe a voz.</p></div>
       <div><span class="n">04</span><h3>Baixe o vídeo.</h3><p>Editado e pronto pra postar.</p></div>
     </div>
@@ -1497,7 +1563,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     if(h!==(location.hash||"#inicio"))return;e.preventDefault();var sc=$("screen"),suave=!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"smooth":"auto";
     try{if(sc)sc.scrollTo({top:0,behavior:suave});window.scrollTo({top:0,behavior:suave})}catch(x){if(sc)sc.scrollTop=0;window.scrollTo(0,0)}});
 
-  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",notas:"nao"},T={};
+  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"vidrocf",frase:"portas",notas:"nao"},T={};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
   var FRASES={seus:["Meus vídeos te trouxeram até aqui.","Agora eu faço<br><em>os seus.</em>"],portas:["Meus vídeos te trouxeram até aqui.","Posso fazer os seus.<br><em>Ou te ensinar.</em>"],perfil:["Você parou pra ver um vídeo meu.","Eu faço um <em>pro seu perfil.</em>"],seu:["Um vídeo meu te trouxe até aqui.","O próximo pode ser <em>seu.</em>"]};
   /* frase em dois tempos: a primeira fala de como a pessoa chegou, some, e fica a segunda */
@@ -1524,6 +1590,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   /* escolhas salvas antes da fonte de sistema existir passam a abrir nela uma vez, pra ele ver */
   T.font="apple"; /* fonte decidida em 15/11/2026: a de sistema */
   for(var dk in DEF)if(!T[dk])T[dk]=DEF[dk];
+  if(!T.v2){T.vit="vidrocf";T.v2=1} /* vitrine decidida em 15/11/2026: a de vidro; quem tinha outra salva passa a abrir nela uma vez */
   T.nav="vidro";
   function aplica(){
     var r=document.documentElement;["font","accent","bg","radius","nav","vit"].forEach(function(k){r.setAttribute("data-"+k,T[k])});
@@ -1788,7 +1855,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Mentoria individual, curso e materiais grátis, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
-    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Um estúdio que monta vídeos a partir de mais de 2.000 cenas. Em breve.","v:soluco","Ver como vai ser","#maquina"]};
+    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:placa","Ver como vai ser","#maquina"]};
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
     function show(k,fast){var e=EX[k],m=e[3].slice(2),med=e[3][0]==="v"?'<video src="assets/'+m+'.mp4" poster="assets/'+m+'.jpg" autoplay muted loop playsinline></video>':'<img src="assets/'+m+'.jpg" alt="">';
       bar.querySelectorAll(".pill").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.ex===k))});
@@ -1796,13 +1863,24 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       if(fast||calmo)put();else{box.classList.add("sw");setTimeout(put,200)}}
     bar.addEventListener("click",function(e){var b=e.target.closest(".pill");if(b)show(b.dataset.ex)});show("box",true)})();
 
-  /* máquina: demonstração */
-  var MQT={"Estômago e intestino":["hpylori","capsula","bypass","hernia"],"Rosto e pele":["lifting","lipo","roacutan","arrepio"],"Coração e cérebro":["parada","cerebro","diazepam","soluco"]};
-  (function(){var bar=$("mq-pills"),box=$("mq"),h="";for(var k in MQT)h+='<button type="button" class="pill" role="tab" data-mq="'+k+'">'+k+'</button>';bar.innerHTML=h;
-    function show(k,fast){bar.querySelectorAll(".pill").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.mq===k))});
-      function put(){box.innerHTML=MQT[k].map(function(id){return '<div class="reel"><img src="assets/'+id+'.jpg" alt=""></div>'}).join("");box.classList.remove("sw")}
-      if(fast||calmo)put();else{box.classList.add("sw");setTimeout(put,200)}}
-    bar.addEventListener("click",function(e){var b=e.target.closest(".pill");if(b)show(b.dataset.mq)});show("Estômago e intestino",true)})();
+  /* Estúdio: demonstração. Cada cena é [arquivo, posição vertical do recorte em %]: o recorte quadrado deixa de fora a legenda e o nome que estão nos vídeos prontos */
+  var EST={"Estômago e intestino":["Um vídeo de 1 minuto explicando como a bactéria H. pylori ataca o estômago.",[["hpylori",40],["capsula",25],["hernia",45],["bypass",45]]],
+    "Rosto e boca":["Um vídeo de 1 minuto mostrando o que acontece quando você rói a unha.",[["roer",50],["lifting",30],["olho",40],["lipo",70]]],
+    "Corpo por dentro":["Um vídeo de 1 minuto sobre como a placa segura um osso quebrado.",[["placa",50],["diazepam",50],["soluco",75],["xixi",50]]]};
+  (function(){var bar=$("es-chips"),sb=$("es-sb"),tx=$("es-tx"),gn=$("es-gn"),v=$("es-v"),img=$("es-img"),blur=$("es-blur"),scan=$("es-scan"),st=$("es-st"),tema="",tms=[],h="";
+    for(var k in EST)h+='<button type="button" class="pill" data-es="'+k+'">'+k+'</button>';bar.innerHTML=h;
+    function limpa(){tms.forEach(clearTimeout);tms=[];v.pause()}
+    function poe(k){tema=k;limpa();[].forEach.call(bar.children,function(b){b.setAttribute("aria-pressed",String(b.dataset.es===k))});
+      sb.innerHTML=EST[k][1].map(function(c){return '<span style="background-image:url(assets/'+c[0]+'.jpg);background-position:50% '+c[1]+'%"></span>'}).join("");tx.value=EST[k][0];
+      var c=EST[k][1][0];gn.setAttribute("data-st","idle");$("es-p").textContent="O vídeo aparece aqui.";st.textContent="Toque na seta pra gerar";
+      blur.style.backgroundImage="url(assets/"+c[0]+".jpg)";blur.style.backgroundPosition="50% "+c[1]+"%";v.poster="assets/"+c[0]+".jpg";v.removeAttribute("src");v.dataset.src="assets/"+c[0]+".mp4";v.style.objectPosition="50% "+c[1]+"%";passo(0)}
+    function passo(p){img.style.clipPath="inset(0 0 "+((1-p)*100)+"% 0)";blur.style.filter="blur("+Math.round(4+(1-p)*20)+"px) grayscale(.2)";scan.style.top=(p*100)+"%"}
+    function gera(){limpa();$("es-p").textContent=tx.value||EST[tema][0];gn.setAttribute("data-st","fila");st.textContent="Na fila · posição 2";passo(0);
+      if(calmo){pronto();return}
+      tms.push(setTimeout(function(){st.textContent="Na fila · posição 1"},700));
+      tms.push(setTimeout(function(){gn.setAttribute("data-st","gerando");var t0=Date.now(),D=3600;(function anda(){var p=Math.min(1,(Date.now()-t0)/D);passo(p);st.textContent=(p<.4?"Escolhendo as cenas":p<.88?"Montando o vídeo":"Colocando a narração")+" · "+Math.round(p*100)+"%";if(p<1)tms.push(setTimeout(anda,90));else pronto()})()},1500))}
+    function pronto(){gn.setAttribute("data-st","pronto");passo(1);st.textContent="Vídeo pronto";v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    bar.addEventListener("click",function(e){var b=e.target.closest(".pill");if(b)poe(b.dataset.es)});$("es-go").onclick=gera;poe("Estômago e intestino")})();
 
   /* mentoria: pedido de vaga */
   document.addEventListener("click",function(e){if(!e.target.closest("[data-vaga]"))return;$("vaga-campos").hidden=false;$("vaga-ok").hidden=true;$("vaga").showModal()});
@@ -1817,10 +1895,9 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   var FOLHAS=[["Prompt de imagem","cena por cena"],["Prompt de vídeo","movimento"],["Narração","roteiro"]];
   $("folds-prompts").innerHTML=[["Cardiologia","area-cardiologia"],["Dermatologia","area-dermatologia"],["Fisioterapia","area-fisioterapia"],["Odontologia","area-odontologia"],["Nutrição","area-nutricao"]].map(function(a){
     return '<figure class="fd">'+pasta(a[0],"folhas de prompts",a[1],FOLHAS)+'<div class="tx"><span class="muted xs">R$ [—]</span></div></figure>'}).join("");
-  $("folds-skills").innerHTML=[["Pulsar Labs Master","Guia você etapa por etapa: roteiro, estética, prompts de imagem e de vídeo, narração e montagem.","capsula",[["Roteiro","em cenas"],["Estética","12 estilos"],["Prompts","imagem e vídeo"],["Narração","e montagem"]]],
-    ["CGI Clínico","Cada cena sai com 3 imagens do mesmo instante (aberta, close e oblíqua) e o prompt de vídeo.","placa",[["Câmera aberta","imagem 1"],["Close","imagem 2"],["Oblíqua","imagem 3"],["Prompt de vídeo","da cena"]]],
-    ["Motion de Imagens","Transforma imagens paradas em vídeo com movimento.","arrepio",[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]]]].map(function(k,i){
-    return '<figure class="fd">'+pasta(k[0],"Skill 0"+(i+1),k[2],k[3])+'<div class="tx"><p class="muted small">'+k[1]+'</p><p class="price">R$ [—]</p><button class="btn line" type="button">Quero esta Skill</button></div></figure>'}).join("");
+  $("folds-skills").innerHTML=[["Pulsar Labs Master","Ela te guia do roteiro ao vídeo pronto, etapa por etapa, só com o que eu já testei.","capsula",[["Roteiro","em cenas"],["Estética","12 estilos"],["Prompts","imagem e vídeo"],["Narração","e montagem"]],"R$ 97",["Roteiros nas estruturas que já viralizaram","As 12 estéticas da Pulsar","Prompts prontos pra Kling, Veo, Grok e Higgsfield","Narração e montagem, passo a passo"]],
+    ["Motion de Imagens","Transforma imagens paradas em vídeo com movimento.","arrepio",[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]],"R$ 19,90",["Você manda as imagens","Ela devolve o vídeo com movimento"]]].map(function(k,i){
+    return '<figure class="fd">'+pasta(k[0],"Skill 0"+(i+1),k[2],k[3])+'<div class="tx"><p class="muted small">'+k[1]+'</p><ul class="sk-in">'+k[5].map(function(x){return "<li>"+x+"</li>"}).join("")+'</ul><p class="price num">'+k[4]+'</p><button class="btn line" type="button">Quero esta Skill</button></div></figure>'}).join("");
   var AREAS=["Cardiologia","Cirurgia Geral","Dermatologia","Design de Sobrancelhas e Cílios","Endocrinologia","Enfermagem","Estética e Cuidados com a Pele","Estudante de Medicina","Estudante de Nutrição","Fisioterapia","Ginecologia e Obstetrícia","Medicina Generalista","Mundo Pulsar","Nutrição","Nutrologia","Odontologia","Ortopedia","Pediatria","Psicologia","Quiropraxia","Técnico de Enfermagem","Técnico de Radiologia","Urologia"];
   $("folds-bib").innerHTML=
     '<figure class="fd">'+pasta("Comece aqui","2 materiais","placa",[["Atlas Pulsar","direção visual"],["Guia rápido","ferramentas"]])+
@@ -1939,7 +2016,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     window.addEventListener("resize",function(){alvoNovo(true)});
     bar.addEventListener("pointerdown",function(e){if(calmo)return;var r=bar.getBoundingClientRect(),o=document.createElement("span");o.className="rip";o.style.left=(e.clientX-r.left+bar.scrollLeft)+"px";o.style.top=(e.clientY-r.top)+"px";bar.appendChild(o);setTimeout(function(){o.remove()},700)});
     alvoNovo(true);LIQ.push(alvoNovo)}
-  ["ex-pills","mq-pills"].forEach(function(id){liquid($(id))});
+  ["ex-pills"].forEach(function(id){liquid($(id))});
 
   /* menu "Waterline": porte para JS puro do Liquid Navbar (Nimbus UI, guglielmogiannattasio.it), enviado pelo Renan via 21st.dev */
   function nimbus(nav){var PAD=14;
@@ -2124,5 +2201,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794732932";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794733386";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
