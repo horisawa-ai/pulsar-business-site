@@ -929,6 +929,22 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   .ac-t{padding:26px 26px 30px;gap:8px;align-content:start}
   .ac-t h2{font-size:34px}.ac-t p{font-size:15.5px}
 }
+/* ===== Biblioteca em pastas de vidro ===== */
+#pg-biblioteca .wrap{justify-items:center;text-align:center}
+#pg-biblioteca .ac-back{justify-self:center}
+#pg-biblioteca .head{justify-items:center}
+#pg-biblioteca .lead{max-width:28ch}
+#pg-biblioteca .folds{width:100%;text-align:left}
+#pg-biblioteca .vit-hint{margin-bottom:-24px}
+#pg-biblioteca .fold{margin-top:30px}
+.bib-tx{width:100%}
+.bib-tx p{text-align:left}
+.bib-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%}
+.bib-row .btn{min-height:44px;padding:9px 10px;font-size:13.5px;white-space:nowrap}
+.bib-pick{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;width:100%}
+.bib-pick .btn{min-height:44px;padding:9px 18px;font-size:14px}
+.bib-pick select{min-width:0;-webkit-appearance:none;appearance:none;border:1px solid var(--line-2);border-radius:999px;padding:10px 36px 10px 16px;font:inherit;font-size:16px;color:var(--ink);background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%2378716c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.500 6 6.500 11 1.500'/%3E%3C/svg%3E") no-repeat right 15px center/11px auto}
+@container site (min-width:700px){#pg-biblioteca .lead{max-width:40ch}}
 </style>
 </head>
 <body>
@@ -954,7 +970,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   <div class="vitw" id="vitw"><div id="vit"></div><div class="hero-ov" id="hero-ov" aria-hidden="true"></div></div>
   <div class="wrap"><nav class="portas" aria-label="Por onde começar">
     <a class="porta pri" href="#box"><b>Quero vídeos prontos</b><small>Você escolhe o tema, eu entrego pronto pra postar.</small><i aria-hidden="true">→</i></a>
-    <a class="porta" href="#academy"><b>Quero aprender a fazer</b><small><span data-esc>Pulsar Academy</span>: mentoria, curso e materiais grátis.</small><i aria-hidden="true">→</i></a>
+    <a class="porta" href="#academy"><b>Quero aprender a fazer</b><small>Pulsar Academy: mentoria, curso e materiais grátis.</small><i aria-hidden="true">→</i></a>
   </nav></div>
   <div class="wrap"></div></section>
 
@@ -1066,7 +1082,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= MENTORIA ======================= -->
 <main class="pg" id="pg-academy">
   <section class="sec ac-hero"><div class="wrap mt-c">
-    <span class="mt-pill"><i></i><span data-esc>Pulsar Academy</span></span>
+    <span class="mt-pill"><i></i>Pulsar Academy</span>
     <h1 class="display">Aprenda a fazer <em>os seus vídeos.</em></h1>
     <p class="lead">Três jeitos de começar: comigo, no seu ritmo ou de graça.</p>
     <div class="ac-g">
@@ -1090,7 +1106,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 
 <main class="pg" id="pg-mentoria">
   <section class="sec mt-hero"><div class="wrap mt-c">
-    <a class="ac-back" href="#academy"><span data-esc>Pulsar Academy</span></a>
+    <a class="ac-back" href="#academy">Pulsar Academy</a>
     <span class="mt-pill"><i></i>Mentoria individual · online e ao vivo</span>
     <h1 class="display">Em dois encontros, o seu primeiro <em>vídeo pronto.</em></h1>
     <p class="lead">Só você e eu, na sua área. Você aprende fazendo e sai sabendo repetir sozinho.</p>
@@ -1235,18 +1251,10 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <!-- ======================= BIBLIOTECA ======================= -->
 <main class="pg" id="pg-biblioteca">
   <section class="sec"><div class="wrap">
-    <a class="ac-back" href="#academy"><span data-esc>Pulsar Academy</span></a>
-    <div class="head"><span class="label">Biblioteca · grátis</span><h1 class="display">Materiais <em>grátis.</em></h1><p class="lead">Atlas, guia rápido e apostilas por área, pra você começar hoje.</p></div>
-    <div class="covers wide">
-      <figure><div class="ph" style="aspect-ratio:4/5">Capa do Atlas</div><figcaption><b>Atlas Pulsar</b><button class="get" type="button" data-dl="Atlas Pulsar">Baixar</button></figcaption></figure>
-      <figure><div class="ph" style="aspect-ratio:4/5">Capa do Guia</div><figcaption><b>Guia rápido</b><button class="get" type="button" data-dl="Guia rápido Pulsar">Baixar</button></figcaption></figure>
-      <figure><img src="assets/area-cardiologia.jpg" alt="Apostila Cardiologia"><figcaption><b>Cardiologia</b><button class="get" type="button" data-dl="Apostila Cardiologia">Baixar</button></figcaption></figure>
-      <figure><img src="assets/area-dermatologia.jpg" alt="Apostila Dermatologia"><figcaption><b>Dermatologia</b><button class="get" type="button" data-dl="Apostila Dermatologia">Baixar</button></figcaption></figure>
-      <figure><img src="assets/area-fisioterapia.jpg" alt="Apostila Fisioterapia"><figcaption><b>Fisioterapia</b><button class="get" type="button" data-dl="Apostila Fisioterapia">Baixar</button></figcaption></figure>
-      <figure><img src="assets/area-odontologia.jpg" alt="Apostila Odontologia"><figcaption><b>Odontologia</b><button class="get" type="button" data-dl="Apostila Odontologia">Baixar</button></figcaption></figure>
-      <figure><img src="assets/area-nutricao.jpg" alt="Apostila Nutrição"><figcaption><b>Nutrição</b><button class="get" type="button" data-dl="Apostila Nutrição">Baixar</button></figcaption></figure>
-      <figure><div class="ph" style="aspect-ratio:4/5">+ 18 áreas</div><figcaption><b>E mais 18</b><span class="muted xs">em breve aqui</span></figcaption></figure>
-    </div>
+    <a class="ac-back" href="#academy">Pulsar Academy</a>
+    <div class="head"><span class="label">Biblioteca · grátis</span><h1 class="display">Materiais <em>grátis.</em></h1><p class="lead">Abra uma pasta e leve o que quiser.</p></div>
+    <p class="vit-hint">Toque numa pasta pra abrir</p>
+    <div class="folds" id="folds-bib"></div>
   </div></section>
 </main>
 
@@ -1309,11 +1317,6 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
 <section class="tune" id="tune" hidden aria-label="Ajustar visual">
   <div class="tune-h"><b>Ajustar visual</b><button class="tune-x" id="tune-x" type="button" aria-label="Fechar">&times;</button></div>
   <p class="muted small" style="margin-top:-12px">Mude e veja o site inteiro na hora. Quando gostar, me mande o código lá embaixo.</p>
-  <div class="tg"><span>Nome da escola</span><div class="ch" data-k="esc">
-    <button type="button" data-v="academy"><small style="font-size:13px;color:var(--ink)">Pulsar Academy</small></button>
-    <button type="button" data-v="escola"><small style="font-size:13px;color:var(--ink)">Escola Pulsar</small></button>
-    <button type="button" data-v="school"><small style="font-size:13px;color:var(--ink)">Pulsar School</small></button>
-  </div></div>
   <div class="tg"><span>Frase da abertura</span><div class="ch" data-k="frase">
     <button type="button" data-v="seus"><small style="font-size:13px;color:var(--ink)">Eu faço os seus</small><small>diz o que você vende</small></button>
     <button type="button" data-v="portas"><small style="font-size:13px;color:var(--ink)">Faço ou ensino</small><small>abre as duas portas</small></button>
@@ -1397,9 +1400,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   }
   window.addEventListener("hashchange",route);
 
-  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",esc:"academy",notas:"nao"},T={};
-  /* nome da escola em teste: [nome inteiro, nome curto do menu] */
-  var ESC={academy:["Pulsar Academy","Academy"],escola:["Escola Pulsar","Escola"],school:["Pulsar School","School"]};
+  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",notas:"nao"},T={};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
   var FRASES={seus:["Meus vídeos te trouxeram até aqui.","Agora eu faço<br><em>os seus.</em>"],portas:["Meus vídeos te trouxeram até aqui.","Posso fazer os seus.<br><em>Ou te ensinar.</em>"],perfil:["Você parou pra ver um vídeo meu.","Eu faço um <em>pro seu perfil.</em>"],seu:["Um vídeo meu te trouxe até aqui.","O próximo pode ser <em>seu.</em>"]};
   /* frase em dois tempos: a primeira fala de como a pessoa chegou, some, e fica a segunda */
@@ -1430,7 +1431,6 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   function aplica(){
     var r=document.documentElement;["font","accent","bg","radius","nav","vit"].forEach(function(k){r.setAttribute("data-"+k,T[k])});
     if(!FRASES[T.frase])T.frase=DEF.frase;frase();
-    if(!ESC[T.esc])T.esc=DEF.esc;[].forEach.call(document.querySelectorAll("[data-esc]"),function(x){x.textContent=ESC[T.esc][0]});
     document.body.classList.toggle("notas",T.notas==="sim");
     document.querySelectorAll(".tg .ch").forEach(function(ch){var k=ch.dataset.k;ch.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===T[k]))})});
     $("tune-code").textContent=[T.accent,T.bg,T.radius,T.vit].join(" · ");
@@ -1439,7 +1439,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
   var tn=$("tune"),to=$("tune-open");
   function abre(on){tn.hidden=!on;to.setAttribute("aria-expanded",String(on))}
   to.onclick=function(){abre(tn.hidden)};$("tune-x").onclick=function(){abre(false)};
-  tn.addEventListener("click",function(e){var b=e.target.closest(".ch button");if(!b)return;var kk=b.parentNode.dataset.k;var rv=kk==="frase"&&T.frase===b.dataset.v;T[kk]=b.dataset.v;aplica();if(kk==="esc"){location.reload();return}if(rv)frase(true);if(b.parentNode.dataset.k==="vit")mountVit()});
+  tn.addEventListener("click",function(e){var b=e.target.closest(".ch button");if(!b)return;var kk=b.parentNode.dataset.k;var rv=kk==="frase"&&T.frase===b.dataset.v;T[kk]=b.dataset.v;aplica();if(rv)frase(true);if(b.parentNode.dataset.k==="vit")mountVit()});
   /* botão de revisão: volta pro topo do Início e toca de novo a frase que aparece e some */
   $("frase-rever").onclick=function(){if((location.hash||"#inicio")!=="#inicio")location.hash="#inicio";var sc=$("screen");if(sc)sc.scrollTop=0;window.scrollTo(0,0);setTimeout(function(){frase(true)},120)};
   $("tune-reset").onclick=function(){for(var k in DEF)T[k]=DEF[k];aplica();mountVit()};
@@ -1724,6 +1724,15 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     ["CGI Clínico","Cada cena sai com 3 imagens do mesmo instante (aberta, close e oblíqua) e o prompt de vídeo.","placa",[["Câmera aberta","imagem 1"],["Close","imagem 2"],["Oblíqua","imagem 3"],["Prompt de vídeo","da cena"]]],
     ["Motion de Imagens","Transforma imagens paradas em vídeo com movimento.","arrepio",[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]]]].map(function(k,i){
     return '<figure class="fd">'+pasta(k[0],"Skill 0"+(i+1),k[2],k[3])+'<div class="tx"><p class="muted small">'+k[1]+'</p><p class="price">R$ [—]</p><button class="btn line" type="button">Quero esta Skill</button></div></figure>'}).join("");
+  var AREAS=["Cardiologia","Cirurgia Geral","Dermatologia","Design de Sobrancelhas e Cílios","Endocrinologia","Enfermagem","Estética e Cuidados com a Pele","Estudante de Medicina","Estudante de Nutrição","Fisioterapia","Ginecologia e Obstetrícia","Medicina Generalista","Mundo Pulsar","Nutrição","Nutrologia","Odontologia","Ortopedia","Pediatria","Psicologia","Quiropraxia","Técnico de Enfermagem","Técnico de Radiologia","Urologia"];
+  $("folds-bib").innerHTML=
+    '<figure class="fd">'+pasta("Comece aqui","2 materiais","placa",[["Atlas Pulsar","direção visual"],["Guia rápido","ferramentas"]])+
+      '<div class="tx bib-tx"><p class="muted small">O Atlas com a direção visual dos meus vídeos e o guia das ferramentas que eu uso.</p><div class="bib-row"><button class="btn line" type="button" data-dl="Atlas Pulsar">Baixar Atlas</button><button class="btn line" type="button" data-dl="Guia rápido Pulsar">Baixar Guia</button></div></div></figure>'+
+    '<figure class="fd">'+pasta("Apostilas","23 áreas","area-cardiologia",[["Cardiologia","apostila"],["Dermatologia","apostila"],["Fisioterapia","apostila"],["Odontologia","apostila"]])+
+      '<div class="tx bib-tx"><p class="muted small">Uma apostila pra cada área, com ideias de vídeo prontas pra sua profissão.</p><div class="bib-pick"><select id="bib-area" aria-label="Escolha a sua área">'+AREAS.map(function(a){return '<option>'+a+'</option>'}).join("")+'</select><button class="btn" type="button" id="bib-dl" data-dl="Apostila Cardiologia">Baixar</button></div></div></figure>'+
+    '<figure class="fd">'+pasta("Folha de prompts","amostra grátis","capsula",[["Prompt de imagem","cena por cena"],["Prompt de vídeo","movimento"],["Narração","roteiro"]])+
+      '<div class="tx bib-tx"><p class="muted small">Uma folha completa, do jeito que eu uso: imagem, movimento e narração de um tema.</p><div class="bib-row"><button class="btn line" type="button" data-dl="Folha de prompts: Dipirona">Baixar folha</button><a class="btn line" href="#prompts" style="border-color:transparent">Ver todas</a></div></div></figure>';
+  $("bib-area").addEventListener("change",function(){$("bib-dl").dataset.dl="Apostila "+this.value});
   document.addEventListener("click",function(e){var f=e.target.closest(".fold");if(f)f.setAttribute("aria-expanded",String(f.getAttribute("aria-expanded")!=="true"))});
 
   /* biblioteca: baixar */
@@ -1844,7 +1853,7 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
       biblioteca:'<path d="M4.500 5.500c2.500-1 5-1 7.500.500 2.500-1.500 5-1.500 7.500-.500v13c-2.500-1-5-1-7.500.500-2.500-1.500-5-1.500-7.500-.500Z"/><path d="M12 6v13"/>',
       maquina:'<rect x="3.500" y="5" width="17" height="14" rx="3"/><path d="M10.500 9.500v5l4.500-2.500Z"/>'};
     var FX={box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
-    var SH={box:"Box",academy:ESC[T.esc][1],prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
+    var SH={box:"Box",academy:"Academy",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
     function mk(t,c){var e=document.createElement(t);e.className=c;e.setAttribute("aria-hidden","true");return e}
     var glass=mk("span","nimbus-glass"),cv=mk("canvas","nimbus-water"),dp=mk("span","nimbus-drop");
     var s={a:{x:0,v:0},b:{x:0,v:0},sy:{s:1,v:0},lead:0,lagFrom:0,sats:[],rips:[],t:{x:0,cy:0,q:0,r:21},q:0,mouse:{x:0,y:0,s:0,on:false},moving:false,split:false,ready:false,has:false,w:0,h:0,visible:true,reduce:calmo,raf:0,last:0,time:0,glc:null};
@@ -2002,7 +2011,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     var vd=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})},{threshold:.25});
     [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){vd.observe(v)})});
   $("ac-av").addEventListener("submit",function(e){e.preventDefault();this.hidden=true;$("ac-ok").hidden=false});
-  window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;if(nv.esc&&nv.esc!==T.esc){location.reload();return}for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
+  window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
 
   route();
 })();
