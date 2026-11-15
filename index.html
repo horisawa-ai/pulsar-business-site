@@ -897,6 +897,38 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   .mt-plan>div{padding:36px 40px}
   .mt-faq summary{font-size:22px}
 }
+/* ===== Academy: a escola reúne Mentoria, Curso e Biblioteca ===== */
+.ac-hero{padding-top:40px!important}
+.ac-hero .wrap{gap:20px}
+.ac-hero .display{font-size:clamp(33px,9.2cqw,44px);line-height:1.05;max-width:12em}
+.ac-hero .lead{max-width:30ch;font-weight:400}
+.ac-g{display:grid;gap:12px;width:100%;margin-top:10px;text-align:left}
+.ac-c{display:grid;grid-template-columns:36% minmax(0,1fr);border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;text-decoration:none;color:inherit;min-width:0;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,opacity .7s ease}
+a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,9,.4)}
+.ac-m{background:#0c0a09;min-height:172px;position:relative}
+.ac-m video,.ac-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ac-t{padding:18px 16px;display:grid;gap:6px;align-content:center}
+.ac-t small{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.ac-t h2{font-family:var(--serif);font-weight:600;letter-spacing:-.03em;font-size:26px;line-height:1.05}
+.ac-t p{font-size:14px;line-height:1.45;color:var(--muted)}
+.ac-go{font-size:14px;font-weight:600;margin-top:4px}
+.ac-go::after{content:" \2192"}
+.ac-av{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-top:6px}
+.ac-av input{min-width:0;border:1px solid var(--line-2);border-radius:999px;padding:8px 13px;font-size:16px;background:var(--paper)}
+.ac-ok{font-size:13.5px!important;color:var(--ok)!important;font-weight:600}
+.ac-back{justify-self:center;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none}
+.ac-back::before{content:"\2190  "}
+#pg-biblioteca .ac-back{justify-self:start}
+@container site (min-width:700px){
+  .ac-hero{padding-top:72px!important}.ac-hero .wrap{gap:26px}
+  .ac-hero .display{font-size:clamp(54px,5.8cqw,82px);line-height:1.02}
+  .ac-hero .lead{max-width:44ch;font-size:20px}
+  .ac-g{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+  .ac-c{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;border-radius:26px}
+  .ac-m{min-height:0;aspect-ratio:4/5}
+  .ac-t{padding:26px 26px 30px;gap:8px;align-content:start}
+  .ac-t h2{font-size:34px}.ac-t p{font-size:15.5px}
+}
 </style>
 </head>
 <body>
@@ -904,7 +936,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 
 <header class="nav"><div class="nav-in">
   <a class="brand" href="#inicio" aria-label="pulsar business, início"><b>pulsar</b><i>.</i><em>business</em></a>
-  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Box de Conteúdos</a><a class="pill" href="#mentoria">Mentoria</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#biblioteca">Biblioteca</a><a class="pill" href="#maquina">Máquina de Vídeos <small>em breve</small></a></nav>
+  <nav class="pills" id="navpills" aria-label="Páginas"><a class="pill" href="#box">Box de Conteúdos</a><a class="pill" href="#academy">Academy</a><a class="pill" href="#prompts">Prompts</a><a class="pill" href="#skills">Skills</a><a class="pill" href="#maquina">Máquina de Vídeos <small>em breve</small></a></nav>
 </div></header>
 
 <!-- ======================= INÍCIO ======================= -->
@@ -922,7 +954,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   <div class="vitw" id="vitw"><div id="vit"></div><div class="hero-ov" id="hero-ov" aria-hidden="true"></div></div>
   <div class="wrap"><nav class="portas" aria-label="Por onde começar">
     <a class="porta pri" href="#box"><b>Quero vídeos prontos</b><small>Você escolhe o tema, eu entrego pronto pra postar.</small><i aria-hidden="true">→</i></a>
-    <a class="porta" href="#mentoria"><b>Quero aprender a fazer</b><small>Mentoria individual: em dois encontros, seu primeiro vídeo.</small><i aria-hidden="true">→</i></a>
+    <a class="porta" href="#academy"><b>Quero aprender a fazer</b><small><span data-esc>Pulsar Academy</span>: mentoria, curso e materiais grátis.</small><i aria-hidden="true">→</i></a>
   </nav></div>
   <div class="wrap"></div></section>
 
@@ -1032,8 +1064,33 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 </main>
 
 <!-- ======================= MENTORIA ======================= -->
+<main class="pg" id="pg-academy">
+  <section class="sec ac-hero"><div class="wrap mt-c">
+    <span class="mt-pill"><i></i><span data-esc>Pulsar Academy</span></span>
+    <h1 class="display">Aprenda a fazer <em>os seus vídeos.</em></h1>
+    <p class="lead">Três jeitos de começar: comigo, no seu ritmo ou de graça.</p>
+    <div class="ac-g">
+      <a class="ac-c mt-rv" href="#mentoria">
+        <div class="ac-m"><video data-src="assets/cerebro.mp4" poster="assets/cerebro.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="ac-t"><small>Individual · ao vivo</small><h2>Mentoria</h2><p>Dois encontros só comigo. Você sai com o seu primeiro vídeo pronto.</p><span class="ac-go">Ver a mentoria</span></div>
+      </a>
+      <div class="ac-c mt-rv">
+        <div class="ac-m"><video data-src="assets/placa.mp4" poster="assets/placa.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="ac-t"><small>Em breve</small><h2>Curso</h2><p>As aulas gravadas, pra você fazer no seu ritmo.</p>
+          <form class="ac-av" id="ac-av"><input id="ac-z" inputmode="tel" autocomplete="tel" placeholder="WhatsApp" aria-label="Seu WhatsApp" required><button class="btn sm" type="submit">Me avisa</button></form>
+          <p class="ac-ok" id="ac-ok" hidden>Anotado. Eu te aviso quando abrir.</p></div>
+      </div>
+      <a class="ac-c mt-rv" href="#biblioteca">
+        <div class="ac-m"><img src="assets/area-cardiologia.jpg" alt=""></div>
+        <div class="ac-t"><small>Grátis</small><h2>Biblioteca</h2><p>Atlas, guia rápido e apostilas por área pra baixar.</p><span class="ac-go">Abrir a biblioteca</span></div>
+      </a>
+    </div>
+  </div></section>
+</main>
+
 <main class="pg" id="pg-mentoria">
   <section class="sec mt-hero"><div class="wrap mt-c">
+    <a class="ac-back" href="#academy"><span data-esc>Pulsar Academy</span></a>
     <span class="mt-pill"><i></i>Mentoria individual · online e ao vivo</span>
     <h1 class="display">Em dois encontros, o seu primeiro <em>vídeo pronto.</em></h1>
     <p class="lead">Só você e eu, na sua área. Você aprende fazendo e sai sabendo repetir sozinho.</p>
@@ -1178,6 +1235,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 <!-- ======================= BIBLIOTECA ======================= -->
 <main class="pg" id="pg-biblioteca">
   <section class="sec"><div class="wrap">
+    <a class="ac-back" href="#academy"><span data-esc>Pulsar Academy</span></a>
     <div class="head"><span class="label">Biblioteca · grátis</span><h1 class="display">Materiais <em>grátis.</em></h1><p class="lead">Atlas, guia rápido e apostilas por área, pra você começar hoje.</p></div>
     <div class="covers wide">
       <figure><div class="ph" style="aspect-ratio:4/5">Capa do Atlas</div><figcaption><b>Atlas Pulsar</b><button class="get" type="button" data-dl="Atlas Pulsar">Baixar</button></figcaption></figure>
@@ -1251,6 +1309,11 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 <section class="tune" id="tune" hidden aria-label="Ajustar visual">
   <div class="tune-h"><b>Ajustar visual</b><button class="tune-x" id="tune-x" type="button" aria-label="Fechar">&times;</button></div>
   <p class="muted small" style="margin-top:-12px">Mude e veja o site inteiro na hora. Quando gostar, me mande o código lá embaixo.</p>
+  <div class="tg"><span>Nome da escola</span><div class="ch" data-k="esc">
+    <button type="button" data-v="academy"><small style="font-size:13px;color:var(--ink)">Pulsar Academy</small></button>
+    <button type="button" data-v="escola"><small style="font-size:13px;color:var(--ink)">Escola Pulsar</small></button>
+    <button type="button" data-v="school"><small style="font-size:13px;color:var(--ink)">Pulsar School</small></button>
+  </div></div>
   <div class="tg"><span>Frase da abertura</span><div class="ch" data-k="frase">
     <button type="button" data-v="seus"><small style="font-size:13px;color:var(--ink)">Eu faço os seus</small><small>diz o que você vende</small></button>
     <button type="button" data-v="portas"><small style="font-size:13px;color:var(--ink)">Faço ou ensino</small><small>abre as duas portas</small></button>
@@ -1319,14 +1382,14 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   var brl=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
   var CHART='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 13V8M8 13V3M13 13V6"/></svg>';
 
-  var pages=["inicio","box","mentoria","prompts","skills","biblioteca","maquina","comparar"];
+  var pages=["inicio","box","academy","mentoria","prompts","skills","biblioteca","maquina","comparar"];
   var anchors={boxes:"box",montar:"box",resumo:"box",como:"box","mentoria-preco":"mentoria","skills-lista":"skills"};
   function route(){
     var h=(location.hash||"#inicio").slice(1),alvo=null;
     if(anchors[h]){alvo=h==="resumo"?"sum":h;h=anchors[h]}
     if(pages.indexOf(h)<0)h="inicio";
     pages.forEach(function(p){$("pg-"+p).classList.toggle("on",p===h)});
-    document.querySelectorAll("#navpills a").forEach(function(a){if(a.getAttribute("href")==="#"+h){a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
+    document.querySelectorAll("#navpills a").forEach(function(a){if(a.getAttribute("href")==="#"+(h==="mentoria"||h==="biblioteca"?"academy":h)){a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
     if(alvo==="montar"||alvo==="sum")$("montar").hidden=false;
     if(h==="comparar")cmpOn();else cmpOff();
     RINGS.forEach(function(r){r.lay()});LIQ.forEach(function(f){f()});
@@ -1334,7 +1397,9 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   }
   window.addEventListener("hashchange",route);
 
-  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",notas:"nao"},T={};
+  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",esc:"academy",notas:"nao"},T={};
+  /* nome da escola em teste: [nome inteiro, nome curto do menu] */
+  var ESC={academy:["Pulsar Academy","Academy"],escola:["Escola Pulsar","Escola"],school:["Pulsar School","School"]};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
   var FRASES={seus:["Meus vídeos te trouxeram até aqui.","Agora eu faço<br><em>os seus.</em>"],portas:["Meus vídeos te trouxeram até aqui.","Posso fazer os seus.<br><em>Ou te ensinar.</em>"],perfil:["Você parou pra ver um vídeo meu.","Eu faço um <em>pro seu perfil.</em>"],seu:["Um vídeo meu te trouxe até aqui.","O próximo pode ser <em>seu.</em>"]};
   /* frase em dois tempos: a primeira fala de como a pessoa chegou, some, e fica a segunda */
@@ -1365,6 +1430,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   function aplica(){
     var r=document.documentElement;["font","accent","bg","radius","nav","vit"].forEach(function(k){r.setAttribute("data-"+k,T[k])});
     if(!FRASES[T.frase])T.frase=DEF.frase;frase();
+    if(!ESC[T.esc])T.esc=DEF.esc;[].forEach.call(document.querySelectorAll("[data-esc]"),function(x){x.textContent=ESC[T.esc][0]});
     document.body.classList.toggle("notas",T.notas==="sim");
     document.querySelectorAll(".tg .ch").forEach(function(ch){var k=ch.dataset.k;ch.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===T[k]))})});
     $("tune-code").textContent=[T.accent,T.bg,T.radius,T.vit].join(" · ");
@@ -1373,7 +1439,7 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   var tn=$("tune"),to=$("tune-open");
   function abre(on){tn.hidden=!on;to.setAttribute("aria-expanded",String(on))}
   to.onclick=function(){abre(tn.hidden)};$("tune-x").onclick=function(){abre(false)};
-  tn.addEventListener("click",function(e){var b=e.target.closest(".ch button");if(!b)return;var kk=b.parentNode.dataset.k;var rv=kk==="frase"&&T.frase===b.dataset.v;T[kk]=b.dataset.v;aplica();if(rv)frase(true);if(b.parentNode.dataset.k==="vit")mountVit()});
+  tn.addEventListener("click",function(e){var b=e.target.closest(".ch button");if(!b)return;var kk=b.parentNode.dataset.k;var rv=kk==="frase"&&T.frase===b.dataset.v;T[kk]=b.dataset.v;aplica();if(kk==="esc"){location.reload();return}if(rv)frase(true);if(b.parentNode.dataset.k==="vit")mountVit()});
   /* botão de revisão: volta pro topo do Início e toca de novo a frase que aparece e some */
   $("frase-rever").onclick=function(){if((location.hash||"#inicio")!=="#inicio")location.hash="#inicio";var sc=$("screen");if(sc)sc.scrollTop=0;window.scrollTo(0,0);setTimeout(function(){frase(true)},120)};
   $("tune-reset").onclick=function(){for(var k in DEF)T[k]=DEF[k];aplica();mountVit()};
@@ -1622,10 +1688,9 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
 
   /* explorador */
   var EX={box:["Box de Conteúdos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os boxes","#box"],
-    mentoria:["Mentoria","Aprenda a fazer <em>os seus.</em>","Dois encontros individuais comigo, aplicados à sua área.","v:cerebro","Ver a mentoria","#mentoria"],
+    academy:["Academy","Aprenda a fazer <em>os seus.</em>","Mentoria individual, curso e materiais grátis, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
     prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
     skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
-    biblioteca:["Biblioteca","Materiais <em>grátis.</em>","Atlas, guia rápido e apostilas por área pra baixar.","i:area-dermatologia","Abrir a biblioteca","#biblioteca"],
     maquina:["Máquina de Vídeos","Descreva o vídeo. <em>Receba pronto.</em>","Uma máquina que monta vídeos a partir de mais de 2.000 cenas. Em breve.","v:soluco","Ver como vai ser","#maquina"]};
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
     function show(k,fast){var e=EX[k],m=e[3].slice(2),med=e[3][0]==="v"?'<video src="assets/'+m+'.mp4" poster="assets/'+m+'.jpg" autoplay muted loop playsinline></video>':'<img src="assets/'+m+'.jpg" alt="">';
@@ -1773,13 +1838,13 @@ dialog::backdrop{background:rgba(12,10,9,.5);backdrop-filter:blur(4px)}
   /* menu "Waterline": porte para JS puro do Liquid Navbar (Nimbus UI, guglielmogiannattasio.it), enviado pelo Renan via 21st.dev */
   function nimbus(nav){var PAD=14;
     var IC={box:'<path d="M3.5 8 12 3.5 20.5 8v8L12 20.5 3.5 16Z"/><path d="M3.5 8 12 12.5 20.5 8M12 12.5v8"/>',
-      mentoria:'<circle cx="12" cy="8.5" r="3.8"/><path d="M4.8 20c1.2-3.4 4-5 7.2-5s6 1.6 7.2 5"/>',
+      academy:'<path d="M2.500 9.500 12 5l9.500 4.500L12 14Z"/><path d="M6.500 11.700v4.500c1.600 1.400 3.500 2.100 5.500 2.100s3.900-.700 5.500-2.100v-4.500M21.500 9.500v5"/>',
       prompts:'<path d="M11 3.5l1.8 4.9 4.9 1.800-4.900 1.800L11 16.900l-1.800-4.900-4.900-1.800 4.900-1.800Z"/><path d="M18.500 15.500v5M16 18h5"/>',
       skills:'<path d="M13 3 5.500 13.500H11l-1 7.500 7.500-10.500H12Z"/>',
       biblioteca:'<path d="M4.500 5.500c2.500-1 5-1 7.500.500 2.500-1.500 5-1.500 7.500-.500v13c-2.500-1-5-1-7.500.500-2.500-1.500-5-1.500-7.500-.500Z"/><path d="M12 6v13"/>',
       maquina:'<rect x="3.500" y="5" width="17" height="14" rx="3"/><path d="M10.500 9.500v5l4.500-2.500Z"/>'};
-    var FX={box:"hop",mentoria:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
-    var SH={box:"Box",mentoria:"Mentoria",prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
+    var FX={box:"hop",academy:"wave",prompts:"spin",skills:"pop",biblioteca:"flip",maquina:"drop"};
+    var SH={box:"Box",academy:ESC[T.esc][1],prompts:"Prompts",skills:"Skills",biblioteca:"Biblioteca",maquina:"Máquina"};
     function mk(t,c){var e=document.createElement(t);e.className=c;e.setAttribute("aria-hidden","true");return e}
     var glass=mk("span","nimbus-glass"),cv=mk("canvas","nimbus-water"),dp=mk("span","nimbus-drop");
     var s={a:{x:0,v:0},b:{x:0,v:0},sy:{s:1,v:0},lead:0,lagFrom:0,sats:[],rips:[],t:{x:0,cy:0,q:0,r:21},q:0,mouse:{x:0,y:0,s:0,on:false},moving:false,split:false,ready:false,has:false,w:0,h:0,visible:true,reduce:calmo,raf:0,last:0,time:0,glc:null};
@@ -1929,14 +1994,15 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(EMB&&!FIXA)window.addEventListener("resize",function(){var n=window.innerWidth>=700?"site":"cel";if(document.documentElement.getAttribute("data-view")!==n)setView(n)});
   /* duas telas abertas (prévia lado a lado): o que muda no "Ajustar visual" de uma vale pra outra */
   /* Mentoria: vídeos só tocam na tela, blocos entram ao rolar e a frase do medo acende palavra por palavra */
-  (function(){var pg=$("pg-mentoria");if(!pg||!window.IntersectionObserver){if(pg)[].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){x.classList.add("in")});return}
+  ["pg-mentoria","pg-academy"].forEach(function(pid){var pg=$(pid);if(!pg||!window.IntersectionObserver){if(pg)[].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){x.classList.add("in")});return}
     [].forEach.call(pg.querySelectorAll("[data-say]"),function(h){var i=0;(function anda(no){[].slice.call(no.childNodes).forEach(function(k){
       if(k.nodeType===3){var fr=document.createDocumentFragment();k.nodeValue.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){fr.appendChild(document.createTextNode(" "));return}var w=document.createElement("span");w.className="w";w.style.setProperty("--i",i++);w.textContent=t;fr.appendChild(w)});no.replaceChild(fr,k)}else if(k.nodeType===1)anda(k)})})(h)});
     var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rv.unobserve(e.target)}})},{threshold:.18});
     [].forEach.call(pg.querySelectorAll(".mt-rv,.mt-say"),function(x){rv.observe(x)});
     var vd=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})},{threshold:.25});
-    [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){vd.observe(v)})})();
-  window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
+    [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){vd.observe(v)})});
+  $("ac-av").addEventListener("submit",function(e){e.preventDefault();this.hidden=true;$("ac-ok").hidden=false});
+  window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;if(nv.esc&&nv.esc!==T.esc){location.reload();return}for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
 
   route();
 })();
