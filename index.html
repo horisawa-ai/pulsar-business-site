@@ -1467,6 +1467,10 @@ a.ac-c:hover{transform:translateY(-3px);box-shadow:0 26px 44px -30px rgba(12,10,
     if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else{window.scrollTo(0,0);$("screen").scrollTop=0}
   }
   window.addEventListener("hashchange",route);
+  /* tocar no item do menu (ou na marca) da página em que a pessoa já está leva de volta ao topo */
+  document.addEventListener("click",function(e){var a=e.target.closest("#navpills a,a.brand");if(!a)return;var h=a.getAttribute("href")||"";
+    if(h!==(location.hash||"#inicio"))return;e.preventDefault();var sc=$("screen"),suave=!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"smooth":"auto";
+    try{if(sc)sc.scrollTo({top:0,behavior:suave});window.scrollTo({top:0,behavior:suave})}catch(x){if(sc)sc.scrollTop=0;window.scrollTo(0,0)}});
 
   var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"luz",frase:"portas",notas:"nao"},T={};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
@@ -2095,5 +2099,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794731277";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794732084";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
