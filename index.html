@@ -4141,7 +4141,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         if(tn){void tn.offsetWidth;tn.classList.add("on")}
         solto=false;
         function quadro(e){poe(e);if(segue&&!solto){var dd=lin.getBoundingClientRect().top-(r0+(T-r0)*e);if(Math.abs(dd)>.4)rola(P,dd)}}
-        function fim(){an=null;it.forEach(function(x){
+        function fim(){an=null;if(tn&&!solto){setTimeout(function(){var r=tn.getBoundingClientRect(),P2=porta();var d=r.bottom-(P2.b-24);if(d>0){try{if(P2.el)P2.el.scrollBy({top:d,behavior:calmo?"auto":"smooth"});else window.scrollBy({top:d,behavior:calmo?"auto":"smooth"})}catch(x){rola(P2,d)}}},30)}it.forEach(function(x){
           if(x.some){x.el.hidden=true;x.el.style.height="";x.el.classList.remove("sai")}
           else if(x.abre){x.el.style.height="";x.el.classList.add("pronta")}
           else if(!x.para)x.el.style[x.p]=""})}
@@ -4441,12 +4441,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
          Quando a tela é baixa demais pra pasta e bandeja juntas, a linha sobe até o leque encostar no menu (abre mão só da folga do hover) */
       if(lin&&P.z===1){var rf=lin.getBoundingClientRect(),gp=lin.querySelector(".gf").getBoundingClientRect(),dg=gp.top-rf.top,min=P.t+8+sobe(lin,L)-dg,
           justo=P.t+4+Math.round(gp.width*(+lin.getAttribute("data-sobe")||0))-dg,max=P.b-(L?24:P.f)-rf.height-hn;
-        T=max<min?Math.max(max,Math.min(min,justo)):Math.min(Math.max(r0,min),max);segue=true}
+        T=max<min?Math.max(max,Math.min(min,justo)):Math.min(Math.max(r0,min),max);segue=false}
       poe(0);if(onde(P)!==y0)rola(P,y0-onde(P));
       if(tn){void tn.offsetWidth;tn.classList.add("on")}
       solto=false;
       function quadro(e){poe(e);if(segue&&!solto){var d=lin.getBoundingClientRect().top-(r0+(T-r0)*e);if(Math.abs(d)>.4)rola(P,d)}}
-      function fim(){an=null;it.forEach(function(x){
+      function fim(){an=null;if(tn&&!solto){setTimeout(function(){var r=tn.getBoundingClientRect(),P2=porta();var d=r.bottom-(P2.b-24);if(d>0){try{if(P2.el)P2.el.scrollBy({top:d,behavior:calmo?"auto":"smooth"});else window.scrollBy({top:d,behavior:calmo?"auto":"smooth"})}catch(x){rola(P2,d)}}},30)}it.forEach(function(x){
         if(x.some){x.el.hidden=true;x.el.style.height="";x.el.classList.remove("sai")}
         else if(x.abre){x.el.style.height="";x.el.classList.add("pronta")}
         else if(!x.para)x.el.style[x.p]=""});
@@ -5085,5 +5085,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794797684";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794797822";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
