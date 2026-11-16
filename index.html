@@ -1901,6 +1901,54 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   .acq-b,.acq-b *,.acq-b *::after,.acq-t,.acq-t video{transition:none!important;animation:none!important}
 }
 
+/*@@FLS-CSS: vitrine Telas soltas do Início (área do agente FLS). CSS novo desta área entra logo abaixo desta linha @@*/
+/* Telas soltas (porte do Spatial Depth Hero do 21st.dev), versão do Início: 15 ou mais telas espalhadas, cada uma no seu lugar, tamanho, profundidade e inclinação,
+   flutuando no seu ritmo. Cada tela tem a própria perspectiva e a ordem de empilhamento é por z-index: a tela da vez fica sempre por cima de todas */
+.fls{position:relative;isolation:isolate;margin-block:6px 6px;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));overflow:clip;padding-bottom:18px;color:var(--ink);outline:none}
+.fls:focus-visible{outline:2px solid var(--gold);outline-offset:-4px;border-radius:28px}
+.fls-atm{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 42%,rgba(241,228,200,.8),rgba(241,228,200,0) 72%),radial-gradient(ellipse 70% 46% at 50% 48%,color-mix(in srgb,var(--ink) 4%,transparent),transparent 74%)}
+.fls-stage{position:relative;height:var(--fls-h,460px);overflow:clip;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 22px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 22px,#000 calc(100% - 22px),transparent 100%)}
+.fls-stage[data-dragging]{cursor:grabbing}
+.fls-scene{position:absolute;inset:0;will-change:transform}
+.fls-floor{position:absolute;left:50%;bottom:6px;width:min(640px,92cqw);height:40px;transform:translateX(-50%);pointer-events:none;background:radial-gradient(ellipse 50% 50%,color-mix(in srgb,var(--ink) 14%,transparent),transparent 72%);filter:blur(10px)}
+.fls-s{position:absolute;left:50%;top:50%;width:var(--fls-cw,228px);margin:0;padding:0;border:0;background:none;display:block;color:inherit;font:inherit;cursor:inherit;transform-style:preserve-3d;-webkit-tap-highlight-color:transparent;transition:transform 1.25s cubic-bezier(.22,1,.36,1),opacity .7s ease;will-change:transform}
+.fls-stage[data-dragging] .fls-s,.fls[data-calmo] .fls-s{transition:none}
+.fls-s:focus-visible{outline:none}
+.fls-s:focus-visible .fls-g{outline:2px solid var(--gold);outline-offset:3px}
+.fls-f{display:block;position:relative;transform-style:preserve-3d;animation:fls-drift var(--fd,9s) ease-in-out var(--fdl,0s) infinite}
+.fls[data-calmo] .fls-f{animation:none}
+@keyframes fls-drift{0%,100%{transform:translate3d(0,0,0) rotateX(0deg) rotateY(0deg) rotateZ(0deg)}30%{transform:translate3d(var(--ax),var(--ay),calc(var(--fk,1) * var(--az))) rotateX(calc(var(--fk,1) * var(--arx))) rotateY(calc(var(--fk,1) * var(--ary))) rotateZ(calc(var(--fk,1) * var(--arz)))}64%{transform:translate3d(var(--bx),var(--by),calc(var(--fk,1) * var(--bz))) rotateX(calc(var(--fk,1) * var(--brx))) rotateY(calc(var(--fk,1) * var(--bry))) rotateZ(calc(var(--fk,1) * var(--brz)))}}
+.fls-s[data-active]{--fk:.3}
+.fls-g{display:block;position:relative;padding:5px;border-radius:calc(var(--fls-cw,228px) * .11);background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 0 0 .5px rgba(12,10,9,.14),0 30px 50px -26px rgba(12,10,9,.4);transition:box-shadow .9s ease}
+.fls-g::after{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.14) 24%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 72%,rgba(255,255,255,.16) 100%)}
+.fls-s[data-active] .fls-g{box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 0 0 .5px rgba(161,98,7,.22),0 0 64px -4px rgba(233,210,160,.95),0 40px 70px -34px rgba(12,10,9,.5)}
+.fls-m{display:block;position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:calc(var(--fls-cw,228px) * .11 - 5px);background:var(--tint)}
+.fls-m img,.fls-m video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.fls-m video{opacity:0;transition:opacity .45s ease}
+.fls-m video.on{opacity:1}
+.fls-fog{position:absolute;inset:0;z-index:2;background:var(--paper);opacity:var(--fls-fog,0);transition:opacity .9s ease;pointer-events:none}
+.fls-stage[data-dragging] .fls-fog{transition:none}
+/* número: em toda tela que tem número; nas de volta ele vai pra parte que aparece e é ampliado pra continuar legível */
+.fls-tag{position:absolute;z-index:5;top:14%;right:10px;display:grid;gap:3px;padding:10px 14px 11px 12px;border-radius:16px;text-align:left;white-space:nowrap;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 0 0 .5px rgba(12,10,9,.13),0 20px 34px -18px rgba(12,10,9,.45);transform:translateZ(18px) scale(var(--ti,1));transform-origin:100% 0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .4s ease;pointer-events:none}
+.fls-s:not([data-active]) .fls-tag{top:var(--tt,7%);right:auto;left:var(--to,7%);padding:8px 11px 9px 10px;border-radius:13px;transform-origin:0 0;transform:translateZ(4px) scale(var(--ti,1))}
+.fls-stage[data-dragging] .fls-tag,.fls-s[data-semtag]:not([data-active]) .fls-tag{opacity:0}
+.fls-tag b{display:flex;align-items:center;gap:6px;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:21px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+.fls-tag b svg{flex:none;color:var(--gold)}
+.fls-tag span{font-size:12px;font-weight:500;line-height:1.2;color:var(--muted)}
+.fls-s:not([data-active]) .fls-tag b{font-size:18px;gap:5px}
+.fls-s:not([data-active]) .fls-tag span{display:none}
+.fls-info{position:relative;z-index:12;display:grid;justify-items:center;gap:12px;padding:4px 20px 0;text-align:center}
+.fls-info h3{margin:0;min-height:1.1em;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.03em}
+.fls-ctl{display:flex;align-items:center;gap:14px}
+.fls-ctl button{display:grid;place-items:center;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid var(--line-2);background:color-mix(in srgb,var(--card) 86%,transparent);color:var(--ink);cursor:pointer}
+.fls-ctl button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (hover:hover){.fls-ctl button:hover{border-color:var(--ink-2)}}
+.fls-dots{display:flex;align-items:center;gap:5px}
+.fls-dots i{display:block;width:5px;height:5px;border-radius:3px;background:var(--line-2);transition:width .4s cubic-bezier(.22,1,.36,1),background .4s}
+.fls-dots i.on{width:16px;background:var(--ink-2)}
+@container site (min-width:700px){.fls-info h3{font-size:30px}.fls-s[data-active] .fls-tag{right:calc(var(--fls-cw,228px) * -.12)}.fls-tag b{font-size:24px}.fls-tag{padding:12px 16px 12px 14px}}
+@media (prefers-reduced-motion:reduce){.fls-f{animation:none}.fls-s,.fls-fog,.fls-tag{transition:none}}
+
 /*@@FLT-CSS: vitrine Telas flutuantes. CSS novo desta área entra logo abaixo desta linha @@*/
 /* Telas soltas (porte do Spatial Depth Hero do 21st.dev): cada tela num lugar, tamanho, profundidade e inclinação próprios, flutuando no seu ritmo; a cena inteira inclina com o ponteiro */
 .flt{position:relative;isolation:isolate;margin-block:10px 6px;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));overflow:clip;padding-bottom:18px;color:var(--ink);outline:none}
@@ -2926,7 +2974,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     if(h!==(location.hash||"#inicio"))return;e.preventDefault();var sc=$("screen"),suave=!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"smooth":"auto";
     try{if(sc)sc.scrollTo({top:0,behavior:suave});window.scrollTo({top:0,behavior:suave})}catch(x){if(sc)sc.scrollTop=0;window.scrollTo(0,0)}});
 
-  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"vidrocf",frase:"portas",notas:"nao",acf:"serifa",acq:"bastidor",avd:"tipos"},T={};
+  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"flutua",frase:"portas",notas:"nao",acf:"serifa",acq:"bastidor",avd:"tipos"},T={};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
   var FRASES={seus:["Meus vídeos te trouxeram até aqui.","Agora eu faço<br><em>os seus.</em>"],portas:["Meus vídeos te trouxeram até aqui.","Posso fazer os seus<br><em>ou te ensinar.</em>"],perfil:["Você parou pra ver um vídeo meu.","Eu faço um <em>pro seu perfil.</em>"],seu:["Um vídeo meu te trouxe até aqui.","O próximo pode ser <em>seu.</em>"]};
   /* frase em dois tempos: a primeira fala de como a pessoa chegou, some, e fica a segunda */
@@ -2957,7 +3005,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   /* escolhas salvas antes da fonte de sistema existir passam a abrir nela uma vez, pra ele ver */
   T.font="apple"; /* fonte decidida em 15/11/2026: a de sistema */
   for(var dk in DEF)if(!T[dk])T[dk]=DEF[dk];
-  if(!T.v2){T.vit="vidrocf";T.v2=1}
+  if(!T.v3){T.vit="flutua";T.v3=1}
   var qv=/[?&]vit=([a-z]+)/.exec(location.search);if(qv)T.vit=qv[1]; /* link direto pra uma vitrine, ex.: ?vit=liquido */ /* vitrine decidida em 15/11/2026: a de vidro; quem tinha outra salva passa a abrir nela uma vez */
   T.nav="vidro";
   function aplica(){
@@ -3294,6 +3342,91 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     var vv=function(){if(!document.hidden)liga()};document.addEventListener("visibilitychange",vv);
     cv.style.cursor="grab";mede();liga();
     return {kill:function(){morto=true;cancelAnimationFrame(raf);clearTimeout(vTm);vid.pause();vid.removeAttribute("src");if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vv);var x=gl.getExtension("WEBGL_lose_context");if(x)x.loseContext()}}}
+  /*@@FLS-JS: vitrine Telas soltas do Início (área do agente FLS): function flutuaSolta(el,list){...; return {kill:function(){...}}} @@*/
+  /* Telas soltas do Início (porte do Spatial Depth Hero, 21st.dev): a tela da vez fica à frente e toca o vídeo; as outras (até 7 de cada lado) ficam espalhadas
+     em volta, cada uma num lugar, tamanho, profundidade e inclinação próprios, flutuando no seu ritmo. Cada tela tem a própria perspectiva e a ordem é por z-index:
+     a tela da vez fica sempre por cima, as de volta só mostram a beirada atrás dela. Arrastar, tocar, setas ou a troca automática (6 s) passam a tela da vez. */
+  function flutuaSolta(el,list){var n=list.length,index=0,drag=0,dragging=false,g=null,tq=null,supp=0,tm=0,cw=196,P=4,W=393,H=460,K=7,vis=true,mortos=false,raf=0,tx=0,ty=0,cx=0,cy=0,tw=[],cel=true;
+    function wrap(v,m){return ((v%m)+m)%m}
+    var IL='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',IR='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+    var IU='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
+    function num(i){var h=VIEWS[list[i][0]];if(!h||h[2]===1)return null;return {n:(h[1].indexOf("seguidor")>=0?"+":"")+fmt(h[0]),l:h[1]}}
+    /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga */
+    var sd=20261115;function rnd(){sd=(sd*1664525+1013904223)%4294967296;return sd/4294967296}function rr(a,b){return a+(b-a)*rnd()}function sg(){return rnd()<.5?-1:1}
+    function deriva(){return "--fd:"+rr(8,14).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(4,9)).toFixed(1)+"px;--ay:"+(-rr(6,12)).toFixed(1)+"px;--az:"+(sg()*rr(10,30)).toFixed(0)+"px;--arx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--ary:"+(sg()*rr(3,8)).toFixed(1)+"deg;--arz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg;--bx:"+(sg()*rr(4,9)).toFixed(1)+"px;--by:"+rr(4,9).toFixed(1)+"px;--bz:"+(sg()*rr(10,30)).toFixed(0)+"px;--brx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--bry:"+(sg()*rr(3,8)).toFixed(1)+"deg;--brz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg"}
+    el.className="fls";el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
+    el.innerHTML='<div class="fls-atm" aria-hidden="true"></div><div class="fls-stage"><div class="fls-floor" aria-hidden="true"></div><div class="fls-scene">'+
+      list.map(function(c,i){var v=num(i);return '<button type="button" class="fls-s" data-i="'+i+'"><span class="fls-f" style="'+deriva()+'"><span class="fls-g"><span class="fls-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="fls-fog" aria-hidden="true"></span></span></span>'+
+        (v?'<span class="fls-tag" aria-hidden="true"><b>'+IU+v.n+'</b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
+      '<div class="fls-info"><h3 aria-live="polite"></h3><div class="fls-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="fls-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>';
+    var stage=el.querySelector(".fls-stage"),scene=el.querySelector(".fls-scene"),cards=el.querySelectorAll(".fls-s"),dots=el.querySelectorAll(".fls-dots i"),ttl=el.querySelector(".fls-info h3");
+    var vid=document.createElement("video");vid.muted=true;vid.loop=true;vid.playsInline=true;vid.setAttribute("muted","");vid.setAttribute("playsinline","");vid.preload="none";vid.setAttribute("aria-hidden","true");
+    vid.addEventListener("playing",function(){vid.classList.add("on")});
+    /* lugares das telas de volta, por lado, escolhidos a dedo pra parecer solto: [x, y, profundidade, tamanho, giros Y/X/Z].
+       x em frações da metade da largura da vitrine (1 = centro na borda, meio cortada), y em frações da metade da altura, tamanho em larguras da tela da vez.
+       Positivos à direita (as que vêm), negativos à esquerda (as que já foram). O último de cada lado é o lugar de espera, invisível */
+    var LAY={m:{d:[[.62,-.42,-.3,.44,-16,5,3],[.93,.12,-.5,.46,-22,-6,-4],[.66,.72,-.7,.36,-12,8,2],[.3,-.88,-.9,.34,-8,10,4],[.99,-.8,-1.1,.32,-26,6,5],[.36,.93,-1.3,.3,-10,-8,-3],[.9,.52,-1.5,.28,-24,-6,4],[.6,1.5,-1.7,.28,-10,0,0]],
+               e:[[.6,.3,-.3,.46,16,-5,-3],[.94,-.32,-.55,.44,24,6,5],[.62,-.8,-.75,.36,12,10,-4],[.32,.9,-.95,.32,8,-10,-3],[.98,.78,-1.15,.34,28,-8,3],[.36,-.95,-1.35,.3,10,12,4],[.9,.4,-1.55,.28,22,-6,-4],[.6,-1.5,-1.7,.28,10,0,0]]},
+             c:{d:[[.36,-.3,-.3,.5,-14,5,3],[.62,.25,-.5,.56,-22,-6,-4],[.42,.66,-.7,.42,-12,8,2],[.84,-.5,-.9,.48,-26,6,5],[.58,-.74,-1.1,.36,-8,10,4],[.98,.46,-1.3,.46,-28,-8,-3],[.78,.92,-1.5,.36,-18,-6,4],[.6,1.6,-1.7,.34,-10,0,0]],
+               e:[[.4,.22,-.3,.52,16,-5,-3],[.66,-.36,-.55,.5,24,6,5],[.42,-.72,-.75,.4,12,10,-4],[.84,.42,-.95,.48,28,-8,3],[.6,.8,-1.15,.38,10,-10,-3],[.98,-.58,-1.35,.44,30,8,4],[.3,.92,-1.55,.34,8,-12,3],[.6,-1.6,-1.7,.34,10,0,0]]}},L=LAY.m;
+    function slot(k){if(k===0)return {x:0,y:-.03*H,dz:.2,s:1,ry:0,rx:0,rz:0,fog:0,op:1};
+      var a=Math.min(K+1,Math.abs(k)),r=(k>0?L.d:L.e)[a-1];
+      return {x:(k>0?1:-1)*r[0]*W/2,y:r[1]*H/2,dz:r[2],s:r[3],ry:r[4],rx:r[5],rz:r[6],fog:Math.min(.42,Math.max(0,-r[2]*.26)),op:a>K?0:1}}
+    function mix(p,q,f){var o={};for(var k in p)o[k]=p[k]+(q[k]-p[k])*f;return o}
+    function pose(off){var lo=Math.floor(off),f=off-lo;return f?mix(slot(lo),slot(lo+1),f):slot(lo)}
+    /* onde o número de uma tela de volta aparece: a faixa do topo (ou do meio) que não fica atrás da tela da vez nem fora da vitrine */
+    function faixa(p,tt){var ww=cw*p.s,hh=ww*1.778,top=p.y-hh/2+tt*hh,bot=top+30*Math.max(1,.5/p.s)*p.s,a=Math.max(p.x-ww/2,-W/2+6),b=Math.min(p.x+ww/2,W/2-6),dx=cw/2+10,dxr=cel?dx:cw*.62+30,dy0=-.03*H-cw*.889-8,dy1=-.03*H+cw*.889+8;
+      if(top<-H/2+22||bot>H/2-22)return null;
+      if(bot>dy0&&top<dy1){var a1=a,b1=Math.min(b,-dx),a2=Math.max(a,dxr),b2=b;if(b1-a1>=b2-a2){a=a1;b=b1}else{a=a2;b=b2}}
+      return b-a>0?{a:a,b:b,w:b-a,tt:tt}:null}
+    function lay(){for(var i=0;i<n;i++){var d=wrap(i-index+n/2,n)-n/2,off=d+drag,c=cards[i],st=c.style,p=pose(Math.max(-(K+1),Math.min(K+1,off)));
+        st.transform="translate(-50%,-50%) translate("+p.x.toFixed(1)+"px,"+p.y.toFixed(1)+"px) perspective("+(P*cw).toFixed(0)+"px) rotateY("+p.ry.toFixed(2)+"deg) rotateX("+p.rx.toFixed(2)+"deg) rotateZ("+p.rz.toFixed(2)+"deg) scale("+p.s.toFixed(3)+")";
+        st.zIndex=Math.abs(off)<.5?60:Math.round(50+p.dz*20);/* a tela mais à frente (a da vez, ou a que o dedo já trouxe passando da metade) fica sempre por cima */
+        st.opacity=p.op.toFixed(2);st.visibility=Math.abs(d)>K+1&&Math.abs(off)>K+.5?"hidden":"";st.pointerEvents=p.op<.5?"none":"";st.setProperty("--fls-fog",p.fog.toFixed(2));
+        if(d!==0&&tw[i]){var fx=faixa(p,.07),f2=faixa(p,.56);if(!fx||(f2&&f2.w>fx.w*1.3))fx=f2;
+          var ti=fx?Math.min(15/(18*p.s),fx.w*.86/(tw[i]*p.s)):0;
+          if(fx&&ti*18*p.s>=10){st.setProperty("--ti",ti.toFixed(3));st.setProperty("--to",((fx.a+fx.w*.07-(p.x-cw*p.s/2))/(cw*p.s)*100).toFixed(1)+"%");st.setProperty("--tt",(fx.tt*100).toFixed(0)+"%");c.removeAttribute("data-semtag")}
+          else c.setAttribute("data-semtag","")}
+        else{st.setProperty("--ti","1");c.removeAttribute("data-semtag")}
+        if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"Próxima tela, agora em destaque: ":"Trazer pra frente ")+list[i][1])}
+      ttl.textContent=list[index][1];for(var j=0;j<dots.length;j++)dots[j].className=j===index?"on":""}
+    function medeTag(){for(var i=0;i<n;i++)cards[i].removeAttribute("data-active");for(i=0;i<n;i++){var t=cards[i].querySelector(".fls-tag b");tw[i]=t?t.offsetWidth+22:0}}
+    function poeVideo(){var m=cards[index].querySelector(".fls-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+list[index][0]+".mp4";m.insertBefore(vid,m.querySelector(".fls-fog"))}sync()}
+    function sync(){if(!mortos&&vis&&!document.hidden&&el.offsetParent!==null){var q=vid.play();if(q&&q.catch)q.catch(function(){})}else vid.pause()}
+    function sel(i){index=wrap(i,n);drag=0;lay();poeVideo();agenda()}
+    function agenda(){clearTimeout(tm);if(mortos||calmo)return;tm=setTimeout(function(){if(!dragging&&vis&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
+    stage.addEventListener("pointerdown",function(e){if(!e.isPrimary||(e.pointerType==="mouse"&&e.button!==0))return;g={x:e.clientX,y:e.clientY,t:performance.now(),h:false}});
+    stage.addEventListener("pointermove",function(e){if(!g)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;
+      if(!g.h&&Math.abs(dy)>12&&Math.abs(dx)<Math.abs(dy)*.7){g=null;return}
+      if(!g.h&&Math.abs(dx)>8){g.h=true;try{stage.setPointerCapture(e.pointerId)}catch(x){}dragging=true;clearTimeout(tm);stage.setAttribute("data-dragging","")}
+      if(g.h){drag=Math.max(-1,Math.min(1,dx/(cw*.9)));lay()}});
+    function up(e,cancel){var st=g;g=null;if(st&&st.h){var dx=e.clientX-st.x,vel=Math.abs(dx)/Math.max(1,performance.now()-st.t);
+        if(!cancel&&(Math.abs(dx)>Math.min(55,cw*.2)||(Math.abs(dx)>14&&vel>.35)))index=wrap(index+(dx<0?1:-1),n);supp=performance.now()+300;
+        drag=0;dragging=false;stage.removeAttribute("data-dragging");lay();poeVideo();agenda()}}
+    stage.addEventListener("pointerup",function(e){up(e,false)});stage.addEventListener("pointercancel",function(e){up(e,true)});
+    /* no celular: decide a direção no começo do gesto; se for pro lado, a página não rola junto */
+    stage.addEventListener("touchstart",function(e){var t=e.touches[0];tq=e.touches.length===1?{x:t.clientX,y:t.clientY,lock:0}:null},{passive:true});
+    stage.addEventListener("touchmove",function(e){if(!tq)return;var t=e.touches[0],dx=t.clientX-tq.x,dy=t.clientY-tq.y;if(!tq.lock&&(Math.abs(dx)>5||Math.abs(dy)>5))tq.lock=Math.abs(dx)>=Math.abs(dy)*.7?1:2;if(tq.lock===1&&e.cancelable)e.preventDefault()},{passive:false});
+    stage.addEventListener("touchend",function(){tq=null},{passive:true});stage.addEventListener("touchcancel",function(){tq=null},{passive:true});
+    /* tocar só troca: na tela da vez passa pra próxima, numa de volta traz ela pra frente */
+    el.addEventListener("click",function(e){var a=e.target.closest("[data-a]");
+      if(a){if(a.dataset.a==="prev")sel(index-1);else sel(index+1);return}
+      var c=e.target.closest(".fls-s");if(!c||performance.now()<supp)return;var i=+c.dataset.i;sel(i===index?index+1:i)});
+    el.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();sel(index+1)}else if(e.key==="ArrowLeft"){e.preventDefault();sel(index-1)}});
+    /* parallax do componente: a cena inteira inclina devagar acompanhando o mouse (mola suave) */
+    function tilt(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;scene.style.transform="perspective(1400px) rotateX("+cx.toFixed(3)+"deg) rotateY("+cy.toFixed(3)+"deg)";raf=Math.abs(tx-cx)+Math.abs(ty-cy)>.01?requestAnimationFrame(tilt):0}
+    function pm(e){if(e.pointerType!=="mouse"||calmo||!vis)return;var vw=window.innerWidth||1,vh=window.innerHeight||1;tx=(e.clientY/vh-.5)*-6;ty=(e.clientX/vw-.5)*8;if(!raf)raf=requestAnimationFrame(tilt)}
+    window.addEventListener("pointermove",pm,{passive:true});
+    function mede(){var w=el.clientWidth;if(!w)return;var vh=window.innerHeight||800;W=w;cel=w<600;L=cel?LAY.m:LAY.c;
+      if(cel){cw=Math.round(Math.max(150,Math.min(w*.47,(vh*.62-40)/1.778)));H=Math.round(cw*1.778+124)}
+      else{cw=Math.round(Math.max(170,Math.min(300,w*.24,(vh*.66-50)/1.778)));H=Math.round(cw*1.778+100)}
+      el.style.setProperty("--fls-cw",cw+"px");el.style.setProperty("--fls-h",H+"px");medeTag();lay()}
+    function vis_(){sync()}document.addEventListener("visibilitychange",vis_);
+    var io=null;if(window.IntersectionObserver){io=new IntersectionObserver(function(es){vis=es[es.length-1].isIntersecting;sync()},{threshold:.15});io.observe(el)}
+    var ro=null;if(window.ResizeObserver){ro=new ResizeObserver(mede);ro.observe(el)}
+    mede();lay();poeVideo();agenda();
+    return {kill:function(){mortos=true;clearTimeout(tm);cancelAnimationFrame(raf);window.removeEventListener("pointermove",pm);if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vis_);vid.pause();vid.removeAttribute("src");try{vid.load()}catch(x){}}}}
+  /*@@/FLS-JS@@*/
   /*@@FLT-JS: vitrine Telas flutuantes (área do agente FLT): defina aqui function flutua(el,list){...; return {kill:function(){...}}} @@*/
   /* Telas flutuantes, versão "soltas" (porte do Spatial Depth Hero, 21st.dev): a tela da vez fica à frente e toca o vídeo; as outras ficam soltas no ar
      em duas colunas ao lado dela, cada uma no seu lugar, tamanho e profundidade, sempre atrás e sem encostar na tela da vez. A troca é uma esteira:
@@ -3382,7 +3515,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     else if(T.vit==="lente")vitApi=lens(el,CATALOGO);
     else if(T.vit==="capa")vitApi=capa(el,CATALOGO);
     else if(T.vit==="vidrocf")vitApi=vidroCf(el,CATALOGO);
-    else if(T.vit==="flutua"&&typeof flutua==="function")vitApi=flutua(el,CATALOGO);
+    else if(T.vit==="flutua"&&typeof flutuaSolta==="function")vitApi=flutuaSolta(el,CATALOGO);
     else if(T.vit==="liquido")vitApi=liquido(el,CATALOGO);
     else{el.className="ring";el.setAttribute("aria-label","Vitrine giratória: arraste para os lados");el.innerHTML='<div class="ring-in"></div>';vitApi=ring(el,CATALOGO,setStat,5000)}}
   mountVit();
@@ -4736,5 +4869,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794792959";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794793261";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
