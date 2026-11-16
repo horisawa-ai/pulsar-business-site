@@ -1786,8 +1786,6 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 .flt-m video.on{opacity:1}
 .flt-fog{position:absolute;inset:0;z-index:2;background:var(--paper);opacity:var(--flt-fog,0);transition:opacity .9s ease;pointer-events:none}
 .flt-stage[data-dragging] .flt-fog{transition:none}
-.flt-watch{position:absolute;z-index:4;left:50%;bottom:14px;transform:translate(-50%,6px);display:flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;white-space:nowrap;border-radius:999px;background:rgba(255,255,255,.86);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 0 0 .5px rgba(12,10,9,.14);font:600 12.5px/1 var(--sans);color:var(--ink);opacity:0;transition:opacity .4s ease,transform .4s ease;pointer-events:none}
-.flt-s[data-active] .flt-watch{opacity:1;transform:translate(-50%,0)}
 /* etiqueta do número: em toda tela que tem número; nas pequenas ela é ampliada pra continuar legível e fica do lado de dentro, virada pro centro */
 .flt-tag{position:absolute;z-index:5;top:14%;right:10px;display:grid;gap:3px;padding:10px 14px 11px 12px;border-radius:16px;text-align:left;white-space:nowrap;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 0 0 .5px rgba(12,10,9,.13),0 20px 34px -18px rgba(12,10,9,.45);transform:translateZ(18px) scale(var(--ti,1));transform-origin:100% 0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .4s ease;pointer-events:none}
 .flt-s:not([data-active]) .flt-tag{top:7%;right:auto;left:var(--to,7%);padding:8px 11px 9px 10px;border-radius:13px;transform-origin:0 0}
@@ -1798,6 +1796,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 .flt-tag span{font-size:12px;font-weight:500;line-height:1.2;color:var(--muted)}
 .flt-s:not([data-active]) .flt-tag b{font-size:18px;gap:5px}
 .flt-s:not([data-active]) .flt-tag span{font-size:12px}
+.flt[data-cel] .flt-s:not([data-active]) .flt-tag span{display:none}
 .flt-info{position:relative;z-index:12;display:grid;justify-items:center;gap:12px;padding:6px 20px 0;text-align:center}
 .flt-info h3{margin:0;min-height:1.1em;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.03em}
 .flt-ctl{display:flex;align-items:center;gap:14px}
@@ -3081,54 +3080,60 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     cv.style.cursor="grab";mede();liga();
     return {kill:function(){morto=true;cancelAnimationFrame(raf);clearTimeout(vTm);vid.pause();vid.removeAttribute("src");if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vv);var x=gl.getExtension("WEBGL_lose_context");if(x)x.loseContext()}}}
   /*@@FLT-JS: vitrine Telas flutuantes (área do agente FLT): defina aqui function flutua(el,list){...; return {kill:function(){...}}} @@*/
-  /* Telas flutuantes, versão "soltas" (porte do Spatial Depth Hero, 21st.dev): uma tela grande à frente toca o vídeo e as outras ficam espalhadas em volta,
-     cada uma num lugar, tamanho, profundidade e inclinação próprios (fixos), flutuando no seu ritmo. A cena inclina com o ponteiro. Arrastar, setas ou a troca automática passam a tela da vez. */
-  function flutua(el,list){var n=list.length,index=0,drag=0,dragging=false,g=null,tq=null,supp=0,tm=0,cw=216,P=4,mob=0,W=393,H=440,vis=true,mortos=false,raf=0,tx=0,ty=0,cx=0,cy=0;
+  /* Telas flutuantes, versão "soltas" (porte do Spatial Depth Hero, 21st.dev): a tela da vez fica à frente e toca o vídeo; as outras ficam soltas no ar
+     em duas colunas ao lado dela, cada uma no seu lugar, tamanho e profundidade, sempre atrás e sem encostar na tela da vez. A troca é uma esteira:
+     a coluna da direita sobe e entra na frente, a tela da vez sai pro alto da esquerda e a coluna da esquerda desce. Arrastar, tocar, setas ou a troca automática passam a tela. */
+  function flutua(el,list){var n=list.length,index=0,drag=0,dragging=false,g=null,tq=null,supp=0,tm=0,cw=196,P=4,mob=0,W=393,H=420,K=3,vis=true,mortos=false,raf=0,tx=0,ty=0,cx=0,cy=0,tw=[];
     function wrap(v,m){return ((v%m)+m)%m}
     var IL='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',IR='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
-    var IP='<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg>',IU='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
+    var IU='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
     function num(i){var h=VIEWS[list[i][0]];if(!h||h[2])return null;return {n:(h[1].indexOf("seguidor")>=0?"+":"")+fmt(h[0]),l:h[1]}}
-    /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga */
+    /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga. O balanço é curto de propósito: nenhuma tela chega perto da tela da vez */
     var sd=20261115;function rnd(){sd=(sd*1664525+1013904223)%4294967296;return sd/4294967296}function rr(a,b){return a+(b-a)*rnd()}function sg(){return rnd()<.5?-1:1}
-    function deriva(i){var big=i===0?.35:1;return "--fd:"+rr(8,14).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(4,10)).toFixed(1)+"px;--ay:"+(-rr(6,14)).toFixed(1)+"px;--az:"+(sg()*rr(20,60)*big).toFixed(0)+"px;--arx:"+(sg()*rr(2,6)*big).toFixed(1)+"deg;--ary:"+(sg()*rr(3,9)*big).toFixed(1)+"deg;--arz:"+(sg()*rr(1,3)*big).toFixed(1)+"deg;--bx:"+(sg()*rr(4,10)).toFixed(1)+"px;--by:"+rr(4,10).toFixed(1)+"px;--bz:"+(sg()*rr(20,70)*big).toFixed(0)+"px;--brx:"+(sg()*rr(2,6)*big).toFixed(1)+"deg;--bry:"+(sg()*rr(3,9)*big).toFixed(1)+"deg;--brz:"+(sg()*rr(1,3)*big).toFixed(1)+"deg"}
+    function deriva(){return "--fd:"+rr(8,13).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(2,4)).toFixed(1)+"px;--ay:"+(-rr(4,8)).toFixed(1)+"px;--az:"+(sg()*rr(4,9)).toFixed(0)+"px;--arx:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--ary:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--arz:"+(sg()*rr(.4,1)).toFixed(1)+"deg;--bx:"+(sg()*rr(2,4)).toFixed(1)+"px;--by:"+rr(3,7).toFixed(1)+"px;--bz:"+(sg()*rr(4,9)).toFixed(0)+"px;--brx:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--bry:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--brz:"+(sg()*rr(.4,1)).toFixed(1)+"deg"}
     el.className="flt";el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
     el.innerHTML='<div class="flt-atm" aria-hidden="true"></div><div class="flt-stage"><div class="flt-floor" aria-hidden="true"></div><div class="flt-scene">'+
-      list.map(function(c,i){var v=num(i);return '<button type="button" class="flt-s" data-i="'+i+'"><span class="flt-f" style="'+deriva(i)+'"><span class="flt-g"><span class="flt-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="flt-fog" aria-hidden="true"></span><span class="flt-watch" aria-hidden="true">'+IP+' Ver o vídeo</span></span></span>'+
+      list.map(function(c,i){var v=num(i);return '<button type="button" class="flt-s" data-i="'+i+'"><span class="flt-f" style="'+deriva()+'"><span class="flt-g"><span class="flt-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="flt-fog" aria-hidden="true"></span></span></span>'+
         (v?'<span class="flt-tag" aria-hidden="true"><b>'+IU+v.n+'</b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
-      '<div class="flt-info"><h3 aria-live="polite"></h3><div class="flt-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="flt-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>'+
-      '<dialog class="gc-dlg"><div class="gc-dlg-bar"><span class="label">Vídeo</span><button type="button" class="btn sm line" data-a="close">Fechar</button></div><video controls loop playsinline></video><h3></h3><p></p></dialog>';
-    var stage=el.querySelector(".flt-stage"),scene=el.querySelector(".flt-scene"),cards=el.querySelectorAll(".flt-s"),dots=el.querySelectorAll(".flt-dots i"),ttl=el.querySelector(".flt-info h3"),dlg=el.querySelector(".gc-dlg"),dv=dlg.querySelector("video");
+      '<div class="flt-info"><h3 aria-live="polite"></h3><div class="flt-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="flt-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>';
+    var stage=el.querySelector(".flt-stage"),scene=el.querySelector(".flt-scene"),cards=el.querySelectorAll(".flt-s"),dots=el.querySelectorAll(".flt-dots i"),ttl=el.querySelector(".flt-info h3");
     var vid=document.createElement("video");vid.muted=true;vid.loop=true;vid.playsInline=true;vid.setAttribute("muted","");vid.setAttribute("playsinline","");vid.preload="none";vid.setAttribute("aria-hidden","true");
     vid.addEventListener("playing",function(){vid.classList.add("on")});
-    /* os lugares em volta (fixos, escolhidos a dedo pra parecer solto): g = quanto sai da borda da tela grande até a borda da vitrine (1 = na borda, cortada),
-       y = altura (fração da metade da vitrine), z = profundidade (em larguras da tela grande), s = tamanho, e as inclinações. Positivos à direita, negativos à esquerda */
-    var DIR=[[.34,-.34,-.4,.5,-14,5,3],[.86,.34,-.2,.46,-22,-6,-4],[1.04,-.5,-.95,.42,-28,8,6],[.5,.7,-1.35,.37,-12,-10,-2],[.14,-.74,-1.85,.33,-8,12,5]],
-        ESQ=[[.46,.26,-.28,.52,16,-5,-3],[.94,-.38,-.62,.44,24,6,5],[.6,-.78,-1.1,.38,12,10,-6],[1.08,.6,-1.5,.36,30,-8,3],[.2,.8,-2.05,.31,8,-12,-4]],K=5;
-    function slot(k){if(k===0)return {x:0,y:-.01*H,z:.06*cw,s:1,ry:0,rx:0,rz:0,fog:0,op:1};
-      var a=Math.min(K+1,Math.abs(k)),r=(k>0?DIR:ESQ)[Math.min(K,a)-1],sd_=k>0?1:-1,fora=a>K,hh=cw/2,z=(r[2]-(fora?1.2:0))*cw,f=P*cw/(P*cw-z),
-        xv=sd_*(hh+r[0]*(W/2-hh)),yv=r[1]*H/2*.86;
-      return {x:xv/f,y:yv/f,z:z,s:r[3]*(1+.1*mob),ry:r[4],rx:r[5],rz:r[6],fog:Math.min(.5,Math.max(0,-r[2]*.2)),op:fora?0:1}}
+    /* lugares das telas de volta, por lado: [X, Y, z, tamanho, giros Y/X/Z].
+       X: 0 = encostada (com folga) na tela da vez, 1 = centro na borda da vitrine (meio cortada). Y: -1 = topo da vitrine, 1 = base. z em larguras da tela da vez.
+       A ordem de Y é sempre crescente dentro do lado (direita sobe, esquerda desce): na troca, nenhuma cruza a outra nem passa pela frente da tela da vez.
+       O último item de cada lado é o lugar de espera (invisível), abaixo da vitrine. */
+    var LAY={m:{K:3,gap:16,
+        d:[[.12,-1,-.3,.4,-16,4,2],[.62,.1,-.6,.36,-22,-5,-3],[.22,1,-.9,.32,-12,6,2],[.3,1.8,-1.2,.3,-10,0,0]],
+        e:[[.1,-1,-.3,.42,16,-4,-2],[.55,.06,-.7,.34,22,5,3],[.2,1,-.85,.36,12,-6,-2],[.3,1.8,-1.2,.3,10,0,0]]},
+      c:{K:4,gap:26,
+        d:[[.06,-.95,-.3,.5,-14,4,2],[.62,-.42,-.6,.44,-24,-5,-3],[.1,.55,-.85,.4,-12,6,2],[.68,.9,-1.1,.34,-28,-4,3],[.4,1.8,-1.4,.3,-10,0,0]],
+        e:[[.08,-.95,-.3,.52,14,-4,-2],[.66,-.38,-.65,.42,24,5,3],[.12,.5,-.9,.44,12,-6,-2],[.6,.92,-1.15,.36,28,4,-3],[.4,1.8,-1.4,.3,10,0,0]]}},L=LAY.m;
+    function slot(k){var oy=.04*H;if(k===0){var z0=.06*cw,f0=P*cw/(P*cw-z0);return {x:0,y:(-.01*H+oy)/f0-oy,z:z0,s:1,ry:0,rx:0,rz:0,fog:0,op:1}}
+      var a=Math.min(K+1,Math.abs(k)),r=(k>0?L.d:L.e)[a-1],sd_=k>0?1:-1,z=r[2]*cw,f=P*cw/(P*cw-z),bw=r[3]*cw*f*1.04,bh=r[3]*cw*1.778*f,
+        hh=cw*P/(P-.06)/2,xv=sd_*(hh+L.gap+bw/2+r[0]*Math.max(0,W/2-hh-L.gap-bw/2)),yv=r[1]*(H/2-bh/2-6);
+      return {x:xv/f,y:(yv+oy)/f-oy,z:z,s:r[3],ry:r[4],rx:r[5],rz:r[6],fog:Math.min(.45,Math.max(0,-r[2]*.4)),op:a>K?0:1}}
     function mix(p,q,f){var o={};for(var k in p)o[k]=p[k]+(q[k]-p[k])*f;return o}
     function pose(off){var lo=Math.floor(off),f=off-lo;return f?mix(slot(lo),slot(lo+1),f):slot(lo)}
     function lay(){for(var i=0;i<n;i++){var d=wrap(i-index+n/2,n)-n/2,off=d+drag,c=cards[i],st=c.style,p=pose(Math.max(-(K+1),Math.min(K+1,off)));
         st.transform="translate(-50%,-50%) translate3d("+p.x.toFixed(1)+"px,"+p.y.toFixed(1)+"px,"+p.z.toFixed(1)+"px) rotateY("+p.ry.toFixed(2)+"deg) rotateX("+p.rx.toFixed(2)+"deg) rotateZ("+p.rz.toFixed(2)+"deg) scale("+p.s.toFixed(3)+")";
         st.opacity=p.op.toFixed(2);st.visibility=Math.abs(d)>K+1&&Math.abs(off)>K+.5?"hidden":"";st.pointerEvents=p.op<.5?"none":"";st.setProperty("--flt-fog",p.fog.toFixed(2));
-        st.setProperty("--ti",(p.s<.95?Math.min(mob<.3?1.35:2.6,.78/p.s):1).toFixed(3));/* etiqueta do número nas telas pequenas: vai pra parte que aparece (fora da tela grande e dentro da vitrine); se sobrar pouco, some */
-        var pf=P*cw/(P*cw-p.z),hw=cw*p.s/2*pf,xc=Math.abs(p.x*pf),vl=Math.max(xc-hw,cw/2+(off>0&&mob>.3?cw*.12+14:4)),vr=Math.min(xc+hw,W/2-8),cab=vr-vl>=(mob<.3?46:74);
-        c.setAttribute("data-tag",off<0?"r":"l");st.setProperty("--to",(cab?Math.max(5,(vl-(xc-hw))/(2*hw)*100+5):5).toFixed(1)+"%");if(cab||d===0)c.removeAttribute("data-semtag");else c.setAttribute("data-semtag","");
-        if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"":"Trazer pra frente ")+list[i][1])}
+        /* etiqueta do número nas telas de volta: do lado de dentro, ampliada até caber na parte que aparece (a vitrine corta as telas da borda) */
+        if(tw[i]){var pf=P*cw/(P*cw-p.z),hw=cw*p.s*pf/2,xc=Math.abs(p.x*pf),visw=Math.min(xc+hw,W/2-6)-(xc-hw),loc=visw/(p.s*pf),ti=Math.min(mob<.3?2.6:1/Math.max(.3,p.s),loc*.84/tw[i]),fz=ti*p.s*pf;
+          st.setProperty("--ti",(d===0?1:ti).toFixed(3));if(d===0||fz*18>=11)c.removeAttribute("data-semtag");else c.setAttribute("data-semtag","")}
+        c.setAttribute("data-tag",off<0?"r":"l");
+        if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"Próxima tela, agora em destaque: ":"Trazer pra frente ")+list[i][1])}
       ttl.textContent=list[index][1];for(var j=0;j<dots.length;j++)dots[j].className=j===index?"on":""}
+    function medeTag(){var cel=el.hasAttribute("data-cel");for(var i=0;i<n;i++){var t=cards[i].querySelector(".flt-tag");tw[i]=t?(cel?t.querySelector("b").offsetWidth+22:t.offsetWidth):0}}
     function poeVideo(){var m=cards[index].querySelector(".flt-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+list[index][0]+".mp4";m.insertBefore(vid,m.querySelector(".flt-fog"))}sync()}
-    function sync(){if(!mortos&&vis&&!document.hidden&&!dlg.open&&el.offsetParent!==null){var q=vid.play();if(q&&q.catch)q.catch(function(){})}else vid.pause()}
+    function sync(){if(!mortos&&vis&&!document.hidden&&el.offsetParent!==null){var q=vid.play();if(q&&q.catch)q.catch(function(){})}else vid.pause()}
     function sel(i){index=wrap(i,n);drag=0;lay();poeVideo();agenda()}
-    function agenda(){clearTimeout(tm);if(mortos||calmo)return;tm=setTimeout(function(){if(!dragging&&!dlg.open&&vis&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
-    function abre(i){dlg.querySelector("h3").textContent=list[i][1];var v=num(i),dp=dlg.querySelector("p");dp.textContent=v?v.n+" "+v.l:"";dp.hidden=!v;dv.src="assets/"+list[i][0]+".mp4";dlg.showModal();vid.pause();clearTimeout(tm);var q=dv.play();if(q&&q.catch)q.catch(function(){})}
-    dlg.addEventListener("close",function(){dv.pause();sync();agenda()});dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+    function agenda(){clearTimeout(tm);if(mortos||calmo)return;tm=setTimeout(function(){if(!dragging&&vis&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
     stage.addEventListener("pointerdown",function(e){if(!e.isPrimary||(e.pointerType==="mouse"&&e.button!==0))return;g={x:e.clientX,y:e.clientY,t:performance.now(),h:false}});
     stage.addEventListener("pointermove",function(e){if(!g)return;var dx=e.clientX-g.x,dy=e.clientY-g.y;
       if(!g.h&&Math.abs(dy)>12&&Math.abs(dx)<Math.abs(dy)*.7){g=null;return}
       if(!g.h&&Math.abs(dx)>8){g.h=true;try{stage.setPointerCapture(e.pointerId)}catch(x){}dragging=true;clearTimeout(tm);stage.setAttribute("data-dragging","")}
-      if(g.h){drag=Math.max(-1.3,Math.min(1.3,dx/(cw*.9)));lay()}});
+      if(g.h){drag=Math.max(-1,Math.min(1,dx/(cw*.9)));lay()}});
     function up(e,cancel){var st=g;g=null;if(st&&st.h){var dx=e.clientX-st.x,vel=Math.abs(dx)/Math.max(1,performance.now()-st.t);
         if(!cancel&&(Math.abs(dx)>Math.min(55,cw*.2)||(Math.abs(dx)>14&&vel>.35)))index=wrap(index+(dx<0?1:-1),n);supp=performance.now()+300;
         drag=0;dragging=false;stage.removeAttribute("data-dragging");lay();poeVideo();agenda()}}
@@ -3137,22 +3142,24 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     stage.addEventListener("touchstart",function(e){var t=e.touches[0];tq=e.touches.length===1?{x:t.clientX,y:t.clientY,lock:0}:null},{passive:true});
     stage.addEventListener("touchmove",function(e){if(!tq)return;var t=e.touches[0],dx=t.clientX-tq.x,dy=t.clientY-tq.y;if(!tq.lock&&(Math.abs(dx)>5||Math.abs(dy)>5))tq.lock=Math.abs(dx)>=Math.abs(dy)*.7?1:2;if(tq.lock===1&&e.cancelable)e.preventDefault()},{passive:false});
     stage.addEventListener("touchend",function(){tq=null},{passive:true});stage.addEventListener("touchcancel",function(){tq=null},{passive:true});
+    /* tocar só troca: na tela da vez passa pra próxima, numa de volta traz ela pra frente */
     el.addEventListener("click",function(e){var a=e.target.closest("[data-a]");
-      if(a){var k=a.dataset.a;if(k==="prev")sel(index-1);else if(k==="next")sel(index+1);else if(k==="close")dlg.close();return}
-      var c=e.target.closest(".flt-s");if(!c||performance.now()<supp)return;var i=+c.dataset.i;if(i!==index)sel(i)});
-    el.addEventListener("keydown",function(e){if(dlg.open)return;if(e.key==="ArrowRight"){e.preventDefault();sel(index+1)}else if(e.key==="ArrowLeft"){e.preventDefault();sel(index-1)}});
+      if(a){if(a.dataset.a==="prev")sel(index-1);else sel(index+1);return}
+      var c=e.target.closest(".flt-s");if(!c||performance.now()<supp)return;var i=+c.dataset.i;sel(i===index?index+1:i)});
+    el.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();sel(index+1)}else if(e.key==="ArrowLeft"){e.preventDefault();sel(index-1)}});
     /* parallax do componente: a cena inteira inclina devagar acompanhando o mouse (mola suave) */
     function tilt(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;scene.style.transform="rotateX("+cx.toFixed(3)+"deg) rotateY("+cy.toFixed(3)+"deg)";raf=Math.abs(tx-cx)+Math.abs(ty-cy)>.01?requestAnimationFrame(tilt):0}
-    function pm(e){if(e.pointerType!=="mouse"||calmo||!vis)return;var vw=window.innerWidth||1,vh=window.innerHeight||1;tx=(e.clientY/vh-.5)*-8;ty=(e.clientX/vw-.5)*10;if(!raf)raf=requestAnimationFrame(tilt)}
+    function pm(e){if(e.pointerType!=="mouse"||calmo||!vis)return;var vw=window.innerWidth||1,vh=window.innerHeight||1;tx=(e.clientY/vh-.5)*-5;ty=(e.clientX/vw-.5)*6;if(!raf)raf=requestAnimationFrame(tilt)}
     window.addEventListener("pointermove",pm,{passive:true});
-    function mede(){var w=el.clientWidth;if(!w)return;var vh=window.innerHeight||800;W=w;mob=Math.max(0,Math.min(1,(w-420)/500));
-      cw=Math.round(Math.max(150,Math.min(300,w*.55,(vh*.66-50)/1.778)));H=Math.round(cw*1.778+40+30*mob);
-      el.style.setProperty("--flt-cw",cw+"px");el.style.setProperty("--flt-p",(cw*P).toFixed(0)+"px");el.style.setProperty("--flt-h",H+"px");lay()}
+    function mede(){var w=el.clientWidth;if(!w)return;var vh=window.innerHeight||800,cel=w<600;W=w;mob=Math.max(0,Math.min(1,(w-420)/500));L=cel?LAY.m:LAY.c;K=L.K;
+      if(cel){el.setAttribute("data-cel","");cw=Math.round(Math.max(150,Math.min(w*.5,(vh*.7-60)/1.778/1.2)));H=Math.round(cw*1.778*1.2)}
+      else{el.removeAttribute("data-cel");cw=Math.round(Math.max(170,Math.min(300,w*.26,(vh*.66-50)/1.778)));H=Math.round(cw*1.778+80)}
+      el.style.setProperty("--flt-cw",cw+"px");el.style.setProperty("--flt-p",(cw*P).toFixed(0)+"px");el.style.setProperty("--flt-h",H+"px");medeTag();lay()}
     function vis_(){sync()}document.addEventListener("visibilitychange",vis_);
     var io=null;if(window.IntersectionObserver){io=new IntersectionObserver(function(es){vis=es[es.length-1].isIntersecting;sync()},{threshold:.15});io.observe(el)}
     var ro=null;if(window.ResizeObserver){ro=new ResizeObserver(mede);ro.observe(el)}
     mede();lay();poeVideo();agenda();
-    return {kill:function(){mortos=true;clearTimeout(tm);cancelAnimationFrame(raf);window.removeEventListener("pointermove",pm);if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vis_);vid.pause();vid.removeAttribute("src");try{vid.load()}catch(x){}dv.pause();if(dlg.open)dlg.close()}}}
+    return {kill:function(){mortos=true;clearTimeout(tm);cancelAnimationFrame(raf);window.removeEventListener("pointermove",pm);if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vis_);vid.pause();vid.removeAttribute("src");try{vid.load()}catch(x){}}}}
   /*@@/FLT-JS@@*/
   function mountVit(){if(typeof mountVitBox==="function")setTimeout(mountVitBox,0);var host=$("vit");if(vitApi&&vitApi.kill)vitApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);
     if(T.vit==="baralho"){vitApi=pile(el,CATALOGO,setStat,6000);host.insertAdjacentHTML("beforeend",'<p class="vit-hint">arraste a carta pro lado</p>')}
@@ -4328,5 +4335,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794791993";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794792091";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
