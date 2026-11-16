@@ -696,6 +696,14 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .mt-c{justify-items:center;text-align:center}
 .mt-c .lead{margin-inline:auto}
 .head.mt-c{margin-inline:auto;width:100%}
+/* resultados de clientes (Vídeos) */
+.cli{list-style:none;margin:0;padding:0;display:grid;gap:22px;width:100%;max-width:980px;margin-inline:auto}
+.cli-c{display:grid;gap:10px;justify-items:center;text-align:center}
+.cli-n{font-size:15px;color:var(--muted)}
+.cli-n b{display:block;font-family:var(--serif);font-weight:var(--serif-w);font-size:44px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
+.cli-c img{width:100%;border-radius:18px;display:block;box-shadow:0 18px 34px -24px rgba(12,10,9,.45)}
+.cli-q{font-size:13.5px;color:var(--muted)}.cli-q b{color:var(--ink-2);font-weight:600}
+@container site (min-width:760px){.cli{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 28px}}
 .mt-c .row{justify-content:center}
 #pg-inicio #ex-pills{margin-inline:auto}
 .mt-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
@@ -1745,6 +1753,8 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 @keyframes lgEstrela{0%{transform:scale(1) rotate(0deg)}20%{transform:scale(.7) rotate(0deg)}44%{transform:scale(1.4) rotate(45deg)}66%{transform:scale(.92) rotate(90deg)}100%{transform:scale(1) rotate(90deg)}}
 @keyframes lgEstoura{0%{opacity:0;transform:scale(.1)}40%{opacity:1;transform:scale(1.5)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.3)}}
 
+/*@@ACQ-CSS: opções do quadro do curso. CSS novo desta área entra logo abaixo desta linha @@*/
+
 /*@@FLT-CSS: vitrine Telas flutuantes. CSS novo desta área entra logo abaixo desta linha @@*/
 /* Telas soltas (porte do Spatial Depth Hero do 21st.dev): cada tela num lugar, tamanho, profundidade e inclinação próprios, flutuando no seu ritmo; a cena inteira inclina com o ponteiro */
 .flt{position:relative;isolation:isolate;margin-block:10px 6px;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));overflow:clip;padding-bottom:18px;color:var(--ink);outline:none}
@@ -2142,6 +2152,10 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     <p class="muted xs">* Contados a partir da aprovação do escopo e da entrega da narração.</p>
   </div></section>
 
+  <section class="sec" id="clientes"><div class="wrap">
+    <div class="head mt-c"><h2 class="title">Quem posta, <em>cresce.</em></h2><p class="lead">Seguidores que cada um ganhou com os vídeos da Pulsar.</p></div>
+    <ul class="cli"><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Alex Sato Tanaka</b> · Urologista pediátrico</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Master Clínica</b> · Centro de urologia</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Safira Castro</b> · Proctologista</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Carollyne Rodovalho</b> · Cirurgiã do aparelho digestivo</p></li></ul>
+  </div></section>
   <section class="sec tint" id="boxes"><div class="wrap">
     <div class="head mt-c"><h2 class="title">Escolha o seu <em>pacote.</em></h2><p class="lead">Todos incluem roteiro, narração (IA ou a sua voz) e 1 ajuste por vídeo.</p></div>
     <ul class="pls">
@@ -2595,6 +2609,12 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     <button type="button" data-v="liquido"><small style="font-size:13px;color:var(--ink)">Vidro líquido</small><small>lente, 21st.dev</small></button>
     <button type="button" data-v="flutua"><small style="font-size:13px;color:var(--ink)">Telas flutuantes</small><small>telas no ar, com números</small></button>
   </div><a class="arrow" href="#comparar" style="justify-self:start;font-size:13px">Ver as sete juntas</a></div>
+  <div class="tg"><span>Quadro do curso</span><div class="ch" data-k="acq">
+    <button type="button" data-v="video"><small style="font-size:13px;color:var(--ink)">Vídeo</small><small>como está</small></button>
+    <button type="button" data-v="bastidor"><small style="font-size:13px;color:var(--ink)">Bastidor</small><small>roteiro até o vídeo</small></button>
+    <button type="button" data-v="antes"><small style="font-size:13px;color:var(--ink)">Antes e depois</small><small>arrasta a linha</small></button>
+    <button type="button" data-v="grade"><small style="font-size:13px;color:var(--ink)">Grade de aulas</small><small>vários vídeos</small></button>
+  </div></div>
   <div class="tg"><span>Fonte da Academy</span><div class="ch" data-k="acf">
     <button type="button" data-v="serifa"><small style="font-size:13px;color:var(--ink)">Serifada</small><small>igual às apostilas</small></button>
     <button type="button" data-v="casa"><small style="font-size:13px;color:var(--ink)">Da casa</small><small>igual ao resto do site</small></button>
@@ -2682,7 +2702,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     if(h!==(location.hash||"#inicio"))return;e.preventDefault();var sc=$("screen"),suave=!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"smooth":"auto";
     try{if(sc)sc.scrollTo({top:0,behavior:suave});window.scrollTo({top:0,behavior:suave})}catch(x){if(sc)sc.scrollTop=0;window.scrollTo(0,0)}});
 
-  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"vidrocf",frase:"portas",notas:"nao",acf:"serifa"},T={};
+  var DEF={font:"apple",accent:"dourado",bg:"pedra",radius:"suave",nav:"vidro",vit:"vidrocf",frase:"portas",notas:"nao",acf:"serifa",acq:"bastidor"},T={};
   /* frases da abertura em teste; o Renan escolhe uma e as outras saem */
   var FRASES={seus:["Meus vídeos te trouxeram até aqui.","Agora eu faço<br><em>os seus.</em>"],portas:["Meus vídeos te trouxeram até aqui.","Posso fazer os seus<br><em>ou te ensinar.</em>"],perfil:["Você parou pra ver um vídeo meu.","Eu faço um <em>pro seu perfil.</em>"],seu:["Um vídeo meu te trouxe até aqui.","O próximo pode ser <em>seu.</em>"]};
   /* frase em dois tempos: a primeira fala de como a pessoa chegou, some, e fica a segunda */
@@ -2717,7 +2737,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   var qv=/[?&]vit=([a-z]+)/.exec(location.search);if(qv)T.vit=qv[1]; /* link direto pra uma vitrine, ex.: ?vit=liquido */ /* vitrine decidida em 15/11/2026: a de vidro; quem tinha outra salva passa a abrir nela uma vez */
   T.nav="vidro";
   function aplica(){
-    var r=document.documentElement;["font","accent","bg","radius","nav","vit","acf"].forEach(function(k){r.setAttribute("data-"+k,T[k])});
+    var r=document.documentElement;["font","accent","bg","radius","nav","vit","acf","acq"].forEach(function(k){r.setAttribute("data-"+k,T[k])});
     if(!FRASES[T.frase])T.frase=DEF.frase;frase();
     document.body.classList.toggle("notas",T.notas==="sim");
     document.querySelectorAll(".tg .ch").forEach(function(ch){var k=ch.dataset.k;ch.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.v===T[k]))})});
@@ -4202,6 +4222,8 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     row.addEventListener("keydown",function(e){var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();vai(at+d);ps[at].focus()});
     if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)mede();toca()},{threshold:.2}).observe(el);else vis=true;
     window.addEventListener("resize",mede);if(window.ResizeObserver)new ResizeObserver(mede).observe(row);mede();vai(0)})();
+  /*@@ACQ-JS: opções do quadro do curso (área do agente ACQ) @@*/
+  /*@@/ACQ-JS@@*/
   /*@@ACAD-JS: página Academy (área do agente ACAD) @@*/
   /* Academy. (1) O "me avisa" é o porte do "Expand Input" do 21st.dev (mirukullacode): idle (botão), open (campo), loading (girando) e success (visto).
      (2) Como a aula inaugural ainda não existe, tocar no quadro do curso leva ao me avisa. (3) A pasta do cartão da Biblioteca. (4) Os vídeos da página */
@@ -4294,5 +4316,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794790959";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794791345";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
