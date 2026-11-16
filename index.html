@@ -3185,7 +3185,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   aplica();
 
   var VIRAIS=[["roer","Roer Unha","5,3 mi"],["capsula","Cápsula Endoscópica","1,8 mi"],["hpylori","H. Pylori","+2 mil seguidores"],["placa","Placa e Parafusos",""],["hernia","Hérnia Inguinal",""],["cerebro","Cérebro Acordado",""]];
-  var CATALOGO=[["vt-unha","Unha que Não Dói"],["vt-supositorio","Supositório"],["vt-roer","Roer Unha"],["vt-cisto","Cisto Sinovial"],["vt-furunculo","Furúnculo"],["vt-lagarto","Lagarto e Mounjaro"],["vt-bumbum","Bumbum Coçando"],["vt-capsula2","Cápsula Endoscópica"],["vt-verruga","Verruga"],["vt-cordao","Cordão Umbilical"],["hpylori","H. Pylori"],["vt-meconio","Mecônio"],["vt-cocopedra","Cocô de Pedra"],["vt-espinha","Espinha"]];
+  var CATALOGO=[["vt-supositorio","Supositório"],["vt-unha","Unha que Não Dói"],["vt-roer","Roer Unha"],["vt-cisto","Cisto Sinovial"],["vt-furunculo","Furúnculo"],["vt-lagarto","Lagarto e Mounjaro"],["vt-bumbum","Bumbum Coçando"],["vt-capsula2","Cápsula Endoscópica"],["vt-verruga","Verruga"],["vt-cordao","Cordão Umbilical"],["hpylori","H. Pylori"],["vt-meconio","Mecônio"],["vt-cocopedra","Cocô de Pedra"],["vt-espinha","Espinha"]];
   var calmo=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function lazy(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:root,threshold:.4});root.querySelectorAll("video").forEach(function(v){io.observe(v)})}
 
@@ -5128,5 +5128,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794803724";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794803769";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
