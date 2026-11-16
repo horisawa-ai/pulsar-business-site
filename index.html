@@ -2325,7 +2325,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     <div class="sqz mt-rv" id="sqz">
       <div class="sqz-top"><button type="button" class="sqz-a" data-by="-1" aria-label="Tipo anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M9.6 2.6 5.1 7.1h9.1v1.8H5.1l4.5 4.5-1.2 1.2-6-6L1.8 8l.6-.6 6-6 1.2 1.2Z"/></svg></button><button type="button" class="sqz-a" data-by="1" aria-label="Próximo tipo"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 2.6l4.5 4.5H1.800v1.800h9.100l-4.500 4.500 1.200 1.200 6-6 .600-.600-.600-.600-6-6-1.200 1.200Z"/></svg></button></div>
       <div class="sqz-row" role="tablist" aria-label="Tipos de vídeo">
-        <button type="button" class="sqz-p" role="tab" data-i="0" aria-selected="true" aria-label="Pulsar Motion"><span class="sqz-m"><video data-src="assets/pm-arrepio.mp4" poster="assets/pm-arrepio.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Pulsar Motion</span><span class="sqz-vl">Pulsar Motion</span></button>
+        <button type="button" class="sqz-p" role="tab" data-i="0" aria-selected="true" aria-label="Pulsar Motion"><span class="sqz-m"><video data-src="assets/pm-mix.mp4" poster="assets/pm-mix.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Pulsar Motion</span><span class="sqz-vl">Pulsar Motion</span></button>
         <button type="button" class="sqz-p" role="tab" data-i="1" aria-selected="false" aria-label="Motion + Vídeo" tabindex="-1"><span class="sqz-m"><video data-src="assets/mv-meconio.mp4" poster="assets/mv-meconio.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Motion + Vídeo</span><span class="sqz-vl">Motion + Vídeo</span></button>
         <button type="button" class="sqz-p" role="tab" data-i="2" aria-selected="false" aria-label="Vídeo Pulsar" tabindex="-1"><span class="sqz-m"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Vídeo Pulsar</span><span class="sqz-vl">Vídeo Pulsar</span></button>
         <button type="button" class="sqz-p" role="tab" data-i="3" aria-selected="false" aria-label="Pulsar Cirúrgico" tabindex="-1"><span class="sqz-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Pulsar Cirúrgico</span><span class="sqz-vl">Pulsar Cirúrgico</span></button>
@@ -4239,7 +4239,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   rail("rail-home");rail("rail-bonus",VIRAIS.slice(0,4));
   $("dlg-x").onclick=function(){$("dlg").close()};
 
-  var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-arrepio"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
+  var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
   var BONUS=[["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["placa","Placa e Parafusos"],["roer","Roer Unha"],["supositorio","Supositório",1],["garrafa","Garrafa",1],["colposcopia","Colposcopia",1]];
   var DUR={30:"30s",60:"1min",90:"1min30"};
   var P={motion:{30:150,60:250,90:320},hibrido:{30:280,60:450,90:580},completo:{30:450,60:700,90:900}};
@@ -4736,5 +4736,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794792765";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794792959";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
