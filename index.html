@@ -1920,7 +1920,7 @@ html[data-acf="serifa"] .acq-rot{font-size:29px;line-height:1.02;letter-spacing:
 /* publicado: a cena encolhe pra dentro de uma tela de celular de vidro (9:16, a 13% da borda) e o número sobe ao lado.
    As margens do recorte são as da tela divididas pela escala de .85, e o translateX põe a tela à esquerda sem mudar o miolo da cena */
 .acq-b[data-s="5"] .acq-v{clip-path:inset(6.47% 30.82% 25.29% 30.82% round 23.5px);transform:translateX(-20.7%) scale(.85)}
-.acq-tel{position:absolute;z-index:1;left:13%;top:13%;width:32.6%;height:58%;border-radius:20px;box-shadow:0 0 0 3px rgba(255,255,255,.92),0 0 0 4px rgba(12,10,9,.1),0 28px 44px -24px rgba(12,10,9,.55);opacity:0;transform:scale(1.06);transition:opacity .4s ease,transform .8s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.acq-tel{position:absolute;z-index:1;left:13%;top:13%;width:32.6%;height:auto;aspect-ratio:9/16;border-radius:20px;box-shadow:0 0 0 3px rgba(255,255,255,.92),0 0 0 4px rgba(12,10,9,.1),0 28px 44px -24px rgba(12,10,9,.55);opacity:0;transform:scale(1.06);transition:opacity .4s ease,transform .8s cubic-bezier(.22,1,.36,1);pointer-events:none}
 .acq-tel::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(125deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 34%),linear-gradient(to top,rgba(12,10,9,.4),rgba(12,10,9,0) 32%)}
 .acq-tv{position:absolute;inset:0;z-index:-1;display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .acq-ilha{position:absolute;top:6px;left:50%;width:30%;height:7px;margin-left:-15%;border-radius:4px;background:#1c1917}
@@ -4915,7 +4915,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
           '<p class="acq-rot"><span class="acq-dt"></span><i class="acq-car"></i><span class="acq-rs"></span></p>'+
           '<div class="acq-pr"><p><span class="acq-dt"></span><i class="acq-car"></i><span class="acq-rs"></span></p><span class="acq-go">'+SETA+'</span></div>'+
           '<video class="acq-v" muted loop playsinline preload="none" poster="assets/est-roer-poster.jpg" tabindex="-1"></video>'+
-          '<div class="acq-tel"><video class="acq-tv" muted loop playsinline preload="none" poster="assets/acq-roer-pub.jpg" tabindex="-1"></video><i class="acq-ilha"></i><span class="acq-ui">'+
+          '<div class="acq-tel"><video class="acq-tv" muted loop playsinline preload="none" poster="assets/vt-roer.jpg" tabindex="-1"></video><i class="acq-ilha"></i><span class="acq-ui">'+
             ico('<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/>')+
             ico('<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>')+ico('<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>')+
           '</span></div>'+
@@ -4949,7 +4949,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       function fim(){zera();b.classList.add("acq-sem");etapa(5);bars.forEach(function(i){i.classList.remove("on");i.classList.add("ok")});
         b.classList.add("acq-x");escreve(rot,ROT,ROT.length);escreve(pr,PR,PR.length);num.textContent="5,3 mi"}
       return{monta:monta,
-        liga:function(){if(rodando)return;rodando=true;if(calmo){fim();return}carrega(v,"assets/est-roer-hd.mp4");carrega(vo,"assets/acq-roer-pub.mp4");roda()},
+        liga:function(){if(rodando)return;rodando=true;if(calmo){fim();return}carrega(v,"assets/est-roer-hd.mp4");carrega(vo,"assets/vt-roer.mp4");roda()},
         desliga:function(){rodando=false;if(!b)return;ts.forEach(clearTimeout);ts=[];clearInterval(tt);cancelAnimationFrame(rc);v.pause();vo.pause();fr.classList.remove("acq-esc")},
         sai:function(){fr.classList.remove("acq-esc")}}})();
 
@@ -5092,7 +5092,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
 
     /* cartão da Biblioteca: pasta de vidro de enfeite. Espia quando o cartão aparece e, no computador, abre de vez com o mouse ou o foco do teclado no cartão */
     var lib=$("ac-lib"),caixa=$("ac-lib-p");
-    caixa.innerHTML=GF.html({id:"ac-bib",label:"Biblioteca",meta:"25 PDFs grátis",image:"assets/pdf/atlas.jpg",decor:true,
+    caixa.innerHTML=GF.html({id:"ac-bib",label:"Biblioteca",meta:"24 PDFs grátis",image:"assets/pdf/atlas.jpg",decor:true,
       files:[{name:"Cardiologia",image:"assets/pdf/cardiologia.jpg",bare:true},{name:"Dermatologia",image:"assets/pdf/dermatologia.jpg",bare:true},{name:"Ortopedia",image:"assets/pdf/ortopedia.jpg",bare:true}]});
     GF.mount(caixa);
     var gf=caixa.querySelector(".gf");
@@ -5129,5 +5129,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794802349";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794802490";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
