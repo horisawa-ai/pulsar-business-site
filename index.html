@@ -2123,8 +2123,8 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       <div class="row"><a class="btn" href="#tipos">Entender os três tipos</a><a class="arrow" href="#boxes">Ver os pacotes</a></div>
     </div>
   </div>
-  <div class="ring" id="ring-box" aria-label="Vitrine giratória: arraste para os lados"><div class="ring-in"></div></div>
-  <div class="wrap"><div class="ring-cap" id="ring-box-cap"></div>
+  <div class="vit-box" id="vit-box"></div>
+  <div class="wrap"><div class="ring-cap" id="ring-box-cap" hidden></div>
   </div></section>
 
   <section class="sec tint" id="tipos"><div class="wrap">
@@ -3153,7 +3153,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
     mede();lay();poeVideo();agenda();
     return {kill:function(){mortos=true;clearTimeout(tm);cancelAnimationFrame(raf);window.removeEventListener("pointermove",pm);if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vis_);vid.pause();vid.removeAttribute("src");try{vid.load()}catch(x){}dv.pause();if(dlg.open)dlg.close()}}}
   /*@@/FLT-JS@@*/
-  function mountVit(){var host=$("vit");if(vitApi&&vitApi.kill)vitApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);
+  function mountVit(){if(typeof mountVitBox==="function")setTimeout(mountVitBox,0);var host=$("vit");if(vitApi&&vitApi.kill)vitApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);
     if(T.vit==="baralho"){vitApi=pile(el,CATALOGO,setStat,6000);host.insertAdjacentHTML("beforeend",'<p class="vit-hint">arraste a carta pro lado</p>')}
     else if(T.vit==="tela")vitApi=full(el,CATALOGO);
     else if(T.vit==="lente")vitApi=lens(el,CATALOGO);
@@ -3174,7 +3174,9 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       cmpApis.push(a)})}
   function cmpOff(){if(!cmpApis.length)return;cmpApis.forEach(function(a){if(a&&a.kill)a.kill()});cmpApis=[];$("cmp6").innerHTML=""}
   document.addEventListener("click",function(e){var b=e.target.closest("[data-usar]");if(!b)return;T.vit=b.dataset.usar;aplica();mountVit();location.hash="#inicio"});
-  ring("ring-box",CATALOGO.slice().reverse(),function(i){$("ring-box-cap").textContent=CATALOGO[CATALOGO.length-1-i][1]},3500);
+  /* página Vídeos: a mesma vitrine do Início (a escolhida no painel), com os vídeos em outra ordem */
+  var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var L=CATALOGO.slice().reverse(),f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;boxApi=f(el,L)}
+  mountVitBox();
 
   /* explorador */
   var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os pacotes","#box"],
@@ -4325,5 +4327,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794791564";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794791938";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
