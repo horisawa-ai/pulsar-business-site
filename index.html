@@ -704,6 +704,10 @@ dialog::backdrop{background:rgba(12,10,9,.28);-webkit-backdrop-filter:blur(8px);
 .cli-c img{width:100%;border-radius:18px;display:block;box-shadow:0 18px 34px -24px rgba(12,10,9,.45)}
 .cli-q{font-size:13.5px;color:var(--muted)}.cli-q b{color:var(--ink-2);font-weight:600}
 @container site (min-width:760px){.cli{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 28px}}
+.cli-2{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+.cli-2 .cli-n b{font-size:30px}.cli-2 .cli-n{font-size:13px}.cli-2 .cli-c img{border-radius:12px}
+.mt-res{padding-top:8px}
+@container site (min-width:760px){.cli-2{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}}
 .mt-c .row{justify-content:center}
 #pg-inicio #ex-pills{margin-inline:auto}
 .mt-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
@@ -2288,6 +2292,11 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       <figure><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video></figure>
     </div>
     <p class="mt-cap">Vídeos meus. É esse o jeito de fazer que eu te ensino.</p>
+  </div></section>
+
+  <section class="sec mt-res"><div class="wrap">
+    <div class="head mt-c"><h2 class="title">Quem trabalhou comigo, <em>cresceu.</em></h2><p class="lead">Seguidores ganhos com os vídeos da Pulsar.</p></div>
+    <ul class="cli cli-2"><li class="cli-c"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"></li></ul>
   </div></section>
 
   <section class="sec" style="padding-block:0"><div class="wrap">
@@ -4316,5 +4325,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794791345";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794791564";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
