@@ -5118,5 +5118,27 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794806915";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>
+/* resultados dos alunos: o número sobe de zero até o valor real quando o cartão aparece na tela (volta a subir quando a pessoa volta nele) */
+(function(){
+  if(!window.IntersectionObserver)return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var els=[].slice.call(document.querySelectorAll(".cli-n b.num"));
+  var fmt=function(n){return "+"+Math.round(n).toLocaleString("pt-BR")};
+  els.forEach(function(el){
+    var txt=el.textContent.trim(),m=txt.match(/([\d.,]+)\s*(mil)?/);if(!m)return;
+    var v=parseFloat(m[1].replace(/\./g,"").replace(",","."))*(m[2]?1000:1);
+    el.__fim=txt;el.__alvo=v;el.style.fontVariantNumeric="tabular-nums";
+  });
+  var roda=function(el){
+    if(el.__rodando)return;el.__rodando=true;var t0=0,D=1700;
+    requestAnimationFrame(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);
+      el.textContent=p<1?fmt(el.__alvo*e):el.__fim;if(p<1)requestAnimationFrame(f);else el.__rodando=false})};
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){var el=en.target;
+    if(en.isIntersecting){if(!el.__feito){el.__feito=true;roda(el)}}
+    else if(en.intersectionRatio===0&&!el.__rodando){el.__feito=false;el.textContent="+0"}})},{threshold:[0,.6]});
+  els.forEach(function(el){if(el.__alvo){el.textContent="+0";io.observe(el)}});
+})();
+</script>
+<script>(function(){var V="1794821777";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
