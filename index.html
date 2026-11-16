@@ -2029,6 +2029,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .fls-tag{position:absolute;z-index:5;top:14%;right:10px;display:grid;gap:3px;padding:10px 14px 11px 12px;border-radius:16px;text-align:left;white-space:nowrap;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 0 0 .5px rgba(12,10,9,.13),0 20px 34px -18px rgba(12,10,9,.45);transform:translateZ(18px) scale(var(--ti,1));transform-origin:100% 0;transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .4s ease;pointer-events:none}
 .fls-s:not([data-active]) .fls-tag{top:var(--tt,7%);right:auto;left:var(--to,7%);padding:8px 11px 9px 10px;border-radius:13px;transform-origin:0 0;transform:translateZ(4px) scale(var(--ti,1))}
 .fls-stage[data-dragging] .fls-tag,.fls-s[data-semtag]:not([data-active]) .fls-tag{opacity:0}
+.fls-s[data-active] .fls-tag{top:auto;bottom:12px;left:12px;right:auto;display:flex;align-items:baseline;gap:5px;padding:5px 10px 6px;border-radius:999px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 4px 12px -6px rgba(12,10,9,.35);transform:translateZ(18px);transform-origin:0 100%}
+.fls-s[data-active] .fls-tag b{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em}
+.fls-s[data-active] .fls-tag b svg{display:none}
+.fls-s[data-active] .fls-tag small,.fls-s[data-active] .fls-tag span{font-size:11px}
+.fls-s:not([data-active]) .fls-tag{display:none}
+.avd-ht{display:none!important}
 .fls-tag b{display:flex;align-items:center;gap:6px;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:21px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
 .fls-tag b svg{flex:none;color:var(--gold)}
 .fls-tag span{font-size:12px;font-weight:500;line-height:1.2;color:var(--muted)}
@@ -3133,7 +3139,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   aplica();
 
   var VIRAIS=[["roer","Roer Unha","5,3 mi"],["capsula","Cápsula Endoscópica","1,8 mi"],["hpylori","H. Pylori","+12 mil seguidores"],["placa","Placa e Parafusos",""],["hernia","Hérnia Inguinal",""],["cerebro","Cérebro Acordado",""]];
-  var CATALOGO=[["roer","Roer Unha"],["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["bypass","Bypass Gástrico"],["lifting","Lifting Facial"],["placa","Placa e Parafusos"],["parada","Parada Cardíaca"],["olho","Olho Tremendo"],["hernia","Hérnia Inguinal"],["diazepam","Diazepam"],["cerebro","Cérebro Acordado"],["novembro","Novembro Azul"],["soluco","Soluço"],["xixi","Xixi na Cama"],["arrepio","Arrepio"],["lipo","Lipo de Papada"],["cebola","Cebola"],["roacutan","Roacutan"]];
+  var CATALOGO=[["roer","Roer Unha"],["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["bypass","Bypass Gástrico"],["lifting","Lifting Facial"],["placa","Placa e Parafusos"],["parada","Parada Cardíaca"],["olho","Olho Tremendo"],["hernia","Hérnia Inguinal"],["diazepam","Diazepam"],["novembro","Novembro Azul"],["soluco","Soluço"],["xixi","Xixi na Cama"],["arrepio","Arrepio"],["lipo","Lipo de Papada"],["cebola","Cebola"],["roacutan","Roacutan"]];
   var calmo=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function lazy(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:root,threshold:.4});root.querySelectorAll("video").forEach(function(v){io.observe(v)})}
 
@@ -3162,7 +3168,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     lay();setFront();var api={lay:lay,to:function(i){to(-i*th)},kill:function(){clearInterval(iv);var k=RINGS.indexOf(api);if(k>=0)RINGS.splice(k,1)}};RINGS.push(api);return api}
 
   /* abertura: número que rola até o valor do vídeo da frente */
-  var VIEWS={capsula:[1800000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[12000,"novos seguidores",0],lifting:[23100,"visualizações",0],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[14700,"visualizações",0],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[24100,"visualizações",0],cebola:[41600,"visualizações",0],roacutan:[25700,"visualizações",0]};
+  var VIEWS={capsula:[1800000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[12000,"novos seguidores",0],lifting:[23100,"visualizações",1],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[14700,"visualizações",1],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[24100,"visualizações",1],cebola:[41600,"visualizações",1],roacutan:[25700,"visualizações",1]};
   function fmt(v){return v>=1e6?(v/1e6).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+" mi":v>=1e3?(v<1e4&&v%1e3?(v/1e3).toLocaleString("pt-BR",{maximumFractionDigits:1}):Math.round(v/1e3))+" mil":String(Math.round(v))}
   var stVal=0,stRaf=0,ambK=0;
   function ambSet(id){var am=$("amb").children;ambK^=1;am[ambK].style.backgroundImage="url(assets/"+id+".jpg)";am[ambK].classList.add("on");am[ambK^1].classList.remove("on")}
@@ -5075,5 +5081,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794794552";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794794823";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
