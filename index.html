@@ -3725,7 +3725,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);if(T.avd&&T.avd!=="vitrine"&&typeof aberturaVideos==="function"){boxApi=aberturaVideos(el);return}var L=CATALOGO.slice().reverse(),f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;boxApi=f(el,L)}
   mountVitBox();
   /* exemplos Pulsar Motion x Motion + Vídeo: a mesma vitrine de vidro, a lista troca pela chave */
-  var MX={mo:[["mx-mo-soluco","Soluço"],["mx-mo-hioide","Hioide"],["mx-mo-aguaviva","Água-viva"],["mx-mo-arrepio","Arrepio"],["mx-mo-tranco","Tranco ao Dormir"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
+  var MX={mo:[["mx-mo-soluco","Soluço"],["mx-mo-hioide","Hioide"],["mx-mo-aguaviva","Água-viva"],["mx-mo-tranco","Tranco ao Dormir"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
   ["mo","mv"].forEach(function(k){MX[k].forEach(function(c){if(!VIEWS[c[0]])VIEWS[c[0]]=[0,"",1]})});
   var mxApi=null,mxK="mo";function mountMx(k){var host=$("mx-vit");if(!host)return;mxK=k||mxK;if(mxApi&&mxApi.kill)mxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;mxApi=f(el,MX[mxK]);
     [].forEach.call(document.querySelectorAll("#mx .mx-sw .btn"),function(b){var on=b.getAttribute("data-k")===mxK;b.setAttribute("aria-selected",on?"true":"false");b.classList.toggle("line",!on)});
@@ -5075,5 +5075,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794794116";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794794213";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
