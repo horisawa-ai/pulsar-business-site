@@ -2030,6 +2030,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .fls-s:not([data-active]) .fls-tag{top:var(--tt,7%);right:auto;left:var(--to,7%);padding:8px 11px 9px 10px;border-radius:13px;transform-origin:0 0;transform:translateZ(4px) scale(var(--ti,1))}
 .fls-stage[data-dragging] .fls-tag,.fls-s[data-semtag]:not([data-active]) .fls-tag{opacity:0}
 .fls-s[data-active] .fls-tag{top:auto;bottom:12px;left:12px;right:auto;display:flex;align-items:baseline;gap:5px;padding:5px 10px 6px;border-radius:999px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 4px 12px -6px rgba(12,10,9,.35);transform:translateZ(18px);transform-origin:0 100%}
+.fls-n{font-style:normal;font-variant-numeric:tabular-nums}
 .fls-s[data-active] .fls-tag b{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:-.01em}
 .fls-s[data-active] .fls-tag b svg{display:none}
 .fls-s[data-active] .fls-tag small,.fls-s[data-active] .fls-tag span{font-size:11px}
@@ -3460,14 +3461,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     function wrap(v,m){return ((v%m)+m)%m}
     var IL='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',IR='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
     var IU='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
-    function num(i){var h=VIEWS[list[i][0]];if(!h||h[2]===1)return null;return {n:(h[1].indexOf("seguidor")>=0?"+":"")+fmt(h[0]),l:h[1]}}
+    function num(i){var h=VIEWS[list[i][0]];if(!h||h[2]===1)return null;var p=h[1].indexOf("seguidor")>=0?"+":"";return {n:p+fmt(h[0]),l:h[1],r:h[0],p:p}}
     /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga */
     var sd=20261115;function rnd(){sd=(sd*1664525+1013904223)%4294967296;return sd/4294967296}function rr(a,b){return a+(b-a)*rnd()}function sg(){return rnd()<.5?-1:1}
     function deriva(){return "--fd:"+rr(8,14).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(4,9)).toFixed(1)+"px;--ay:"+(-rr(6,12)).toFixed(1)+"px;--az:"+(sg()*rr(10,30)).toFixed(0)+"px;--arx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--ary:"+(sg()*rr(3,8)).toFixed(1)+"deg;--arz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg;--bx:"+(sg()*rr(4,9)).toFixed(1)+"px;--by:"+rr(4,9).toFixed(1)+"px;--bz:"+(sg()*rr(10,30)).toFixed(0)+"px;--brx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--bry:"+(sg()*rr(3,8)).toFixed(1)+"deg;--brz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg"}
     el.className="fls";el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
     el.innerHTML='<div class="fls-atm" aria-hidden="true"></div><div class="fls-stage"><div class="fls-floor" aria-hidden="true"></div><div class="fls-scene">'+
       list.map(function(c,i){var v=num(i);return '<button type="button" class="fls-s" data-i="'+i+'"><span class="fls-f" style="'+deriva()+'"><span class="fls-g"><span class="fls-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="fls-fog" aria-hidden="true"></span></span></span>'+
-        (v?'<span class="fls-tag" aria-hidden="true"><b>'+IU+v.n+'</b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
+        (v?'<span class="fls-tag" aria-hidden="true"><b data-r="'+v.r+'" data-p="'+v.p+'">'+IU+'<i class="fls-n">'+v.n+'</i></b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
       '<div class="fls-info"><h3 aria-live="polite"></h3><div class="fls-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="fls-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>';
     var stage=el.querySelector(".fls-stage"),scene=el.querySelector(".fls-scene"),cards=el.querySelectorAll(".fls-s"),dots=el.querySelectorAll(".fls-dots i"),ttl=el.querySelector(".fls-info h3");
     var vid=document.createElement("video");vid.muted=true;vid.loop=true;vid.playsInline=true;vid.setAttribute("muted","");vid.setAttribute("playsinline","");vid.preload="none";vid.setAttribute("aria-hidden","true");
@@ -3619,6 +3620,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     mede();lay();poeVideo();agenda();
     return {kill:function(){mortos=true;clearTimeout(tm);cancelAnimationFrame(raf);window.removeEventListener("pointermove",pm);if(ro)ro.disconnect();if(io)io.disconnect();document.removeEventListener("visibilitychange",vis_);vid.pause();vid.removeAttribute("src");try{vid.load()}catch(x){}}}}
   /*@@/FLT-JS@@*/
+  /* número da tela da frente sobe de zero até o valor real (porte do "Number Ticker", danielpetho, 21st.dev: tween easeInOut) */
+  (function(){var host=$("vit");if(!host||!window.MutationObserver)return;var raf=0;
+    function tick(b){var el=b.querySelector(".fls-n");if(!el)return;var alvo=+b.dataset.r,p=b.dataset.p||"",t0=performance.now(),D=1600;cancelAnimationFrame(raf);
+      if(calmo){el.textContent=p+fmt(alvo);return}
+      (function f(t){var k=Math.min(1,(t-t0)/D),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;el.textContent=p+fmt(Math.max(1,alvo*e));if(k<1)raf=requestAnimationFrame(f);else el.textContent=p+fmt(alvo)})(t0)}
+    new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var c=ms[i].target;if(ms[i].attributeName==="data-active"&&c.hasAttribute&&c.hasAttribute("data-active")){var b=c.querySelector(".fls-tag b[data-r]");if(b)tick(b)}}}).observe(host,{subtree:true,attributes:true,attributeFilter:["data-active"]})})();
   function mountVit(){if(typeof mountVitBox==="function")setTimeout(mountVitBox,0);var host=$("vit");if(vitApi&&vitApi.kill)vitApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);
     if(T.vit==="baralho"){vitApi=pile(el,CATALOGO,setStat,6000);host.insertAdjacentHTML("beforeend",'<p class="vit-hint">arraste a carta pro lado</p>')}
     else if(T.vit==="tela")vitApi=full(el,CATALOGO);
@@ -5081,5 +5088,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794794823";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794797470";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
