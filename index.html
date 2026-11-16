@@ -2315,6 +2315,18 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 /* as linhas entram uma por vez quando o cartão aparece (o JS põe data-st="pre" e depois "in"). Sem JS ou com movimento reduzido, tudo já completo */
 .sk-cv .sk-a{transition:opacity .5s ease,transform .7s var(--ps-ease),filter .5s ease;transition-delay:calc(var(--i,0)*340ms)}
 .sk-cv[data-st="pre"] .sk-a{opacity:0;transform:translateY(10px);filter:blur(4px);transition:none}
+/* cada etapa trabalha um instante (anel girando no número) e fecha com um tique, uma depois da outra */
+.sk-et i{position:relative}
+.sk-et i::before,.sk-et i::after{content:"";position:absolute;inset:-1px;border-radius:50%;opacity:0;pointer-events:none}
+.sk-et i::before{border:1.6px solid transparent;border-top-color:var(--ink);border-right-color:var(--ink)}
+.sk-et i::after{content:"\2713";display:grid;place-items:center;background:var(--ink);color:var(--card);font:700 12px/1 var(--sans)}
+.sk-et li{--sk-d:calc(var(--i,0)*340ms + .2s)}
+.sk-cv[data-st="in"] .sk-et i::before{animation:skGira .6s linear var(--sk-d) infinite,skTrabalha .62s linear var(--sk-d) both}
+.sk-cv[data-st="in"] .sk-et i::after{animation:skTique .4s cubic-bezier(.3,1.5,.5,1) calc(var(--sk-d) + .6s) both}
+.sk-cv:not([data-st]) .sk-et i::after{opacity:1}
+@keyframes skGira{to{transform:rotate(360deg)}}
+@keyframes skTrabalha{0%,96%{opacity:1}100%{opacity:0}}
+@keyframes skTique{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
 /* o vídeo pronto chega no fim da conversa, como uma mensagem: sobe pequeno e desfocado e assenta nítido. Some se o arquivo não existir */
 .sk-vid{display:grid;gap:12px;justify-items:center;justify-self:stretch;margin-top:6px;text-align:center}
 .sk-pr{display:grid;font-size:15px;line-height:1.35;color:var(--ink)}
@@ -2343,7 +2355,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .sk-sel{position:absolute;left:10px;right:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(250,250,249,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:11.5px;line-height:1.3;font-weight:500;color:#0c0a09;text-align:center}
 .sk-cv .sk-vid{transform-origin:50% 100%;transition:opacity .6s ease,transform 1s var(--ps-ease),filter .9s ease;transition-delay:calc(var(--i,0)*340ms)}
 .sk-cv[data-st="pre"] .sk-vid{opacity:0;transform:translateY(14px) scale(.9);filter:blur(12px);transition:none}
-@media (prefers-reduced-motion:reduce){.sk-cv .sk-a{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}.sk-gen,.sk-pr .g{display:none!important}.sk-pr .p,.sk-tela video{animation:none!important;opacity:1!important}}
+@media (prefers-reduced-motion:reduce){.sk-cv .sk-a{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}.sk-gen,.sk-pr .g,.sk-et i::before{display:none!important}.sk-et i::after{opacity:1!important;animation:none!important}.sk-pr .p,.sk-tela video{animation:none!important;opacity:1!important}}
 
 /* ----- Skills: as duas, uma embaixo da outra no celular ----- */
 .sk-l{--sk-w:clamp(144px,38.2cqw,170px);display:grid;grid-template-columns:minmax(0,1fr);width:100%;margin-top:30px;text-align:left}
@@ -2826,11 +2838,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         <p class="sk-quem sk-a" style="--i:2"><span class="sk-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span>Pulsar Labs Master</p>
         <ol class="sk-et">
           <li class="sk-a" style="--i:3"><i aria-hidden="true">1</i>Roteiro em 6 cenas</li>
-          <li class="sk-a" style="--i:4"><i aria-hidden="true">2</i>Estética escolhida</li>
-          <li class="sk-a" style="--i:5"><i aria-hidden="true">3</i>Prompts de imagem e de vídeo</li>
-          <li class="sk-a" style="--i:6"><i aria-hidden="true">4</i>Narração e montagem</li>
+          <li class="sk-a" style="--i:5"><i aria-hidden="true">2</i>Estética escolhida</li>
+          <li class="sk-a" style="--i:7"><i aria-hidden="true">3</i>Prompts de imagem e de vídeo</li>
+          <li class="sk-a" style="--i:9"><i aria-hidden="true">4</i>Narração e montagem</li>
         </ol>
-        <div class="sk-vid sk-a" id="sk-vid" style="--i:8"><p class="sk-pr"><span class="g">Gerando o seu vídeo…</span><span class="p">Pronto. O seu vídeo:</span></p><figure class="sk-tela"><span class="sk-gen" aria-hidden="true"><i></i></span><video id="sk-vv" muted loop playsinline preload="metadata" poster="assets/vt-unha.jpg" data-src="assets/vt-unha.mp4" aria-label="Vídeo sobre por que cortar a unha não dói, feito com a Skill"></video><span class="sk-sel" aria-hidden="true">Unha que não dói · 6,3 mi de visualizações</span></figure></div>
+        <div class="sk-vid sk-a" id="sk-vid" style="--i:12"><p class="sk-pr"><span class="g">Gerando o seu vídeo…</span><span class="p">Pronto. O seu vídeo:</span></p><figure class="sk-tela"><span class="sk-gen" aria-hidden="true"><i></i></span><video id="sk-vv" muted loop playsinline autoplay preload="metadata" poster="assets/vt-unha.jpg" data-src="assets/vt-unha.mp4" aria-label="Vídeo sobre por que cortar a unha não dói, feito com a Skill"></video><span class="sk-sel" aria-hidden="true">Unha que não dói · 6,3 mi de visualizações</span></figure></div>
       </div>
     </figure>
     <div class="sk-l" id="skills-lista">
@@ -5117,5 +5129,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794802256";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794802349";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
