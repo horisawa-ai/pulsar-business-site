@@ -3132,7 +3132,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     try{navigator.clipboard.writeText(t).then(ok,no)}catch(e){no()}setTimeout(function(){b.textContent="Copiar"},1600)};
   aplica();
 
-  var VIRAIS=[["roer","Roer Unha","5,3 mi"],["capsula","Cápsula Endoscópica","1,7 mi"],["hpylori","H. Pylori","+12 mil seguidores"],["placa","Placa e Parafusos",""],["hernia","Hérnia Inguinal",""],["cerebro","Cérebro Acordado",""]];
+  var VIRAIS=[["roer","Roer Unha","5,3 mi"],["capsula","Cápsula Endoscópica","1,8 mi"],["hpylori","H. Pylori","+12 mil seguidores"],["placa","Placa e Parafusos",""],["hernia","Hérnia Inguinal",""],["cerebro","Cérebro Acordado",""]];
   var CATALOGO=[["roer","Roer Unha"],["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["bypass","Bypass Gástrico"],["lifting","Lifting Facial"],["placa","Placa e Parafusos"],["parada","Parada Cardíaca"],["olho","Olho Tremendo"],["hernia","Hérnia Inguinal"],["diazepam","Diazepam"],["cerebro","Cérebro Acordado"],["novembro","Novembro Azul"],["soluco","Soluço"],["xixi","Xixi na Cama"],["arrepio","Arrepio"],["lipo","Lipo de Papada"],["cebola","Cebola"],["roacutan","Roacutan"]];
   var calmo=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function lazy(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:root,threshold:.4});root.querySelectorAll("video").forEach(function(v){io.observe(v)})}
@@ -3162,7 +3162,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     lay();setFront();var api={lay:lay,to:function(i){to(-i*th)},kill:function(){clearInterval(iv);var k=RINGS.indexOf(api);if(k>=0)RINGS.splice(k,1)}};RINGS.push(api);return api}
 
   /* abertura: número que rola até o valor do vídeo da frente */
-  var VIEWS={capsula:[1700000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[12000,"novos seguidores",0],lifting:[430000,"visualizações",1],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[950000,"visualizações",1],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[270000,"visualizações",1],cebola:[480000,"visualizações",1],roacutan:[820000,"visualizações",1]};
+  var VIEWS={capsula:[1800000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[12000,"novos seguidores",0],lifting:[23100,"visualizações",0],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[14700,"visualizações",0],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[24100,"visualizações",0],cebola:[41600,"visualizações",0],roacutan:[25700,"visualizações",0]};
   function fmt(v){return v>=1e6?(v/1e6).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+" mi":v>=1e3?(v<1e4&&v%1e3?(v/1e3).toLocaleString("pt-BR",{maximumFractionDigits:1}):Math.round(v/1e3))+" mil":String(Math.round(v))}
   var stVal=0,stRaf=0,ambK=0;
   function ambSet(id){var am=$("amb").children;ambK^=1;am[ambK].style.backgroundImage="url(assets/"+id+".jpg)";am[ambK].classList.add("on");am[ambK^1].classList.remove("on")}
@@ -5075,5 +5075,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794794213";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794794552";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
