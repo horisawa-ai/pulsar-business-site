@@ -79,6 +79,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hook{font-family:var(--serif);font-size:clamp(24px,3cqw,32px);line-height:1.2;max-width:26ch}
 .small{font-size:14px}.xs{font-size:12px}
 .muted{color:var(--muted)}
+.mx{margin-top:44px;text-align:center}.mx-t{font-size:clamp(24px,3.2cqw,32px);font-weight:600;line-height:1.1;letter-spacing:-.01em}.mx-sw{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}.mx-sw .btn[aria-selected="true"]{pointer-events:none}.mx-d{color:var(--muted);font-size:15px;line-height:1.45;max-width:36ch;margin:12px auto 0;min-height:2.9em}
 .night .muted,.night .lead,.night .label{color:var(--muted-night)}
 .night .label::before{background:var(--gold-night)}
 
@@ -1761,6 +1762,144 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 /*@@AVD-CSS: aberturas da página Vídeos. CSS novo desta área entra logo abaixo desta linha @@*/
 
 /*@@ACQ-CSS: opções do quadro do curso. CSS novo desta área entra logo abaixo desta linha @@*/
+html:is([data-acq="bastidor"],[data-acq="antes"],[data-acq="grade"]) .ac-pile{display:none}
+.acq-kn{left:clamp(23px,var(--x),calc(100% - 23px))}
+@container site (min-width:700px){.acq-kn{left:clamp(28px,var(--x),calc(100% - 28px))}}
+.acq-b[data-s="5"] .acq-et{left:52%}
+/* Quadro do Curso Pulsar em três versões novas (o painel troca por html[data-acq]): "bastidor" (o processo do roteiro ao vídeo publicado),
+   "antes" (a imagem do gerador e o vídeo pronto, com a linha de arrastar) e "grade" (mosaico de aulas com a aula inaugural no meio).
+   "video" é o quadro de sempre. Nas três novas o vídeo antigo some (display:none, então nem carrega) e o toque continua abrindo o me avisa */
+.acq-b,.acq-a,.acq-g{display:none}
+html[data-acq="bastidor"] .acq-b,html[data-acq="antes"] .acq-a,html[data-acq="grade"] .acq-g{display:block}
+html:is([data-acq="bastidor"],[data-acq="antes"],[data-acq="grade"]) .ac-frame>video{display:none}
+html:is([data-acq="bastidor"],[data-acq="antes"],[data-acq="grade"]) .ac-frame{background:#f3f2f0;--acq-p:20px}
+html:is([data-acq="bastidor"],[data-acq="antes"]) .ac-play{display:none}
+.ac-frame :is(.acq-b,.acq-a,.acq-g) :is(video,img){position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;-webkit-user-drag:none;user-select:none}
+
+/* ---------- Bastidor: roteiro, prompt, imagem, movimento e publicado, num laço de uns 10 s ---------- */
+.acq-b{position:absolute;inset:0;overflow:hidden;text-align:left;background:linear-gradient(165deg,#fdfcfa 0%,#f1eeea 100%);transition:opacity .45s ease}
+.acq-b.acq-fora{opacity:0}
+.acq-b.acq-sem,.acq-b.acq-sem *,.acq-b.acq-sem *::after{transition:none!important}
+.acq-b::before{content:"";position:absolute;z-index:1;inset:0 0 auto;height:30%;background:linear-gradient(rgba(12,10,9,.42),rgba(12,10,9,0));opacity:0;transition:opacity .5s ease;pointer-events:none}
+.ac-frame.acq-esc .acq-b::before{opacity:1}
+html[data-acq="bastidor"] .ac-frame::after{opacity:0;transition:opacity .5s ease}
+html[data-acq="bastidor"] .ac-frame.acq-esc::after{opacity:1}
+html[data-acq="bastidor"] .ac-cap :is(h2,p){transition:color .5s ease}
+html[data-acq="bastidor"] .ac-frame:not(.acq-esc) .ac-cap h2{color:var(--ink)}
+html[data-acq="bastidor"] .ac-frame:not(.acq-esc) .ac-cap p{color:var(--muted)}
+/* as cinco etapas no alto, como os tracinhos de um story, com o nome da etapa embaixo */
+.acq-bar{position:absolute;z-index:2;top:16px;left:var(--acq-p);right:var(--acq-p);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.acq-bar i{position:relative;height:3px;overflow:hidden;border-radius:2px;background:rgba(12,10,9,.13);transition:background-color .5s ease}
+.acq-bar i::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:background-color .5s ease}
+.acq-bar i.ok::after{transform:scaleX(1)}
+.acq-bar i.on::after{transform:scaleX(1);transition:transform var(--d,2s) linear,background-color .5s ease}
+.ac-frame.acq-esc .acq-bar i{background:rgba(255,255,255,.34)}
+.ac-frame.acq-esc .acq-bar i::after{background:#fff}
+.acq-et{position:absolute;z-index:2;top:27px;left:var(--acq-p);font-size:12.5px;font-weight:500;line-height:1.4;color:var(--muted);transition:color .5s ease}
+.acq-et.acq-novo{animation:acqEt .5s cubic-bezier(.22,1,.36,1)}
+.ac-frame.acq-esc .acq-et{color:#fff;text-shadow:0 1px 8px rgba(12,10,9,.45)}
+@keyframes acqEt{from{opacity:0;transform:translateY(5px)}}
+/* a linha do roteiro se escrevendo. O resto da frase já ocupa o lugar, invisível, pra nada pular de linha enquanto digita */
+.acq-rot{position:absolute;left:var(--acq-p);right:var(--acq-p);top:60px;margin:0;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:26px;line-height:1.08;letter-spacing:-.025em;color:var(--ink);transform-origin:0 0;transition:transform .7s cubic-bezier(.22,1,.36,1),color .6s ease,opacity .45s ease}
+html[data-acf="serifa"] .acq-rot{font-size:29px;line-height:1.02;letter-spacing:-.012em}
+.acq-rs{visibility:hidden}
+.acq-car{display:none;width:2px;height:.92em;margin:0 1px 0 2px;border-radius:1px;background:var(--gold);vertical-align:-.12em;animation:acqPisca 1s steps(1) infinite}
+.acq-dig .acq-car{display:inline-block}
+@keyframes acqPisca{50%{opacity:0}}
+.acq-b:is([data-s="0"],[data-s="1"]) .acq-rot{transform:translateY(38px)}
+.acq-b[data-s="2"] .acq-rot{transform:scale(.8);color:var(--muted)}
+.acq-b:is([data-s="3"],[data-s="4"],[data-s="5"]) .acq-rot{transform:scale(.8);color:var(--muted);opacity:0}
+/* o prompt: um cartão de texto pequeno que vira a imagem */
+.acq-pr{position:absolute;left:var(--acq-p);right:var(--acq-p);top:43%;bottom:27%;display:grid;align-content:start;padding:12px 46px 12px 14px;border:1px solid var(--line-2);border-radius:14px;background:#fff;box-shadow:0 18px 36px -26px rgba(12,10,9,.4);opacity:0;transform:translateY(14px) scale(.97);transition:opacity .45s ease,transform .6s cubic-bezier(.34,1.36,.5,1)}
+.acq-pr p{margin:0;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.acq-go{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;transition:transform .3s cubic-bezier(.34,1.36,.5,1)}
+.acq-go svg{width:14px;height:14px}
+.acq-b.acq-envia .acq-go{transform:scale(.82)}
+.acq-b[data-s="2"] .acq-pr{opacity:1;transform:none}
+.acq-b[data-s="3"] .acq-pr{opacity:0;transform:none;transition:opacity .4s ease .35s}
+/* a imagem nasce no lugar do cartão, revelada de cima pra baixo e saindo do desfoque, e depois toma o quadro todo */
+.acq-v{opacity:0;clip-path:inset(43% var(--acq-p) 57% var(--acq-p) round 14px);filter:blur(14px) saturate(.5);transition:clip-path .7s cubic-bezier(.22,1,.36,1),filter 1s ease,opacity .25s ease,transform .85s cubic-bezier(.22,1,.36,1)}
+.acq-b:is([data-s="3"],[data-s="4"],[data-s="5"]) .acq-v{opacity:1;filter:none;clip-path:inset(43% var(--acq-p) 27% var(--acq-p) round 14px)}
+.acq-b.acq-x .acq-v{clip-path:inset(0 0 0 0 round 0)}
+/* publicado: a cena encolhe pra dentro de uma tela de celular de vidro (9:16, a 13% da borda) e o número sobe ao lado.
+   As margens do recorte são as da tela divididas pela escala de .85, e o translateX põe a tela à esquerda sem mudar o miolo da cena */
+.acq-b[data-s="5"] .acq-v{clip-path:inset(6.47% 30.82% 25.29% 30.82% round 23.5px);transform:translateX(-20.7%) scale(.85)}
+.acq-tel{position:absolute;z-index:1;left:13%;top:13%;width:32.6%;height:58%;border-radius:20px;box-shadow:0 0 0 3px rgba(255,255,255,.92),0 0 0 4px rgba(12,10,9,.1),0 28px 44px -24px rgba(12,10,9,.55);opacity:0;transform:scale(1.06);transition:opacity .4s ease,transform .8s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.acq-tel::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(125deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,0) 34%),linear-gradient(to top,rgba(12,10,9,.4),rgba(12,10,9,0) 32%)}
+.acq-ilha{position:absolute;top:6px;left:50%;width:30%;height:7px;margin-left:-15%;border-radius:4px;background:#1c1917}
+.acq-ui{position:absolute;right:7px;bottom:10px;display:grid;gap:8px;color:#fff;filter:drop-shadow(0 1px 2px rgba(12,10,9,.5))}
+.acq-ui svg{display:block;width:15px;height:15px}
+.acq-b[data-s="5"] .acq-tel{opacity:1;transform:none;transition-delay:.35s,0s}
+.acq-cnt{position:absolute;z-index:1;left:52%;right:12px;top:30%;display:grid;gap:4px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.acq-cnt small{font-size:12.5px;font-weight:500;line-height:1.3;color:var(--gold)}
+.acq-cnt b{font-family:var(--ac-display,var(--serif));font-weight:600;font-size:42px;line-height:1;letter-spacing:-.03em;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.acq-cnt span{font-size:14px;line-height:1.3;color:var(--muted)}
+.acq-b[data-s="5"] .acq-cnt{opacity:1;transform:none;transition-delay:.45s}
+
+/* ---------- Antes e depois: a imagem que sai do gerador e o vídeo pronto, com a linha de arrastar ---------- */
+.acq-a{position:absolute;z-index:3;inset:0;overflow:hidden;--x:50%;touch-action:pan-y;cursor:ew-resize;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+/* o vídeo pronto é 9:16: o recorte quadrado começa a 38 de 640 px do topo (13,6%), e aí a língua cai no mesmo lugar da imagem do gerador */
+.ac-frame .acq-a video{object-position:50% 13.6%}
+.ac-frame .acq-a .acq-ag{clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.acq-a::after{content:"";position:absolute;inset:auto 0 0;height:46%;background:linear-gradient(to top,rgba(12,10,9,.74) 0%,rgba(12,10,9,.4) 40%,rgba(12,10,9,0) 100%);pointer-events:none}
+html[data-acq="antes"] .ac-cap{z-index:4;pointer-events:none}
+.acq-al{position:absolute;z-index:1;top:14px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(12,10,9,.06);font-size:12.5px;font-weight:500;line-height:1.3;color:var(--ink);white-space:nowrap;transition:opacity .25s ease;pointer-events:none}
+.acq-al1{left:14px}
+.acq-al2{right:14px}
+.acq-ln{position:absolute;z-index:2;top:0;bottom:0;left:var(--x);width:2px;margin-left:-1px;background:#fff;box-shadow:0 0 0 .5px rgba(12,10,9,.12),0 0 14px rgba(12,10,9,.3);pointer-events:none}
+.acq-kn{position:absolute;z-index:3;top:50%;left:var(--x);display:grid;place-items:center;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.08) 62%),rgba(28,25,23,.28);-webkit-backdrop-filter:blur(14px) saturate(1.25);backdrop-filter:blur(14px) saturate(1.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 0 0 1px rgba(255,255,255,.4),0 12px 28px -12px rgba(12,10,9,.6);transition:transform .35s cubic-bezier(.34,1.36,.5,1)}
+.acq-kn svg{width:22px;height:22px;filter:drop-shadow(0 1px 2px rgba(12,10,9,.35))}
+.acq-kn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.acq-a.acq-pega .acq-kn{transform:scale(1.12)}
+
+/* ---------- Grade de aulas: seis cenas em volta da aula inaugural, com três tocando por vez ---------- */
+.acq-g{position:absolute;inset:0;overflow:hidden;text-align:left;background:var(--paper)}
+.acq-gr{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.5fr 1fr;grid-template-rows:1fr 1.5fr 1fr;gap:2px}
+.acq-t{position:relative;overflow:hidden;background:#d6d3d1 50% 50%/cover no-repeat;transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .6s ease}
+.acq-t video{opacity:0;transition:opacity .6s ease}
+.acq-t video.on{opacity:1}
+.acq-t::after{content:"";position:absolute;inset:0 0 auto;height:56px;background:linear-gradient(rgba(12,10,9,.38),rgba(12,10,9,0));pointer-events:none}
+.acq-t b{position:absolute;z-index:1;top:7px;left:9px;font-size:12.5px;font-weight:500;line-height:1.25;color:#fff;text-shadow:0 1px 6px rgba(12,10,9,.5)}
+.acq-t b small{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,.85)}
+.acq-t1{grid-area:1/1}.acq-t2{grid-area:1/2}.acq-t3{grid-area:1/3}.acq-t4{grid-area:2/1}.acq-t5{grid-area:2/3}
+.acq-tc{grid-area:2/2;box-shadow:inset 0 0 0 2px rgba(255,255,255,.9)}
+.acq-tc b{font-size:13.5px;font-weight:600}
+.acq-tf{grid-area:3/1/4/4}
+.acq-tf b{left:auto;right:10px}
+.acq-g:not(.acq-in) .acq-t{opacity:0;transform:scale(.9)}
+html[data-acq="grade"] .ac-frame::after{height:38%}
+html[data-acq="antes"] .ac-frame:active{transform:none}
+:is(.acq-a,.acq-g) .nota{position:absolute;z-index:6;left:8px;right:8px;top:8px;max-width:none;background:#fffdf6;text-align:left;pointer-events:none}
+
+@container site (min-width:700px){
+  html:is([data-acq="bastidor"],[data-acq="antes"],[data-acq="grade"]) .ac-frame{--acq-p:28px}
+  .acq-bar{top:22px;gap:5px}
+  .acq-et{top:35px;font-size:13px}
+  .acq-rot{top:76px;font-size:36px}
+  html[data-acf="serifa"] .acq-rot{font-size:40px}
+  .acq-pr{padding:16px 56px 16px 18px;border-radius:16px}
+  .acq-pr p{font-size:16px}
+  .acq-go{right:14px;bottom:14px;width:32px;height:32px}
+  .acq-cnt{gap:6px}
+  .acq-cnt small{font-size:13.5px}
+  .acq-cnt b{font-size:60px}
+  .acq-cnt span{font-size:16px}
+  .acq-tel{border-radius:28px}
+  .acq-b[data-s="5"] .acq-v{clip-path:inset(6.47% 30.82% 25.29% 30.82% round 33px)}
+  .acq-ilha{top:9px;height:10px}
+  .acq-ui{right:10px;bottom:14px;gap:11px}
+  .acq-ui svg{width:20px;height:20px}
+  .acq-al{top:20px;font-size:13.5px;padding:6px 12px}
+  .acq-al1{left:20px}.acq-al2{right:20px}
+  .acq-kn{width:56px;height:56px;margin:-28px 0 0 -28px}
+  .acq-t b{top:10px;left:12px;font-size:14px}
+  .acq-tf b{left:auto;right:14px}
+  .acq-tc b{font-size:15px}
+}
+@media (hover:hover){.acq-kn:hover{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){
+  .acq-b,.acq-b *,.acq-b *::after,.acq-t,.acq-t video{transition:none!important;animation:none!important}
+}
 
 /*@@FLT-CSS: vitrine Telas flutuantes. CSS novo desta área entra logo abaixo desta linha @@*/
 /* Telas soltas (porte do Spatial Depth Hero do 21st.dev): cada tela num lugar, tamanho, profundidade e inclinação próprios, flutuando no seu ritmo; a cena inteira inclina com o ponteiro */
@@ -2145,6 +2284,12 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
       <div class="sqz-c" data-i="2" aria-hidden="true"><p><b>Vídeo Pulsar.</b> <span>Cada cena animada de verdade, do começo ao fim. É o tipo de vídeo que já passou de 5 milhões de visualizações.</span></p><dl><div><dt>Bom pra</dt><dd>Parar o dedo de quem está rolando e trazer gente nova.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl><a class="btn" href="#boxes">Ver os pacotes</a></div>
       <div class="sqz-c" data-i="3" aria-hidden="true"><p><b>Pulsar Cirúrgico.</b> <span>O procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</span></p><dl><div><dt>Bom pra</dt><dd>Mostrar uma técnica e tirar o medo de quem vai passar por ela.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Como pedir</dt><dd>Não entra nos pacotes. A gente conversa antes, porque cada procedimento é um projeto.</dd></div></dl><button class="btn" type="button" data-fila>Entrar na fila</button></div>
       </div>
+    </div>
+    <div class="mx mt-rv" id="mx">
+      <h3 class="mx-t">Veja a diferença.</h3>
+      <div class="mx-sw" role="tablist" aria-label="Exemplos por tipo"><button type="button" class="btn sm" role="tab" data-k="mo" aria-selected="true">Pulsar Motion</button><button type="button" class="btn sm line" role="tab" data-k="mv" aria-selected="false">Motion + Vídeo</button></div>
+      <p class="mx-d" aria-live="polite"><span data-k="mo">Só imagem do começo ao fim. Quem se mexe é o motion.</span><span data-k="mv" hidden>A primeira cena é um vídeo acontecendo. Depois, imagem com motion.</span></p>
+      <div class="mx-vit" id="mx-vit"></div>
     </div>
     <p class="muted small">Durações de 30s, 1min ou 1min30. A versão final pode ficar alguns segundos abaixo (30s pode sair com 28 ou 29s).</p>
   </div></section>
@@ -3197,6 +3342,14 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   /* página Vídeos: a mesma vitrine do Início (a escolhida no painel), com os vídeos em outra ordem */
   var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var L=CATALOGO.slice().reverse(),f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;boxApi=f(el,L)}
   mountVitBox();
+  /* exemplos Pulsar Motion x Motion + Vídeo: a mesma vitrine de vidro, a lista troca pela chave */
+  var MX={mo:[["mx-mo-soluco","Soluço"],["mx-mo-hioide","Hioide"],["mx-mo-aguaviva","Água-viva"],["mx-mo-arrepio","Arrepio"],["mx-mo-tranco","Tranco ao Dormir"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
+  ["mo","mv"].forEach(function(k){MX[k].forEach(function(c){if(!VIEWS[c[0]])VIEWS[c[0]]=[0,"",1]})});
+  var mxApi=null,mxK="mo";function mountMx(k){var host=$("mx-vit");if(!host)return;mxK=k||mxK;if(mxApi&&mxApi.kill)mxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;mxApi=f(el,MX[mxK]);
+    [].forEach.call(document.querySelectorAll("#mx .mx-sw .btn"),function(b){var on=b.getAttribute("data-k")===mxK;b.setAttribute("aria-selected",on?"true":"false");b.classList.toggle("line",!on)});
+    [].forEach.call(document.querySelectorAll("#mx .mx-d span"),function(x){x.hidden=x.getAttribute("data-k")!==mxK})}
+  [].forEach.call(document.querySelectorAll("#mx .mx-sw .btn"),function(b){b.addEventListener("click",function(){var k=b.getAttribute("data-k");if(k!==mxK)mountMx(k)})});
+  mountMx("mo");
 
   /* explorador */
   var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:capsula","Ver os pacotes","#box"],
@@ -4254,6 +4407,141 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)mede();toca()},{threshold:.2}).observe(el);else vis=true;
     window.addEventListener("resize",mede);if(window.ResizeObserver)new ResizeObserver(mede).observe(row);mede();vai(0)})();
   /*@@ACQ-JS: opções do quadro do curso (área do agente ACQ) @@*/
+  /* Quadro do Curso Pulsar: as três versões novas (bastidor, antes e depois, grade). O painel só troca o data-acq do <html>;
+     um MutationObserver monta a versão pedida na hora. Cada versão liga os vídeos só com o quadro na tela e desliga quando ele sai */
+  (function(){
+    var pg=$("pg-academy"),fr=pg&&pg.querySelector(".ac-frame"),pb=$("ac-pb"),cap=fr&&fr.querySelector(".ac-cap");if(!fr||!pb||!cap)return;
+    var root=document.documentElement,modo="",vis=false,ativo="",M={};
+    function toca(v){var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    function carrega(v,src){if(v.getAttribute("src")!==src){v.preload="auto";v.src=src}}
+    function novo(html){var d=document.createElement("div");d.innerHTML=html;var el=d.firstChild;fr.insertBefore(el,cap);return el}
+    /* tocar no quadro continua indo pro me avisa. O pointerdown falso avisa a Academy que foi um toque no quadro (assim o campo aberto não recolhe) */
+    function marca(){try{pb.dispatchEvent(new Event("pointerdown"))}catch(x){}}
+    var SETA='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg>';
+
+    /* ---------- Bastidor ---------- */
+    M.bastidor=(function(){
+      var b,v,bars,et,rot,pr,num,ts=[],tt=0,rc=0,rodando=false,
+        ROT="Por que roer unha é igual comer o que tem embaixo dela?",
+        PR="Hyper-detailed 3D medical CGI, human tongue in extreme macro, bacteria hidden in the papillae…",
+        NOMES=["Roteiro","Prompt","Imagem","Movimento","Publicado"],DUR=[2000,1700,1400,2100,2700];
+      function monta(){if(b)return;
+        var ico=function(d){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>'};
+        b=novo('<div class="acq-b" aria-hidden="true" data-s="0">'+
+          '<div class="acq-bar"><i></i><i></i><i></i><i></i><i></i></div><span class="acq-et"></span>'+
+          '<p class="acq-rot"><span class="acq-dt"></span><i class="acq-car"></i><span class="acq-rs"></span></p>'+
+          '<div class="acq-pr"><p><span class="acq-dt"></span><i class="acq-car"></i><span class="acq-rs"></span></p><span class="acq-go">'+SETA+'</span></div>'+
+          '<video class="acq-v" muted loop playsinline preload="none" poster="assets/est-roer-poster.jpg" tabindex="-1"></video>'+
+          '<div class="acq-tel"><i class="acq-ilha"></i><span class="acq-ui">'+
+            ico('<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/>')+
+            ico('<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>')+ico('<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>')+
+          '</span></div>'+
+          '<div class="acq-cnt"><small>Roer unha</small><b>0</b><span>de visualizações</span></div></div>');
+        v=b.querySelector(".acq-v");bars=[].slice.call(b.querySelectorAll(".acq-bar i"));et=b.querySelector(".acq-et");rot=b.querySelector(".acq-rot");pr=b.querySelector(".acq-pr p");num=b.querySelector(".acq-cnt b")}
+      function escreve(el,tx,n){el.querySelector(".acq-dt").textContent=tx.slice(0,n);el.querySelector(".acq-rs").textContent=tx.slice(n)}
+      function digita(el,tx,ms){var n=0,passo=ms/tx.length;el.classList.add("acq-dig");escreve(el,tx,0);clearInterval(tt);
+        tt=setInterval(function(){n++;escreve(el,tx,n);if(n>=tx.length){clearInterval(tt);setTimeout(function(){el.classList.remove("acq-dig")},250)}},passo)}
+      function etapa(n){b.setAttribute("data-s",n);
+        bars.forEach(function(i,k){i.classList.toggle("ok",k<n-1);i.classList.toggle("on",k===n-1);if(k===n-1)i.style.setProperty("--d",DUR[k]+"ms")});
+        et.textContent=n?NOMES[n-1]:"";et.classList.remove("acq-novo");void et.offsetWidth;et.classList.add("acq-novo")}
+      function conta(){var t0=0;cancelAnimationFrame(rc);
+        rc=requestAnimationFrame(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-p,3),x=5.3*e;
+          num.textContent=x<.05?"0":x.toFixed(1).replace(".",",")+" mi";if(p<1)rc=requestAnimationFrame(f)})}
+      function zera(){ts.forEach(clearTimeout);ts=[];clearInterval(tt);cancelAnimationFrame(rc);
+        b.classList.add("acq-sem");b.classList.remove("acq-x","acq-envia","acq-fora");fr.classList.remove("acq-esc");
+        v.pause();try{v.currentTime=0}catch(x){}
+        etapa(0);escreve(rot,ROT,0);escreve(pr,PR,0);num.textContent="0";void b.offsetWidth;b.classList.remove("acq-sem")}
+      function em(ms,fn){ts.push(setTimeout(fn,ms))}
+      function roda(){zera();
+        em(60,function(){etapa(1);digita(rot,ROT,1400)});
+        em(2000,function(){etapa(2);digita(pr,PR,1300)});
+        em(3450,function(){b.classList.add("acq-envia")});
+        em(3700,function(){b.classList.remove("acq-envia");etapa(3)});
+        em(4350,function(){b.classList.add("acq-x");fr.classList.add("acq-esc")});
+        em(5100,function(){etapa(4);try{v.currentTime=0}catch(x){}toca(v)});
+        em(7200,function(){etapa(5);fr.classList.remove("acq-esc");em(450,conta)});
+        em(9900,function(){b.classList.add("acq-fora")});
+        em(10400,roda)}
+      /* movimento reduzido: o último quadro, parado (a cena dentro do celular e o número final) */
+      function fim(){zera();b.classList.add("acq-sem");etapa(5);bars.forEach(function(i){i.classList.remove("on");i.classList.add("ok")});
+        b.classList.add("acq-x");escreve(rot,ROT,ROT.length);escreve(pr,PR,PR.length);num.textContent="5,3 mi"}
+      return{monta:monta,
+        liga:function(){if(rodando)return;rodando=true;if(calmo){fim();return}carrega(v,"assets/est-roer-hd.mp4");roda()},
+        desliga:function(){rodando=false;if(!b)return;ts.forEach(clearTimeout);ts=[];clearInterval(tt);cancelAnimationFrame(rc);v.pause();fr.classList.remove("acq-esc")},
+        sai:function(){fr.classList.remove("acq-esc")}}})();
+
+    /* ---------- Antes e depois ---------- */
+    M.antes=(function(){
+      var a,vid,ln,l1,l2,kn,x=50,raf=0,t0=0,auto=!calmo,pid=null,arrasta=false,sx=0,sy=0,x0=50,vivo=false;
+      function monta(){if(a)return;
+        a=novo('<div class="acq-a">'+
+          '<video class="acq-ap" muted playsinline preload="none" poster="assets/roer.jpg" aria-hidden="true" tabindex="-1"></video>'+
+          '<img class="acq-ag" src="assets/est-roer-poster.jpg" alt="" draggable="false" aria-hidden="true">'+
+          '<span class="acq-al acq-al1" aria-hidden="true">Do gerador</span><span class="acq-al acq-al2" aria-hidden="true">Pronto pra postar</span>'+
+          '<i class="acq-ln" aria-hidden="true"></i>'+
+          '<span class="acq-kn" role="slider" tabindex="0" aria-label="Comparar a imagem do gerador com o vídeo pronto" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Metade de cada">'+
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg></span>'+
+          '</div>');
+        vid=a.querySelector("video");ln=a.querySelector(".acq-ln");l1=a.querySelector(".acq-al1");l2=a.querySelector(".acq-al2");kn=a.querySelector(".acq-kn");
+        /* o vídeo pronto só ganha a lupa com as bactérias depois de 1,5 s: o laço fica nesse trecho, pra os dois lados serem sempre diferentes */
+        vid.addEventListener("ended",function(){vid.currentTime=1.6;var q=vid.play();if(q&&q.catch)q.catch(function(){})});
+        vid.addEventListener("loadedmetadata",function(){if(vid.currentTime<1.6)vid.currentTime=1.6});
+        a.addEventListener("pointerdown",function(e){if(e.button>0||pid!==null)return;marca();para();pid=e.pointerId;arrasta=false;sx=e.clientX;sy=e.clientY;x0=x;
+          if(e.target===kn||kn.contains(e.target)){arrasta=true;a.classList.add("acq-pega");try{a.setPointerCapture(pid)}catch(z){}}});
+        a.addEventListener("pointermove",function(e){if(e.pointerId!==pid)return;var dx=e.clientX-sx,dy=e.clientY-sy;
+          if(!arrasta){if(Math.abs(dx)>6&&Math.abs(dx)>Math.abs(dy)){arrasta=true;a.classList.add("acq-pega");try{a.setPointerCapture(pid)}catch(z){}}
+            else if(Math.abs(dy)>10){pid=null;return}}
+          if(arrasta){e.preventDefault();poe(x0+dx/a.clientWidth*100)}});
+        function solta(e,cancela){if(e.pointerId!==pid)return;var tocou=!arrasta&&!cancela&&!(e.target===kn||kn.contains(e.target));pid=null;arrasta=false;a.classList.remove("acq-pega");if(tocou)pb.click()}
+        a.addEventListener("pointerup",function(e){solta(e,false)});
+        a.addEventListener("pointercancel",function(e){solta(e,true)});
+        a.addEventListener("dragstart",function(e){e.preventDefault()});
+        kn.addEventListener("keydown",function(e){var k=e.key,d=k==="ArrowRight"||k==="ArrowUp"?5:k==="ArrowLeft"||k==="ArrowDown"?-5:0;
+          if(k==="Home"){d=-100}else if(k==="End"){d=100}
+          if(k==="Enter"||k===" "){e.preventDefault();pb.click();return}
+          if(!d)return;e.preventDefault();para();poe(x+d)});
+        poe(50)}
+      /* os rótulos somem quando a linha passa por cima deles */
+      function poe(n){x=Math.max(0,Math.min(100,n));a.style.setProperty("--x",x.toFixed(2)+"%");
+        var w=a.clientWidth||1,px=x/100*w,r1=l1.offsetLeft+l1.offsetWidth,e2=l2.offsetLeft;
+        l1.style.opacity=Math.max(0,Math.min(1,(px-r1-6)/22)).toFixed(2);l2.style.opacity=Math.max(0,Math.min(1,(e2-px-6)/22)).toFixed(2);
+        kn.setAttribute("aria-valuenow",Math.round(x));kn.setAttribute("aria-valuetext",Math.round(x)+"% imagem do gerador")}
+      /* a linha balança sozinha, devagar, até a pessoa tocar nela */
+      function balanca(t){if(!t0)t0=t;poe(45+7*Math.sin((t-t0)/4600*Math.PI*2));raf=requestAnimationFrame(balanca)}
+      function para(){auto=false;cancelAnimationFrame(raf);raf=0}
+      return{monta:monta,
+        liga:function(){vivo=true;if(calmo){poe(50);return}carrega(vid,"assets/roer.mp4");toca(vid);if(auto&&!raf){t0=0;raf=requestAnimationFrame(balanca)}},
+        desliga:function(){vivo=false;if(!a)return;vid.pause();cancelAnimationFrame(raf);raf=0},sai:function(){}}})();
+
+    /* ---------- Grade de aulas ---------- */
+    M.grade=(function(){
+      var g,ts=[],vs=[],tm=0,fila=[],tocando=[],
+        /* os títulos são as etapas do processo, de ilustração. Não são módulos nem aulas do curso */
+        T=[["cerebro","Roteiro","acq-t1"],["sinapse","Prompt","acq-t2"],["roer","Imagem","acq-t3"],["hpylori","Movimento","acq-t4"],["valvula","Narração","acq-t5"],["hernia","Edição","acq-tf"],["bypass","","acq-tc"]];
+      function monta(){if(g)return;
+        g=novo('<div class="acq-g" aria-hidden="true"><div class="acq-gr">'+T.map(function(t){
+          return '<span class="acq-t '+t[2]+'" style="background-image:url(assets/est-'+t[0]+'-poster.jpg)"><video muted loop playsinline preload="none" tabindex="-1" data-acq-src="assets/est-'+t[0]+'-hd.mp4"></video><b>'+(t[1]||'Aula inaugural<small>grátis</small>')+'</b></span>'}).join("")+'</div></div>');
+        ts=[].slice.call(g.querySelectorAll(".acq-t"));vs=ts.map(function(t){return t.querySelector("video")});
+        ts.forEach(function(t,i){t.style.transitionDelay=(i===6?0:60+i*55)+"ms"})}
+      function liga1(i){var v=vs[i];carrega(v,v.getAttribute("data-acq-src"));toca(v);
+        if(v.readyState>2)v.classList.add("on");else v.addEventListener("playing",function f(){v.removeEventListener("playing",f);if(tocando.indexOf(i)>-1)v.classList.add("on")})}
+      function desl1(i){var v=vs[i];v.classList.remove("on");setTimeout(function(){if(tocando.indexOf(i)<0)v.pause()},650)}
+      /* a aula inaugural toca sempre; das seis em volta, duas por vez, trocando uma a cada 2,6 s */
+      function gira(){var sai=tocando.splice(1,1)[0],entra=fila.shift();fila.push(sai);tocando.push(entra);desl1(sai);liga1(entra)}
+      return{monta:monta,
+        liga:function(){if(!g)return;requestAnimationFrame(function(){g.classList.add("acq-in")});if(calmo)return;
+          if(!tocando.length){tocando=[6,0,3];fila=[2,4,1,5]}
+          tocando.forEach(liga1);clearInterval(tm);tm=setInterval(gira,2600)},
+        desliga:function(){clearInterval(tm);vs.forEach(function(v){v.pause()})},sai:function(){if(g)g.classList.remove("acq-in")}}})();
+
+    function liga(){var m=vis&&pg.classList.contains("on")?modo:"";if(m===ativo)return;if(M[ativo])M[ativo].desliga();ativo=m;if(M[m])M[m].liga()}
+    function aplica(){var m=root.getAttribute("data-acq");if(!M[m])m="video";if(m===modo)return;
+      if(M[ativo])M[ativo].desliga();if(M[modo])M[modo].sai();ativo="";modo=m;if(M[m])M[m].monta();liga()}
+    if(window.MutationObserver)new MutationObserver(aplica).observe(root,{attributes:true,attributeFilter:["data-acq"]});
+    if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;liga()},{threshold:.2}).observe(fr);else vis=true;
+    window.addEventListener("hashchange",function(){setTimeout(liga,60)});
+    aplica();
+  })();
   /*@@/ACQ-JS@@*/
   /*@@ACAD-JS: página Academy (área do agente ACAD) @@*/
   /* Academy. (1) O "me avisa" é o porte do "Expand Input" do 21st.dev (mirukullacode): idle (botão), open (campo), loading (girando) e success (visto).
@@ -4347,5 +4635,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   route();
 })();
 </script>
-<script>(function(){var V="1794792476";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794792587";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
