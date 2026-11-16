@@ -2035,6 +2035,10 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .fls-s[data-active] .fls-tag b svg{display:none}
 .fls-s[data-active] .fls-tag small,.fls-s[data-active] .fls-tag span{font-size:11px}
 .fls-s:not([data-active]) .fls-tag{display:none}
+.fls-s[data-active] .fls-tag{display:none}
+.fls-num{margin:-6px 0 0;font-size:15px;color:var(--muted);font-variant-numeric:tabular-nums}
+.fls-num b{font-weight:600;color:var(--ink)}
+.fls-num[hidden]{display:none}
 .avd-ht{display:none!important}
 .fls-tag b{display:flex;align-items:center;gap:6px;font-family:var(--ac-display,var(--serif));font-weight:600;font-size:21px;line-height:1;letter-spacing:-.03em;color:var(--ink)}
 .fls-tag b svg{flex:none;color:var(--gold)}
@@ -3622,10 +3626,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   /*@@/FLT-JS@@*/
   /* número da tela da frente sobe de zero até o valor real (porte do "Number Ticker", danielpetho, 21st.dev: tween easeInOut) */
   (function(){var host=$("vit");if(!host||!window.MutationObserver)return;var raf=0;
-    function tick(b){var el=b.querySelector(".fls-n");if(!el)return;var alvo=+b.dataset.r,p=b.dataset.p||"",t0=performance.now(),D=1600;cancelAnimationFrame(raf);
+    function tick(b){var el=b.querySelector(".fls-n");if(!el)return;
+      var inf=host.querySelector(".fls-info");if(inf){var h=inf.querySelector("h3"),q=inf.querySelector(".fls-num");if(!q&&h){q=document.createElement("p");q.className="fls-num";q.innerHTML="<b></b> <span></span>";h.after(q)}if(q){var lb=b.parentNode.querySelector("span");q.querySelector("span").textContent=lb?lb.textContent:"";el=q.querySelector("b");q.hidden=false}}var alvo=+b.dataset.r,p=b.dataset.p||"",t0=performance.now(),D=1600;cancelAnimationFrame(raf);
       if(calmo){el.textContent=p+fmt(alvo);return}
       (function f(t){var k=Math.min(1,(t-t0)/D),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;el.textContent=p+fmt(Math.max(1,alvo*e));if(k<1)raf=requestAnimationFrame(f);else el.textContent=p+fmt(alvo)})(t0)}
-    new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var c=ms[i].target;if(ms[i].attributeName==="data-active"&&c.hasAttribute&&c.hasAttribute("data-active")){var b=c.querySelector(".fls-tag b[data-r]");if(b)tick(b)}}}).observe(host,{subtree:true,attributes:true,attributeFilter:["data-active"]})})();
+    new MutationObserver(function(ms){for(var z=0;z<ms.length;z++){var cz=ms[z].target;if(ms[z].attributeName==="data-active"&&cz.hasAttribute&&cz.hasAttribute("data-active")&&!cz.querySelector(".fls-tag b[data-r]")){var qq=host.querySelector(".fls-num");if(qq)qq.hidden=true}}for(var i=0;i<ms.length;i++){var c=ms[i].target;if(ms[i].attributeName==="data-active"&&c.hasAttribute&&c.hasAttribute("data-active")){var b=c.querySelector(".fls-tag b[data-r]");if(b)tick(b)}}}).observe(host,{subtree:true,attributes:true,attributeFilter:["data-active"]})})();
   function mountVit(){if(typeof mountVitBox==="function")setTimeout(mountVitBox,0);var host=$("vit");if(vitApi&&vitApi.kill)vitApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);
     if(T.vit==="baralho"){vitApi=pile(el,CATALOGO,setStat,6000);host.insertAdjacentHTML("beforeend",'<p class="vit-hint">arraste a carta pro lado</p>')}
     else if(T.vit==="tela")vitApi=full(el,CATALOGO);
@@ -5085,5 +5090,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   document.addEventListener("play",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;obs(v);if(v.__vis===false){v.__gov=1;v.__gp=1;v.pause()}},true);
   document.addEventListener("pause",function(e){var v=e.target;if(!v||v.tagName!=="VIDEO")return;if(v.__gp)v.__gp=0;else v.__gov=0},true);
 })();</script>
-<script>(function(){var V="1794799389";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794800023";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
