@@ -3086,9 +3086,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 /* virais: sem setas, só passando sozinho e com o dedo/mouse */
 #rail-home~.rl-b,.rl-w>.rl-b{display:none!important}
 /* palavra que troca (porte do Animated Hero): palavras empilhadas, cada uma posicionada por mola via JS */
-.rot-w.rot-sp{transition:width .9s cubic-bezier(.22,1,.36,1)}
-.rot-w.rot-sp>span{position:absolute;left:0;top:0;will-change:transform,opacity;opacity:0}
-#hero-rot{white-space:nowrap;max-width:none}
+/* porte fiel do Animated Hero: a frase fica parada; embaixo, uma linha inteira só da palavra, centralizada e com corte em cima e embaixo.
+   Cada palavra fica empilhada no mesmo lugar e anda por mola (rigidez 50, amortecimento 10): a atual em 0, as que passaram em cima, as próximas embaixo */
+#hero-rot{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;justify-self:stretch;align-self:stretch;white-space:normal;max-width:none}
+#hero-rot .rot-a{display:block}
+#hero-rot .rot-w{position:relative;display:flex;justify-content:center;width:100%;height:auto;padding:.08em 0 .16em;overflow:hidden;text-align:center;vertical-align:baseline;transition:none;font-size:34px;line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+#hero-rot .rot-w>span{position:absolute;left:0;right:0;top:.08em;text-align:center;font-weight:600;white-space:nowrap;will-change:transform,opacity}
+#hero-rot .rot-w.rot-sp>span{opacity:0}
+@container site (min-width:700px){#hero-rot .rot-w{font-size:52px;padding:.06em 0 .2em}}
 #ak-fig .mb-bk::before{content:'';position:absolute;left:50%;top:50%;width:13%;aspect-ratio:40/46;transform:translate(-50%,-50%);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23fdfdfe'/><stop offset='.55' stop-color='%23c9cbd0'/><stop offset='1' stop-color='%23eef0f3'/></linearGradient></defs><path d='M20 14c-4-3-11-3-14 2-4 6-1 17 4 23 3 4 6 5 10 3 4 2 7 1 10-3 5-6 8-17 4-23-3-5-10-5-14-2z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/><path d='M20 14c0-4 1-7 3-9' fill='none' stroke='%23b9bcc2' stroke-width='1.6' stroke-linecap='round'/><path d='M22 7c3-4 8-4 10-3-1 3-5 6-10 3z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/></svg>") center/contain no-repeat;filter:drop-shadow(0 1px 0 rgba(255,255,255,.8)) drop-shadow(0 0 6px rgba(255,255,255,.6));opacity:.95}
 #ak-fig .mb-bk::before{z-index:2}
 </style>
@@ -3116,7 +3121,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus<br><em>ou te ensinar.</em></h1>
-        <p class="rot" id="hero-rot">Vídeos de saúde pra <span class="rot-w" aria-hidden="true"><span>médicos</span></span><span class="ps-sr">médicos, dentistas, nutricionistas, fisioterapeutas, clínicas, marcas e farmacêuticos.</span></p>
+        <p class="rot" id="hero-rot"><span class="rot-a">Vídeos de saúde pra</span><span class="rot-w" aria-hidden="true">&nbsp;<span>médicos</span></span><span class="ps-sr">médicos, dentistas, nutricionistas, fisioterapeutas, clínicas, marcas e farmacêuticos.</span></p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">5,3 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Roer Unha</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -4806,6 +4811,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
      (precisa ter v.mp4 inteiro, v-loop.mp4 e v.jpg), t = título, area = área (vira pílula de filtro sozinha), s = duração em segundos.
      O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui. */
   var MOTION_LIB=[
+    {v:"mo-real-4",t:"O cérebro não sente dor",area:"Neurocirurgia",s:27},
+    {v:"mo-real-5",t:"Por que no avião dá mais gases?",area:"Gastro",s:25},
+    {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
+    {v:"mo-real-7",t:"Seu fígado filtra tudo",area:"Gastro",s:26},
+    {v:"mo-real-9",t:"Seu intestino conversa com o cérebro",area:"Gastro",s:25},
     {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
     {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
     {v:"mo-real-1",t:"Operou a barriga?",area:"Cirurgia",s:31}
@@ -5525,15 +5535,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   /* frase que troca na abertura: a palavra nova cai de cima com mola e a antiga sai por baixo (2,5 s cada). Parada com reduzir movimento */
   /* frase que troca na abertura: porte fiel do "Animated Hero" (21st.dev). Todas as palavras ficam empilhadas; a da vez vai pra y=0 e aparece,
      as que já passaram sobem e somem, as próximas esperam embaixo. Tudo com mola (rigidez 50, amortecimento 10, massa 1, como o spring do framer-motion).
-     Troca a cada 2,5 s. Parada com reduzir movimento */
+     Troca a cada 2 s, como no original. Parada com reduzir movimento */
   (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas","farmacêuticos"],at=0;
     if(calmo)return;
-    w.textContent="";w.classList.add("rot-sp");
-    var S=L.map(function(t,k){var e=document.createElement("span");e.textContent=t;w.appendChild(e);return {e:e,y:-1,vy:0,o:0,vo:0}});
+    w.textContent="\u00a0";w.classList.add("rot-sp");
+    var S=L.map(function(t,k){var e=document.createElement("span");e.textContent=t;w.appendChild(e);return {e:e,y:-1.4,vy:0,o:0,vo:0}});
     function larg(k){return S[k].e.getBoundingClientRect().width}
-    function alvo(k){return k===at?{y:0,o:1}:{y:at>k?-1.5:1.5,o:0}}
-    function poeLarg(){w.style.width=Math.ceil(larg(at))+"px"}
-    poeLarg();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(poeLarg);
+    function alvo(k){return k===at?{y:0,o:1}:{y:at>k?-2.1:2.1,o:0}}
+    function poeLarg(){}
     var K=50,C=10,ult=0,rodando=false;
     function passo(t){var dt=ult?Math.min(.05,(t-ult)/1000):.016;ult=t;var mexe=false;
       S.forEach(function(s,k){var a=alvo(k),n=4,h=dt/n;for(var q=0;q<n;q++){var fy=-K*(s.y-a.y)-C*s.vy;s.vy+=fy*h;s.y+=s.vy*h;var fo=-K*(s.o-a.o)-C*s.vo;s.vo+=fo*h;s.o+=s.vo*h}
@@ -5542,7 +5551,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       if(mexe)requestAnimationFrame(passo);else{rodando=false;ult=0}}
     function anima(){if(!rodando){rodando=true;ult=0;requestAnimationFrame(passo)}}
     anima();
-    setInterval(function(){if(document.hidden||p.offsetParent===null)return;at=(at+1)%L.length;poeLarg();anima()},2500)})();
+    setInterval(function(){if(document.hidden||p.offsetParent===null)return;at=(at+1)%L.length;anima()},2000)})();
   $("dlg-x").onclick=function(){$("dlg").close()};
 
   var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
@@ -6184,5 +6193,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794919982";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794921826";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
