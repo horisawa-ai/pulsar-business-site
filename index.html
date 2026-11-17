@@ -2077,22 +2077,32 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .pp-p{transition:transform .5s var(--ps-ease)}
 /* a pasta volta a ser pasta: fundo liso tingido pela cor do tema, vidro na frente, e as capas viram fotos (cartões em pé) espiando pela boca, levemente tortas.
    Mesma geometria pra folha de verdade e pra cópia desfocada que o vidro mostra. Medidas no palco de 340 (o GF escala). Ao passar o mouse a pasta espia: vidro inclina e as fotos sobem e abrem */
-.pp .gf{--gf-lift:-16px;--gf-spread:64px;--gf-fan:7deg;--gf-stack:0px;--gf-jk:1}
-.pp .gf.gf--peek{--gf-hinge:-12deg;--gf-lift:-36px;--gf-spread:76px;--gf-fan:10deg;--gf-stack:0px}
-.pp .gf-sheet,.pp .gf-ghost-sheet{left:113px;top:22px;width:114px;height:156px}
-.pp .gf-sheet{border-radius:12px;background:#fff;box-shadow:0 0 0 .5px rgba(12,10,9,.12),0 8px 18px -8px rgba(12,10,9,.4)}
+/* pasta de verdade (pedido do Renan, 17/11): aba no alto à esquerda, corpo de trás na cor do tema, frente de vidro fosco mais baixa e lisa.
+   Dentro, só DUAS fotos grandes em leque saindo pela boca e, atrás delas, duas folhas de papel espiando só a ponta. Medidas no palco de 340 (o GF escala) */
+.pp .gf{--gf-lift:-22px;--gf-spread:46px;--gf-fan:9deg;--gf-stack:0px;--gf-jk:0}
+.pp .gf.gf--peek{--gf-hinge:-10deg;--gf-lift:-40px;--gf-spread:54px;--gf-fan:12deg;--gf-stack:0px}
+.pp .gf-back{-webkit-clip-path:path("M0 22A22 22 0 0 1 22 0L112 0C134 0 138 30 162 30L318 30A22 22 0 0 1 340 52L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z");clip-path:path("M0 22A22 22 0 0 1 22 0L112 0C134 0 138 30 162 30L318 30A22 22 0 0 1 340 52L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z")}
+.pp .gf-front{top:128px;height:144px;-webkit-clip-path:path("M0 20A20 20 0 0 1 20 0L320 0A20 20 0 0 1 340 20L340 122A22 22 0 0 1 318 144L22 144A22 22 0 0 1 0 122Z");clip-path:path("M0 20A20 20 0 0 1 20 0L320 0A20 20 0 0 1 340 20L340 122A22 22 0 0 1 318 144L22 144A22 22 0 0 1 0 122Z")}
+.pp .gf-front-rim{height:144px}
+.pp .gf-ghost{top:-128px}
+.pp .gf-back-rim path{stroke:rgba(255,255,255,.7);stroke-width:1.4}
+.pp .gf-sheet,.pp .gf-ghost-sheet{left:101px;top:24px;width:138px;height:178px}
+.pp .gf-sheet{border-radius:12px;background:#fff;box-shadow:0 0 0 .5px rgba(12,10,9,.14),0 10px 22px -8px rgba(12,10,9,.45)}
 .pp .gf-sheet-art,.pp .gf-ghost-sheet>*{width:100%;height:100%;border-radius:12px}
 .pp .gf-sheet-art{object-position:50% 40%}
-.pp .gf-sheet--art::after{background:none;box-shadow:inset 0 0 0 2.5px rgba(255,255,255,.92)}
+.pp .gf-sheet--art::after{background:none;box-shadow:inset 0 0 0 3px rgba(255,255,255,.95)}
 .pp .gf-ghost-sheet>img{object-position:50% 40%}
-.pp[class] .gf-sheet-slot:nth-child(2) .gf-sheet{z-index:4!important;margin-top:-9px}
-.pp .gf-ghost-sheet:nth-child(4){z-index:1;margin-top:-9px}
-.pp-r[data-n="2"] .gf{--gf-spread:40px;--gf-fan:6deg}
-.pp-r[data-n="2"] .gf.gf--peek{--gf-spread:50px;--gf-fan:9deg}
-/* o vidro: claro em baixo, deixa passar a cor do tema e o vulto das fotos */
-.pp .gf-tint{background:linear-gradient(180deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,.5) 40%,rgba(255,255,255,.8) 100%)}
-.pp .gf-ghost-sheet>*{filter:blur(22px) saturate(1.1);opacity:.3}
-@media (prefers-reduced-motion:reduce){.pp .gf.gf--peek{--gf-hinge:0deg;--gf-lift:-16px;--gf-spread:64px;--gf-fan:7deg}}
+/* as folhas de papel atrás das fotos: só a ponta aparece, sem imagem. Sobem um tiquinho quando a pasta espia */
+.pp .gf-back::before,.pp .gf-back::after,.pp .gf-ghost-back::before,.pp .gf-ghost-back::after{content:"";position:absolute;border-radius:10px;transform-origin:50% 100%;transition:translate .8s var(--gf-spring)}
+.pp .gf-back::before,.pp .gf-ghost-back::before{left:30px;top:50px;width:266px;height:200px;background:linear-gradient(180deg,#fff,#f4f1ec);box-shadow:0 0 0 .5px rgba(12,10,9,.12),0 6px 14px -6px rgba(12,10,9,.28);rotate:-3.5deg}
+.pp .gf-back::after,.pp .gf-ghost-back::after{left:52px;top:42px;width:262px;height:200px;background:linear-gradient(180deg,#faf8f5,#ece7e0);box-shadow:0 0 0 .5px rgba(12,10,9,.12),0 6px 14px -6px rgba(12,10,9,.28);rotate:3deg}
+.pp .gf-ghost-back::before{left:42px;top:62px}.pp .gf-ghost-back::after{left:64px;top:54px}
+.pp .gf--peek .gf-back::before{translate:-4px -8px}.pp .gf--peek .gf-back::after{translate:4px -12px}
+/* o vidro: fosco, deixa passar a cor da pasta e o vulto das fotos, com a borda de cima acesa */
+.pp .gf-tint{background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.16) 50%,rgba(255,255,255,.24) 100%)}
+.pp .gf-ghost-sheet>*{filter:blur(18px) saturate(1.2);opacity:.45}
+.pp .gf-front-rim path{stroke-width:3}
+@media (prefers-reduced-motion:reduce){.pp .gf.gf--peek{--gf-hinge:0deg;--gf-lift:-22px;--gf-spread:46px;--gf-fan:9deg}.pp .gf--peek .gf-back::before,.pp .gf--peek .gf-back::after{translate:none}}
 /* cor sólida de cada pasta enquanto a imagem não chega (nada de pasta em branco) */
 .pp-r,.pq-g li{--pq-a:#f3ece6;--pq-b:#e6d9cc}
 :is(.pp-r,.pq-g li)[data-cat="remedios"]{--pq-a:#fbe7e3;--pq-b:#f1c3bb}
@@ -2101,7 +2111,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 :is(.pp-r,.pq-g li)[data-cat="pele"]{--pq-a:#f7ede4;--pq-b:#e6d0bd}
 :is(.pp-r,.pq-g li)[data-cat="mulher"]{--pq-a:#f8e9ef;--pq-b:#e7c6d4}
 :is(.pp-r,.pq-g li)[data-cat="curiosidades"]{--pq-a:#efeaf6;--pq-b:#d6cbe8}
-.pp .gf-back,.pp .gf-ghost-back,.pp .gf-ghost-base{background:linear-gradient(160deg,var(--pq-a),var(--pq-b))}
+.pp .gf-back,.pp .gf-ghost-back,.pp .gf-ghost-base{background:linear-gradient(165deg,var(--pq-b) 0%,color-mix(in srgb,var(--pq-b) 72%,#3a2418) 100%)}
 .pp .gf-label{display:none}
 :is(.pp,.sk-l,#sd-vis) .gf-sheet-meta{display:none}
 
@@ -4534,12 +4544,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       $("pp-lead").textContent=nF(todas.length)+" dos meus vídeos: narração e o prompt de cada cena. Aqui você vê uma parte. A folha completa vem no curso.";
 
       /* as pastas: o vidro de enfeite dentro de um botão. Na frente vai a folha mais vista da pasta. Sem animação de entrada e com as imagens já carregadas (eager): ao descer a página nenhuma pasta aparece em branco */
+      /* contorno da pasta daqui (aba à esquerda, frente lisa e mais baixa): o mesmo desenho do clip-path no CSS .pp */
+      var PP_BK="M0 22A22 22 0 0 1 22 0L112 0C134 0 138 30 162 30L318 30A22 22 0 0 1 340 52L340 250A22 22 0 0 1 318 272L22 272A22 22 0 0 1 0 250Z",PP_FR="M0 20A20 20 0 0 1 20 0L320 0A20 20 0 0 1 340 20L340 122A22 22 0 0 1 318 144L22 144A22 22 0 0 1 0 122Z";
       pp.innerHTML=vivas.map(function(a,i){var ks=porCat[a[0]];
         var boa=function(k){var im=imgDe(k);return catDe(k)===a[0]&&!!im&&!im.pos},esc3=(CAPAS[a[0]]||[]).filter(boa);
-        ks.forEach(function(k){if(esc3.length<3&&esc3.indexOf(k)<0&&boa(k))esc3.push(k)});
-        var fs=esc3.slice(0,3).map(function(k){return {name:FOLHAS[k].curto,image:imgDe(k).src,id:k,bare:true}});
+        ks.forEach(function(k){if(esc3.length<2&&esc3.indexOf(k)<0&&boa(k))esc3.push(k)});
+        var fs=esc3.slice(0,2).map(function(k){return {name:FOLHAS[k].curto,image:imgDe(k).src,id:k,bare:true}});
         return '<button class="pp-r" type="button" data-cat="'+a[0]+'" data-n="'+fs.length+'" aria-label="'+esc(a[1])+", "+nF(ks.length)+'. Mostrar na lista"><span class="pp-p">'+
-          GF.html({id:"pp-"+a[0],label:a[1],files:fs,decor:true,labelHidden:true,appear:false}).replace(/loading="lazy"/g,'loading="eager"')+
+          GF.html({id:"pp-"+a[0],label:a[1],files:fs,decor:true,labelHidden:true,appear:false}).replace(/loading="lazy"/g,'loading="eager"').replace(/(gf-back-rim" viewBox="0 0 340 272" aria-hidden="true"><path d=")[^"]*/,"$1"+PP_BK).replace(/(gf-front-rim" viewBox="0 0 340 )198("[\s\S]*?<path d=")[^"]*/,function(m,a,b){return a+"144"+b+PP_FR})+
           '</span><span class="pp-tx" aria-hidden="true"><span class="pp-n">'+nomeHtml(a)+'</span><span class="pp-c">'+nF(ks.length)+'</span></span></button>'}).join("");
       GF.mount(pp);
       /* o recorte de cada foto (a folha de verdade e a cópia desfocada que o vidro mostra) */
@@ -5597,5 +5609,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794899976";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794900504";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
