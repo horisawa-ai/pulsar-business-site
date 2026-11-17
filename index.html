@@ -1275,6 +1275,166 @@ html[data-acf="serifa"] #pg-biblioteca .bf-n{font-size:clamp(27px,7.6cqw,30px);l
 html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 @container site (min-width:700px){html[data-acf="serifa"] #pg-academy .ac-cap h2{font-size:46px}}
 #pg-academy video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+/* ===== Academy (17/11): notebook que recebe o curso, aula inaugural, grade, preço e duas portas ===== */
+#pg-academy .ak{position:relative;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;width:100%;margin-top:2px}
+/* o MacBook, todo em CSS 3D: base de alumínio com teclado e trackpad, dobradiça e a tampa que gira na dobradiça (rotateX).
+   Tudo é desenhado num palco de 420x380 e o JS só ajusta a escala (--k) à largura da figura */
+#pg-academy .ak-fig{position:relative;width:100%;max-width:420px;aspect-ratio:420/380;margin-block:4px 0;--k:.84}
+#pg-academy .mb{position:absolute;left:0;top:0;width:420px;height:380px;transform:scale(var(--k));transform-origin:0 0;perspective:1900px;perspective-origin:50% 30%}
+#pg-academy .mb div{position:absolute}
+#pg-academy .mb-w{position:absolute;left:30px;top:250px;width:360px;height:0;transform-style:preserve-3d;transform:rotateX(-21deg)}
+#pg-academy .mb-w>div,#pg-academy .mb-lid{transform-style:preserve-3d}
+#pg-academy .mb-base{left:0;top:3px;width:360px;height:234px;transform-origin:50% 0;transform:rotateX(90deg)}
+#pg-academy .mb-deck{inset:0;overflow:hidden;border-radius:5px 5px 18px 18px;background:linear-gradient(180deg,#bfc0c4 0,#bfc0c4 7px,#e3e4e7 9px,#eceef0 40%,#e2e3e6 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06),inset 0 -2px 0 rgba(255,255,255,.8)}
+#pg-academy .mb-deck::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 70%);opacity:.6}
+#pg-academy .mb-kb{left:27px;right:27px;top:22px;height:118px;border-radius:6px;background:#2b2b2e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 306 118'%3E%3Crect width='306' height='118' rx='6' fill='%232b2b2e'/%3E%3Cg fill='%230f0f11' stroke='%233a3a3e' stroke-width='.6'%3E%3Crect x='3.0' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='24.6' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='46.2' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='67.8' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='89.4' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='111.0' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='132.6' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='154.2' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='175.8' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='197.4' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='219.0' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='240.6' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='262.2' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='283.8' y='2.2' width='19.2' height='9.5' rx='2.2'/%3E%3Crect x='3.0' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='23.9' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='44.9' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='65.8' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='86.8' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='107.7' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='128.6' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='149.6' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='170.5' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='191.4' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='212.4' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='233.3' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='254.3' y='14.2' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='275.2' y='14.2' width='27.8' height='18.4' rx='2.2'/%3E%3Crect x='3.0' y='34.9' width='27.8' height='18.4' rx='2.2'/%3E%3Crect x='33.2' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='54.1' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='75.1' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='96.0' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='117.0' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='137.9' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='158.8' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='179.8' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='200.7' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='221.6' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='242.6' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='263.5' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='284.5' y='34.9' width='18.5' height='18.4' rx='2.2'/%3E%3Crect x='3.0' y='55.7' width='33.7' height='18.4' rx='2.2'/%3E%3Crect x='39.1' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='60.2' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='81.3' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='102.4' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='123.5' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='144.6' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='165.7' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='186.8' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='207.9' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='229.0' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='250.1' y='55.7' width='18.7' height='18.4' rx='2.2'/%3E%3Crect x='271.2' y='55.7' width='31.8' height='18.4' rx='2.2'/%3E%3Crect x='3.0' y='76.5' width='43.4' height='18.4' rx='2.2'/%3E%3Crect x='48.8' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='70.1' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='91.3' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='112.6' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='133.9' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='155.1' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='176.4' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='197.7' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='219.0' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='240.2' y='76.5' width='18.9' height='18.4' rx='2.2'/%3E%3Crect x='261.5' y='76.5' width='41.5' height='18.4' rx='2.2'/%3E%3Crect x='3.0' y='97.3' width='20.8' height='18.4' rx='2.2'/%3E%3Crect x='26.2' y='97.3' width='20.8' height='18.4' rx='2.2'/%3E%3Crect x='49.4' y='97.3' width='20.8' height='18.4' rx='2.2'/%3E%3Crect x='72.6' y='97.3' width='26.0' height='18.4' rx='2.2'/%3E%3Crect x='101.0' y='97.3' width='104.0' height='18.4' rx='2.2'/%3E%3Crect x='207.4' y='97.3' width='26.0' height='18.4' rx='2.2'/%3E%3Crect x='235.8' y='107.2' width='20.8' height='8.5' rx='1.6'/%3E%3Crect x='259.0' y='97.3' width='20.8' height='8.5' rx='1.6'/%3E%3Crect x='259.0' y='107.2' width='20.8' height='8.5' rx='1.6'/%3E%3Crect x='282.2' y='107.2' width='20.8' height='8.5' rx='1.6'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;box-shadow:0 0 0 2px #cfd0d3,inset 0 1px 2px rgba(0,0,0,.5)}
+#pg-academy .mb-tp{left:50%;top:152px;width:150px;height:72px;margin-left:-75px;border-radius:9px;background:linear-gradient(180deg,#e7e8eb,#dfe0e3);box-shadow:inset 0 0 0 1px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.9)}
+#pg-academy .mb-sp{left:0;right:0;top:9px;height:110px;background:radial-gradient(60% 100% at 50% 0,rgba(255,214,140,.55),rgba(255,214,140,0) 70%);opacity:0;transition:opacity 1s ease}
+#pg-academy .mb-lip{left:0;top:234px;width:360px;height:9px;transform-origin:50% 0;transform:rotateX(-90deg);border-radius:0 0 18px 18px/0 0 9px 9px;background:linear-gradient(180deg,#d4d5d9,#a9aaaf 70%,#8e8f94);backface-visibility:visible}
+#pg-academy .mb-lip::after{content:"";position:absolute;left:50%;top:0;width:64px;height:5px;margin-left:-32px;border-radius:0 0 8px 8px;background:linear-gradient(180deg,#9c9da2,#c5c6ca)}
+#pg-academy .mb-sh{left:-30px;top:-14px;width:420px;height:280px;transform:translateZ(-11px);border-radius:50%;background:radial-gradient(closest-side,rgba(28,25,23,.32),rgba(28,25,23,.12) 60%,rgba(28,25,23,0));filter:blur(6px)}
+#pg-academy .mb-lid{left:0;top:-230px;width:360px;height:230px;transform-origin:50% 100%;transform:rotateX(-90deg)}
+#pg-academy .mb-fr,#pg-academy .mb-bk{inset:0;border-radius:15px 15px 5px 5px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+#pg-academy .mb-fr{transform:translateZ(1.6px);background:#0c0c0e;box-shadow:inset 0 0 0 1.6px #b4b5ba,inset 0 0 0 3px #1a1a1c}
+#pg-academy .mb-fr::before{content:"";position:absolute;left:50%;top:5px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#26262b;box-shadow:inset 0 0 1px 1px #050506}
+#pg-academy .mb-bk{transform:rotateY(180deg) translateZ(1.6px);background:linear-gradient(160deg,#f1f2f4 0,#dfe0e3 38%,#d1d2d6 62%,#e4e5e8 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),inset 0 2px 0 rgba(255,255,255,.9)}
+#pg-academy .mb-bk::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,0) 35%,rgba(255,255,255,.65) 48%,rgba(255,255,255,0) 60%)}
+#pg-academy .mb-tp2{left:6px;right:6px;top:-1.6px;height:3.2px;transform:rotateX(90deg);border-radius:2px;background:linear-gradient(90deg,#b9babe,#e9eaec 50%,#b9babe)}
+#pg-academy .mb-gl{left:10px;right:10px;top:11px;bottom:14px;overflow:hidden;border-radius:5px 5px 2px 2px;background:radial-gradient(120% 90% at 50% 0,#17171b,#060607 70%)}
+#pg-academy .mb-lit{inset:0;background:radial-gradient(90% 80% at 50% 42%,#fffdf8 0,#fdf1d9 45%,#f3d7a3 100%);opacity:0;transition:opacity .9s ease}
+#pg-academy .ak.ak-fl .mb-lit{opacity:.22;transition-duration:.12s}
+#pg-academy .ak.ak-on .mb-lit{opacity:1;transition-duration:.9s}
+#pg-academy .mb-ui{inset:0;display:grid;align-content:center;justify-items:center;gap:9px;transition:opacity .45s ease}
+#pg-academy .mb-ui i{display:block;width:62%;height:17px;border-radius:9px;background:rgba(255,255,255,.07);transition:background-color .35s ease,box-shadow .35s ease}
+#pg-academy .mb-ui i.on{background:#f0c77d;box-shadow:0 0 16px rgba(240,199,125,.55)}
+#pg-academy .ak.ak-on .mb-ui{opacity:0}
+#pg-academy .mb-tx{inset:0;display:grid;align-content:center;justify-items:center;gap:0;font-family:var(--ac-display,var(--serif));font-size:48px;line-height:.98;letter-spacing:-.025em;opacity:0;transform:scale(.94);transition:opacity .9s ease .25s,transform 1.1s var(--ac-ease) .25s}
+#pg-academy .mb-tx span{display:block}
+#pg-academy .mb-t1{color:#1c1917;font-weight:var(--serif-w,600)}
+#pg-academy .mb-t2{color:var(--gold);font-style:var(--em-style,italic);font-weight:var(--em-w,500);text-shadow:0 0 22px rgba(234,179,8,.45)}
+#pg-academy .ak.ak-on .mb-tx{opacity:1;transform:none}
+#pg-academy .ak.ak-on .mb-sp{opacity:1}
+#pg-academy .mb-ref{inset:0;background:linear-gradient(118deg,rgba(255,255,255,.13) 0,rgba(255,255,255,.05) 34%,rgba(255,255,255,0) 34.5%);pointer-events:none}
+/* a lista: cada linha começa apagada (círculo tracejado) e ganha o visto quando o cartão dela entra na tela */
+#pg-academy .ak-in{position:relative;z-index:1;width:100%;max-width:400px;text-align:left}
+#pg-academy .ak-c{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0;padding:0 2px 8px;border-bottom:1px solid var(--line-2);font-size:13px;line-height:1.3;color:var(--muted)}
+#pg-academy .ak-c b{font-weight:600;font-size:15px;color:var(--ink)}
+#pg-academy .ak-l{margin:0;padding:0;list-style:none}
+#pg-academy .ak-l li{display:flex;align-items:center;gap:12px;padding:9px 2px;border-bottom:1px solid var(--line)}
+#pg-academy .ak-b{display:flex;align-items:center;gap:11px;flex:1 1 auto;min-width:0;font-size:15px;line-height:1.3;color:var(--ink);opacity:.4;transition:opacity .45s ease}
+#pg-academy .ak-l li.on .ak-b{opacity:1}
+#pg-academy .ak-i{flex:none;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line-2);border-radius:10px;background:var(--card);color:var(--ink)}
+#pg-academy .ak-i svg{display:block;width:18px;height:18px}
+#pg-academy .ak-tt{min-width:0;text-wrap:pretty}
+#pg-academy .ak-ok{flex:none;width:20px;height:20px;color:#a8a29e}
+#pg-academy .ak-ok circle{fill:none;stroke:currentColor;stroke-width:1.4;stroke-dasharray:2.6 2.4;transition:fill .3s ease}
+#pg-academy .ak-ok path{stroke:var(--paper);opacity:0;transition:opacity .25s ease .1s}
+#pg-academy .ak-l li.on .ak-ok{color:var(--ink)}
+#pg-academy .ak-l li.on .ak-ok circle{fill:var(--ink);stroke-dasharray:none}
+#pg-academy .ak-l li.on .ak-ok path{opacity:1}
+#pg-academy .ak-l li.pop .ak-ok{animation:akPop .45s var(--ac-mola)}
+@keyframes akPop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+/* o cartãozinho que sai da linha e voa pra dentro da tela */
+#pg-academy .ak-g{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;box-sizing:border-box;margin:0;padding:6px 14px 6px 6px;border-radius:14px;background:var(--card);box-shadow:0 14px 30px -14px rgba(12,10,9,.4),0 0 0 1px rgba(12,10,9,.08);font-size:15px;line-height:1.25;color:var(--ink);pointer-events:none;will-change:transform,opacity}
+#pg-academy .ak-g .ak-i{border-color:var(--line)}
+
+/* --- 2. aula inaugural --- */
+#pg-academy .ak-s2{padding-top:44px}
+#pg-academy .ak-aula{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px;width:100%}
+#pg-academy .ak-tb{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;isolation:isolate;border-radius:22px;background:#d6d3d1;box-shadow:0 30px 60px -44px rgba(12,10,9,.35),0 0 0 1px rgba(12,10,9,.06)}
+#pg-academy .ak-tb video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+#pg-academy .ak-tb::after{content:"";position:absolute;inset:0;background:radial-gradient(closest-side,rgba(12,10,9,.22),rgba(12,10,9,0));pointer-events:none}
+#pg-academy .ak-tb .ac-pb{border-radius:22px}
+#pg-academy .ak-eb{position:absolute;z-index:3;left:12px;bottom:12px;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:13px;font-weight:500;line-height:1.2;color:var(--ink);pointer-events:none}
+#pg-academy .ak-at{display:grid;justify-items:center;gap:10px;width:100%}
+#pg-academy .ak-at .title{font-size:clamp(30px,8.4cqw,40px);line-height:1.04}
+#pg-academy .ak-at .title em{color:var(--gold);white-space:nowrap}
+/* o "ê" da Cormorant Garamond (Google Fonts) sai com o acento solto à direita: só essa letra usa uma serifa do sistema, no mesmo olho */
+#pg-academy .ak-ce{font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:.86em;font-weight:400}
+#pg-academy .ak-ad{max-width:21em;margin:0;font-size:15px;line-height:1.5;color:var(--muted);text-wrap:balance}
+#pg-academy .ak-at .ac-cta{order:0;margin-top:6px}
+
+/* --- 3. grade --- */
+#pg-academy .ak-s3{padding-top:56px}
+#pg-academy .ak-s3 .ac-hd2{margin-bottom:16px}
+#pg-academy .ak-s3 .ac-hd2 .lead{max-width:19em}
+#pg-academy .ak-mods{width:100%;max-width:680px;border-top:1px solid var(--line-2);text-align:left}
+#pg-academy .ak-mod{border-bottom:1px solid var(--line-2)}
+#pg-academy .ak-mod summary{display:grid;grid-template-columns:32px minmax(0,1fr) auto 18px;align-items:center;gap:12px;padding:14px 2px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+#pg-academy .ak-mod summary::-webkit-details-marker{display:none}
+#pg-academy .ak-mod summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:10px}
+#pg-academy .ak-num{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line-2);border-radius:50%;font-size:14px;font-weight:600;color:var(--ink);transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+#pg-academy .ak-mod[open] .ak-num{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+#pg-academy .ak-mt{font-size:16px;font-weight:600;line-height:1.3;color:var(--ink)}
+#pg-academy .ak-qt{font-size:13px;color:var(--muted);white-space:nowrap}
+#pg-academy .ak-chev{width:18px;height:18px;color:var(--muted);transition:transform .3s var(--ac-ease)}
+#pg-academy .ak-mod[open] .ak-chev{transform:rotate(180deg)}
+#pg-academy .ak-mb{padding:0 0 16px 44px}
+#pg-academy .ak-md{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted)}
+#pg-academy .ak-aulas{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+#pg-academy .ak-aulas li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px}
+#pg-academy .ak-an{padding-top:1px;font-size:13px;font-weight:600;color:var(--muted)}
+#pg-academy .ak-aulas b{display:block;font-size:15px;font-weight:600;line-height:1.35;color:var(--ink)}
+#pg-academy .ak-aulas small{display:block;margin-top:2px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+
+/* --- 4. preço --- */
+#pg-academy .ak-s4{padding-top:52px}
+#pg-academy .ak-pc{display:grid;justify-items:center;gap:10px;width:100%;max-width:480px;padding:28px 22px;border:1px solid var(--line-2);border-radius:22px;background:var(--card)}
+#pg-academy .ak-pd{max-width:19em;margin:0;font-size:15px;line-height:1.5;color:var(--muted);text-wrap:balance}
+#pg-academy .ak-ver{margin-top:8px}
+#pg-academy .ak-pr{display:grid;justify-items:center;gap:12px;margin-top:4px}
+#pg-academy .ak-pr[hidden]{display:none}
+#pg-academy .ak-pr:not([hidden]){animation:akSobe .5s var(--ac-ease)}
+@keyframes akSobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#pg-academy .ak-v{margin:0;font-family:var(--serif);font-size:44px;font-weight:var(--serif-w,600);line-height:1;letter-spacing:-.03em;color:var(--ink);outline:none}
+#pg-academy .ak-pn{font-size:13px;line-height:1.45;color:var(--muted);text-align:center}
+
+/* --- 5. portas --- */
+#pg-academy .ak-s5{padding-block:44px 52px}
+#pg-academy .ak-portas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%;max-width:480px}
+#pg-academy .ak-porta{display:grid;justify-items:start;align-content:start;gap:3px;padding:16px 14px;border:1px solid var(--line-2);border-radius:18px;background:var(--card);color:inherit;text-align:left;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:opacity .7s ease,transform .5s var(--ac-ease),border-color .3s ease}
+#pg-academy .ak-porta:active{transform:scale(.98)}
+#pg-academy .ak-porta:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#pg-academy .ak-pi{display:grid;place-items:center;width:34px;height:34px;margin-bottom:8px;border-radius:10px;background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+#pg-academy .ak-pi svg{width:19px;height:19px}
+#pg-academy .ak-porta b{font-size:15px;font-weight:600;line-height:1.25;color:var(--ink)}
+#pg-academy .ak-porta small{font-size:13px;line-height:1.4;color:var(--muted)}
+#pg-academy .ak-ir{margin-top:8px;font-size:14px;font-weight:600;color:var(--ink)}
+#pg-academy .ak-ir::after{content:"\2192";display:inline-block;margin-left:6px;transition:transform .3s var(--ac-ease)}
+@media (hover:hover) and (pointer:fine){
+  #pg-academy .ak-porta:hover{border-color:var(--ink-2)}
+  #pg-academy .ak-porta:hover .ak-ir::after{transform:translateX(3px)}
+  #pg-academy .ak-tb:hover .ac-play{transform:scale(1.08)}
+}
+@media (prefers-reduced-motion:reduce){
+  #pg-academy :is(.ak-b,.ak-ok circle,.ak-ok path,.mb-lit,.mb-ui,.mb-ui i,.mb-tx,.mb-sp,.ak-num,.ak-chev){transition:none!important}
+  #pg-academy :is(.ak-pr,.ak-l li.pop .ak-ok){animation:none!important}
+}
+@container site (min-width:700px){
+  #pg-academy .ak{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;column-gap:clamp(28px,4cqw,56px);margin-top:18px}
+  #pg-academy .ak-fig{max-width:560px;margin:0}
+  #pg-academy .ak-in{max-width:420px;justify-self:start}
+  #pg-academy .ak-b{font-size:16px}
+  #pg-academy .ak-l li{padding-block:11px}
+  #pg-academy .ak-s2{padding-top:72px}
+  #pg-academy .ak-aula{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center;column-gap:clamp(32px,4.5cqw,60px);text-align:left}
+  #pg-academy .ak-at{justify-items:start}
+  #pg-academy .ak-at .title{font-size:clamp(36px,4.2cqw,50px)}
+  #pg-academy .ak-ad{font-size:17px;max-width:24em}
+  #pg-academy .ak-at .ac-cta{justify-items:start}
+  #pg-academy .ak-s3{padding-top:96px}
+  #pg-academy .ak-s3 .ac-hd2 .lead{max-width:none}
+  #pg-academy .ak-mod summary{padding-block:18px}
+  #pg-academy .ak-mt{font-size:18px}
+  #pg-academy .ak-s4{padding-top:80px}
+  #pg-academy .ak-pc{padding:40px 36px}
+  #pg-academy .ak-s5{padding-block:56px 104px}
+  #pg-academy .ak-portas{max-width:560px;gap:14px}
+  #pg-academy .ak-porta{padding:20px 18px}
+}
+#pg-academy .ak-ver[hidden]{display:none}
+/* o site esconde o play do quadro antigo em alguns modos (data-acq); o da aula inaugural fica sempre */
+html[data-acq] #pg-academy .ak-tb .ac-play{display:grid}
 /* numa coluna só (celular) tudo tem a largura do quadro; no computador a página tem 1040px */
 .ac-w{max-width:520px;gap:0;justify-items:center;text-align:center}
 .ac-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
@@ -2471,14 +2631,82 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .of-cm svg{flex:none;width:15px;height:15px}
 .of-go{width:100%}
 .of-pr .muted{margin:0;text-align:center}
+@container site (min-width:700px){.of{max-width:560px}}
+/* Vídeos: topo novo (título único + biblioteca de Motion + o que é + oferta) */
+.mlb-sec{padding-bottom:40px}
+.mlb-hd .display{font-size:clamp(40px,11cqw,84px);line-height:1}
+.mlb-hd .lead{max-width:34ch}
+/* biblioteca de Motion: porte do "Filterable Blog Index" (21st.dev). Pílulas, cartão em destaque, grade */
+.mlb{display:grid;gap:22px;justify-items:center;width:100%;max-width:960px;margin:0 auto;min-width:0}
+.mlb-f{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.mlb-f[hidden]{display:none}
+.mlb-p{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted);font:500 14px/1 var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.mlb-p:hover{color:var(--ink);border-color:var(--ink)}
+.mlb-p svg{width:13px;height:13px;display:none}
+.mlb-p[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.mlb-p[aria-pressed="true"] svg{display:block}
+.mlb-p .num{opacity:.7;font-weight:400}
+.mlb-ft{display:grid;justify-items:center;gap:18px;width:100%;padding:14px 14px 22px;border:1px solid var(--line);border-radius:28px;background:var(--card);box-shadow:0 1px 2px rgba(12,10,9,.05),0 30px 60px -40px rgba(12,10,9,.35);text-align:center;min-width:0}
+.mlb-m{position:relative;width:min(100%,300px);aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#0b2a44;-webkit-touch-callout:none;user-select:none}
+.mlb-m video,.mlb-m img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.mlb-d{position:absolute;top:10px;right:10px;display:flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;background:rgba(250,250,249,.88);color:var(--ink);font-size:12px;font-weight:500;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mlb-d svg{width:12px;height:12px}
+.mlb-pp{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:6px;min-height:36px;padding:0 12px 0 10px;border:0;border-radius:999px;background:rgba(250,250,249,.9);color:var(--ink);font:500 13px/1 var(--sans);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mlb-pp svg{width:14px;height:14px;fill:currentColor}
+.mlb-tx{display:grid;gap:8px;justify-items:center;max-width:420px;min-width:0}
+.mlb-b{display:inline-flex;align-items:center;padding:3px 11px;border-radius:999px;background:var(--tint);color:var(--ink-2);font-size:13px;font-weight:500}
+.mlb-tx h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(26px,7cqw,36px);line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+.mlb-tx p{margin:0;font-size:15px;line-height:1.5;color:var(--muted)}
+.mlb-g{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;min-width:0}
+.mlb-g[hidden]{display:none}
+.mlb-g.um{grid-template-columns:minmax(0,1fr);max-width:200px}
+.mlb-c{display:grid;gap:10px;justify-items:center;width:100%;padding:8px 8px 14px;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--ink);font:inherit;text-align:center;cursor:pointer;transition:box-shadow .2s,border-color .2s}
+.mlb-c:hover{box-shadow:0 18px 40px -26px rgba(12,10,9,.4);border-color:var(--line-2)}
+.mlb-c .mlb-m{width:100%;border-radius:15px}
+.mlb-c .mlb-d{top:7px;right:7px;font-size:11px;padding:2px 7px}
+.mlb-c b{font-size:14px;font-weight:600;line-height:1.3;text-wrap:balance;padding-inline:2px}
+.mlb-c small{font-size:12px;color:var(--muted)}
+.mlb-c .mlb-b{font-size:12px;padding:2px 9px}
 @container site (min-width:700px){
-  .of{grid-template-columns:auto minmax(0,520px);grid-template-areas:"ex hd" "ex tx";justify-content:center;align-items:start;gap:18px 56px;text-align:left}
-  .of-hd{grid-area:hd;justify-items:start;align-self:end}
-  .of-ex{grid-area:ex;align-self:center}
-  .of-tx{grid-area:tx;justify-items:start}
-  .of-tm legend{margin-left:0}
-  .of-ex video{width:270px}
+  .mlb-hd{max-width:980px}
+  .mlb-hd .display{font-size:clamp(56px,6.4cqw,80px)}
+  .mlb-ft{max-width:820px;grid-template-columns:300px minmax(0,1fr);align-items:center;gap:44px;padding:18px 44px 18px 18px;text-align:center}
+  .mlb-tx h2{font-size:clamp(34px,3.6cqw,44px)}
+  .mlb-g{max-width:820px}
+  .mlb-tx{justify-items:center}
+  .mlb-g{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .mlb-g.dois{grid-template-columns:repeat(2,minmax(0,200px));justify-content:center}
 }
+/* o que é um Pulsar Motion: tem / não tem, ícone + texto */
+.oq{display:grid;gap:14px;width:100%;max-width:820px;margin:0 auto}
+.oq-c{display:grid;gap:14px;padding:22px 20px;border:1px solid var(--line);border-radius:22px;background:var(--card)}
+.oq-h{margin:0;display:flex;align-items:center;justify-content:center;gap:10px;font-size:20px;font-weight:600;letter-spacing:-.01em}
+.oq-k{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper)}
+.oq-k svg{width:14px;height:14px}
+.oq-nao .oq-k{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.oq-l{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.oq-l li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center;text-align:left}
+.oq-i{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--tint);color:var(--ink)}
+.oq-i svg{width:22px;height:22px}
+.oq-nao .oq-i{color:var(--muted)}
+.oq-l b{display:block;font-size:15px;font-weight:600;color:var(--ink)}
+.oq-l span{font-size:14px;line-height:1.4;color:var(--muted)}
+@container site (min-width:700px){.oq{grid-template-columns:1fr 1fr}.oq-h{justify-content:flex-start}}
+/* oferta: só uma coluna centrada agora */
+.of-sec .wrap{gap:28px}
+.of-sec .of-n{max-width:460px;margin:0 auto;text-align:center}
+.of-vg{display:grid;gap:8px;justify-items:center;width:100%;max-width:300px;margin:4px 0 10px}
+.of-vg[hidden]{display:none}
+.of-vg-t{margin:0;font-size:14px;color:var(--ink-2)}
+.of-vg-t b{font-weight:600;color:var(--ink)}
+.of-vg-b{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;width:100%}
+.of-vg-b i{height:6px;border-radius:3px;background:var(--gold)}
+.of-vg-b i.x{background:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.of-ag{margin:0;font-size:13px;font-weight:600;color:var(--gold)}
+.of-dp{margin:10px 0 0;font-size:14px;line-height:1.45;color:var(--muted);max-width:280px}
+.of-dp[hidden]{display:none}
+.of-cp[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.mlb-p,.mlb-c{transition:none}}
 /* skills: o curso é o caminho principal */
 .wl [hidden]{display:none}
 .sk-cta{display:grid;gap:8px;justify-items:center;margin-top:6px}
@@ -2743,6 +2971,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .rot-w.rot-sp{transition:width .9s cubic-bezier(.22,1,.36,1)}
 .rot-w.rot-sp>span{position:absolute;left:0;top:0;will-change:transform,opacity;opacity:0}
 #hero-rot{white-space:nowrap;max-width:none}
+#ak-fig .mb-bk::before{content:'';position:absolute;left:50%;top:50%;width:13%;aspect-ratio:40/46;transform:translate(-50%,-50%);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23fdfdfe'/><stop offset='.55' stop-color='%23c9cbd0'/><stop offset='1' stop-color='%23eef0f3'/></linearGradient></defs><path d='M20 14c-4-3-11-3-14 2-4 6-1 17 4 23 3 4 6 5 10 3 4 2 7 1 10-3 5-6 8-17 4-23-3-5-10-5-14-2z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/><path d='M20 14c0-4 1-7 3-9' fill='none' stroke='%23b9bcc2' stroke-width='1.6' stroke-linecap='round'/><path d='M22 7c3-4 8-4 10-3-1 3-5 6-10 3z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/></svg>") center/contain no-repeat;filter:drop-shadow(0 1px 0 rgba(255,255,255,.8)) drop-shadow(0 0 6px rgba(255,255,255,.6));opacity:.95}
+#ak-fig .mb-bk::before{z-index:2}
 </style>
 </head>
 <body>
@@ -2795,21 +3025,48 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 
 <!-- ======================= BOX DE CONTEÚDOS ======================= -->
 <main class="pg" id="pg-box">
-  <section class="sec" style="padding-bottom:48px"><div class="wrap">
-    <div class="head mt-c">
-      <h1 class="display">Seu conteúdo, <em>pronto.</em></h1>
-      <p class="lead">Do roteiro ao vídeo final. Você aprova e posta.</p>
+  <section class="sec mlb-sec"><div class="wrap">
+    <div class="head mt-c mlb-hd">
+      <h1 class="display">Vídeos de saúde feitos <em>só com imagem.</em></h1>
+      <p class="lead">20 Pulsar Motion pro seu perfil. Veja abaixo como eles ficam.</p>
     </div>
-    <!-- oferta de lançamento: 20 Pulsar Motion. O preço só aparece depois do clique em "Ver o preço" -->
+    <!-- biblioteca de Motion: porte do "Filterable Blog Index" do 21st.dev (olewandowski1/blog-3) pra JS puro.
+         Pílulas de área (aria-pressed) + cartão em destaque + grade de cartões filtrada. Os dados ficam em MOTION_LIB no código -->
+    <div class="mlb" id="mlb" data-novd>
+      <div class="mlb-f" id="mlb-f" role="group" aria-label="Filtrar exemplos por área"></div>
+      <article class="mlb-ft" id="mlb-ft" aria-live="polite"></article>
+      <ul class="mlb-g" id="mlb-g" aria-label="Outros exemplos"></ul>
+    </div>
+  </div></section>
+
+  <section class="sec tint oq-sec" id="o-que-e"><div class="wrap">
+    <div class="head mt-c mt-rv"><h2 class="title">O que é um <em>Pulsar Motion.</em></h2><p class="lead">Um vídeo de até 45 segundos feito de imagens 3D paradas. Quem dá vida a elas é o motion.</p></div>
+    <div class="oq mt-rv">
+      <div class="oq-c">
+        <h3 class="oq-h"><span class="oq-k" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Tem</h3>
+        <ul class="oq-l">
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg></span><span><b>Imagens 3D de saúde</b> Paradas, feitas pra cada tema.</span></li>
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></span><span><b>Texto no ritmo</b> Aparece junto com a fala.</span></li>
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-6 6 2 9-4s5-5 9-2"/><path d="M17 8.5l4 2.5-2.6 3.8"/></svg></span><span><b>Traços que se desenham</b> Setas e linhas em cima da anatomia.</span></li>
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><span><b>Narração</b> A sua voz ou uma voz de IA.</span></li>
+        </ul>
+      </div>
+      <div class="oq-c oq-nao">
+        <h3 class="oq-h"><span class="oq-k" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span>Não tem</h3>
+        <ul class="oq-l">
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Cena de vídeo gerada por IA</b> Nada se mexe dentro da imagem.</span></li>
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Filmagem</b> Você não precisa gravar nada.</span></li>
+          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.6-5.6 7-5.6s6.2 1.8 7 5.6"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Avatar</b> Nenhum rosto falso falando.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec of-sec"><div class="wrap">
+    <!-- oferta de lançamento: 20 Pulsar Motion. O preço só aparece depois do clique em "Ver o preço". Vagas a R$ 500 em VAGAS_500 no código -->
     <div class="of" id="oferta">
-      <div class="of-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="of-sub">Cada um com até 45 segundos.</p></div>
-      <figure class="of-ex">
-        <video data-src="assets/mo-real-3-loop.mp4" poster="assets/mo-real-3.jpg" muted loop playsinline preload="none" aria-label="Exemplo de Pulsar Motion: trecho do vídeo A colonoscopia pode furar o intestino?"></video>
-        <figcaption>Um Pulsar Motion meu. A colonoscopia pode furar o intestino?</figcaption>
-      </figure>
+      <div class="of-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="of-sub">Até 45 segundos cada. Roteiro, imagens, motion e narração.</p></div>
       <div class="of-tx">
-        <p class="of-o"><b>O que é um Pulsar Motion?</b> Um vídeo feito de imagens. Imagens 3D de saúde, paradas, que ganham vida com motion: texto que bate no ritmo, setas e traços que se desenham na anatomia, câmera lenta. Sem filmagem e sem avatar.</p>
-        <p class="of-n">Feito por quem fez <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi).</p>
         <fieldset class="of-tm">
           <legend>Os 20 temas. <span>Você escolhe como.</span></legend>
           <div role="radiogroup" aria-label="Como escolher os temas" style="display:grid;gap:8px">
@@ -2820,7 +3077,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         </fieldset>
         <button class="btn of-ver" type="button" id="of-ver" aria-expanded="false" aria-controls="of-pr">Ver o preço</button>
         <div class="of-pr" id="of-pr" hidden>
-          <div class="vg-pr pc-card" aria-live="polite"><span class="pc-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Lançamento</span><p class="pc-nm">20 vídeos Pulsar Motion</p><p class="of-de num" id="of-de" hidden><span class="ps-sr">De </span>R$ 2.000</p><div class="pr num" id="of-v">R$ 2.000</div><p class="av" id="of-u">pelos 20 vídeos · R$ 100 cada</p>
+          <div class="vg-pr pc-card" aria-live="polite"><span class="pc-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Lançamento</span><p class="pc-nm">20 vídeos Pulsar Motion</p>
+            <div class="of-vg" id="of-vg" hidden><p class="of-vg-t"><b>10 primeiras vagas</b> · restam <b class="num" id="of-vg-n">10</b> de 10</p><div class="of-vg-b" id="of-vg-b" aria-hidden="true"></div></div>
+            <p class="of-ag">Preço de agora</p>
+            <p class="of-de num" id="of-de" hidden><span class="ps-sr">De </span>R$ 2.000</p><div class="pr num" id="of-v">R$ 2.000</div><p class="av" id="of-u">pelos 20 vídeos · R$ 100 cada</p>
+            <p class="of-dp" id="of-dp" hidden>Depois das 10 vagas: R$ 2.000, ou R$ 800 com cupom.</p>
             <ul class="pc-ft"><li>20 vídeos de até 45 segundos</li><li>Temas escolhidos por mim, por você ou misturados</li><li>Roteiro, imagens, motion e narração</li><li>1 ajuste por vídeo</li></ul></div>
           <form class="of-cp" id="of-cp" novalidate>
             <label for="of-c">Tenho um cupom</label>
@@ -2832,9 +3093,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         </div>
       </div>
     </div>
-  </div>
-  <div class="vit-box" id="vit-box"></div>
-  <div class="wrap"><div class="ring-cap" id="ring-box-cap" hidden></div>
+    <p class="of-n mt-c">Quem faz os seus Motion fez <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi). Esses dois são Vídeos Pulsar completos, com cenas animadas. Não são Motion.</p>
   </div></section>
 
   <section class="sec tint" id="tipos"><div class="wrap">
@@ -2945,26 +3204,43 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 
 <!-- ======================= ACADEMY ======================= -->
 <main class="pg" id="pg-academy" data-novd>
-  <!-- 1. Abertura curta e o Curso Pulsar: o andar principal, o que vende -->
+  <!-- 1. O MacBook fechado que abre e recebe o que vem no curso (desenhado em CSS 3D, sem imagem) -->
   <section class="sec ac-s1" id="curso"><div class="wrap ac-w">
     <header class="ac-hd">
       <h1 class="display">Pulsar <em>Academy</em></h1>
-      <p class="lead"><span>Aprenda a fazer os seus vídeos.</span> <span>No seu ritmo, de graça ou comigo.</span></p>
+      <p class="lead"><span>Aprenda a fazer os seus vídeos.</span> <span>Tudo o que eu uso, num curso só.</span></p>
     </header>
-    <div class="ac-curso">
-      <div class="ac-stage mt-rv">
-        <div class="ac-pile" aria-hidden="true"><i style="background-image:url(assets/est-neuronio-poster.jpg)"></i><i style="background-image:url(assets/est-intestino-poster.jpg)"></i></div>
-        <div class="ac-frame">
-          <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-          <div class="ac-cap"><h2>Curso Pulsar</h2><p>Aula inaugural grátis · em breve</p></div>
-          <button type="button" class="ac-pb" id="ac-pb" aria-label="Me avisa da aula inaugural"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
-        </div>
+    <div class="ak" id="ak">
+      <div class="ak-fig" id="ak-fig" role="img" aria-label="Um notebook que abre e recebe o que vem no curso; no fim a tela acende com Pulsar Academy">
+        <div class="mb" aria-hidden="true"><div class="mb-w">
+          <div class="mb-base"><div class="mb-sh"></div><div class="mb-deck"><div class="mb-kb"></div><div class="mb-tp"></div><div class="mb-sp"></div></div><div class="mb-lip"></div></div>
+          <div class="mb-lid" id="ak-lid"><div class="mb-bk"></div><div class="mb-tp2"></div><div class="mb-fr"><div class="mb-gl" id="ak-scr"><div class="mb-lit"></div><div class="mb-ui" id="ak-ui"><i></i><i></i><i></i><i></i><i></i></div><div class="mb-tx"><span class="mb-t1">Pulsar</span><span class="mb-t2">Academy</span></div><div class="mb-ref"></div></div></div></div>
+        </div></div>
       </div>
-      <div class="ac-side">
-        <div class="ac-tx">
-          <p class="ac-say"><b>O meu jeito de fazer vídeo, do roteiro ao vídeo pronto.</b></p>
-          <ul class="ac-facts"><li>Aulas gravadas</li><li>Todos os prompts completos</li><li>Todas as Skills, inclusive a Master</li></ul>
-        </div>
+      <div class="ak-in">
+        <p class="ak-c" aria-hidden="true"><span>O que vem no curso</span><span><b class="num" id="ak-n">0</b> de 5</span></p>
+        <ul class="ak-l" id="ak-l" aria-label="O que vem no curso">
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="ak-tt"><span id="ak-nf">Folhas de prompt</span></span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 13.9 8l4.6 1.9-4.6 1.9L12 16.3l-1.9-4.5L5.5 9.9 10.1 8z"/><path d="M18.5 15.2l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span><span class="ak-tt">Todas as Skills, inclusive a Master</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.2 9.4v5.2l4.4-2.6z"/></svg></span><span class="ak-tt">Aulas gravadas</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M12 8.5V21M5.5 12.5V19a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-6.5"/><path d="M12 8.5S10.6 4 8.2 4.6C6.4 5.1 6.9 8.5 9.2 8.5M12 8.5s1.4-4.5 3.8-3.9c1.8.5 1.3 3.9-1 3.9"/></svg></span><span class="ak-tt">Aula bônus</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 8.5c-2 0-3.5 1.6-3.5 3.5S6 15.5 8 15.5c3.4 0 4.6-7 8-7 2 0 3.5 1.6 3.5 3.5S18 15.5 16 15.5c-3.4 0-4.6-7-8-7z"/></svg></span><span class="ak-tt">Primeiros alunos: acesso vitalício a todo curso novo que eu lançar</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 2. Aula inaugural grátis (ainda vai ser gravada: em breve + o me avisa que já existia) -->
+  <section class="sec ak-s2" id="aula-inaugural"><div class="wrap ac-w">
+    <div class="ak-aula mt-rv">
+      <div class="ak-tb">
+        <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+        <button type="button" class="ac-pb" id="ac-pb" aria-label="Me avisa da aula inaugural"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
+        <span class="ak-eb">Em breve</span>
+      </div>
+      <div class="ak-at">
+        <h2 class="title">Como gerar vídeos gastando <em>R$ 29,90 por m<span class="ak-ce">ê</span>s</em></h2>
+        <p class="ak-ad">A aula inaugural é grátis. Os meus vídeos foram gerados gastando isso, e eu te mostro como.</p>
         <div class="ac-cta">
           <div class="ac-xi" id="ac-xi" data-st="idle">
             <span class="ac-sr" id="ac-xi-live" aria-live="polite"></span>
@@ -2981,26 +3257,50 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     </div>
   </div></section>
 
-  <!-- 2. De graça: a Biblioteca, num cartão só -->
-  <section class="sec ac-s2"><div class="wrap ac-w">
+  <!-- 3. O conteúdo: a grade do doc "Curso Pulsar · Grade das aulas" -->
+  <section class="sec ak-s3" id="curso-grade"><div class="wrap ac-w">
     <header class="ac-hd ac-hd2">
-      <h2 class="title">Comece <em>de graça.</em></h2>
-      <p class="lead">Enquanto o curso não abre, comece pelos meus materiais.</p>
+      <h2 class="title">O que tem <em>dentro.</em></h2>
+      <p class="lead">27 aulas em 7 módulos, na ordem em que um Reel nasce: da ideia ao post.</p>
     </header>
-    <a class="ac-lib mt-rv" id="ac-lib" href="#biblioteca">
-      <div class="ac-lib-p" id="ac-lib-p"></div>
-      <div class="ac-lib-t"><h3 class="ac-t">Biblioteca</h3><p class="ac-d">O Atlas e 23 apostilas com imagens e prompts.</p><p class="ac-ir">Abrir a biblioteca</p></div>
-    </a>
+    <div class="ak-mods mt-rv">
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">0</span><span class="ak-mt"><span class="ac-sr">Módulo 0: </span>Boas-vindas</span><span class="ak-qt">2 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">O aluno vê quem ensina e o fluxo inteiro antes de entrar em qualquer etapa.</p><ol class="ak-aulas"><li><span class="ak-an num">0.1</span><span><b>Quem eu sou e o que você vai fazer</b><small>Por que o método funciona: do perfil parado a 110 mil seguidores em 70 dias</small></span></li><li><span class="ak-an num">0.2</span><span><b>O mapa: um Reel do zero ao post</b><small>As etapas do fluxo em ordem e onde cada IA entra</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">1</span><span class="ak-mt"><span class="ac-sr">Módulo 1: </span>A ideia</span><span class="ak-qt">3 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">Tudo aqui acontece antes de abrir qualquer IA de imagem ou vídeo.</p><ol class="ak-aulas"><li><span class="ak-an num">1.1</span><span><b>Por que esse vídeo cresce</b><small>O algoritmo mede quem assistiu até o fim; mostrar o que ninguém vê segura a pessoa</small></span></li><li><span class="ak-an num">1.2</span><span><b>Ache a dipirona do seu nicho</b><small>Sair com 10 temas do próprio nicho que têm o que mostrar, não só o que falar</small></span></li><li><span class="ak-an num">1.3</span><span><b>Pesquisa sem errar o fato</b><small>Checar cada afirmação em fonte primária antes de escrever uma linha</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">2</span><span class="ak-mt"><span class="ac-sr">Módulo 2: </span>O roteiro</span><span class="ak-qt">3 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">A narração é o primeiro portão: nenhuma imagem é pensada antes dela estar fechada.</p><ol class="ak-aulas"><li><span class="ak-an num">2.1</span><span><b>Narração que segura até o fim</b><small>Escrever 30 a 45 s de fala com a cadeia completa e um fecho que fecha</small></span></li><li><span class="ak-an num">2.2</span><span><b>O gancho em par</b><small>Decidir juntos a primeira fala e a primeira imagem</small></span></li><li><span class="ak-an num">2.3</span><span><b>Decupar em cenas</b><small>Dividir em cenas de até 6 s, cada uma com um evento e nenhum quadro repetido</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">3</span><span class="ak-mt"><span class="ac-sr">Módulo 3: </span>A imagem</span><span class="ak-qt">4 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">A imagem tem que sair certa do próprio prompt, sem depender de edição depois.</p><ol class="ak-aulas"><li><span class="ak-an num">3.1</span><span><b>Estética: escolher, testar, travar</b><small>Rodar um teste com uma imagem por estética e travar a escolhida no vídeo inteiro</small></span></li><li><span class="ak-an num">3.2</span><span><b>Prompt que sai certo de primeira</b><small>Escrever o objeto fiel, sem exagero, em 3 ângulos do mesmo instante</small></span></li><li><span class="ak-an num">3.3</span><span><b>O filtro das IAs</b><small>Passar pelo bloqueio trocando a palavra, não a intenção; abrir conversa nova quando a sessão suja</small></span></li><li><span class="ak-an num">3.4</span><span><b>Gerar imagem de graça</b><small>Gerar e aprovar as imagens no ChatGPT e no Gemini sem gastar crédito</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">4</span><span class="ak-mt"><span class="ac-sr">Módulo 4: </span>O vídeo</span><span class="ak-qt">6 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">O maior módulo e o núcleo do curso. Vídeo só pra cena com ação; objeto parado fica como imagem.</p><ol class="ak-aulas"><li><span class="ak-an num">4.1</span><span><b>Qual gerador pra qual cena</b><small>Decidir por cena: Kling, Grok, Veo/Omni, Gemini ou só imagem parada</small></span></li><li><span class="ak-an num">4.2</span><span><b>Kling: o prompt curto</b><small>Escrever 15 a 40 palavras só com o que se move, o que fica parado e a velocidade</small></span></li><li><span class="ak-an num">4.3</span><span><b>Movimento que não parece IA</b><small>Limitar o movimento a milímetros sem congelar a cena; nada pulsando</small></span></li><li><span class="ak-an num">4.4</span><span><b>Frame final com câmera de verdade</b><small>Saber quando a cena pede frame final e escrevê-lo mudando posição e ângulo</small></span></li><li><span class="ak-an num">4.5</span><span><b>Grok: gente e o que os outros bloqueiam</b><small>Gerar cena com pessoa direto do texto ou a partir de uma imagem</small></span></li><li><span class="ak-an num">4.6</span><span><b>Veo, Flow e Omni: várias referências</b><small>Usar 3 imagens de referência pra cena complexa</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">5</span><span class="ak-mt"><span class="ac-sr">Módulo 5: </span>Voz e montagem</span><span class="ak-qt">5 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">A voz nunca é alterada: só se corta silêncio. O ajuste de tempo acontece na cena.</p><ol class="ak-aulas"><li><span class="ak-an num">5.1</span><span><b>Voz no ElevenLabs</b><small>Gerar a narração com a própria voz clonada ou com voz pronta</small></span></li><li><span class="ak-an num">5.2</span><span><b>Cortar silêncio sem estragar a voz</b><small>Tirar todo respiro entre frases sem acelerar nem mexer na voz</small></span></li><li><span class="ak-an num">5.3</span><span><b>Encaixar a fala na cena</b><small>Fazer cada frase entrar na cena dela; a folga vira silêncio no corte</small></span></li><li><span class="ak-an num">5.4</span><span><b>Texto, marca e margem segura</b><small>Motion legível, assinatura de abertura, marca d'água alternando, nada na área que o Instagram cobre</small></span></li><li><span class="ak-an num">5.5</span><span><b>Exportar</b><small>Exportar em 2K 30 fps, leve e sem travar no final</small></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">6</span><span class="ak-mt"><span class="ac-sr">Módulo 6: </span>Publicar e transformar em resultado</span><span class="ak-qt">4 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><p class="ak-md">O vídeo só termina quando vira seguidor, lead ou o próximo tema.</p><ol class="ak-aulas"><li><span class="ak-an num">6.1</span><span><b>Legenda que faz assistir</b><small>Título forte na 1ª linha, até 400 caracteres, curiosidade extra no comentário fixado</small></span></li><li><span class="ak-an num">6.2</span><span><b>CTA com palavra-chave</b><small>Montar o funil “comenta a palavra, recebe no direct” no ManyChat</small></span></li><li><span class="ak-an num">6.3</span><span><b>Postar em todas as redes</b><small>Publicar em Instagram, TikTok, YouTube, Facebook e Kwai, e denunciar quem copia</small></span></li><li><span class="ak-an num">6.4</span><span><b>Ler os números e escolher o próximo</b><small>Decidir o próximo vídeo pela retenção, não pela curtida</small></span></li></ol></div></details>
+    </div>
   </div></section>
 
-  <!-- 3. Mentoria: a última coisa, a menor, em outra cor -->
-  <section class="sec ac-s3"><div class="wrap ac-w">
-    <a class="ac-ment mt-rv" href="#mentoria">
-      <div class="ac-ment-h"><h2 class="ac-t">Mentoria</h2><p class="ac-sub">A opção mais completa.</p></div>
-      <p class="ac-d">Mão na massa, só você e eu, ao vivo. Eu te passo tudo: o que eu sei, o que eu errei e o que eu aprendi.</p>
-      <p class="ac-ir">Ver a mentoria</p>
-      <div class="ac-ment-v"><video data-src="assets/est-bypass.mp4" poster="assets/est-bypass-1.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
-    </a>
+  <!-- 4. Preço: só depois do clique -->
+  <section class="sec ak-s4" id="curso-preco"><div class="wrap ac-w">
+    <div class="ak-pc mt-rv">
+      <h2 class="ac-t">Curso completo</h2>
+      <p class="ak-pd">As aulas, as folhas de prompt e as Skills, tudo o que aparece nesta página.</p>
+      <button type="button" class="btn ak-ver" id="ak-ver" aria-expanded="false" aria-controls="ak-pr">Ver o preço</button>
+      <div class="ak-pr" id="ak-pr" hidden>
+        <p class="ak-v num" id="ak-v" tabindex="-1">R$ 397</p>
+        <button type="button" class="btn" id="ak-buy">Quero o curso</button>
+        <small class="ak-pn" id="ak-pn">Você preenche, eu te chamo no WhatsApp. Não paga nada agora.</small>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 5. Duas portas pequenas: Biblioteca grátis e Mentoria -->
+  <section class="sec ak-s5"><div class="wrap ac-w">
+    <div class="ak-portas">
+      <a class="ak-porta mt-rv" id="ac-lib" href="#biblioteca"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.5 1.5 0 0 0-1.5-1.5h-5A1.5 1.5 0 0 1 4 17z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 0 20 17z"/></svg></span><b>Biblioteca grátis</b><small>O Atlas e 23 apostilas</small><span class="ak-ir">Abrir</span></a>
+      <a class="ak-porta mt-rv" href="#mentoria"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19.5c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M16.5 14.6c2.2.1 3.6 1.6 4 4.4"/></svg></span><b>Mentoria</b><small>Só você e eu, ao vivo</small><span class="ak-ir">Ver</span></a>
+    </div>
   </div></section>
 </main>
 
@@ -4102,7 +4402,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);boxApi=(typeof flutua==="function"?flutua:vidroCf)(el,MOTION_BOX)}
   mountVitBox();
   /* exemplos Pulsar Motion x Motion + Vídeo: a mesma vitrine de vidro, a lista troca pela chave */
-  var MX={mo:[["mo-real-3","A colonoscopia pode furar o intestino?","mo-real-3-loop"],["mo-real-2","Abscesso perianal","mo-real-2-loop"],["mo-real-1","Operou a barriga?","mo-real-1-loop"],["mx-mo-soluco","Soluço"],["mx-mo-aguaviva","Água-viva"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
+  var MX={mo:[["mo-real-3","A colonoscopia pode furar o intestino?","mo-real-3-loop"],["mo-real-2","Abscesso perianal","mo-real-2-loop"],["mo-real-1","Operou a barriga?","mo-real-1-loop"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
   ["mo","mv"].forEach(function(k){MX[k].forEach(function(c){if(!VIEWS[c[0]])VIEWS[c[0]]=[0,"",1]})});
   var mxApi=null,mxK="mo";function mountMx(k){var host=$("mx-vit");if(!host)return;mxK=k||mxK;if(mxApi&&mxApi.kill)mxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;mxApi=f(el,MX[mxK]);
     [].forEach.call(document.querySelectorAll("#mx .mx-sw .btn"),function(b){var on=b.getAttribute("data-k")===mxK;b.setAttribute("aria-selected",on?"true":"false");b.classList.toggle("line",!on)});
@@ -4325,7 +4625,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   var VG0=null;
   window.pbVaga=function(modo,extra){var h=$("vaga-h"),cx=$("vaga-cx"),pl=$("vg-pl"),sel=$("vg-p"),okt=$("vaga-okt");
     if(!VG0)VG0={h:h.innerHTML,cx:cx.textContent,sel:sel.innerHTML,ok:okt.textContent};
-    var M={videos:["20 vídeos <em>Pulsar Motion.</em>","Temas: "+((extra&&extra.temas)||"")+". Preencha e eu te chamo pra combinar.",(extra&&extra.cupom)?["R$ 800 com cupom","Quero conversar antes"]:["R$ 2.000","Quero conversar antes"],"Recebi seus dados e te chamo no WhatsApp pra combinar os temas."],
+    var M={videos:["20 vídeos <em>Pulsar Motion.</em>","Temas: "+((extra&&extra.temas)||"")+". Preencha e eu te chamo pra combinar.",(extra&&extra.preco)?[extra.preco,"Quero conversar antes"]:(extra&&extra.cupom)?["R$ 800 com cupom","Quero conversar antes"]:["R$ 2.000","Quero conversar antes"],"Recebi seus dados e te chamo no WhatsApp pra combinar os temas."],
+      curso:["Curso <em>Pulsar.</em>","Preencha e eu te chamo no WhatsApp pra liberar o seu acesso.",["R$ 397","Quero conversar antes"],"Recebi seus dados e te chamo no WhatsApp pra liberar o curso."],
       master:["Skill <em>Master.</em>","Preencha e eu te chamo pra falar da Skill Master.",null,"Recebi seus dados e te chamo no WhatsApp."],
       sob:[((extra&&extra.tipo)||"Vídeo")+" <em>sob medida.</em>","Preencha e eu te chamo pra falar do seu vídeo e do valor.",null,"Recebi seus dados e te chamo no WhatsApp."]}[modo];
     $("vaga-ok").hidden=true;$("vg-er").hidden=true;
@@ -4353,6 +4654,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 
   /* oferta de lançamento: 20 Pulsar Motion. Preço só depois do clique; cupom troca R$ 2.000 por R$ 800 */
   var CUPOM="PULSAR800"; /* o Renan troca o código do cupom aqui (maiúscula ou minúscula tanto faz) */
+  var VAGAS_500=10; /* lançamento: vagas restantes a R$ 500 (de 10). O Renan/Claude atualiza à mão quando alguém fecha. Em 0 a faixa some e volta o preço normal (R$ 2.000, ou R$ 800 com cupom) */
   (function(){var of=$("oferta");if(!of)return;var cupomOk=false,
       ICO='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
       OK=ICO+'<path d="M3.5 8.4l3 3 6-6.6"/></svg>',ER=ICO+'<circle cx="8" cy="8" r="6.2"/><path d="M8 4.9v3.6M8 11.1h.01"/></svg>';
@@ -4360,7 +4662,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     function marca(b){ops.forEach(function(o){var on=o===b;o.setAttribute("aria-checked",String(on));o.tabIndex=on?0:-1})}
     of.addEventListener("click",function(e){var b=e.target.closest(".of-op");if(b)marca(b)});
     of.addEventListener("keydown",function(e){var b=e.target.closest&&e.target.closest(".of-op");if(!b)return;var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(b)+d+ops.length)%ops.length];marca(n);n.focus()});
-    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");try{pr.scrollIntoView({block:"nearest",behavior:calmoOf()?"auto":"smooth"})}catch(x){}});
+    var vagas=Math.max(0,Math.min(10,parseInt(VAGAS_500,10)||0));
+    if(vagas>0){$("of-vg").hidden=false;$("of-dp").hidden=false;$("of-cp").hidden=true;$("of-vg-n").textContent=vagas;
+      var bb="";for(var k=0;k<10;k++)bb+='<i'+(k<vagas?'':' class="x"')+'></i>';$("of-vg-b").innerHTML=bb;
+      $("of-de").hidden=false;$("of-u").textContent="pelos 20 vídeos · R$ 25 cada"}
+    else{var sel=of.querySelector(".pc-sel");if(sel)sel.style.display="none"} /* sem vagas de lançamento, some a etiqueta "Lançamento" */
+    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");if(vagas>0)rolaPreco(2000,500);try{pr.scrollIntoView({block:"nearest",behavior:calmoOf()?"auto":"smooth"})}catch(x){}});
     function calmoOf(){return !!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}
     function rolaPreco(a,b){var el=$("of-v"),fmt=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
       if(calmoOf()){el.textContent=fmt(b);return}var t0=null,D=500;(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=fmt(a+(b-a)*e);if(p<1)requestAnimationFrame(f)})(performance.now())}
@@ -4373,8 +4680,59 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;rolaPreco(2000,800);confete(this.querySelector("button"));$("of-u").textContent="pelos 20 vídeos · R$ 40 cada";
       m.className="of-cm ok";m.innerHTML=OK+"<span>Cupom aplicado. De R$ 2.000 por R$ 800.</span>"});
     $("of-c").addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){this.removeAttribute("aria-invalid");$("of-cm").innerHTML=""}});
-    $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk})});
+    $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk,preco:vagas>0?"R$ 500 (vaga de lançamento)":""})});
   })();
+  /* biblioteca de Motion (página Vídeos): porte do "Filterable Blog Index" do 21st.dev (olewandowski1/blog-3) pra JS puro.
+     Só Pulsar Motion REAIS (só imagem + motion, sem cena de vídeo de IA). Cada item: v = nome do arquivo em assets
+     (precisa ter v.mp4 inteiro, v-loop.mp4 e v.jpg), t = título, area = área (vira pílula de filtro sozinha), s = duração em segundos.
+     O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui. */
+  var MOTION_LIB=[
+    {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
+    {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
+    {v:"mo-real-1",t:"Operou a barriga?",area:"Cirurgia",s:31}
+  ];
+  (function(){var root=$("mlb");if(!root)return;var fEl=$("mlb-f"),ftEl=$("mlb-ft"),gEl=$("mlb-g"),
+      calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),
+      ativa="Todas",frente=null,parado=calmo,io=null;
+    var CLK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.8V8l2.2 1.4"/></svg>',
+      OK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg>',
+      PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4L13 8z"/></svg>',
+      PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.8h2.8v10.4H4zM9.2 2.8H12v10.4H9.2z"/></svg>';
+    function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+    function dur(s){return s?Math.floor(s/60)+":"+("0"+(s%60)).slice(-2):""}
+    function vid(c,cheio){return '<video data-src="assets/'+c.v+(cheio?".mp4":"-loop.mp4")+'" poster="assets/'+c.v+'.jpg" muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback controlslist="nodownload noplaybackrate noremoteplayback nofullscreen" aria-hidden="true" tabindex="-1"></video>'}
+    function chip(c){return c.s?'<span class="mlb-d num" aria-label="'+c.s+' segundos">'+CLK+dur(c.s)+'</span>':""}
+    /* áreas: só as que têm vídeo, na ordem em que aparecem na lista */
+    var areas=[];MOTION_LIB.forEach(function(c){if(areas.indexOf(c.area)<0)areas.push(c.area)});
+    function conta(a){return a==="Todas"?MOTION_LIB.length:MOTION_LIB.filter(function(c){return c.area===a}).length}
+    function pilulas(){if(areas.length<2){fEl.hidden=true;return}
+      fEl.innerHTML=["Todas"].concat(areas).map(function(a){return '<button type="button" class="mlb-p" data-a="'+esc(a)+'" aria-pressed="'+(a===ativa)+'">'+OK+esc(a)+' <span class="num">'+conta(a)+'</span></button>'}).join("")}
+    function visiveis(){return ativa==="Todas"?MOTION_LIB.slice():MOTION_LIB.filter(function(c){return c.area===ativa})}
+    function render(){var vs=visiveis();if(!vs.length)return;if(!frente||vs.indexOf(frente)<0)frente=vs[0];
+      var resto=vs.filter(function(c){return c!==frente});
+      ftEl.setAttribute("aria-label","Em destaque: "+frente.t);
+      ftEl.innerHTML='<div class="mlb-m">'+vid(frente,true)+chip(frente)+'<button type="button" class="mlb-pp" id="mlb-pp" aria-pressed="false"></button></div>'+
+        '<div class="mlb-tx"><span class="mlb-b">'+esc(frente.area)+'</span><h2>'+esc(frente.t)+'</h2><p>Pulsar Motion de verdade, feito por mim. Só imagem, texto, traço e narração.</p></div>';
+      gEl.className="mlb-g"+(resto.length===1?" um":resto.length===2?" dois":"");gEl.hidden=!resto.length;
+      gEl.innerHTML=resto.map(function(c){var i=MOTION_LIB.indexOf(c);return '<li><button type="button" class="mlb-c" data-i="'+i+'" aria-label="Ver em destaque: '+esc(c.t)+'"><span class="mlb-m">'+vid(c,false)+chip(c)+'</span><span class="mlb-b">'+esc(c.area)+'</span><b>'+esc(c.t)+'</b></button></li>'}).join("");
+      botao();liga()}
+    function botao(){var b=$("mlb-pp");if(!b)return;b.innerHTML=(parado?PLAY+"Tocar":PAUSE+"Pausar");b.setAttribute("aria-pressed",String(parado));b.setAttribute("aria-label",parado?"Tocar o vídeo":"Pausar o vídeo")}
+    function toca(v){if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    /* toca sozinho e mudo quando aparece na tela; com movimento reduzido fica o quadro parado até tocar em "Tocar" */
+    function liga(){if(io)io.disconnect();var vs=[].slice.call(root.querySelectorAll("video[data-src]"));
+      if(!window.IntersectionObserver){if(!parado)vs.forEach(toca);return}
+      io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target,naFrente=!!v.closest(".mlb-ft");
+        if(e.isIntersecting&&!parado&&!(calmo&&!naFrente))toca(v);else v.pause()})},{threshold:.25});
+      vs.forEach(function(v){io.observe(v)})}
+    root.addEventListener("contextmenu",function(e){if(e.target.closest(".mlb-m"))e.preventDefault()});
+    root.addEventListener("click",function(e){var p=e.target.closest(".mlb-p");
+      if(p){ativa=p.getAttribute("data-a");frente=null;[].forEach.call(fEl.querySelectorAll(".mlb-p"),function(b){b.setAttribute("aria-pressed",String(b===p))});render();return}
+      var pp=e.target.closest(".mlb-pp");
+      if(pp){parado=!parado;var v=ftEl.querySelector("video");if(parado)v.pause();else toca(v);if(!calmo)[].forEach.call(gEl.querySelectorAll("video"),function(x){if(parado)x.pause();else toca(x)});botao();return}
+      var c=e.target.closest(".mlb-c");
+      if(c){frente=MOTION_LIB[+c.getAttribute("data-i")];render();try{ftEl.scrollIntoView({block:"nearest",behavior:calmo?"auto":"smooth"})}catch(x){}var b=$("mlb-pp");if(b)b.focus({preventScroll:true})}});
+    pilulas();render()})();
+
 
   /*@@GF-JS: componente da pasta de vidro + pastas de Prompts e Skills (área do agente GF) @@*/
   /* pasta de vidro (GF): porte do "Glassmorphism Folder Cards" do 21st.dev pra JS puro. Contrato de uso em .wf/GF-API.md.
@@ -4545,6 +4903,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       todas.sort(function(a,b){return peso(b)-peso(a)||limpa(FOLHAS[a].t).localeCompare(limpa(FOLHAS[b].t))});
       var porCat={};todas.forEach(function(k){var c=catDe(k);(porCat[c]=porCat[c]||[]).push(k)});
       var vivas=PASTAS.filter(function(a){return !!porCat[a[0]]});
+      window.PB_NFOLHAS=todas.length;
       $("pp-lead").textContent=nF(todas.length)+" dos meus vídeos: narração e o prompt de cada cena. Aqui você vê uma parte. A folha completa vem no curso.";
 
       /* as pastas: o vidro de enfeite dentro de um botão. Na frente vai a folha mais vista da pasta. Sem animação de entrada e com as imagens já carregadas (eager): ao descer a página nenhuma pasta aparece em branco */
@@ -5538,6 +5897,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
 
     /* cartão da Biblioteca: pasta de vidro de enfeite. Espia quando o cartão aparece e, no computador, abre de vez com o mouse ou o foco do teclado no cartão */
     var lib=$("ac-lib"),caixa=$("ac-lib-p");
+    if(lib&&caixa){
     caixa.innerHTML=GF.html({id:"ac-bib",label:"Biblioteca",meta:"24 PDFs grátis",image:"assets/pdf/atlas.jpg",decor:true,
       files:[{name:"Cardiologia",image:"assets/pdf/cardiologia.jpg",bare:true},{name:"Dermatologia",image:"assets/pdf/dermatologia.jpg",bare:true},{name:"Ortopedia",image:"assets/pdf/ortopedia.jpg",bare:true}]});
     GF.mount(caixa);
@@ -5552,6 +5912,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     lib.addEventListener("focus",function(){var v=true;try{v=lib.matches(":focus-visible")}catch(x){}if(v)leque(true)});
     lib.addEventListener("blur",function(){leque(false)});
     window.addEventListener("hashchange",function(){leque(false)});
+    }
 
     /* vídeos da página: tocam mudos quando aparecem e param quando saem da tela. Com movimento reduzido fica o quadro parado */
     if(!calmo&&window.IntersectionObserver){var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target,q;
@@ -5559,6 +5920,73 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       [].forEach.call(pg.querySelectorAll("video[data-src]"),function(v){vo.observe(v)})}
   })();
   /*@@/ACAD-JS@@*/
+/*@@AK-JS: Academy, o notebook que recebe o curso, a aula inaugural e o preço (17/11/2026) @@*/
+  /* O MacBook (CSS 3D). Começa fechado; quando aparece na tela a tampa abre aos poucos pela dobradiça (com mola) e, a cada degrau,
+     um item do curso sai da lista e voa pra dentro da tela. No fim a tela acende com "Pulsar Academy" e, no computador,
+     a tampa acompanha de leve a altura do mouse. Movimento reduzido: já aparece aberto e aceso. */
+  (function(){
+    var ak=$("ak"),fig=$("ak-fig"),lst=$("ak-l"),nEl=$("ak-n"),lid=$("ak-lid"),scr=$("ak-scr");if(!ak||!fig||!lst||!lid||!scr)return;
+    var rows=[].slice.call(lst.children),N=rows.length,slots=[].slice.call(($("ak-ui")||lst).querySelectorAll("i")),rodou=false,ts=[];
+    var nf=$("ak-nf");if(nf&&window.PB_NFOLHAS)nf.textContent=window.PB_NFOLHAS+" folhas de prompt";
+    /* escala do palco (420x380) pra largura da figura */
+    function esc(){var w=fig.clientWidth;if(w)fig.style.setProperty("--k",(w/420).toFixed(4))}
+    esc();if(window.ResizeObserver)new ResizeObserver(esc).observe(fig);else window.addEventListener("resize",esc);
+    /* a tampa: ângulo entre tampa e base (0 = fechada, 105 = aberta) numa mola suave */
+    var ang=0,vel=0,alvo=0,raf=0,tA=0,L1=105;
+    function poe(){lid.style.transform="rotateX("+(ang-90).toFixed(2)+"deg)"}
+    function passo(t){var dt=tA?Math.min(.033,(t-tA)/1000):.016;tA=t;
+      var ac=70*(alvo-ang)-12.5*vel;vel+=ac*dt;ang+=vel*dt;
+      if(Math.abs(alvo-ang)<.04&&Math.abs(vel)<.04){ang=alvo;vel=0;poe();raf=0;tA=0;return}
+      poe();raf=requestAnimationFrame(passo)}
+    function vaiA(a){alvo=a;if(!raf){tA=0;raf=requestAnimationFrame(passo)}}
+    function snap(a){alvo=ang=a;vel=0;if(raf){cancelAnimationFrame(raf);raf=0}poe()}
+    function marca(i,pop){var r=rows[i];if(!r||r.classList.contains("on"))return;r.classList.add("on");if(slots[i])slots[i].classList.add("on");
+      if(pop){r.classList.remove("pop");void r.offsetWidth;r.classList.add("pop")}
+      nEl.textContent=lst.querySelectorAll("li.on").length}
+    var livre=false;
+    function solta(){if(livre)return;livre=true;
+      if(!(window.matchMedia&&matchMedia("(hover:hover) and (pointer:fine)").matches))return;
+      document.addEventListener("mousemove",function(e){var F=fig.getBoundingClientRect();if(!F.height||F.bottom<0||F.top>innerHeight)return;
+        var d=(e.clientY-(F.top+F.height*.45))/Math.max(320,innerHeight*.6);d=Math.max(-1,Math.min(1,d));vaiA(L1-d*9)},{passive:true})}
+    function fim(){ts.forEach(clearTimeout);ts=[];snap(L1);rows.forEach(function(r,i){marca(i,false)});ak.classList.add("ak-on");solta()}
+    if(calmo||!window.IntersectionObserver||!window.requestAnimationFrame){fim();return}
+    snap(0);
+    function pisca(){ak.classList.add("ak-fl");setTimeout(function(){ak.classList.remove("ak-fl")},170)}
+    /* um cartão com o ícone e o texto da linha sai de cima dela e entra no meio da tela, encolhendo; o alvo é lido a cada quadro (a tampa ainda está se mexendo) */
+    function voa(i,prox){var r=rows[i],b=r.querySelector(".ak-b"),A=ak.getBoundingClientRect(),B=b.getBoundingClientRect();
+      var seg=false,segue=function(){if(seg)return;seg=true;if(prox)prox()};
+      if(!fig.getBoundingClientRect().width){marca(i,false);segue();return}
+      var g=document.createElement("div");g.className="ak-g";g.setAttribute("aria-hidden","true");g.innerHTML=b.innerHTML;
+      g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=(B.width+20)+"px";g.style.opacity="0";ak.appendChild(g);
+      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=920,ok=false;
+      var acaba=function(){if(ok)return;ok=true;g.remove();marca(i,true);pisca();segue()};
+      requestAnimationFrame(function f(t){if(ok)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,
+          S=scr.getBoundingClientRect(),dx=(S.left+S.width/2-gx)*e,dy=(S.top+S.height*.5-gy)*e-Math.sin(Math.PI*e)*34,
+          sc=1+.05*Math.sin(Math.PI*Math.min(1,p*3))-.86*e,op=p<.14?p/.14:p>.82?(1-p)/.18:1;
+        g.style.transform="translate("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px) scale("+sc.toFixed(3)+")";g.style.opacity=op.toFixed(3);
+        if(p>=.78)segue();if(p<1)requestAnimationFrame(f);else acaba()});
+      ts.push(setTimeout(acaba,1800))}
+    /* em cadeia: cada degrau só começa quando o cartão anterior já está chegando (num aparelho lento nada se atropela) */
+    function degrau(i){if(i>=N){ts.push(setTimeout(function(){ak.classList.add("ak-on")},380));ts.push(setTimeout(solta,1700));return}
+      vaiA(12+(L1-12)*(i+1)/N);ts.push(setTimeout(function(){voa(i,function(){degrau(i+1)})},160))}
+    function roda(){if(rodou)return;rodou=true;
+      var vai=function(){ts.push(setTimeout(function(){degrau(0)},320))};
+      if(document.readyState==="complete")vai();else window.addEventListener("load",vai)}
+    var io=new IntersectionObserver(function(es){var e=es[es.length-1];if(e.isIntersecting&&$("pg-academy").classList.contains("on")){io.disconnect();roda()}},{threshold:.5});
+    io.observe(fig);
+    window.addEventListener("hashchange",function(){if(rodou&&!ak.classList.contains("ak-on")&&!$("pg-academy").classList.contains("on"))fim()});
+  })();
+
+  /* Preço do curso: só aparece depois do clique em "Ver o preço" */
+  /* LINK_CURSO: o link de pagamento do curso. O sócio do Renan põe aqui quando tiver. Vazio = abre o pedido de sempre (nome e WhatsApp) */
+  var LINK_CURSO="";
+  (function(){
+    var ver=$("ak-ver"),pr=$("ak-pr"),buy=$("ak-buy"),pn=$("ak-pn");if(!ver||!pr||!buy)return;
+    if(LINK_CURSO&&pn)pn.textContent="Você vai pra página de pagamento.";
+    ver.addEventListener("click",function(){ver.setAttribute("aria-expanded","true");pr.hidden=false;ver.hidden=true;var v=$("ak-v");try{v.focus({preventScroll:true})}catch(x){v.focus()}});
+    buy.addEventListener("click",function(){if(LINK_CURSO){location.href=LINK_CURSO;return}if(window.pbVaga)pbVaga("curso")});
+  })();
+  /*@@/AK-JS@@*/
   window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
 
   route();
@@ -5626,5 +6054,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794901959";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794906884";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
