@@ -2719,6 +2719,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 @container site (min-width:880px){#pg-inicio .ex .m.mxk{padding:28px 26px}.xk{padding:20px 18px 16px 22px;border-radius:26px}.xk-tt{font-size:25px}}
 @media (prefers-reduced-motion:reduce){.xk-log,.xk-ok,.xk-prog span,.xk-send{transition:none}.xk-car{display:none}.xk-li .xk-mk svg{animation:none}}
 /*@@/INI2-CSS@@*/
+/* virais passando como vitrine (trailer): sem snap, número e "seguidores" na mesma linha, visualizações maiores */
+#rail-home{scroll-snap-type:none}
+#rail-home .vr-pl{left:8px;right:8px;padding:12px 12px 13px}
+#rail-home .vr-n{flex-wrap:nowrap;white-space:nowrap;gap:6px}
+#rail-home .vr-n b{font-size:clamp(30px,10.5cqw,40px)}
+#rail-home .vr-n span{font-size:clamp(14px,4.4cqw,18px)}
+#rail-home .vr-s{font-size:16.5px}
+@container site (min-width:880px){#rail-home .vr-n b{font-size:38px}#rail-home .vr-n span{font-size:17px}}
 </style>
 </head>
 <body>
@@ -4973,9 +4981,10 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   var VIRAIS_INI=[["vt-dipirona","Dipirona",1000000,17000],["vt-rim","Rim",3900000,11000],["vt-remela","Remela",3600000,9600],["vt-cordao","Cordão Umbilical",1500000,4100],["vt-hernia","Hérnia de Disco",750000,4000],["vt-unha","Unha que Não Dói",6300000,3300],["vt-furunculo","Furúnculo",2400000,3100],["vt-lagarto","Lagarto e Mounjaro",2200000,2500],["hpylori","H. Pylori",613000,2000],["vt-colposcopia","Colposcopia",1700000,1900],["vt-meconio2","Mecônio",1000000,1009],["vt-cisto","Cisto Sinovial",3200000,1000],["vt-bumbum","Bumbum Coçando",2100000,1000],["vt-roer","Roer Unha",5300000,900],["vt-supositorio","Supositório",5400000,250],["vt-cocopedra","Cocô de Pedra",1000000,250],["capsula","Cápsula Endoscópica",1800000,200],["vt-verruga","Verruga",1700000,200]];
   VIRAIS_INI.sort(function(a,b){return b[3]-a[3]}); /* ordem: quem mais trouxe seguidores primeiro */
   (function(){var box=$("rail-home");if(!box)return;
-    box.innerHTML=VIRAIS_INI.map(function(v){var top=v[3]?'<span class="vr-n"><b>+'+fmtS(v[3])+'</b><span>seguidores</span></span>'+(v[2]?'<span class="vr-s">'+fmtV(v[2])+' de visualizações</span>':''):'<span class="vr-n"><b>'+fmtV(v[2])+'</b><span>visualizações</span></span>';
+    var cartao=function(v,dup){var top=v[3]?'<span class="vr-n"><b>+'+fmtS(v[3])+'</b><span>seguidores</span></span>'+(v[2]?'<span class="vr-s">'+fmtV(v[2])+' de visualizações</span>':''):'<span class="vr-n"><b>'+fmtV(v[2])+'</b><span>visualizações</span></span>';
       var lab=v[1]+": "+(v[2]?fmtV(v[2])+" de visualizações":"")+(v[2]&&v[3]?" e ":"")+(v[3]?"mais "+fmtS(v[3])+" seguidores":"");
-      return '<div><div class="reel" role="img" aria-label="'+lab+'"><video data-src="assets/'+v[0]+'.mp4" poster="assets/'+v[0]+'.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="vr-pl" aria-hidden="true">'+top+'</span></div><div class="cap"><b>'+v[1]+'</b></div></div>'}).join("");
+      return '<div'+(dup?' aria-hidden="true" class="rl-dup"':'')+'><div class="reel" role="img" aria-label="'+lab+'"><video data-src="assets/'+v[0]+'.mp4" poster="assets/'+v[0]+'.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="vr-pl" aria-hidden="true">'+top+'</span></div><div class="cap"><b>'+v[1]+'</b></div></div>'};
+    box.innerHTML=VIRAIS_INI.map(function(v){return cartao(v,0)}).join("")+(calmo?"":VIRAIS_INI.map(function(v){return cartao(v,1)}).join(""));
     var vs=box.querySelectorAll("video");if(calmo||!window.IntersectionObserver)return;
     var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})},{threshold:.5});
     [].forEach.call(vs,function(v){io.observe(v)})})();
@@ -5004,6 +5013,19 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     window.addEventListener("pointerup",solta);window.addEventListener("pointercancel",solta);
     box.addEventListener("click",function(e){if(mexeu){e.preventDefault();e.stopPropagation()}},true)}
   trilhoMouse($("rail-home"));
+  /* virais passando sozinhos em loop, como trailer: anda devagar, para quando a pessoa encosta/arrasta/passa o mouse e volta depois de 2,5 s */
+  (function(){var box=$("rail-home");if(!box||calmo)return;var pos=box.scrollLeft,ult=0,pausa=0,V=34;
+    function meia(){var d=box.querySelector(".rl-dup");return d?d.offsetLeft-box.firstElementChild.offsetLeft:0}
+    function para(){pausa=performance.now()+2500}
+    ["pointerdown","touchstart","wheel"].forEach(function(t){box.addEventListener(t,para,{passive:true})});
+    box.addEventListener("mouseenter",function(){pausa=Infinity});box.addEventListener("mouseleave",para);
+    var w=box.parentNode;if(w&&w.classList.contains("rl-w"))w.addEventListener("click",function(e){if(e.target.closest(".rl-b"))para()},true);
+    var vis=true;if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:.1}).observe(box);
+    function f(t){var dt=ult?Math.min(64,t-ult):16;ult=t;var m=meia();
+      if(vis&&!document.hidden&&t>pausa&&m>0){if(Math.abs(box.scrollLeft-pos)>2)pos=box.scrollLeft;pos+=V*dt/1000;if(pos>=m)pos-=m;box.scrollLeft=pos}
+      else{pos=box.scrollLeft;if(m>0&&pos>=m){pos-=m;box.scrollLeft=pos}}
+      requestAnimationFrame(f)}
+    requestAnimationFrame(f)})();
   /* frase que troca na abertura: a palavra nova cai de cima com mola e a antiga sai por baixo (2,5 s cada). Parada com reduzir movimento */
   (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas","farmacêuticos"],i=0;
     if(calmo)return;
@@ -5573,5 +5595,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794896915";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794897122";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
