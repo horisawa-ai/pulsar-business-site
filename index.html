@@ -1528,6 +1528,22 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   #pg-academy .fs-pt,#pg-academy .fs-sh,#pg-academy .fs-fl{display:none}
   #pg-academy :is(.ak-pr,.ak-l li.pop .ak-ok){animation:none!important}
 }
+/* celular: MacBook um pouco menor e a lista vira grade de cartõezinhos logo embaixo, pra tudo que entra no computador caber na mesma tela */
+@container site (max-width:699px){
+  #pg-academy .ak-fig{max-width:310px}
+  #pg-academy .ak-in{max-width:none;margin-top:6px}
+  #pg-academy .ak-c{padding:0 2px 6px;border-bottom:0;font-size:12.5px}
+  #pg-academy .ak-c b{font-size:14px}
+  #pg-academy .ak-l{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  #pg-academy .ak-l li{gap:6px;padding:6px 8px 6px 6px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+  #pg-academy .ak-l li:last-child{grid-column:1/-1}
+  #pg-academy .ak-b{gap:8px;font-size:13px;line-height:1.2}
+  #pg-academy .ak-i{width:26px;height:26px;border-radius:8px}
+  #pg-academy .ak-i svg{width:15px;height:15px}
+  #pg-academy .ak-ok{width:16px;height:16px}
+  #pg-academy .ak-l li:last-child.on{border-color:rgba(168,112,28,.45);background:linear-gradient(135deg,#fff8ea,#fbefd6)}
+  #pg-academy .ak-l li:last-child.on .ak-i{border-color:rgba(168,112,28,.4);color:#8a5a12}
+}
 @container site (min-width:700px){
   #pg-academy .ak{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;column-gap:clamp(28px,4cqw,56px);margin-top:18px}
   #pg-academy .ak-fig{max-width:560px;margin:0}
@@ -6193,5 +6209,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794921826";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794922289";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
