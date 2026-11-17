@@ -2505,6 +2505,35 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .sk-cta{display:grid;gap:8px;justify-items:center;margin-top:6px}
 .sk-cta p{margin:0;font-size:14px;color:var(--muted);text-align:center}
 /*@@FIM-CSS@@*/
+/* resultados em carrossel giratório (porte do Circular Testimonials, 21st.dev) */
+.ct{display:grid;gap:34px;width:100%;max-width:900px;margin:8px auto 0;outline:none}
+.ct-imgs{position:relative;width:100%;aspect-ratio:1290/640;perspective:1000px;margin-top:34px}
+.ct-imgs img{position:absolute;top:0;left:8%;width:84%;height:100%;object-fit:contain;background:#0e0f13;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:all .8s cubic-bezier(.4,2,.3,1)}
+.ct-txt{display:flex;flex-direction:column;justify-content:space-between;gap:26px;text-align:center;align-items:center}
+.ct-q h3{margin:0 0 4px;font-size:24px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.ct-q .ct-d{margin:0 0 18px;font-size:15px;color:var(--muted)}
+.ct-q .ct-n{margin:0;font-size:19px;line-height:1.6;color:var(--ink)}
+.ct-q .ct-n b{color:var(--gold);font-weight:600}
+.ct-q .ct-n span{display:inline-block;animation:ct-w .22s ease-in-out both}
+.ct-q.sai{animation:ct-s .3s ease-in-out both}
+@keyframes ct-w{from{filter:blur(10px);opacity:0;transform:translateY(5px)}to{filter:none;opacity:1;transform:none}}
+@keyframes ct-s{to{opacity:0;transform:translateY(-20px)}}
+.ct-nav{display:flex;gap:18px;align-items:center}
+.ct-b{width:44px;height:44px;border-radius:50%;border:0;background:#141414;color:#f1f1f7;display:grid;place-items:center;cursor:pointer;transition:background-color .3s}
+.ct-b:hover{background:var(--gold)}
+.ct-b svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ct-c{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+@container site (min-width:768px){.ct{grid-template-columns:1fr 1fr;gap:70px;align-items:center}.ct-txt{text-align:left;align-items:flex-start}.ct-imgs{margin-top:40px}}
+@media (prefers-reduced-motion:reduce){.ct-imgs img{transition:none}.ct-q .ct-n span,.ct-q.sai{animation:none}}
+/* preço dos 20 vídeos no jeito do Pricing (21st.dev): cartão com selo, lista com check, número que rola e confete no cupom */
+.pc-card{position:relative;border:2px solid var(--gold)!important;padding:30px 20px 22px!important;overflow:hidden}
+.pc-sel{position:absolute;top:0;right:0;display:flex;align-items:center;gap:4px;background:var(--gold);color:#fff;font-size:13px;font-weight:600;padding:3px 10px 3px 8px;border-bottom-left-radius:14px}
+.pc-sel svg{width:14px;height:14px;fill:currentColor}
+.pc-nm{margin:0 0 8px;font-size:15px;font-weight:600;color:var(--muted)}
+.pc-ft{list-style:none;margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:grid;gap:9px;text-align:left;width:100%;max-width:330px}
+.pc-ft li{position:relative;padding-left:24px;font-size:15px;line-height:1.4}
+.pc-ft li::before{content:"";position:absolute;left:2px;top:.32em;width:12px;height:7px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
+#of-v{font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -2582,7 +2611,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         </fieldset>
         <button class="btn of-ver" type="button" id="of-ver" aria-expanded="false" aria-controls="of-pr">Ver o preço</button>
         <div class="of-pr" id="of-pr" hidden>
-          <div class="vg-pr" aria-live="polite"><p class="of-de num" id="of-de" hidden><span class="ps-sr">De </span>R$ 2.000</p><div class="pr num" id="of-v">R$ 2.000</div><p class="av" id="of-u">pelos 20 vídeos · R$ 100 cada</p></div>
+          <div class="vg-pr pc-card" aria-live="polite"><span class="pc-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Lançamento</span><p class="pc-nm">20 vídeos Pulsar Motion</p><p class="of-de num" id="of-de" hidden><span class="ps-sr">De </span>R$ 2.000</p><div class="pr num" id="of-v">R$ 2.000</div><p class="av" id="of-u">pelos 20 vídeos · R$ 100 cada</p>
+            <ul class="pc-ft"><li>20 vídeos de até 45 segundos</li><li>Temas escolhidos por mim, por você ou misturados</li><li>Roteiro, imagens, motion e narração</li><li>1 ajuste por vídeo</li></ul></div>
           <form class="of-cp" id="of-cp" novalidate>
             <label for="of-c">Tenho um cupom</label>
             <div class="of-cp-r"><input id="of-c" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Código do cupom" aria-describedby="of-cm"><button class="btn line" type="submit">Aplicar</button></div>
@@ -2782,7 +2812,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 
   <section class="sec mt-res"><div class="wrap">
     <div class="head mt-c"><h2 class="title">Quem trabalhou comigo, <em>cresceu.</em></h2><p class="lead">Seguidores ganhos com os vídeos da Pulsar.</p></div>
-    <ul class="cli cli-2"><li class="cli-c"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"></li><li class="cli-c"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"></li></ul>
+    <div class="ct" id="ct" role="region" aria-roledescription="carrossel" aria-label="Resultados de quem trabalhou comigo" tabindex="0">
+      <div class="ct-imgs" id="ct-imgs"></div>
+      <div class="ct-txt"><div class="ct-q" id="ct-q" aria-live="polite"></div>
+        <div class="ct-nav"><button type="button" class="ct-b" id="ct-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="ct-b" id="ct-next" aria-label="Próximo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><span class="ct-c" id="ct-c"></span></div></div>
+    </div>
   </div></section>
 
   <section class="sec" style="padding-block:0"><div class="wrap">
@@ -4106,10 +4140,15 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     of.addEventListener("keydown",function(e){var b=e.target.closest&&e.target.closest(".of-op");if(!b)return;var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(b)+d+ops.length)%ops.length];marca(n);n.focus()});
     $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");try{pr.scrollIntoView({block:"nearest",behavior:calmoOf()?"auto":"smooth"})}catch(x){}});
     function calmoOf(){return !!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}
+    function rolaPreco(a,b){var el=$("of-v"),fmt=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
+      if(calmoOf()){el.textContent=fmt(b);return}var t0=null,D=500;(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=fmt(a+(b-a)*e);if(p<1)requestAnimationFrame(f)})(performance.now())}
+    /* confete do Pricing: canvas-confetti (cdnjs) carregado só quando o cupom vale; se não carregar, segue sem */
+    function confete(btn){if(calmoOf()||!btn)return;var dispara=function(){var r=btn.getBoundingClientRect();window.confetti({particleCount:50,spread:60,origin:{x:(r.left+r.width/2)/innerWidth,y:(r.top+r.height/2)/innerHeight},colors:["#a16207","#d6a85a","#0c0a09","#e7e5e4"],ticks:200,gravity:1.2,decay:.94,startVelocity:30,shapes:["circle"]})};
+      if(window.confetti){dispara();return}var sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js";sc.onload=dispara;document.head.appendChild(sc)}
     $("of-cp").addEventListener("submit",function(e){e.preventDefault();var inp=$("of-c"),m=$("of-cm"),v=inp.value.trim().toUpperCase();
       if(!v){m.className="of-cm er";m.innerHTML=ER+"<span>Digite o código do cupom.</span>";inp.setAttribute("aria-invalid","true");inp.focus();return}
       if(v!==String(CUPOM).toUpperCase()){m.className="of-cm er";m.innerHTML=ER+"<span>Esse cupom não vale. Confira o código.</span>";inp.setAttribute("aria-invalid","true");return}
-      cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;$("of-v").textContent="R$ 800";$("of-u").textContent="pelos 20 vídeos · R$ 40 cada";
+      cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;rolaPreco(2000,800);confete(this.querySelector("button"));$("of-u").textContent="pelos 20 vídeos · R$ 40 cada";
       m.className="of-cm ok";m.innerHTML=OK+"<span>Cupom aplicado. De R$ 2.000 por R$ 800.</span>"});
     $("of-c").addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){this.removeAttribute("aria-invalid");$("of-cm").innerHTML=""}});
     $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk})});
@@ -5256,5 +5295,34 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   els.forEach(function(el){if(el.__alvo){el.textContent="+0";io.observe(el)}});
 })();
 </script>
-<script>(function(){var V="1794884224";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>
+/* carrossel giratório dos resultados (Mentoria): 3 imagens à vista (esquerda, centro, direita), frase entra palavra por palavra */
+(function(){
+  var box=document.getElementById("ct");if(!box)return;
+  var D=[["Alex Sato Tanaka","+12 mil","cli-alex"],["Master Clínica","+5 mil","cli-master"],["Safira Castro","+2.400","cli-safira"],["Carollyne Rodovalho","+2.300","cli-carol"]];
+  var imgs=document.getElementById("ct-imgs"),q=document.getElementById("ct-q"),cnt=document.getElementById("ct-c"),n=D.length,at=0,tm=null;
+  var calmo=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  imgs.innerHTML=D.map(function(d){return '<img src="assets/'+d[2]+'.jpg" alt="Perfil de '+d[0]+' no Instagram" loading="lazy" decoding="async">'}).join("");
+  var el=[].slice.call(imgs.children);
+  function gap(){var w=imgs.offsetWidth;if(w<=1024)return Math.max(26,Math.min(60,w*.12));return 60}
+  function poe(){var g=gap(),up=g*.8;el.forEach(function(im,i){var st=im.style;
+    if(i===at){st.zIndex=3;st.opacity=1;st.pointerEvents="auto";st.transform="translateX(0) translateY(0) scale(1) rotateY(0deg)"}
+    else if(i===(at-1+n)%n){st.zIndex=2;st.opacity=1;st.pointerEvents="auto";st.transform="translateX(-"+g+"px) translateY(-"+up+"px) scale(.85) rotateY(15deg)"}
+    else if(i===(at+1)%n){st.zIndex=2;st.opacity=1;st.pointerEvents="auto";st.transform="translateX("+g+"px) translateY(-"+up+"px) scale(.85) rotateY(-15deg)"}
+    else{st.zIndex=1;st.opacity=0;st.pointerEvents="none"}})}
+  function texto(){var d=D[at],fr=("Ganhou "+d[1]+" seguidores com os vídeos da Pulsar.").split(" ");
+    q.innerHTML='<h3>'+d[0]+'</h3><p class="ct-d">'+d[1]+' seguidores</p><p class="ct-n">'+fr.map(function(w,i){var t=w===d[1]?'<b>'+w+'</b>':w;return '<span style="animation-delay:'+(i*.025)+'s">'+t+'&nbsp;</span>'}).join("")+'</p>';
+    cnt.textContent=(at+1)+" de "+n}
+  function vai(k,manual){if(manual&&tm){clearInterval(tm);tm=null}
+    var fim=function(){at=(k+n)%n;poe();q.classList.remove("sai");texto()};
+    if(calmo){fim();return}q.classList.add("sai");setTimeout(fim,300)}
+  document.getElementById("ct-prev").addEventListener("click",function(){vai(at-1,true)});
+  document.getElementById("ct-next").addEventListener("click",function(){vai(at+1,true)});
+  el.forEach(function(im,i){im.addEventListener("click",function(){if(i!==at)vai(i,true)})});
+  box.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")vai(at-1,true);if(e.key==="ArrowRight")vai(at+1,true)});
+  window.addEventListener("resize",poe);poe();texto();
+  if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
+})();
+</script>
+<script>(function(){var V="1794884995";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
