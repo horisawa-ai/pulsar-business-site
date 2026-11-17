@@ -2739,6 +2739,10 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 @container site (min-width:880px){#rail-home .vr-n b{font-size:38px}#rail-home .vr-n span{font-size:17px}}
 /* virais: sem setas, só passando sozinho e com o dedo/mouse */
 #rail-home~.rl-b,.rl-w>.rl-b{display:none!important}
+/* palavra que troca (porte do Animated Hero): palavras empilhadas, cada uma posicionada por mola via JS */
+.rot-w.rot-sp{transition:width .9s cubic-bezier(.22,1,.36,1)}
+.rot-w.rot-sp>span{position:absolute;left:0;top:0;will-change:transform,opacity;opacity:0}
+#hero-rot{white-space:nowrap;max-width:none}
 </style>
 </head>
 <body>
@@ -5041,13 +5045,26 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       requestAnimationFrame(f)}
     requestAnimationFrame(f)})();
   /* frase que troca na abertura: a palavra nova cai de cima com mola e a antiga sai por baixo (2,5 s cada). Parada com reduzir movimento */
-  (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas","farmacêuticos"],i=0;
+  /* frase que troca na abertura: porte fiel do "Animated Hero" (21st.dev). Todas as palavras ficam empilhadas; a da vez vai pra y=0 e aparece,
+     as que já passaram sobem e somem, as próximas esperam embaixo. Tudo com mola (rigidez 50, amortecimento 10, massa 1, como o spring do framer-motion).
+     Troca a cada 2,5 s. Parada com reduzir movimento */
+  (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas","farmacêuticos"],at=0;
     if(calmo)return;
-    function larg(t){var s=document.createElement("span");s.textContent=t;s.style.cssText="position:absolute;visibility:hidden;white-space:nowrap";w.appendChild(s);var x=s.getBoundingClientRect().width;w.removeChild(s);return x}
-    w.style.width=Math.ceil(larg(L[0]))+"px";if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w.style.width=Math.ceil(larg(L[i]))+"px"});
-    setInterval(function(){if(document.hidden||p.offsetParent===null)return;i=(i+1)%L.length;var velho=w.querySelector("span:not(.sai)"),novo=document.createElement("span");novo.textContent=L[i];novo.className="cai";
-      if(velho){velho.className="sai";setTimeout(function(){if(velho.parentNode)velho.parentNode.removeChild(velho)},500)}
-      w.appendChild(novo);w.style.width=Math.ceil(larg(L[i]))+"px"},2500)})();
+    w.textContent="";w.classList.add("rot-sp");
+    var S=L.map(function(t,k){var e=document.createElement("span");e.textContent=t;w.appendChild(e);return {e:e,y:-1,vy:0,o:0,vo:0}});
+    function larg(k){return S[k].e.getBoundingClientRect().width}
+    function alvo(k){return k===at?{y:0,o:1}:{y:at>k?-1.5:1.5,o:0}}
+    function poeLarg(){w.style.width=Math.ceil(larg(at))+"px"}
+    poeLarg();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(poeLarg);
+    var K=50,C=10,ult=0,rodando=false;
+    function passo(t){var dt=ult?Math.min(.05,(t-ult)/1000):.016;ult=t;var mexe=false;
+      S.forEach(function(s,k){var a=alvo(k),n=4,h=dt/n;for(var q=0;q<n;q++){var fy=-K*(s.y-a.y)-C*s.vy;s.vy+=fy*h;s.y+=s.vy*h;var fo=-K*(s.o-a.o)-C*s.vo;s.vo+=fo*h;s.o+=s.vo*h}
+        if(Math.abs(s.y-a.y)>.002||Math.abs(s.vy)>.002||Math.abs(s.o-a.o)>.002)mexe=true;
+        s.e.style.transform="translateY("+s.y.toFixed(4)+"em)";s.e.style.opacity=Math.max(0,Math.min(1,s.o)).toFixed(3)});
+      if(mexe)requestAnimationFrame(passo);else{rodando=false;ult=0}}
+    function anima(){if(!rodando){rodando=true;ult=0;requestAnimationFrame(passo)}}
+    anima();
+    setInterval(function(){if(document.hidden||p.offsetParent===null)return;at=(at+1)%L.length;poeLarg();anima()},2500)})();
   $("dlg-x").onclick=function(){$("dlg").close()};
 
   var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
@@ -5609,5 +5626,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794901656";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794901959";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
