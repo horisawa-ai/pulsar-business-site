@@ -5584,7 +5584,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
 /* carrossel giratório dos resultados (Mentoria): 3 imagens à vista (esquerda, centro, direita), frase entra palavra por palavra */
 (function(){
   var box=document.getElementById("ct");if(!box)return;
-  var D=[["Alex Sato Tanaka","+12 mil","cli-alex"],["Master Clínica","+5 mil","cli-master"],["Safira Castro","+2.400","cli-safira"],["Carollyne Rodovalho","+2.300","cli-carol"]];
+  var D=[["Renan Horisawa (eu mesmo)","+17 mil","cli-renan","Ganhei +17 mil seguidores sem gravar nada. Só sendo marcado nos vídeos da Pulsar em collab. 😅"],["Alex Sato Tanaka","+12 mil","cli-alex"],["Master Clínica","+5 mil","cli-master"],["Safira Castro","+2.400","cli-safira"],["Carollyne Rodovalho","+2.300","cli-carol"]];
   var imgs=document.getElementById("ct-imgs"),q=document.getElementById("ct-q"),cnt=document.getElementById("ct-c"),n=D.length,at=0,tm=null;
   var calmo=matchMedia("(prefers-reduced-motion: reduce)").matches;
   imgs.innerHTML=D.map(function(d){return '<img src="assets/'+d[2]+'.jpg" alt="Perfil de '+d[0]+' no Instagram" loading="lazy" decoding="async">'}).join("");
@@ -5595,7 +5595,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     else if(i===(at-1+n)%n){st.zIndex=2;st.opacity=1;st.pointerEvents="auto";st.transform="translateX(-"+g+"px) translateY(-"+up+"px) scale(.85) rotateY(15deg)"}
     else if(i===(at+1)%n){st.zIndex=2;st.opacity=1;st.pointerEvents="auto";st.transform="translateX("+g+"px) translateY(-"+up+"px) scale(.85) rotateY(-15deg)"}
     else{st.zIndex=1;st.opacity=0;st.pointerEvents="none"}})}
-  function texto(){var d=D[at],fr=("Ganhou "+d[1]+" seguidores com os vídeos da Pulsar.").split(" ");
+  function texto(){var d=D[at],fr=(d[3]||("Ganhou "+d[1]+" seguidores com os vídeos da Pulsar.")).split(" ");
     q.innerHTML='<h3>'+d[0]+'</h3><p class="ct-d">'+d[1]+' seguidores</p><p class="ct-n">'+fr.map(function(w,i){var t=w===d[1]?'<b>'+w+'</b>':w;return '<span style="animation-delay:'+(i*.025)+'s">'+t+'&nbsp;</span>'}).join("")+'</p>';
     cnt.textContent=(at+1)+" de "+n}
   function vai(k,manual){if(manual&&tm){clearInterval(tm);tm=null}
@@ -5609,5 +5609,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794900504";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794901656";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
