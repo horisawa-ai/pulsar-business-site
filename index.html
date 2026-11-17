@@ -2503,6 +2503,82 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .pc-ft li{position:relative;padding-left:24px;font-size:15px;line-height:1.4}
 .pc-ft li::before{content:"";position:absolute;left:2px;top:.32em;width:12px;height:7px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
 #of-v{font-variant-numeric:tabular-nums}
+/*@@INI2-CSS: Início refeito (17/11/2026): abertura mais alta e maior, número dentro do vídeo, frase que troca, Toque e descubra no mesmo formato, virais maiores @@*/
+/* abertura: título colado no menu */
+#pg-inicio>.sec:first-child{padding-top:14px}
+#pg-inicio .hero-top{gap:10px}
+#pg-inicio .hero-top .head{gap:8px}
+@container site (min-width:700px){#pg-inicio>.sec:first-child{padding-top:30px}#pg-inicio .hero-top .head{gap:12px}}
+/* frase que troca (palavra nova cai de cima com mola, a antiga sai por baixo) */
+.rot{margin:0;font-size:18px;line-height:1.3;color:var(--muted);text-align:center;white-space:nowrap}
+.rot-w{display:inline-block;position:relative;vertical-align:bottom;height:1.3em;overflow:hidden;transition:width .55s cubic-bezier(.22,1,.36,1);text-align:left}
+.rot-w>span{display:inline-block;color:var(--ink);font-weight:600;white-space:nowrap}
+.rot-w>span.sai{position:absolute;left:0;top:0;animation:rotSai .45s cubic-bezier(.4,0,1,1) both}
+.rot-w>span.cai{animation:rotCai .8s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes rotCai{from{transform:translateY(-110%);opacity:0}to{transform:none;opacity:1}}
+@keyframes rotSai{to{transform:translateY(90%);opacity:0}}
+@container site (min-width:700px){.rot{font-size:22px}}
+@media (prefers-reduced-motion:reduce){.rot-w{transition:none}.rot-w>span.cai,.rot-w>span.sai{animation:none}}
+/* vitrine da abertura: tela da frente grande e à frente; o nome e o número vão pra dentro dela */
+#vit .fls{margin-block:0 2px}
+#vit .fls-info h3,#vit .fls-num{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+#vit .fls-info{padding-top:0}
+#vit .fls-ctl{gap:10px}
+#vit .fls-ctl button{width:36px;height:36px;border-color:var(--line);background:transparent;color:var(--ink-2)}
+.fls-pl{position:absolute;z-index:4;left:10px;right:10px;bottom:10px;display:grid;gap:2px;padding:11px 14px 12px;border-radius:calc(var(--fls-cw,228px) * .11 - 10px);text-align:left;color:#0c0a09;background:rgba(255,255,255,.66);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 12px 30px -16px rgba(12,10,9,.55);opacity:0;transform:translateY(10px);transition:opacity .5s ease .25s,transform .7s cubic-bezier(.22,1,.36,1) .25s;pointer-events:none}
+.fls-s[data-active] .fls-pl{opacity:1;transform:none}
+.fls-pl .pl-n{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.fls-pl .pl-n b{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.fls-pl .pl-n span{font-size:13px;font-weight:500;color:rgba(12,10,9,.66)}
+.fls-pl .pl-s{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:rgba(12,10,9,.82)}
+.fls-pl .pl-s svg{flex:none}
+.fls-pl .pl-t{margin-top:3px;font-size:12px;font-weight:500;color:rgba(12,10,9,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fls-pl[data-so] .pl-t{margin-top:0;font-size:15px;font-weight:600;color:#0c0a09}
+@container site (min-width:700px){.fls-pl .pl-n b{font-size:38px}}
+@media (prefers-reduced-motion:reduce){.fls-pl{transition:none}}
+/* Toque e descubra: todas as abas no formato da aba Vídeos (mídia grande, texto, botão), sem cortar nada */
+#pg-inicio .ex .m{position:relative;background:var(--tint)}
+#pg-inicio .ex .m.mp,#pg-inicio .ex .m.mq,#pg-inicio .ex .m.msh{aspect-ratio:1/1}
+@container site (max-width:879px){#pg-inicio .ex .m.msh{aspect-ratio:5/4}}
+@container site (min-width:880px){#pg-inicio .ex .m.mp,#pg-inicio .ex .m.mq,#pg-inicio .ex .m.msh{aspect-ratio:16/11}}
+.ex .m.mp{display:grid;place-items:center;isolation:isolate}
+.ex .m.mp .mp-bg{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:blur(28px) saturate(1.2);opacity:.55;z-index:-1}
+.ex .m.mp .mp-ph{position:relative;height:calc(100% - 28px);aspect-ratio:9/16;border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 24px 44px -20px rgba(12,10,9,.55)}
+.ex .m.mp .mp-ph video{width:100%;height:100%;object-fit:cover;display:block}
+/* prateleira com os livros (capas das folhas de prompts e o Atlas) */
+#pg-inicio .ex .m.msh{background:linear-gradient(180deg,#f7f2ea 0%,#efe5d3 78%,#e6d8bf 100%);overflow:hidden}
+.sh{position:absolute;inset:0}
+.sh::before{content:"";position:absolute;left:50%;top:8%;width:70%;height:60%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(255,250,238,.95),rgba(255,250,238,0) 70%);pointer-events:none}
+.sh-b{position:absolute;bottom:21.5%;left:var(--x);width:var(--w);aspect-ratio:360/641;margin-left:calc(var(--w) / -2);transform-origin:50% 100%;transform:rotate(var(--r,0deg));z-index:var(--z,1)}
+.sh-b img{display:block;width:100%;height:100%;object-fit:cover;border-radius:3px 6px 6px 3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06),-1px 0 0 rgba(255,255,255,.4),0 16px 22px -12px rgba(40,28,12,.55),0 2px 4px rgba(40,28,12,.18)}
+.sh-b::after{content:"";position:absolute;inset:0;border-radius:3px 6px 6px 3px;background:linear-gradient(90deg,rgba(0,0,0,.18) 0,rgba(0,0,0,0) 6%,rgba(255,255,255,.14) 9%,rgba(255,255,255,0) 30%);pointer-events:none}
+.sh-b.at{z-index:5}
+.sh-b.at img{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06),0 26px 34px -14px rgba(40,28,12,.6),0 3px 6px rgba(40,28,12,.2)}
+.sh-p{position:absolute;left:0;right:0;bottom:14%;height:7.5%;border-radius:2px;background:linear-gradient(180deg,#fbf3e4 0%,#f1e3c9 22%,#e2cda9 23%,#d5bc93 100%);box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 14px 18px -8px rgba(60,40,15,.35);z-index:6}
+.sh-p::after{content:"";position:absolute;left:3%;right:3%;top:100%;height:30px;background:radial-gradient(ellipse 50% 100% at 50% 0,rgba(60,40,15,.18),transparent 70%)}
+.sh-b.lg{display:none}
+@container site (min-width:880px){.sh-b{--w2:calc(var(--w) * .8)}.sh-b{width:var(--w2);margin-left:calc(var(--w2) / -2)}}
+/* virais: cartões grandes, o próximo espiando; número e seguidores dentro do vídeo */
+#rail-home{grid-auto-columns:min(76%,320px);gap:14px}
+@container site (min-width:880px){#rail-home{grid-auto-columns:280px}}
+#rail-home .reel{border-radius:22px;box-shadow:0 22px 40px -26px rgba(12,10,9,.5)}
+#rail-home .vr-pl{position:absolute;left:10px;right:10px;bottom:10px;display:grid;gap:3px;padding:12px 14px 13px;border-radius:15px;color:#0c0a09;background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),0 12px 30px -16px rgba(12,10,9,.55)}
+#rail-home .vr-n{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+#rail-home .vr-n b{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+#rail-home .vr-n span{font-size:13px;font-weight:500;color:rgba(12,10,9,.66)}
+#rail-home .vr-s{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:rgba(12,10,9,.82)}
+#rail-home .cap{padding:12px 4px 0}
+#rail-home .cap b{font-size:17px;font-weight:600;letter-spacing:-.01em}
+/* página Vídeos: vitrine só com Pulsar Motion; tocar no da frente abre o vídeo inteiro */
+.flt[data-abre] .flt-s[data-active]{cursor:pointer}
+.flt-ver{position:absolute;z-index:4;left:50%;bottom:12px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:7px 13px 8px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;color:#0c0a09;background:rgba(255,255,255,.74);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 8px 20px -10px rgba(12,10,9,.5);opacity:0;transition:opacity .4s ease .3s;pointer-events:none}
+.flt-s[data-active] .flt-ver{opacity:1}
+.mo-dlg{width:min(92vw,420px);max-height:94vh;padding:12px;border:0;border-radius:24px;background:var(--card);color:var(--ink);box-shadow:0 30px 80px -20px rgba(12,10,9,.6)}
+.mo-dlg::backdrop{background:rgba(12,10,9,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.mo-dlg video{display:block;width:100%;max-height:calc(94vh - 90px);aspect-ratio:9/16;object-fit:contain;border-radius:16px;background:#0c0a09}
+.mo-dlg-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 10px}
+.mo-dlg-bar h3{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+/*@@/INI2-CSS@@*/
 </style>
 </head>
 <body>
@@ -2528,7 +2604,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus<br><em>ou te ensinar.</em></h1>
-        <p class="lead so-pc">Vídeos da Pulsar, feitos pra explicar saúde em segundos.</p>
+        <p class="rot" id="hero-rot">Vídeos de saúde pra <span class="rot-w" aria-hidden="true"><span>médicos</span></span><span class="ps-sr">médicos, dentistas, nutricionistas, fisioterapeutas, clínicas e marcas.</span></p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">5,3 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Roer Unha</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -2564,8 +2640,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     <div class="of" id="oferta">
       <div class="of-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="of-sub">Cada um com até 45 segundos.</p></div>
       <figure class="of-ex">
-        <video data-src="assets/motion-exemplo.mp4" poster="assets/motion-exemplo.jpg" muted loop playsinline preload="none" aria-label="Exemplo de Pulsar Motion: trecho do vídeo Água-viva"></video>
-        <figcaption>Um Pulsar Motion meu. Água-viva.</figcaption>
+        <video data-src="assets/mo-real-3-loop.mp4" poster="assets/mo-real-3.jpg" muted loop playsinline preload="none" aria-label="Exemplo de Pulsar Motion: trecho do vídeo A colonoscopia pode furar o intestino?"></video>
+        <figcaption>Um Pulsar Motion meu. A colonoscopia pode furar o intestino?</figcaption>
       </figure>
       <div class="of-tx">
         <p class="of-o"><b>O que é um Pulsar Motion?</b> Um vídeo feito de imagens. Imagens 3D de saúde, paradas, que ganham vida com motion: texto que bate no ritmo, setas e traços que se desenham na anatomia, câmera lenta. Sem filmagem e sem avatar.</p>
@@ -3240,7 +3316,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   aplica();
 
   var VIRAIS=[["roer","Roer Unha","5,3 mi"],["capsula","Cápsula Endoscópica","1,8 mi"],["hpylori","H. Pylori","+2 mil seguidores"],["placa","Placa e Parafusos",""],["hernia","Hérnia Inguinal",""],["cerebro","Cérebro Acordado",""]];
-  var CATALOGO=[["vt-supositorio","Supositório"],["vt-lagarto","Lagarto e Mounjaro"],["vt-unha","Unha que Não Dói"],["vt-roer","Roer Unha"],["vt-cisto","Cisto Sinovial"],["vt-furunculo","Furúnculo"],["vt-bumbum","Bumbum Coçando"],["vt-capsula2","Cápsula Endoscópica"],["vt-verruga","Verruga"],["vt-cordao","Cordão Umbilical"],["hpylori","H. Pylori"],["vt-meconio","Mecônio"],["vt-cocopedra","Cocô de Pedra"],["vt-espinha","Espinha"]];
+  var CATALOGO=[["vt-supositorio","Supositório"],["vt-lagarto","Lagarto e Mounjaro"],["vt-unha","Unha que Não Dói"],["vt-roer","Roer Unha"],["vt-dipirona","Dipirona"],["vt-hernia","Hérnia de Disco"],["vt-colposcopia","Colposcopia"],["vt-cisto","Cisto Sinovial"],["vt-furunculo","Furúnculo"],["vt-bumbum","Bumbum Coçando"],["vt-capsula2","Cápsula Endoscópica"],["vt-verruga","Verruga"],["vt-cordao","Cordão Umbilical"],["hpylori","H. Pylori"],["vt-meconio2","Mecônio"],["vt-cocopedra","Cocô de Pedra"],["vt-espinha","Espinha"]];
   var calmo=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function lazy(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:root,threshold:.4});root.querySelectorAll("video").forEach(function(v){io.observe(v)})}
 
@@ -3269,7 +3345,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     lay();setFront();var api={lay:lay,to:function(i){to(-i*th)},kill:function(){clearInterval(iv);var k=RINGS.indexOf(api);if(k>=0)RINGS.splice(k,1)}};RINGS.push(api);return api}
 
   /* abertura: número que rola até o valor do vídeo da frente */
-  var VIEWS={capsula:[1800000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[2000,"novos seguidores",0],lifting:[23100,"visualizações",1],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[14700,"visualizações",1],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[24100,"visualizações",1],cebola:[41600,"visualizações",1],roacutan:[25700,"visualizações",1],"vt-unha":[6300000,"visualizações",0],"vt-supositorio":[5400000,"visualizações",0],"vt-roer":[5300000,"visualizações",0],"vt-cisto":[3200000,"visualizações",0],"vt-furunculo":[2400000,"visualizações",0],"vt-lagarto":[2200000,"visualizações",0],"vt-bumbum":[2100000,"visualizações",0],"vt-capsula2":[1800000,"visualizações",0],"vt-verruga":[1700000,"visualizações",0],"vt-cordao":[1500000,"visualizações",0],"vt-meconio":[1000000,"visualizações",0],"vt-cocopedra":[998000,"visualizações",0],"vt-espinha":[872000,"visualizações",0]};
+  var VIEWS={"vt-colposcopia":[1700000,"visualizações",0],"vt-dipirona":[17000,"novos seguidores",0],"vt-hernia":[4000,"novos seguidores",0],capsula:[1800000,"visualizações",0],bypass:[870000,"visualizações",1],hpylori:[2000,"novos seguidores",0],lifting:[23100,"visualizações",1],placa:[1100000,"visualizações",1],parada:[290000,"visualizações",1],roer:[5300000,"visualizações",0],olho:[560000,"visualizações",1],hernia:[720000,"visualizações",1],diazepam:[380000,"visualizações",1],cerebro:[14700,"visualizações",1],novembro:[8000,"novos seguidores",1],soluco:[510000,"visualizações",1],xixi:[330000,"visualizações",1],arrepio:[610000,"visualizações",1],lipo:[24100,"visualizações",1],cebola:[41600,"visualizações",1],roacutan:[25700,"visualizações",1],"vt-unha":[6300000,"visualizações",0],"vt-supositorio":[5400000,"visualizações",0],"vt-roer":[5300000,"visualizações",0],"vt-cisto":[3200000,"visualizações",0],"vt-furunculo":[2400000,"visualizações",0],"vt-lagarto":[2200000,"visualizações",0],"vt-bumbum":[2100000,"visualizações",0],"vt-capsula2":[1800000,"visualizações",0],"vt-verruga":[1700000,"visualizações",0],"vt-cordao":[1500000,"visualizações",0],"vt-meconio":[1000000,"visualizações",0],"vt-meconio2":[1000000,"visualizações",0],"vt-cocopedra":[998000,"visualizações",0],"vt-espinha":[872000,"visualizações",0]};
+  /* seguidores que cada vídeo trouxe (números reais ditados pelo Renan em 17/11/2026) */
+  var SEGUIDORES={"vt-colposcopia":1900,"vt-unha":3300,"vt-roer":900,"vt-meconio":1009,"vt-meconio2":1009};
+  function fmtV(v){return v>=1e6?(Math.round(v/1e5)/10).toLocaleString("pt-BR",{maximumFractionDigits:1})+" mi":fmt(v)}
+  function fmtS(v){return v>=1e4?Math.round(v/1e3)+" mil":Math.round(v).toLocaleString("pt-BR")}
+  var ICO_SEG='<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="6.5" cy="5" r="2.6"/><path d="M1.6 14c.5-2.8 2.5-4.3 4.9-4.3s4.4 1.5 4.9 4.3M13 4.5v4M11 6.5h4"/></svg>';
   function fmt(v){return v>=1e6?(v/1e6).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+" mi":v>=1e3?(v<1e4&&v%1e3?(v/1e3).toLocaleString("pt-BR",{maximumFractionDigits:1}):Math.round(v/1e3))+" mil":String(Math.round(v))}
   var stVal=0,stRaf=0,ambK=0;
   function ambSet(id){var am=$("amb").children;ambK^=1;am[ambK].style.backgroundImage="url(assets/"+id+".jpg)";am[ambK].classList.add("on");am[ambK^1].classList.remove("on")}
@@ -3562,12 +3643,19 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     var IL='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>',IR='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
     var IU='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>';
     function num(i){var h=VIEWS[list[i][0]];if(!h||h[2]===1)return null;var p=h[1].indexOf("seguidor")>=0?"+":"";return {n:p+fmt(h[0]),l:h[1],r:h[0],p:p}}
+    /* número dentro da tela da frente (pedido do Renan, 17/11/2026): vidro fosco no pé do vídeo com as views grandes, os seguidores e o nome pequeno */
+    function pilula(i){var c=list[i],h=VIEWS[c[0]],sg=SEGUIDORES[c[0]],t='<span class="pl-t">'+c[1]+'</span>';
+      if(!h||h[2])return '<span class="fls-pl" data-so aria-hidden="true">'+t+'</span>';
+      var vs=h[1].indexOf("seguidor")<0;
+      return '<span class="fls-pl" aria-hidden="true"><span class="pl-n"><b data-r="'+h[0]+'" data-p="'+(vs?"":"+")+'">'+(vs?fmtV(h[0]):"+"+fmtS(h[0]))+'</b><span>'+(vs?"visualizações":"seguidores")+'</span></span>'+(vs&&sg?'<span class="pl-s">'+ICO_SEG+'+'+fmtS(sg)+' seguidores</span>':'')+t+'</span>'}
+    var plRaf=0;function contaPl(){cancelAnimationFrame(plRaf);var b=cards[index].querySelector(".fls-pl b[data-r]");if(!b)return;var alvo=+b.dataset.r,pre=b.dataset.p,vs=!pre,f=function(v){return vs?fmtV(v):pre+fmtS(v)};
+      if(calmo){b.textContent=f(alvo);return}var t0=performance.now();(function q(t){var k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);b.textContent=k<1?(vs?fmt(Math.max(1,alvo*e)):pre+fmtS(Math.round(alvo*e))):f(alvo);if(k<1)plRaf=requestAnimationFrame(q)})(t0)}
     /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga */
     var sd=20261115;function rnd(){sd=(sd*1664525+1013904223)%4294967296;return sd/4294967296}function rr(a,b){return a+(b-a)*rnd()}function sg(){return rnd()<.5?-1:1}
     function deriva(){return "--fd:"+rr(8,14).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(4,9)).toFixed(1)+"px;--ay:"+(-rr(6,12)).toFixed(1)+"px;--az:"+(sg()*rr(10,30)).toFixed(0)+"px;--arx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--ary:"+(sg()*rr(3,8)).toFixed(1)+"deg;--arz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg;--bx:"+(sg()*rr(4,9)).toFixed(1)+"px;--by:"+rr(4,9).toFixed(1)+"px;--bz:"+(sg()*rr(10,30)).toFixed(0)+"px;--brx:"+(sg()*rr(2,5)).toFixed(1)+"deg;--bry:"+(sg()*rr(3,8)).toFixed(1)+"deg;--brz:"+(sg()*rr(1,2.5)).toFixed(1)+"deg"}
     el.className="fls";el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
     el.innerHTML='<div class="fls-atm" aria-hidden="true"></div><div class="fls-stage"><div class="fls-floor" aria-hidden="true"></div><div class="fls-scene">'+
-      list.map(function(c,i){var v=num(i);return '<button type="button" class="fls-s" data-i="'+i+'"><span class="fls-f" style="'+deriva()+'"><span class="fls-g"><span class="fls-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="fls-fog" aria-hidden="true"></span></span></span>'+
+      list.map(function(c,i){var v=num(i);return '<button type="button" class="fls-s" data-i="'+i+'"><span class="fls-f" style="'+deriva()+'"><span class="fls-g"><span class="fls-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="fls-fog" aria-hidden="true"></span>'+pilula(i)+'</span></span>'+
         (v?'<span class="fls-tag" aria-hidden="true"><b data-r="'+v.r+'" data-p="'+v.p+'">'+IU+'<i class="fls-n">'+v.n+'</i></b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
       '<div class="fls-info"><h3 aria-live="polite"></h3><div class="fls-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="fls-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>';
     var stage=el.querySelector(".fls-stage"),scene=el.querySelector(".fls-scene"),cards=el.querySelectorAll(".fls-s"),dots=el.querySelectorAll(".fls-dots i"),ttl=el.querySelector(".fls-info h3");
@@ -3580,7 +3668,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
                e:[[.6,.3,-.3,.46,16,-5,-3],[.94,-.32,-.55,.44,24,6,5],[.62,-.8,-.75,.36,12,10,-4],[.32,.9,-.95,.32,8,-10,-3],[.98,.78,-1.15,.34,28,-8,3],[.36,-.95,-1.35,.3,10,12,4],[.9,.4,-1.55,.28,22,-6,-4],[.6,-1.5,-1.7,.28,10,0,0]]},
              c:{d:[[.36,-.3,-.3,.5,-14,5,3],[.62,.25,-.5,.56,-22,-6,-4],[.42,.66,-.7,.42,-12,8,2],[.84,-.5,-.9,.48,-26,6,5],[.58,-.74,-1.1,.36,-8,10,4],[.98,.46,-1.3,.46,-28,-8,-3],[.78,.92,-1.5,.36,-18,-6,4],[.6,1.6,-1.7,.34,-10,0,0]],
                e:[[.4,.22,-.3,.52,16,-5,-3],[.66,-.36,-.55,.5,24,6,5],[.42,-.72,-.75,.4,12,10,-4],[.84,.42,-.95,.48,28,-8,3],[.6,.8,-1.15,.38,10,-10,-3],[.98,-.58,-1.35,.44,30,8,4],[.3,.92,-1.55,.34,8,-12,3],[.6,-1.6,-1.7,.34,10,0,0]]}},L=LAY.m;
-    function slot(k){if(k===0)return {x:0,y:-.03*H,dz:.2,s:1,ry:0,rx:0,rz:0,fog:0,op:1};
+    function slot(k){if(k===0)return {x:0,y:cel?0:-.03*H,dz:.2,s:1,ry:0,rx:0,rz:0,fog:0,op:1};
       var a=Math.min(K+1,Math.abs(k)),r=(k>0?L.d:L.e)[a-1];
       return {x:(k>0?1:-1)*r[0]*W/2,y:r[1]*H/2,dz:r[2],s:r[3],ry:r[4],rx:r[5],rz:r[6],fog:Math.min(.42,Math.max(0,-r[2]*.26)),op:a>K?0:1}}
     function mix(p,q,f){var o={};for(var k in p)o[k]=p[k]+(q[k]-p[k])*f;return o}
@@ -3602,7 +3690,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"Próxima tela, agora em destaque: ":"Trazer pra frente ")+list[i][1])}
       ttl.textContent=list[index][1];for(var j=0;j<dots.length;j++)dots[j].className=j===index?"on":""}
     function medeTag(){for(var i=0;i<n;i++)cards[i].removeAttribute("data-active");for(i=0;i<n;i++){var t=cards[i].querySelector(".fls-tag b");tw[i]=t?t.offsetWidth+22:0}}
-    function poeVideo(){var m=cards[index].querySelector(".fls-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+list[index][0]+".mp4";m.insertBefore(vid,m.querySelector(".fls-fog"))}sync()}
+    function poeVideo(){var m=cards[index].querySelector(".fls-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+list[index][0]+".mp4";m.insertBefore(vid,m.querySelector(".fls-fog"));contaPl()}sync()}
     function sync(){if(!mortos&&vis&&!document.hidden&&el.offsetParent!==null){var q=vid.play();if(q&&q.catch)q.catch(function(){})}else vid.pause()}
     function sel(i){index=wrap(i,n);drag=0;lay();poeVideo();agenda()}
     function agenda(){clearTimeout(tm);if(mortos||calmo)return;tm=setTimeout(function(){if(!dragging&&vis&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
@@ -3629,7 +3717,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     function pm(e){if(e.pointerType!=="mouse"||calmo||!vis)return;var vw=window.innerWidth||1,vh=window.innerHeight||1;tx=(e.clientY/vh-.5)*-6;ty=(e.clientX/vw-.5)*8;if(!raf)raf=requestAnimationFrame(tilt)}
     window.addEventListener("pointermove",pm,{passive:true});
     function mede(){var w=el.clientWidth;if(!w)return;var vh=window.innerHeight||800;W=w;cel=w<600;L=cel?LAY.m:LAY.c;
-      if(cel){cw=Math.round(Math.max(150,Math.min(w*.47,(vh*.62-40)/1.778)));H=Math.round(cw*1.778+124)}
+      if(cel){cw=Math.round(Math.max(170,Math.min(w*.68,(vh*.7-40)/1.778)));H=Math.round(cw*1.778+56)}
       else{cw=Math.round(Math.max(170,Math.min(300,w*.24,(vh*.66-50)/1.778)));H=Math.round(cw*1.778+100)}
       el.style.setProperty("--fls-cw",cw+"px");el.style.setProperty("--fls-h",H+"px");medeTag();lay()}
     function vis_(){sync()}document.addEventListener("visibilitychange",vis_);
@@ -3650,10 +3738,10 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     /* semente fixa: o "aleatório" do flutuar é sempre o mesmo a cada recarga. O balanço é curto de propósito: nenhuma tela chega perto da tela da vez */
     var sd=20261115;function rnd(){sd=(sd*1664525+1013904223)%4294967296;return sd/4294967296}function rr(a,b){return a+(b-a)*rnd()}function sg(){return rnd()<.5?-1:1}
     function deriva(){return "--fd:"+rr(8,13).toFixed(1)+"s;--fdl:-"+rr(0,12).toFixed(1)+"s;--ax:"+(sg()*rr(2,4)).toFixed(1)+"px;--ay:"+(-rr(4,8)).toFixed(1)+"px;--az:"+(sg()*rr(4,9)).toFixed(0)+"px;--arx:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--ary:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--arz:"+(sg()*rr(.4,1)).toFixed(1)+"deg;--bx:"+(sg()*rr(2,4)).toFixed(1)+"px;--by:"+rr(3,7).toFixed(1)+"px;--bz:"+(sg()*rr(4,9)).toFixed(0)+"px;--brx:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--bry:"+(sg()*rr(1.5,3)).toFixed(1)+"deg;--brz:"+(sg()*rr(.4,1)).toFixed(1)+"deg"}
-    el.className="flt";el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
+    el.className="flt";if(list.abre)el.setAttribute("data-abre","");el.tabIndex=0;el.setAttribute("role","region");el.setAttribute("aria-roledescription","carousel");el.setAttribute("aria-label","Vitrine de vídeos");if(calmo)el.setAttribute("data-calmo","");
     el.innerHTML='<div class="flt-atm" aria-hidden="true"></div><div class="flt-stage"><div class="flt-floor" aria-hidden="true"></div><div class="flt-scene">'+
       list.map(function(c,i){var v=num(i);return '<button type="button" class="flt-s" data-i="'+i+'"><span class="flt-f" style="'+deriva()+'"><span class="flt-g"><span class="flt-m"><img src="assets/'+c[0]+'.jpg" alt="" loading="lazy" decoding="async" draggable="false"><span class="flt-fog" aria-hidden="true"></span></span></span>'+
-        (v?'<span class="flt-tag" aria-hidden="true"><b>'+IU+v.n+'</b><span>'+v.l+'</span></span>':'')+'</span></button>'}).join("")+'</div></div>'+
+        (v?'<span class="flt-tag" aria-hidden="true"><b>'+IU+v.n+'</b><span>'+v.l+'</span></span>':'')+(list.abre?'<span class="flt-ver" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.6v8.8L10.2 6 3 1.6Z" fill="currentColor"/></svg>Ver inteiro</span>':'')+'</span></button>'}).join("")+'</div></div>'+
       '<div class="flt-info"><h3 aria-live="polite"></h3><div class="flt-ctl"><button type="button" data-a="prev" aria-label="Anterior">'+IL+'</button><span class="flt-dots" aria-hidden="true">'+list.map(function(){return "<i></i>"}).join("")+'</span><button type="button" data-a="next" aria-label="Próximo">'+IR+'</button></div></div>';
     var stage=el.querySelector(".flt-stage"),scene=el.querySelector(".flt-scene"),cards=el.querySelectorAll(".flt-s"),dots=el.querySelectorAll(".flt-dots i"),ttl=el.querySelector(".flt-info h3");
     var vid=document.createElement("video");vid.muted=true;vid.loop=true;vid.playsInline=true;vid.setAttribute("muted","");vid.setAttribute("playsinline","");vid.preload="none";vid.setAttribute("aria-hidden","true");
@@ -3681,10 +3769,10 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         if(tw[i]){var pf=P*cw/(P*cw-p.z),hw=cw*p.s*pf/2,xc=Math.abs(p.x*pf),visw=Math.min(xc+hw,W/2-6)-(xc-hw),loc=visw/(p.s*pf),ti=Math.min(mob<.3?2.6:1/Math.max(.3,p.s),loc*.84/tw[i]),fz=ti*p.s*pf;
           st.setProperty("--ti",(d===0?1:ti).toFixed(3));if(d===0||fz*18>=11)c.removeAttribute("data-semtag");else c.setAttribute("data-semtag","")}
         c.setAttribute("data-tag",off<0?"r":"l");
-        if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?"Próxima tela, agora em destaque: ":"Trazer pra frente ")+list[i][1])}
+        if(d===0)c.setAttribute("data-active","");else c.removeAttribute("data-active");c.tabIndex=d===0?0:-1;c.setAttribute("aria-label",(d===0?(list.abre?"Ver o vídeo inteiro: ":"Próxima tela, agora em destaque: "):"Trazer pra frente ")+list[i][1])}
       ttl.textContent=list[index][1];for(var j=0;j<dots.length;j++)dots[j].className=j===index?"on":""}
     function medeTag(){var cel=el.hasAttribute("data-cel");for(var i=0;i<n;i++){var t=cards[i].querySelector(".flt-tag");tw[i]=t?(cel?t.querySelector("b").offsetWidth+22:t.offsetWidth):0}}
-    function poeVideo(){var m=cards[index].querySelector(".flt-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+list[index][0]+".mp4";m.insertBefore(vid,m.querySelector(".flt-fog"))}sync()}
+    function poeVideo(){var m=cards[index].querySelector(".flt-m");if(vid.parentNode!==m){vid.pause();vid.classList.remove("on");vid.removeAttribute("src");vid.load();vid.src="assets/"+(list[index][2]||list[index][0])+".mp4";m.insertBefore(vid,m.querySelector(".flt-fog"))}sync()}
     function sync(){if(!mortos&&vis&&!document.hidden&&el.offsetParent!==null){var q=vid.play();if(q&&q.catch)q.catch(function(){})}else vid.pause()}
     function sel(i){index=wrap(i,n);drag=0;lay();poeVideo();agenda()}
     function agenda(){clearTimeout(tm);if(mortos||calmo)return;tm=setTimeout(function(){if(!dragging&&vis&&el.offsetParent!==null&&!document.hidden)sel(index+1);else agenda()},6000)}
@@ -3704,7 +3792,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     /* tocar só troca: na tela da vez passa pra próxima, numa de volta traz ela pra frente */
     el.addEventListener("click",function(e){var a=e.target.closest("[data-a]");
       if(a){if(a.dataset.a==="prev")sel(index-1);else sel(index+1);return}
-      var c=e.target.closest(".flt-s");if(!c||performance.now()<supp)return;var i=+c.dataset.i;sel(i===index?index+1:i)});
+      var c=e.target.closest(".flt-s");if(!c||performance.now()<supp)return;var i=+c.dataset.i;if(i===index&&list.abre){abreInteiro(i);return}sel(i===index?index+1:i)});
+    /* lista com .abre: a tela da frente mostra "Ver inteiro" e abre o vídeo completo, com som e controles */
+    var dlgM=null;function abreInteiro(i){if(!dlgM){dlgM=document.createElement("dialog");dlgM.className="mo-dlg";dlgM.innerHTML='<div class="mo-dlg-bar"><h3></h3><button type="button" class="btn sm line">Fechar</button></div><video controls playsinline preload="metadata"></video>';el.appendChild(dlgM);
+        dlgM.querySelector("button").onclick=function(){dlgM.close()};dlgM.addEventListener("click",function(e){if(e.target===dlgM)dlgM.close()});dlgM.addEventListener("close",function(){var v=dlgM.querySelector("video");v.pause();clearTimeout(tm);agenda();sync()})}
+      clearTimeout(tm);vid.pause();var v=dlgM.querySelector("video");dlgM.querySelector("h3").textContent=list[i][1];v.poster="assets/"+list[i][0]+".jpg";v.src="assets/"+list[i][0]+".mp4";dlgM.showModal();var q=v.play();if(q&&q.catch)q.catch(function(){})}
     el.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();sel(index+1)}else if(e.key==="ArrowLeft"){e.preventDefault();sel(index-1)}});
     /* parallax do componente: a cena inteira inclina devagar acompanhando o mouse (mola suave) */
     function tilt(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;scene.style.transform="rotateX("+cx.toFixed(3)+"deg) rotateY("+cy.toFixed(3)+"deg)";raf=Math.abs(tx-cx)+Math.abs(ty-cy)>.01?requestAnimationFrame(tilt):0}
@@ -3836,10 +3928,14 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   if(window.MutationObserver){var avdUlt=document.documentElement.getAttribute("data-avd");new MutationObserver(function(){var a=document.documentElement.getAttribute("data-avd");if(a!==avdUlt){avdUlt=a;if(typeof mountVitBox==="function")mountVitBox()}}).observe(document.documentElement,{attributes:true,attributeFilter:["data-avd"]})}
   /*@@/AVD-JS@@*/
   /* página Vídeos: a abertura escolhida no painel (T.avd); em "vitrine", a mesma vitrine do Início, com os vídeos em outra ordem */
-  var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);if(T.avd&&T.avd!=="vitrine"&&typeof aberturaVideos==="function"){boxApi=aberturaVideos(el);return}var L=CATALOGO.slice().reverse(),f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;boxApi=f(el,L)}
+  /* página Vídeos, logo abaixo da oferta: só Pulsar Motion puros (pedido do Renan em 17/11/2026). [arquivo inteiro, nome, trecho que toca em loop].
+     Os 3 primeiros são os reais; os mx-mo-* completam. Tocar no da frente abre o vídeo inteiro */
+  var MOTION_BOX=[["mo-real-3","A colonoscopia pode furar o intestino?","mo-real-3-loop"],["mo-real-2","Abscesso perianal","mo-real-2-loop"],["mo-real-1","Operou a barriga?","mo-real-1-loop"],["mx-mo-aguaviva","Água-viva"],["mx-mo-soluco","Soluço"]];
+  MOTION_BOX.abre=true;MOTION_BOX.forEach(function(c){if(!VIEWS[c[0]])VIEWS[c[0]]=[0,"",1]});
+  var boxApi=null;function mountVitBox(){var host=$("vit-box");if(!host)return;if(boxApi&&boxApi.kill)boxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);boxApi=(typeof flutua==="function"?flutua:vidroCf)(el,MOTION_BOX)}
   mountVitBox();
   /* exemplos Pulsar Motion x Motion + Vídeo: a mesma vitrine de vidro, a lista troca pela chave */
-  var MX={mo:[["mx-mo-soluco","Soluço"],["mx-mo-hioide","Hioide"],["mx-mo-aguaviva","Água-viva"],["mx-mo-tranco","Tranco ao Dormir"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
+  var MX={mo:[["mo-real-3","A colonoscopia pode furar o intestino?","mo-real-3-loop"],["mo-real-2","Abscesso perianal","mo-real-2-loop"],["mo-real-1","Operou a barriga?","mo-real-1-loop"],["mx-mo-soluco","Soluço"],["mx-mo-aguaviva","Água-viva"]],mv:[["mx-mv-meconio","Mecônio"],["mx-mv-triangulo","Triângulo do Perigo"],["mx-mv-vista","Vista Escurecendo"],["mx-mv-papel","Dobras de Papel"],["mx-mv-espirro","Espirro com Sol"]]};
   ["mo","mv"].forEach(function(k){MX[k].forEach(function(c){if(!VIEWS[c[0]])VIEWS[c[0]]=[0,"",1]})});
   var mxApi=null,mxK="mo";function mountMx(k){var host=$("mx-vit");if(!host)return;mxK=k||mxK;if(mxApi&&mxApi.kill)mxApi.kill();host.innerHTML="";var el=document.createElement("div");host.appendChild(el);var f=T.vit==="flutua"&&typeof flutua==="function"?flutua:T.vit==="liquido"?liquido:vidroCf;mxApi=f(el,MX[mxK]);
     [].forEach.call(document.querySelectorAll("#mx .mx-sw .btn"),function(b){var on=b.getAttribute("data-k")===mxK;b.setAttribute("aria-selected",on?"true":"false");b.classList.toggle("line",!on)});
@@ -3848,15 +3944,23 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   mountMx("mo");
 
   /* explorador */
-  var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:pcr-h","Ver os pacotes","#box"],
-    academy:["Academy","Aprenda a fazer <em>os seus.</em>","Curso, materiais grátis e mentoria, tudo num lugar.","v:cerebro","Abrir a Academy","#academy"],
-    prompts:["Prompts","Os prompts <em>que eu uso.</em>","Folhas prontas por área: a imagem de cada cena e o movimento do vídeo.","i:area-cardiologia","Ver os prompts","#prompts"],
-    skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto.","v:placa","Ver as Skills","#skills"],
-    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-valvula-hd","Ver como vai ser","#maquina","est-valvula-poster"]};
+  /* Toque e descubra: todas as abas no formato da aba Vídeos (mídia grande, texto, botão). Último item = jeito da mídia:
+     h = vídeo deitado ocupando tudo, p = vídeo em pé numa tela inteira (nada cortado), q = quadrado, sh = prateleira com os livros */
+  var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:pcr-h","Ver os pacotes","#box","","h"],
+    academy:["Academy","Aprenda a fazer <em>os seus.</em>","Curso, materiais grátis e mentoria, tudo num lugar.","v:cerebro","Abrir a Academy","#academy","","p"],
+    prompts:["Prompts","Os prompts <em>que eu uso.</em>","As folhas por área e o Atlas, com a imagem de cada cena e o movimento do vídeo.","","Ver os prompts","#prompts","","sh"],
+    skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto. Este aqui saiu assim.","v:vt-unha","Ver as Skills","#skills","","p"],
+    maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-valvula-hd","Ver como vai ser","#maquina","est-valvula-poster","q"]};
+  /* prateleira: capas reais (página 1 de cada PDF), lado a lado sem uma esconder o título da outra, o Atlas no meio e maior */
+  var PRAT=[["cardiologia",9.5,18,-2,1],["dermatologia",28.5,18,-1,2],["atlas",50,25,0,5],["ortopedia",71.5,18,1,2],["nutricao",90.5,18,2,1]];
+  function prateleira(){return '<div class="sh" role="img" aria-label="Prateleira com as folhas de prompts por área e o Atlas Pulsar">'+PRAT.map(function(b){return '<span class="sh-b'+(b[0]==="atlas"?" at":"")+(b[5]?" "+b[5]:"")+'" style="--x:'+b[1]+'%;--w:'+b[2]+'%;--r:'+b[3]+'deg;--z:'+b[4]+'"><img src="assets/pdf/'+b[0]+'.jpg" alt="" width="360" height="641" loading="lazy" decoding="async"></span>'}).join("")+'<i class="sh-p" aria-hidden="true"></i></div>'}
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
-    function show(k,fast){var e=EX[k],m=e[3].slice(2),med=e[3][0]==="v"?'<video src="assets/'+m+'.mp4" poster="assets/'+(e[6]||m)+'.jpg" autoplay muted loop playsinline></video>':'<img src="assets/'+m+'.jpg" alt="">';
+    function show(k,fast){var e=EX[k],m=e[3].slice(2),tp=e[7]||"h",pos="assets/"+(e[6]||m)+".jpg",vd='<video src="assets/'+m+'.mp4" poster="'+pos+'" autoplay muted loop playsinline></video>',med;
+      if(tp==="sh")med='<div class="m msh">'+prateleira()+'</div>';
+      else if(tp==="p")med='<div class="m mp"><img class="mp-bg" src="'+pos+'" alt=""><div class="mp-ph">'+vd+'</div></div>';
+      else med='<div class="m'+(tp==="q"?" mq":"")+'">'+(e[3][0]==="v"?vd:'<img src="assets/'+m+'.jpg" alt="">')+'</div>';
       bar.querySelectorAll(".pill").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.ex===k))});
-      function put(){box.innerHTML='<div class="m">'+med+'</div><div class="tx"><h3 class="title">'+e[1]+'</h3><p class="lead">'+e[2]+'</p><a class="btn" href="'+e[5]+'">'+e[4]+'</a></div>';box.classList.remove("sw")}
+      function put(){box.innerHTML=med+'<div class="tx"><h3 class="title">'+e[1]+'</h3><p class="lead">'+e[2]+'</p><a class="btn" href="'+e[5]+'">'+e[4]+'</a></div>';box.classList.remove("sw");if(calmo){var v=box.querySelector("video");if(v)v.pause()}}
       if(fast||calmo)put();else{box.classList.add("sw");setTimeout(put,200)}}
     bar.addEventListener("click",function(e){var b=e.target.closest(".pill");if(b)show(b.dataset.ex)});show("box",true)})();
 
@@ -4691,7 +4795,25 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     /* o botão Insights só aparece quando houver o print real do vídeo (4º item da lista); sem print, não mostra caixa vazia */
     if(v[3])d.querySelector(".br").onclick=function(){$("dlg-t").textContent=v[1];$("dlg-ph").innerHTML='<img src="'+v[3]+'" alt="Insights do vídeo '+v[1]+'" style="width:100%;height:100%;object-fit:contain">';$("dlg").showModal()};
     box.appendChild(d)})}
-  rail("rail-home");rail("rail-bonus",VIRAIS.slice(0,4));
+  /* Vídeos que viralizaram (Início): cartões grandes, o próximo espiando. [arquivo, nome, visualizações, seguidores]. Números reais ditados pelo Renan em 17/11/2026.
+     Colposcopia (1,7 mi · +1.900) e Dipirona (+17 mil seguidores) entram quando os vídeos chegarem (assets/vt-colposcopia.mp4 e assets/vt-dipirona.mp4) */
+  var VIRAIS_INI=[["vt-supositorio","Supositório",5400000,0],["vt-unha","Unha que Não Dói",6300000,3300],["vt-roer","Roer Unha",5300000,900],["vt-dipirona","Dipirona",0,17000],["vt-hernia","Hérnia de Disco",0,4000],["vt-colposcopia","Colposcopia",1700000,1900],["vt-meconio2","Mecônio",1000000,1009],["capsula","Cápsula Endoscópica",1800000,0],["hpylori","H. Pylori",0,2000]];
+  (function(){var box=$("rail-home");if(!box)return;
+    box.innerHTML=VIRAIS_INI.map(function(v){var top=v[2]?'<span class="vr-n"><b>'+fmtV(v[2])+'</b><span>visualizações</span></span>'+(v[3]?'<span class="vr-s">'+ICO_SEG+'+'+fmtS(v[3])+' seguidores</span>':''):'<span class="vr-n"><b>+'+fmtS(v[3])+'</b><span>seguidores</span></span>';
+      var lab=v[1]+": "+(v[2]?fmtV(v[2])+" de visualizações":"")+(v[2]&&v[3]?" e ":"")+(v[3]?"mais "+fmtS(v[3])+" seguidores":"");
+      return '<div><div class="reel" role="img" aria-label="'+lab+'"><video data-src="assets/'+v[0]+'.mp4" poster="assets/'+v[0]+'.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span class="vr-pl" aria-hidden="true">'+top+'</span></div><div class="cap"><b>'+v[1]+'</b></div></div>'}).join("");
+    var vs=box.querySelectorAll("video");if(calmo||!window.IntersectionObserver)return;
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.getAttribute("src"))v.src=v.dataset.src;var q=v.play();if(q&&q.catch)q.catch(function(){})}else v.pause()})},{threshold:.5});
+    [].forEach.call(vs,function(v){io.observe(v)})})();
+  rail("rail-bonus",VIRAIS.slice(0,4));
+  /* frase que troca na abertura: a palavra nova cai de cima com mola e a antiga sai por baixo (2,5 s cada). Parada com reduzir movimento */
+  (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas"],i=0;
+    if(calmo)return;
+    function larg(t){var s=document.createElement("span");s.textContent=t;s.style.cssText="position:absolute;visibility:hidden;white-space:nowrap";w.appendChild(s);var x=s.getBoundingClientRect().width;w.removeChild(s);return x}
+    w.style.width=Math.ceil(larg(L[0]))+"px";if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){w.style.width=Math.ceil(larg(L[i]))+"px"});
+    setInterval(function(){if(document.hidden||p.offsetParent===null)return;i=(i+1)%L.length;var velho=w.querySelector("span:not(.sai)"),novo=document.createElement("span");novo.textContent=L[i];novo.className="cai";
+      if(velho){velho.className="sai";setTimeout(function(){if(velho.parentNode)velho.parentNode.removeChild(velho)},500)}
+      w.appendChild(novo);w.style.width=Math.ceil(larg(L[i]))+"px"},2500)})();
   $("dlg-x").onclick=function(){$("dlg").close()};
 
   var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
@@ -5253,5 +5375,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794887560";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794891516";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
