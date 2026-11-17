@@ -2727,6 +2727,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 #rail-home .vr-n span{font-size:clamp(14px,4.4cqw,18px)}
 #rail-home .vr-s{font-size:16.5px}
 @container site (min-width:880px){#rail-home .vr-n b{font-size:38px}#rail-home .vr-n span{font-size:17px}}
+/* virais: sem setas, só passando sozinho e com o dedo/mouse */
+#rail-home~.rl-b,.rl-w>.rl-b{display:none!important}
 </style>
 </head>
 <body>
@@ -5595,5 +5597,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794897122";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794899976";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
