@@ -2623,6 +2623,25 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .fo-h,.fo-p,.fo-c{transition:opacity .5s ease}
 .fo:not([data-p="0"]) .fo-h,.fo:not([data-p="0"]) .fo-p,.fo:not([data-p="0"]) .fo-c{opacity:0}
 @media (prefers-reduced-motion:reduce){.fo,.fo-h,.fo-p,.fo-c{transition:none}}
+/* (17/11/2026, noite) Prompts: a imagem ocupa a folha inteira (o olho e a remela à vista) e o texto fica por cima da parte de baixo,
+   num degradê escuro e transparente que não cobre o assunto; o enquadramento de cada folha vem do FOL */
+.fo{display:block;padding:0;top:6%;bottom:7%;background:#1c1917}
+.ex .m .fo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fo-tx{position:absolute;left:0;right:0;bottom:0;z-index:1;display:grid;gap:.5cqh;padding:7cqh 4.4cqh 10cqh;color:#fff;background:linear-gradient(180deg,rgba(18,12,8,0) 0%,rgba(18,12,8,.42) 26%,rgba(18,12,8,.78) 60%,rgba(18,12,8,.88) 100%);transition:opacity .5s ease}
+.fo-tx .fo-h{padding:0;gap:.3cqh}
+.fo-tx .fo-h small{color:rgba(255,255,255,.8);text-shadow:0 1px 6px rgba(0,0,0,.35)}
+.fo-tx .fo-h b{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.fo-tx .fo-p{padding:0;margin-top:.8cqh;color:rgba(255,255,255,.86);-webkit-mask-image:none;mask-image:none}
+.fo-tx .fo-p i{display:inline;margin:0;color:#fff}
+.fo-tx .fo-p span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 60%,rgba(0,0,0,.25));mask-image:linear-gradient(90deg,#000 60%,rgba(0,0,0,.25))}
+.fo .fo-c{z-index:2;box-shadow:0 4px 14px -6px rgba(0,0,0,.45)}
+.fo:not([data-p="0"]) .fo-tx{opacity:0}
+/* (conferência) o degradê fica mais baixo e mais leve em cima, com vidro fosco embaixo do texto (some a marca d'água do cisto);
+   nas folhas de trás o degradê continua e só o texto some */
+.fo-tx{padding-top:9cqh;background:linear-gradient(180deg,rgba(18,12,8,0) 0%,rgba(18,12,8,.18) 22%,rgba(18,12,8,.62) 55%,rgba(18,12,8,.8) 100%)}
+.fo-tx::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(180deg,transparent 0%,transparent 20%,#000 58%);mask-image:linear-gradient(180deg,transparent 0%,transparent 20%,#000 58%)}
+.fo:not([data-p="0"]) .fo-tx{opacity:1}
+@media (prefers-reduced-motion:reduce){.fo-tx{transition:none}}
 /* Toque e descubra, Skills: conversa com a Skill que se escreve e vai completando, termina num cartão "Pronto" (sem vídeo) */
 #pg-inicio .ex .m.mch{aspect-ratio:auto;display:grid;align-content:center;padding:22px 16px;background:linear-gradient(180deg,#f6f4f1 0%,#efece7 100%)}
 .ch{display:grid;gap:14px;width:100%;max-width:400px;margin-inline:auto;min-height:330px;align-content:start;padding:16px 16px 18px;border-radius:20px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line),0 24px 44px -30px rgba(12,10,9,.4)}
@@ -2647,6 +2666,58 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .ch.sai{opacity:0;transition:opacity .5s ease}
 @container site (min-width:880px){#pg-inicio .ex .m.mch{padding:28px 26px}}
 @media (prefers-reduced-motion:reduce){.ch-et li,.ch-ok{transition:none}.ch-eu .cur{display:none}}
+/* (17/11/2026, noite) Toque e descubra, Skills: o cartão de comando do Estúdio antigo (antes da orbe), rápido.
+   O pedido se escreve depressa, as fichas e o botão ficam embaixo, o registro de etapas marca ✓ uma atrás da outra e em ~3 s
+   aparece o cartão "Pronto" com o que a Skill entregou. Sem campo de verdade: é demonstração automática */
+#pg-inicio .ex .m.mxk{aspect-ratio:auto;display:grid;align-content:center;padding:22px 14px;background:linear-gradient(180deg,#f8f4ec 0%,#efe6d6 100%);isolation:isolate}
+.mxk::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 40%,rgba(227,194,122,.32),transparent 75%)}
+.xk{--a1:#f6e7c6;--a2:#e3c27a;--a3:#b8862e;--ouro:#a16207;--seta:#2b1a02;width:100%;max-width:440px;margin-inline:auto;display:grid;gap:12px;border-radius:22px;padding:16px 14px 14px 16px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);box-shadow:inset 0 0 0 1px rgba(12,10,9,.1),inset 0 1px 0 rgba(255,255,255,.95),0 30px 60px -44px rgba(12,10,9,.4),0 16px 36px -24px rgba(12,10,9,.2);text-align:left;line-height:1.5}
+.xk p,.xk ol,.xk ul,.xk li{margin:0;padding:0}
+.xk ol,.xk ul{list-style:none}
+.xk-campo{min-height:calc(16px*1.5*2);font-size:16px;line-height:1.5;color:var(--ink);overflow-wrap:anywhere}
+.xk-campo .xk-ph{color:#8c8782}
+.xk-car{display:inline-block;width:2px;height:1.05em;margin:0 -4px 0 2px;vertical-align:-2px;background:var(--a3);animation:xkPisca 1s steps(1) infinite}
+.xk[data-f="build"] .xk-car,.xk[data-f="done"] .xk-car{visibility:hidden}
+@keyframes xkPisca{50%{opacity:0}}
+.xk-tools{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.xk-chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.xk-chips span{display:inline-flex;align-items:center;height:30px;padding:0 11px;border-radius:10px;font-size:12.5px;font-weight:500;color:#6b6661;background:linear-gradient(180deg,rgba(12,10,9,.03),rgba(12,10,9,.06));box-shadow:inset 0 0 0 1px rgba(12,10,9,.05);white-space:nowrap}
+.xk-chips span.on{color:var(--ink);font-weight:600;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,10,9,.26),0 1px 2px rgba(12,10,9,.08)}
+.xk-send{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--seta);background:linear-gradient(160deg,var(--a1),var(--a2) 48%,var(--a3));box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 4px 16px rgba(184,134,46,.35);filter:saturate(.3) brightness(1.05) opacity(.66);transition:filter .2s,transform .25s cubic-bezier(.16,1,.3,1)}
+.xk-send svg{width:16px;height:16px;display:block}
+.xk[data-pronto] .xk-send{filter:none}
+.xk-send.tap{transform:scale(.88)}
+/* embaixo do campo: registro e resultado ocupam o mesmo lugar (a caixa não muda de altura) */
+.xk-z{display:grid;padding-top:12px;border-top:1px solid rgba(12,10,9,.08)}
+.xk-log,.xk-ok{grid-area:1/1;min-width:0;transition:opacity .35s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+.xk-log{display:grid;gap:9px;align-content:start}
+.xk[data-f="done"] .xk-log{opacity:0;transform:translateY(-6px)}
+.xk-ok{opacity:0;transform:translateY(8px);display:grid;gap:8px;align-content:start}
+.xk[data-f="done"] .xk-ok{opacity:1;transform:none}
+.xk-bh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.xk-bh span:last-child{font-size:13px;font-weight:500;color:var(--ouro);font-variant-numeric:tabular-nums}
+.xk-prog{height:4px;border-radius:4px;background:rgba(12,10,9,.08);overflow:hidden}
+.xk-prog span{display:block;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--a2),var(--a3));transform:scaleX(0);transform-origin:0 50%;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.xk-li{display:flex;align-items:center;gap:10px;font-size:14px;color:#a39d97;transition:color .25s}
+.xk-li[data-s="1"]{color:var(--ink)}
+.xk-li[data-s="2"]{color:var(--muted)}
+.xk-mk{width:16px;height:16px;display:grid;place-items:center;flex:none}
+.xk-mk svg{display:none;width:13px;height:13px;color:var(--ouro)}
+.xk-mk i{width:6px;height:6px;border-radius:1.5px;background:currentColor;opacity:.5}
+.xk-li[data-s="2"] .xk-mk svg{display:block;animation:skTique .3s cubic-bezier(.3,1.5,.5,1) both}
+.xk-li[data-s="2"] .xk-mk i{display:none}
+.xk-li[data-s="1"] .xk-mk i{opacity:1;background:var(--a3);box-shadow:8px 0 0 -1px var(--a3),-8px 0 0 -1px var(--a3);animation:skGira .8s steps(4) infinite}
+.xk-kick{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;line-height:1.3;color:var(--ouro)}
+.xk-kick svg{width:13px;height:13px;flex:none}
+.xk-kick small{font-size:12.5px;font-weight:500;color:var(--muted)}
+.xk-tt{font-family:var(--ac-display,var(--serif));font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.1;color:var(--ink)}
+.xk-ent{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.xk-ent li{display:grid;gap:1px;padding:8px 10px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px rgba(12,10,9,.08)}
+.xk-ent b{font-size:13.5px;font-weight:600;line-height:1.25;color:var(--ink)}
+.xk-ent small{font-size:12px;line-height:1.3;color:var(--muted)}
+.xk.sai .xk-campo,.xk.sai .xk-z{opacity:0;transition:opacity .3s ease}
+@container site (min-width:880px){#pg-inicio .ex .m.mxk{padding:28px 26px}.xk{padding:20px 18px 16px 22px;border-radius:26px}.xk-tt{font-size:25px}}
+@media (prefers-reduced-motion:reduce){.xk-log,.xk-ok,.xk-prog span,.xk-send{transition:none}.xk-car{display:none}.xk-li .xk-mk svg{animation:none}}
 /*@@/INI2-CSS@@*/
 </style>
 </head>
@@ -4025,24 +4096,34 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-valvula-hd","Ver como vai ser","#maquina","est-valvula-poster","q"]};
   /* (17/11/2026, fim) Academy: três vídeos em pé lado a lado (Botox, Mecônio e o 3º alternando entre vasos e sinapse).
      Prompts: folhas de prompt de verdade em leque, com o começo do prompt de imagem tirado das FOLHAS (remela, dipirona, cisto), a da frente troca sozinha.
-     Skills: conversa com a Skill que se escreve e completa as etapas, termina num cartão "Pronto" (sem vídeo). Repete com calma */
+     Skills: (noite) virou o cartão de comando do Estúdio antigo, rápido; termina num cartão "Pronto" (sem vídeo) */
   var EXG=0;
   function academia(){return '<div class="m ma3" role="img" aria-label="Três vídeos feitos na Pulsar: botox, mecônio e circulação"><img class="mp-bg" src="assets/vt-botox.jpg" alt=""><div class="a3" aria-hidden="true">'+["vt-botox","ac-meconio-coco","ac-1"].map(function(v,i){return '<span><video src="assets/'+v+'.mp4" poster="assets/'+v+'.jpg" autoplay muted '+(i===2?'':'loop ')+'playsinline'+(i===2?' data-troca':'')+'></video></span>'}).join("")+'</div></div>'}
   function academiaVai(box){var v=box.querySelector("video[data-troca]");if(!v)return;var k=0,L=["ac-1","ac-2"];v.addEventListener("ended",function(){k^=1;v.poster="assets/"+L[k]+".jpg";v.src="assets/"+L[k]+".mp4";var q=v.play();if(q&&q.catch)q.catch(function(){})})}
-  var FOL=[["remela", "Remela", 9, "0:00 a 0:09", "Extreme macro of the inner corner of a human eye at dawn, a small dried amber crust resting in the corner, the crust matte and dry against the wet eye around it. Warm coral skin, dark lashes, amber iris at the edge of frame, soaking wet, coated in a clear glassy layer of moisture that clings to it,…", "vt-remela","50% 64%"], ["dipirona", "Dipirona", 10, "0:00 a 0:04", "Hyper-detailed 3D medical CGI render, view from inside a human stomach, a single smooth white oval pill slowly descending toward the soft glistening pink-red gastric mucosa, moist folded tissue walls catching warm light, shallow depth of field with the pill in sharp focus and the stomach lining…", "vt-dipirona","50% 60%"], ["cisto", "Cisto sinovial", 17, "0:00 a 0:06", "A photoreal 3D medical visualization in the style of a medical training animation, rendered for a medical training animation. Vertical 9:16 portrait composition. The back of a relaxed human wrist and the base of the hand lying flat on a dark surface, seen from a low oblique angle from the side,…", "vt-cisto","50% 40%"]];
+  var FOL=[["remela", "Remela", 9, "0:00 a 0:09", "Extreme macro of the inner corner of a human eye at dawn, a small dried amber crust resting in the corner, the crust matte and dry against the wet eye around it. Warm coral skin, dark lashes, amber iris at the edge of frame, soaking wet, coated in a clear glassy layer of moisture that clings to it,…", "vt-remela","50% 100%"], ["dipirona", "Dipirona", 10, "0:00 a 0:04", "Hyper-detailed 3D medical CGI render, view from inside a human stomach, a single smooth white oval pill slowly descending toward the soft glistening pink-red gastric mucosa, moist folded tissue walls catching warm light, shallow depth of field with the pill in sharp focus and the stomach lining…", "vt-dipirona","50% 100%"], ["cisto", "Cisto sinovial", 17, "0:00 a 0:06", "A photoreal 3D medical visualization in the style of a medical training animation, rendered for a medical training animation. Vertical 9:16 portrait composition. The back of a relaxed human wrist and the base of the hand lying flat on a dark surface, seen from a low oblique angle from the side,…", "vt-cisto","50% 28%"]];
   var ICO_CONT='<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.6"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>';
-  function folhas(){return '<div class="m mfo" role="img" aria-label="Folhas de prompt: Remela, Dipirona e Cisto sinovial, cada uma com a imagem da cena e o começo do prompt">'+FOL.map(function(f,i){return '<div class="fo" data-p="'+i+'" aria-hidden="true"><img src="assets/'+f[5]+'.jpg" style="object-position:'+f[6]+'" alt="" loading="lazy" decoding="async" draggable="false"><div class="fo-h"><small>Cena 1 de '+f[2]+' · '+f[3]+'</small><b>'+f[1]+'</b></div><p class="fo-p"><i>Prompt de imagem</i>'+f[4]+'</p><span class="fo-c">'+ICO_CONT+'continua no curso</span></div>'}).join("")+'</div>'}
+  function folhas(){return '<div class="m mfo" role="img" aria-label="Folhas de prompt: Remela, Dipirona e Cisto sinovial, cada uma com a imagem da cena e o começo do prompt">'+FOL.map(function(f,i){return '<div class="fo" data-p="'+i+'" aria-hidden="true"><img src="assets/'+f[5]+'.jpg" style="object-position:'+f[6]+(f[7]?';'+f[7]:'')+'" alt="" loading="lazy" decoding="async" draggable="false"><div class="fo-tx"><div class="fo-h"><small>Cena 1 de '+f[2]+'</small><b>'+f[1]+'</b></div><p class="fo-p"><span><i>Prompt de imagem:</i> '+f[4]+'</span></p></div><span class="fo-c">'+ICO_CONT+'continua no curso</span></div>'}).join("")+'</div>'}
   function folhasVai(box,g){if(calmo)return;var fs=box.querySelectorAll(".fo"),k=0;(function passo(){setTimeout(function(){if(g!==EXG)return;if(!document.hidden&&box.offsetParent!==null){k=(k+1)%fs.length;fs.forEach(function(f,i){f.dataset.p=String((i-k+fs.length)%fs.length)})}passo()},5200)})()}
-  var CH={eu:"Quero um vídeo sobre por que a remela aparece",et:["Roteiro em 6 cenas","Estética escolhida: Porcelana","Prompts de imagem e vídeo","Narração pronta"]};
-  function chat(){return '<div class="m mch" role="img" aria-label="Exemplo de conversa com a Skill: você pede um vídeo sobre por que a remela aparece e ela faz o roteiro em 6 cenas, escolhe a estética Porcelana, escreve os prompts de imagem e vídeo e deixa a narração pronta"><div class="ch" aria-hidden="true"><p class="ch-eu"><span class="t"></span><span class="cur"></span></p><p class="ch-quem"><span class="sk-av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span>Pulsar Labs Master</p><ol class="ch-et">'+CH.et.map(function(t){return '<li data-s="0"><i></i><span>'+t+'</span></li>'}).join("")+'</ol><div class="ch-ok" hidden><i>\u2713</i><div><b>Pronto</b><small>Roteiro, estética, prompts e narração no jeito pra gerar.</small></div></div></div></div>'}
-  function chatVai(box,g){var ch=box.querySelector(".ch");if(!ch)return;var tx=ch.querySelector(".ch-eu .t"),eu=ch.querySelector(".ch-eu"),li=ch.querySelectorAll(".ch-et li"),ok=ch.querySelector(".ch-ok"),qm=ch.querySelector(".ch-quem");
-    function fim(){tx.textContent=CH.eu;eu.setAttribute("data-ok","");li.forEach(function(l){l.dataset.s="2"});ok.hidden=false;qm.style.opacity=1}
+  /* Skills: cartão de comando do Estúdio antigo, rápido (~15 ms por letra, etapas a cada ~300 ms, "Pronto" em ~2,7 s; segura e recomeça) */
+  var XK={eu:"Um vídeo sobre por que a remela aparece",et:["Escrevendo o roteiro","Escolhendo a estética","Escrevendo os prompts","Preparando a narração"],
+    ent:[["Roteiro","6 cenas"],["Estética","Porcelana"],["Prompts","imagem e vídeo"],["Narração","pronta pra gravar"]]};
+  var ICO_OK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
+  function chat(){return '<div class="m mxk" role="img" aria-label="Exemplo da Skill: você pede um vídeo sobre por que a remela aparece e em segundos ela entrega o roteiro em 6 cenas, a estética Porcelana, os prompts de imagem e vídeo e a narração"><div class="xk" data-f="idle" aria-hidden="true">'+
+    '<p class="xk-campo"><span class="xk-t"></span><i class="xk-car"></i></p>'+
+    '<div class="xk-tools"><div class="xk-chips"><span>30s</span><span class="on">1 min</span><span>1min30</span></div><span class="xk-send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5.5M5.5 12 12 5.5l6.5 6.5"/></svg></span></div>'+
+    '<div class="xk-z"><div class="xk-log"><div class="xk-bh"><span class="xk-bt">Esperando o pedido</span><span class="xk-pc">0%</span></div><div class="xk-prog"><span></span></div><ol>'+
+    XK.et.map(function(t){return '<li class="xk-li" data-s="0"><span class="xk-mk"><i></i>'+ICO_OK+'</span><span>'+t+'</span></li>'}).join("")+'</ol></div>'+
+    '<div class="xk-ok"><p class="xk-kick">'+ICO_OK+'<span>Pronto</span><small>o que a Skill entregou</small></p><p class="xk-tt">Por que a remela aparece</p><ul class="xk-ent">'+
+    XK.ent.map(function(e){return '<li><b>'+e[0]+'</b><small>'+e[1]+'</small></li>'}).join("")+'</ul></div></div></div></div>'}
+  function chatVai(box,g){var xk=box.querySelector(".xk");if(!xk)return;var tx=xk.querySelector(".xk-t"),li=xk.querySelectorAll(".xk-li"),bt=xk.querySelector(".xk-bt"),pc=xk.querySelector(".xk-pc"),bar=xk.querySelector(".xk-prog span"),snd=xk.querySelector(".xk-send");
+    function pct(v){pc.textContent=v+"%";bar.style.transform="scaleX("+(v/100)+")"}
+    function fim(){tx.textContent=XK.eu;xk.setAttribute("data-pronto","");li.forEach(function(l){l.dataset.s="2"});bt.textContent="Montado";pct(100);xk.dataset.f="done"}
     if(calmo){fim();return}
-    function w(ms,f){setTimeout(function(){if(g!==EXG)return;if(document.hidden||box.offsetParent===null){w(600,f);return}f()},ms)}
-    function volta(){ch.classList.remove("sai");tx.textContent="";eu.removeAttribute("data-ok");li.forEach(function(l){l.dataset.s="0"});ok.hidden=true;qm.style.opacity=0;var n=0;
-      (function digita(){w(n?38+Math.random()*40:500,function(){n++;tx.textContent=CH.eu.slice(0,n);if(n<CH.eu.length)digita();else{eu.setAttribute("data-ok","");w(450,function(){qm.style.opacity=1;etapa(0)})}})})()}
-    function etapa(k){if(k>=li.length){w(500,function(){ok.hidden=false;w(4200,function(){ch.classList.add("sai");w(600,volta)})});return}
-      li[k].dataset.s="1";w(950,function(){li[k].dataset.s="2";w(320,function(){etapa(k+1)})})}
+    function w(ms,f){setTimeout(function(){if(g!==EXG)return;if(document.hidden||box.offsetParent===null){w(500,f);return}f()},ms)}
+    function volta(){xk.classList.remove("sai");xk.dataset.f="idle";xk.removeAttribute("data-pronto");tx.textContent="";bt.textContent="Esperando o pedido";pct(0);li.forEach(function(l){l.dataset.s="0"});var n=0;
+      (function digita(){w(n?12+Math.random()*6:150,function(){n+=1;tx.textContent=XK.eu.slice(0,n);if(n<XK.eu.length)digita();else{xk.setAttribute("data-pronto","");w(90,function(){snd.classList.add("tap");w(120,function(){snd.classList.remove("tap");xk.dataset.f="build";bt.textContent="Montando";etapa(0)})})}})})()}
+    function etapa(k){if(k>=li.length){bt.textContent="Montado";w(220,function(){xk.dataset.f="done";w(4600,function(){xk.classList.add("sai");w(320,volta)})});return}
+      li[k].dataset.s="1";w(170,function(){li[k].dataset.s="2";pct(Math.round((k+1)/li.length*100));w(120,function(){etapa(k+1)})})}
     volta()}
   (function(){var bar=$("ex-pills"),box=$("ex"),h="";for(var k in EX)h+='<button type="button" class="pill" role="tab" data-ex="'+k+'">'+EX[k][0]+'</button>';bar.innerHTML=h;
     function show(k,fast){var e=EX[k],m=e[3].slice(2),tp=e[7]||"h",pos="assets/"+(e[6]||m)+".jpg",vd='<video src="assets/'+m+'.mp4" poster="'+pos+'" autoplay muted loop playsinline></video>',med;
@@ -5492,5 +5573,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794895789";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794896915";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
