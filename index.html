@@ -2775,6 +2775,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 /* biblioteca de Motion: porte do "Filterable Blog Index" (21st.dev). Pílulas, cartão em destaque, grade */
 .mlb{display:grid;gap:22px;justify-items:center;width:100%;max-width:960px;margin:0 auto;min-width:0}
 .mlb-f{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+/* celular: as áreas numa linha só que desliza, pra o primeiro vídeo aparecer logo */
+@container site (max-width:699px){.mlb-f{contain:inline-size;min-width:0;width:calc(100% + 32px);box-sizing:border-box;align-self:stretch;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 6px;scroll-padding-inline:16px;-webkit-mask:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent 100%)}.mlb-f::-webkit-scrollbar{display:none}.mlb-p{flex:none;white-space:nowrap}}
 .mlb-f[hidden]{display:none}
 .mlb-p{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted);font:500 14px/1 var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .mlb-p:hover{color:var(--ink);border-color:var(--ink)}
@@ -4830,10 +4832,25 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
      O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui. */
   var MOTION_LIB=[
     {v:"mo-real-4",t:"O cérebro não sente dor",area:"Neurocirurgia",s:27},
+    {v:"mo-real-20",t:"Por que pedra no rim dói tanto?",area:"Urologia",s:30},
+    {v:"mo-real-23",t:"Nos filmes, o coração para",area:"Cardiologia",s:31},
     {v:"mo-real-5",t:"Por que no avião dá mais gases?",area:"Gastro",s:25},
-    {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
+    {v:"mo-real-24",t:"Teu olho tem um buraco",area:"Oftalmologia",s:28},
+    {v:"mo-real-11",t:"Cagar com celular",area:"Proctologia",s:33},
+    {v:"mo-real-16",t:"O ferrão da abelha",area:"Picadas e mordidas",s:28},
+    {v:"mo-real-22",t:"Metal na ressonância",area:"Exames",s:30},
+    {v:"mo-real-25",t:"Por que o dedo enruga na água?",area:"Curiosidades",s:27},
+    {v:"mo-real-19",t:"Pisou num prego enferrujado?",area:"Infectologia",s:30},
+    {v:"mo-real-21",t:"Apendicite",area:"Cirurgia",s:32},
+    {v:"mo-real-15",t:"Como o mosquito pica",area:"Picadas e mordidas",s:27},
     {v:"mo-real-7",t:"Seu fígado filtra tudo",area:"Gastro",s:26},
+    {v:"mo-real-12",t:"Fissura anal: dor de caco de vidro",area:"Proctologia",s:28},
+    {v:"mo-real-17",t:"Água-viva",area:"Picadas e mordidas",s:30},
+    {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
+    {v:"mo-real-13",t:"Sangue nas fezes nem sempre é o que parece",area:"Gastro",s:29},
+    {v:"mo-real-18",t:"Raiva",area:"Picadas e mordidas",s:32},
     {v:"mo-real-9",t:"Seu intestino conversa com o cérebro",area:"Gastro",s:25},
+    {v:"mo-real-14",t:"Drenou o abscesso: fístula anal",area:"Proctologia",s:30},
     {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
     {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
     {v:"mo-real-1",t:"Operou a barriga?",area:"Cirurgia",s:31}
@@ -6216,5 +6233,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1794960238";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1794964850";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
