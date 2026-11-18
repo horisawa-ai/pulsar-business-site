@@ -3203,8 +3203,6 @@ html.bx-on .foot{scroll-snap-align:end}
     <a class="lg-i" href="#inicio" draggable="false"><span class="lg-ic lgi-inicio"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="lgp-casa"><path d="M3.6 10.3 12 3.5l8.4 6.8v8.3a2 2 0 0 1-2 2H5.6a2 2 0 0 1-2-2Z"/><path class="lgp-porta" d="M9.6 20.6v-4.8a1.3 1.3 0 0 1 1.3-1.3h2.2a1.3 1.3 0 0 1 1.3 1.3v4.8"/></g></svg></span><span class="lg-t">Início</span></a>
     <a class="lg-i" href="#box" draggable="false"><span class="lg-ic lgi-videos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle class="lgp-anel" cx="12" cy="12" r="4.5"/><rect class="lgp-tela" x="2.8" y="4.8" width="18.4" height="14.4" rx="3.8"/><path class="lgp-play" d="M10.3 9.5v5l4.3-2.5Z"/></svg><span class="lg-dot" aria-hidden="true"></span></span><span class="lg-t lg-t-vd">Vídeos</span></a>
     <a class="lg-i" href="#academy" draggable="false"><span class="lg-ic lgi-academy"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="lgp-capelo"><path d="M12 4.3 2.4 9.1 12 13.9l9.6-4.8Z"/><path d="M6.3 11.3v4.3c1.5 1.6 3.4 2.4 5.7 2.4s4.2-.8 5.7-2.4v-4.3"/><g class="lgp-pingente"><path d="M21.6 9.1v4.5"/><circle class="lgp-cheio" cx="21.6" cy="15.4" r="1.15"/></g></g></svg></span><span class="lg-t">Academy</span></a>
-    <a class="lg-i" href="#prompts" draggable="false"><span class="lg-ic lgi-prompts"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="lgp-folha"><path d="M12.3 4.2H7.3a2.4 2.4 0 0 0-2.4 2.4v11a2.4 2.4 0 0 0 2.4 2.4h7.9a2.4 2.4 0 0 0 2.4-2.4v-4.9"/><path class="lgp-l lgp-l1" d="M8.5 10.4h3.3"/><path class="lgp-l lgp-l2" d="M8.5 13.5h5.5"/><path class="lgp-l lgp-l3" d="M8.5 16.6h3.9"/></g><path class="lgp-faisca lgp-cheio" d="M17.9 2.3c.3 2.1 1.4 3.2 3.5 3.5-2.1.3-3.2 1.4-3.5 3.5-.3-2.1-1.4-3.2-3.5-3.5 2.1-.3 3.2-1.4 3.5-3.5Z"/></svg></span><span class="lg-t">Prompts</span></a>
-    <a class="lg-i" href="#skills" draggable="false"><span class="lg-ic lgi-skills"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="lgp-r lgp-r1" d="M5.2 6.2 3.4 4.6"/><path class="lgp-r lgp-r2" d="M19.3 15.4l2.1 1.2"/><path class="lgp-r lgp-r3" d="M5.8 18.6 4 20.2"/><path class="lgp-raio" d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span><span class="lg-t">Skills</span></a>
     <a class="lg-i" href="#maquina" draggable="false" aria-label="Estúdio (em breve)"><span class="lg-ic lgi-estudio"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="lgp-e lgp-e1 lgp-cheio" d="M21 11.6c.15 1 .7 1.55 1.7 1.7-1 .15-1.55.7-1.7 1.7-.15-1-.7-1.55-1.7-1.7 1-.15 1.55-.7 1.7-1.7Z"/><path class="lgp-e lgp-e2 lgp-cheio" d="M10.6 2.4c.15 1 .7 1.55 1.7 1.7-1 .15-1.55.7-1.7 1.7-.15-1-.7-1.55-1.7-1.7 1-.15 1.55-.7 1.7-1.7Z"/><path class="lgp-e lgp-e3 lgp-cheio" d="M21.4 1.2c.12.8.58 1.26 1.38 1.38-.8.12-1.26.58-1.38 1.38-.12-.8-.58-1.26-1.38-1.38.8-.12 1.26-.58 1.38-1.38Z"/><g class="lgp-varinha"><path d="M4 20l8.8-8.8"/><path class="lgp-estrela lgp-cheio" d="M16.4 3.6c.36 2.3 1.54 3.48 3.84 3.84-2.3.36-3.48 1.54-3.84 3.84-.36-2.3-1.54-3.48-3.84-3.84 2.3-.36 3.48-1.54 3.84-3.84Z"/></g></svg></span><span class="lg-t">Estúdio<small>em breve</small></span></a>
   </div></div>
 </nav>
@@ -3962,7 +3960,7 @@ html.bx-on .foot{scroll-snap-align:end}
     pages.forEach(function(p){$("pg-"+p).classList.toggle("on",p===h)});
     document.documentElement.classList.toggle("bx-on",h==="box");if(window.bxMede)bxMede();
     if(h==="inicio"&&pgAntes&&pgAntes!=="inicio")fraseVolta();pgAntes=h;
-    document.querySelectorAll("#navpills a").forEach(function(a){if(a.getAttribute("href")==="#"+(h==="mentoria"||h==="biblioteca"?"academy":h)){a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
+    document.querySelectorAll("#navpills a").forEach(function(a){if(a.getAttribute("href")==="#"+(["mentoria","biblioteca","prompts","skills"].indexOf(h)>=0?"academy":h)){a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
     /* lançamento: o montador (preços avulsos antigos) fica escondido, mesmo vindo de um link antigo com montar ou resumo */
     if(alvo==="montar"||alvo==="sum"||alvo==="boxes")alvo="oferta";
     if(h==="comparar")cmpOn();else cmpOff();
@@ -4663,10 +4661,8 @@ html.bx-on .foot{scroll-snap-align:end}
   /* explorador */
   /* Toque e descubra: todas as abas no formato da aba Vídeos (mídia grande, texto, botão). Último item = jeito da mídia:
      h = vídeo deitado ocupando tudo, p = vídeo em pé numa tela inteira (nada cortado), q = quadrado, sh = prateleira com os livros */
-  var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:pcr-h","Ver os pacotes","#box","","h"],
+  var EX={box:["Vídeos","Seus vídeos, <em>prontos pra postar.</em>","Eu escrevo o roteiro, produzo e entrego. Você só aprova.","v:pcr-h","Ver os vídeos","#box","","h"],
     academy:["Academy","Aprenda a fazer <em>os seus.</em>","Curso, materiais grátis e mentoria, tudo num lugar.","","Abrir a Academy","#academy","","a3"],
-    prompts:["Prompts","Os prompts <em>que eu uso.</em>","As folhas por área e o Atlas, com a imagem de cada cena e o movimento do vídeo.","","Ver os prompts","#prompts","","fo"],
-    skills:["Skills","O Claude trabalhando <em>do meu jeito.</em>","Você instala e ele te guia do roteiro ao vídeo pronto, etapa por etapa.","","Ver as Skills","#skills","","ch"],
     maquina:["Estúdio","Descreva o vídeo. <em>Receba pronto.</em>","Gere seus vídeos com um comando. Em breve.","v:est-valvula-hd","Ver como vai ser","#maquina","est-valvula-poster","q"]};
   /* (17/11/2026, fim) Academy: três vídeos em pé lado a lado (Botox, Mecônio e o 3º alternando entre vasos e sinapse).
      Prompts: folhas de prompt de verdade em leque, com o começo do prompt de imagem tirado das FOLHAS (remela, dipirona, cisto), a da frente troca sozinha.
@@ -6361,5 +6357,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1795024254";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1795024386";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
