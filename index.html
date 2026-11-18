@@ -3116,6 +3116,80 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 @container site (min-width:700px){#hero-rot .rot-w{font-size:52px;padding:.06em 0 .2em}}
 #ak-fig .mb-bk::before{content:'';position:absolute;left:50%;top:50%;width:13%;aspect-ratio:40/46;transform:translate(-50%,-50%);background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 46'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23fdfdfe'/><stop offset='.55' stop-color='%23c9cbd0'/><stop offset='1' stop-color='%23eef0f3'/></linearGradient></defs><path d='M20 14c-4-3-11-3-14 2-4 6-1 17 4 23 3 4 6 5 10 3 4 2 7 1 10-3 5-6 8-17 4-23-3-5-10-5-14-2z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/><path d='M20 14c0-4 1-7 3-9' fill='none' stroke='%23b9bcc2' stroke-width='1.6' stroke-linecap='round'/><path d='M22 7c3-4 8-4 10-3-1 3-5 6-10 3z' fill='url(%23g)' stroke='rgba(0,0,0,.10)' stroke-width='.6'/></svg>") center/contain no-repeat;filter:drop-shadow(0 1px 0 rgba(255,255,255,.8)) drop-shadow(0 0 6px rgba(255,255,255,.6));opacity:.95}
 #ak-fig .mb-bk::before{z-index:2}
+
+/* ===== Vídeos em telas cheias (18/11/2026): cada .bx-s ocupa a altura da tela e troca com um arrasto (scroll-snap só nesta página).
+   --bxh = altura visível do rolador, --bxt = espaço do menu de vidro fixo, --bxh0 = altura da marca no topo. Medidos no JS (bxMede). ===== */
+html.bx-on,html.bx-on .screen{scroll-snap-type:y mandatory;scroll-padding-top:var(--bxt,74px)}
+html.bx-on .foot{scroll-snap-align:end}
+#pg-box .bx-s{margin:0;scroll-margin-top:0;scroll-snap-align:start;scroll-snap-stop:always;min-height:calc(var(--bxh,100svh) - var(--bxt,74px));display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;padding-block:10px 18px}
+#pg-box .bx-hero{scroll-margin-top:600px;min-height:calc(var(--bxh,100svh) - var(--bxt,74px) - var(--bxh0,48px))}
+#pg-box .bx-in{display:grid;gap:16px;justify-items:center;text-align:center;width:100%;max-width:980px;margin:0 auto;box-sizing:border-box;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));min-width:0}
+#pg-box .bx-hd{display:grid;gap:8px;justify-items:center;max-width:560px}
+#pg-box .bx-hd .display{font-size:clamp(36px,10cqw,76px);line-height:1.02;margin:0;text-wrap:balance}
+#pg-box .bx-hd .title{margin:0;font-size:clamp(30px,8.4cqw,52px);line-height:1.05;text-wrap:balance}
+#pg-box .bx-hd .lead{margin:0;max-width:34ch}
+#pg-box .bx-tel{height:calc(var(--bxh,100svh) * .42);max-height:460px;aspect-ratio:9/16;max-width:100%;border-radius:24px;overflow:hidden;background:var(--night,#0c0a09);box-shadow:0 30px 60px -34px rgba(12,10,9,.6)}
+#pg-box .bx-tel video,#pg-box .bx-vm video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#pg-box .bx-ac{display:grid;gap:6px;justify-items:center}
+#pg-box .bx-lk{border:0;background:none;padding:10px 14px;min-height:44px;font:500 15px/1 var(--sans);color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;cursor:pointer}
+#pg-box .bx-dica{display:flex;align-items:center;gap:6px;margin:0;font-size:13px;color:var(--muted)}
+#pg-box .bx-dica svg{width:14px;height:14px;animation:bxSobe 1.8s ease-in-out infinite}
+@keyframes bxSobe{0%,100%{transform:translateY(2px)}50%{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){#pg-box .bx-dica svg{animation:none}}
+#pg-box .bx-nx{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 18px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--ink);font:500 15px/1 var(--sans);cursor:pointer}
+#pg-box .bx-nx svg{width:15px;height:15px}
+#pg-box .bx-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:520px}
+#pg-box .bx-v{margin:0;display:grid;gap:10px;justify-items:center;align-content:start;min-width:0}
+#pg-box .bx-vm{height:calc(var(--bxh,100svh) * .32);max-height:360px;aspect-ratio:9/16;max-width:100%;border-radius:18px;overflow:hidden;background:var(--night,#0c0a09)}
+#pg-box .bx-v figcaption{display:grid;gap:4px;justify-items:center}
+#pg-box .bx-v figcaption b{font-size:16px;font-weight:700}
+#pg-box .bx-v figcaption span{font-size:13.5px;line-height:1.35;color:var(--muted)}
+#pg-box .bx-v .bx-ok,#pg-box .bx-v .bx-no{margin-top:2px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
+#pg-box .bx-v .bx-ok{background:var(--ink);color:var(--paper)}
+#pg-box .bx-v .bx-no{border:1px dashed var(--line-2);color:var(--muted)}
+#pg-box .bx-v2 .bx-vm{opacity:.82}
+#pg-box .oq{gap:10px}
+#pg-box .oq-c{padding:16px 16px;gap:10px}
+#pg-box .oq-l{gap:4px}
+#pg-box .oq-l li{grid-template-columns:30px minmax(0,1fr);gap:10px;padding-block:5px}
+#pg-box .oq-i{width:30px;height:30px}
+#pg-box .oq-i svg{width:15px;height:15px}
+#pg-box .oq-h{font-size:18px}
+#pg-box .oq-l b{font-size:14.5px}
+#pg-box .oq-l span{font-size:13px;line-height:1.35}
+#pg-box .bx-of{display:grid;gap:14px;justify-items:center;width:100%;max-width:520px;min-width:0}
+#pg-box .of-tm{width:100%}
+#pg-box .steps{width:100%;max-width:560px;text-align:left}
+#pg-box .steps>div{padding:14px 0}
+#pg-box .steps .n{font-family:var(--sans);font-size:14px;font-weight:600}
+#pg-box .steps h3{font-size:22px}
+/* exemplos: só o vídeo em destaque, com setas e arrasto pro lado; a grade some nesta tela */
+#pg-box .mlb{gap:12px}
+#pg-box .mlb-g{display:none}
+#pg-box .mlb-ft{padding:10px 10px 14px;gap:10px;border-radius:24px}
+#pg-box .mlb-ft .mlb-m{width:auto;height:calc(var(--bxh,100svh) * .4);max-height:480px;max-width:100%}
+#pg-box .mlb-tx{gap:6px}
+#pg-box .mlb-tx p{display:none}
+#pg-box .mlb-tx h2{font-size:clamp(22px,6cqw,32px)}
+.mlb-nv{display:flex;align-items:center;justify-content:center;gap:14px}
+.mlb-ar{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line-2);border-radius:50%;background:var(--card);color:var(--ink);cursor:pointer}
+.mlb-ar svg{width:16px;height:16px}
+.mlb-nv .num{min-width:64px;font-size:14px;color:var(--muted)}
+/* resultados: fileira que desliza pro lado no celular */
+#pg-box .cli{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;width:calc(100% + 40px);margin-inline:-20px;padding:4px 20px 10px;box-sizing:border-box}
+#pg-box .cli::-webkit-scrollbar{display:none}
+#pg-box .cli-c{flex:none;width:min(72%,280px);scroll-snap-align:center}
+#pg-box .cli-c img{max-height:calc(var(--bxh,100svh) * .38);object-fit:cover;object-position:top}
+#pg-box .cli-n b{font-size:36px}
+#pg-box .of-n{font-size:13.5px;color:var(--muted);max-width:460px;margin:0}
+@container site (min-width:900px){
+  #pg-box .cli{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;margin-inline:0;padding-inline:0;overflow:visible}
+  #pg-box .cli-c{width:auto}
+  #pg-box .bx-vs{max-width:640px;gap:28px}
+  #pg-box .oq{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #pg-box .bx-hero .bx-hd{max-width:900px}
+  #pg-box .bx-hd .display{font-size:clamp(48px,5.6cqw,72px)}
+}
 </style>
 </head>
 <body>
@@ -3168,22 +3242,33 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 
 <!-- ======================= BOX DE CONTEÚDOS ======================= -->
 <main class="pg" id="pg-box">
-  <section class="sec mlb-sec"><div class="wrap">
-    <div class="head mt-c mlb-hd">
-      <h1 class="display">Vídeos de saúde feitos <em>só com imagem.</em></h1>
-      <p class="lead">20 Pulsar Motion pro seu perfil. Veja abaixo como eles ficam.</p>
+  <!-- 18/11/2026: página de Vídeos em telas cheias que trocam com um arrasto (scroll-snap vertical, só nesta página).
+       Cada tela é uma <section class="bx-s">. O botão .bx-nx com data-bx="id" leva pra tela com aquele id. -->
+  <div class="bxs" id="bx">
+  <section class="bx-s bx-hero" id="bx-ab" aria-label="Abertura"><div class="bx-in">
+    <div class="bx-hd">
+      <h1 class="display">20 vídeos de saúde <em>pro seu perfil.</em></h1>
+      <p class="lead">Feitos por mim, no estilo da Pulsar. Você só posta.</p>
     </div>
-    <!-- biblioteca de Motion: porte do "Filterable Blog Index" do 21st.dev (olewandowski1/blog-3) pra JS puro.
-         Pílulas de área (aria-pressed) + cartão em destaque + grade de cartões filtrada. Os dados ficam em MOTION_LIB no código -->
-    <div class="mlb" id="mlb" data-novd>
-      <div class="mlb-f" id="mlb-f" role="group" aria-label="Filtrar exemplos por área"></div>
-      <article class="mlb-ft" id="mlb-ft" aria-live="polite"></article>
-      <ul class="mlb-g" id="mlb-g" aria-label="Outros exemplos"></ul>
+    <div class="bx-tel"><video data-src="assets/pm-mix.mp4" poster="assets/pm-mix.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
+    <div class="bx-ac">
+      <button type="button" class="btn" data-bx="o-que-e">O que é Pulsar Motion?</button>
+      <button type="button" class="bx-lk" data-bx="bx-pr">Ver o preço</button>
     </div>
+    <p class="bx-dica" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10l4.5-4.5L12.5 10"/></svg>Arraste pra cima</p>
   </div></section>
 
-  <section class="sec tint oq-sec" id="o-que-e"><div class="wrap">
-    <div class="head mt-c mt-rv"><h2 class="title">O que é um <em>Pulsar Motion.</em></h2><p class="lead">Um vídeo de até 45 segundos feito de imagens 3D paradas. Quem dá vida a elas é o motion.</p></div>
+  <section class="bx-s" id="o-que-e" aria-label="O que é um Pulsar Motion"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">O que é um <em>Pulsar Motion.</em></h2><p class="lead">Um vídeo de até 45 segundos feito de imagens 3D paradas. Quem dá vida a elas é o motion.</p></div>
+    <div class="bx-vs">
+      <figure class="bx-v"><div class="bx-vm"><video data-src="assets/mo-real-23-loop.mp4" poster="assets/mo-real-23.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div><figcaption><b>Pulsar Motion</b><span>A imagem fica parada. Zoom, texto, setas e brilho fazem o resto.</span><span class="bx-ok">Vem no pacote</span></figcaption></figure>
+      <figure class="bx-v bx-v2"><div class="bx-vm"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div><figcaption><b>Vídeo Pulsar</b><span>Cada cena é animada por IA, do começo ao fim.</span><span class="bx-no">Não vem no pacote</span></figcaption></figure>
+    </div>
+    <button type="button" class="bx-nx" data-bx="bx-tem"><span>O que tem</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
+  </div></section>
+
+  <section class="bx-s" id="bx-tem" aria-label="O que tem e o que não tem"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">O que <em>vem em cada um.</em></h2></div>
     <div class="oq mt-rv">
       <div class="oq-c">
         <h3 class="oq-h"><span class="oq-k" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Tem</h3>
@@ -3203,23 +3288,38 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         </ul>
       </div>
     </div>
+    <button type="button" class="bx-nx" data-bx="bx-ex"><span>Ver exemplos</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
   </div></section>
 
-  <section class="sec of-sec"><div class="wrap">
-    <!-- oferta de lançamento: 20 Pulsar Motion. O preço só aparece depois do clique em "Ver o preço". Vagas a R$ 500 em VAGAS_500 no código -->
-    <div class="of" id="oferta">
-      <div class="of-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="of-sub">Até 45 segundos cada. Roteiro, imagens, motion e narração.</p></div>
-      <div class="of-tx">
-        <fieldset class="of-tm">
+  <section class="bx-s bx-exs" id="bx-ex" aria-label="Exemplos"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Veja como <em>eles ficam.</em></h2></div>
+    <div class="mlb" id="mlb" data-novd>
+      <div class="mlb-f" id="mlb-f" role="group" aria-label="Filtrar exemplos por área"></div>
+      <article class="mlb-ft" id="mlb-ft" aria-live="polite"></article>
+      <ul class="mlb-g" id="mlb-g" aria-label="Outros exemplos"></ul>
+    </div>
+    <button type="button" class="bx-nx" data-bx="bx-tm"><span>Escolher os temas</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
+  </div></section>
+
+  <div id="oferta">
+  <section class="bx-s" id="bx-tm" aria-label="Temas"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="lead">Até 45 segundos cada. Roteiro, imagens, motion e narração.</p></div>
+    <div class="bx-of"><fieldset class="of-tm">
           <legend>Os 20 temas. <span>Você escolhe como.</span></legend>
           <div role="radiogroup" aria-label="Como escolher os temas" style="display:grid;gap:8px">
             <button type="button" class="of-op" role="radio" aria-checked="true" data-tm="Eu escolho os 20 temas pra você"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Eu escolho os 20 temas pra você</button>
             <button type="button" class="of-op" role="radio" aria-checked="false" tabindex="-1" data-tm="Você me manda os 20 temas"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Você me manda os 20 temas</button>
             <button type="button" class="of-op" role="radio" aria-checked="false" tabindex="-1" data-tm="A gente mistura"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>A gente mistura</button>
           </div>
-        </fieldset>
-        <button class="btn of-ver" type="button" id="of-ver" aria-expanded="false" aria-controls="of-pr">Ver o preço</button>
-        <div class="of-pr" id="of-pr" hidden>
+        </fieldset></div>
+    <button type="button" class="btn" data-bx="bx-pr" data-ver>Ver o preço</button>
+  </div></section>
+
+  <section class="bx-s" id="bx-pr" aria-label="Preço"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">O preço dos <em>20 vídeos.</em></h2><p class="lead">Tem cupom de lançamento pros 10 primeiros.</p></div>
+    <div class="bx-of">
+      <button class="btn of-ver" type="button" id="of-ver" aria-expanded="false" aria-controls="of-pr">Ver o preço</button>
+      <div class="of-pr" id="of-pr" hidden>
           <div class="vg-pr pc-card" aria-live="polite"><span class="pc-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Lançamento</span><p class="pc-nm">20 vídeos Pulsar Motion</p>
             <div class="of-vg" id="of-vg" hidden><p class="of-vg-t"><b>10 primeiras vagas</b> · restam <b class="num" id="of-vg-n">10</b> de 10</p><div class="of-vg-b" id="of-vg-b" aria-hidden="true"></div></div>
             <p class="of-ag">Preço de agora</p>
@@ -3234,12 +3334,31 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
           <button class="btn of-go" type="button" id="of-ir">Quero os 20 vídeos</button>
           <p class="muted small">Você preenche, eu te chamo no WhatsApp pra combinar os temas.</p>
         </div>
-      </div>
     </div>
-    <p class="of-n mt-c">Quem faz os seus Motion fez <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi). Esses dois são Vídeos Pulsar completos, com cenas animadas. Não são Motion.</p>
+  </div></section>
+  </div>
+
+  <section class="bx-s" id="como" aria-label="Como funciona"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Como <em>funciona.</em></h2></div>
+    <div class="steps">
+      <div><span class="n">01</span><h3>Escolha e pague.</h3><p>Os temas e o cupom, na tela do preço.</p></div>
+      <div><span class="n">02</span><h3>Eu faço o escopo.</h3><p>Roteiro, narração e o que cada cena mostra.</p></div>
+      <div><span class="n">03</span><h3>Você aprova.</h3><p>E manda a narração, ou aprova a voz de IA.</p></div>
+      <div><span class="n">04</span><h3>Você recebe e posta.</h3><p>Inclui 1 ajuste por vídeo.</p></div>
+    </div>
+    <button type="button" class="bx-nx" data-bx="clientes"><span>Quem já posta</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
   </div></section>
 
-  <section class="sec tint" id="tipos"><div class="wrap">
+  <section class="bx-s" id="clientes" aria-label="Resultados"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Quem posta, <em>cresce.</em></h2><p class="lead">Seguidores que cada um ganhou com os vídeos da Pulsar.</p></div>
+    <ul class="cli"><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Alex Sato Tanaka</b> · Urologista pediátrico</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Master Clínica</b> · Centro de urologia</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Safira Castro</b> · Proctologista</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Carollyne Rodovalho</b> · Cirurgiã do aparelho digestivo</p></li></ul>
+    <button type="button" class="btn" data-bx="bx-pr" data-ver>Quero os 20 vídeos</button>
+    <p class="of-n mt-c">Quem faz os seus Motion fez <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi). Esses dois são Vídeos Pulsar completos, com cenas animadas. Não são Motion.</p>
+  </div></section>
+  </div>
+
+  <!-- 18/11/2026: os quatro tipos saíram da página de Vídeos (ela vende só os 20 Pulsar Motion). Guardado escondido. -->
+  <section class="sec tint" id="tipos" hidden><div class="wrap">
     <div class="head mt-c mt-rv"><h2 class="title">Quatro vídeos Pulsar. <em>Um pra cada objetivo.</em></h2><p class="lead">Muda o quanto cada cena é animada.</p></div>
     <div class="sqz mt-rv" id="sqz">
       <div class="sqz-top"><button type="button" class="sqz-a" data-by="-1" aria-label="Tipo anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M9.6 2.6 5.1 7.1h9.1v1.8H5.1l4.5 4.5-1.2 1.2-6-6L1.8 8l.6-.6 6-6 1.2 1.2Z"/></svg></button><button type="button" class="sqz-a" data-by="1" aria-label="Próximo tipo"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.4 2.6l4.5 4.5H1.800v1.800h9.100l-4.500 4.500 1.200 1.200 6-6 .600-.600-.600-.600-6-6-1.200 1.200Z"/></svg></button></div>
@@ -3265,20 +3384,6 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     <p class="muted small">Pulsar Motion: até 45 segundos. Os outros tipos: 30s, 1min ou 1min30. A versão final pode ficar alguns segundos abaixo (30s pode sair com 28 ou 29s).</p>
   </div></section>
 
-  <section class="sec" id="como"><div class="wrap">
-    <div class="head mt-c"><h2 class="title">Como <em>funciona.</em></h2></div>
-    <div class="steps">
-      <div><span class="n">01</span><h3>Escolha e pague.</h3><p>Os 20 vídeos, lá em cima.</p></div>
-      <div><span class="n">02</span><h3>Eu faço o escopo.</h3><p>Roteiro, narração e o que cada cena mostra.</p></div>
-      <div><span class="n">03</span><h3>Você aprova.</h3><p>E manda a narração, ou aprova a voz de IA.</p></div>
-      <div><span class="n">04</span><h3>Você recebe e posta.</h3><p>Inclui 1 ajuste por vídeo.</p></div>
-    </div>
-  </div></section>
-
-  <section class="sec" id="clientes"><div class="wrap">
-    <div class="head mt-c"><h2 class="title">Quem posta, <em>cresce.</em></h2><p class="lead">Seguidores que cada um ganhou com os vídeos da Pulsar.</p></div>
-    <ul class="cli"><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Alex Sato Tanaka</b> · Urologista pediátrico</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Master Clínica</b> · Centro de urologia</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Safira Castro</b> · Proctologista</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Carollyne Rodovalho</b> · Cirurgiã do aparelho digestivo</p></li></ul>
-  </div></section>
   <!-- lançamento 16/11/2026: escondido porque os preços (10 por R$ 800, 20 por R$ 1.440, 30 por R$ 1.920) contradizem a oferta de 20 Motion por R$ 2.000 (R$ 800 com cupom) -->
   <section class="sec" id="motion-pacotes" hidden><div class="wrap">
     <div class="head mt-c"><h2 class="title">Pacotes Pulsar <em>Motion.</em></h2><p class="lead">O jeito mais em conta de postar toda semana. Quanto mais vídeos, menor o preço de cada um. Quer abrir com uma cena em vídeo? Dá pra escolher no valor.</p></div>
@@ -3855,6 +3960,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     if(anchors[h]){alvo=h==="resumo"?"sum":h;h=anchors[h]}
     if(pages.indexOf(h)<0)h="inicio";
     pages.forEach(function(p){$("pg-"+p).classList.toggle("on",p===h)});
+    document.documentElement.classList.toggle("bx-on",h==="box");if(window.bxMede)bxMede();
     if(h==="inicio"&&pgAntes&&pgAntes!=="inicio")fraseVolta();pgAntes=h;
     document.querySelectorAll("#navpills a").forEach(function(a){if(a.getAttribute("href")==="#"+(h==="mentoria"||h==="biblioteca"?"academy":h)){a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
     /* lançamento: o montador (preços avulsos antigos) fica escondido, mesmo vindo de um link antigo com montar ou resumo */
@@ -4807,11 +4913,12 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     of.addEventListener("click",function(e){var b=e.target.closest(".of-op");if(b)marca(b)});
     of.addEventListener("keydown",function(e){var b=e.target.closest&&e.target.closest(".of-op");if(!b)return;var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(b)+d+ops.length)%ops.length];marca(n);n.focus()});
     var vagas=Math.max(0,Math.min(10,parseInt(VAGAS_500,10)||0));
-    if(vagas>0){$("of-vg").hidden=false;$("of-dp").hidden=false;$("of-cp").hidden=true;$("of-vg-n").textContent=vagas;
+    /* 18/11/2026: preço cheio R$ 2.000 pra todo mundo; o cupom (divulgado no story) dá R$ 500 nas 10 primeiras vagas e R$ 800 depois */
+    if(vagas>0){$("of-vg").hidden=false;$("of-dp").hidden=false;$("of-vg-n").textContent=vagas;
       var bb="";for(var k=0;k<10;k++)bb+='<i'+(k<vagas?'':' class="x"')+'></i>';$("of-vg-b").innerHTML=bb;
-      $("of-de").hidden=false;$("of-u").textContent="pelos 20 vídeos · R$ 25 cada"}
+      $("of-dp").textContent="Com cupom, R$ 500 nas 10 primeiras vagas. Depois, R$ 800."}
     else{var sel=of.querySelector(".pc-sel");if(sel)sel.style.display="none"} /* sem vagas de lançamento, some a etiqueta "Lançamento" */
-    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");if(vagas>0)rolaPreco(2000,500);try{pr.scrollIntoView({block:"nearest",behavior:calmoOf()?"auto":"smooth"})}catch(x){}});
+    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");});
     function calmoOf(){return !!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}
     function rolaPreco(a,b){var el=$("of-v"),fmt=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
       if(calmoOf()){el.textContent=fmt(b);return}var t0=null,D=500;(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=fmt(a+(b-a)*e);if(p<1)requestAnimationFrame(f)})(performance.now())}
@@ -4821,10 +4928,26 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
     $("of-cp").addEventListener("submit",function(e){e.preventDefault();var inp=$("of-c"),m=$("of-cm"),v=inp.value.trim().toUpperCase();
       if(!v){m.className="of-cm er";m.innerHTML=ER+"<span>Digite o código do cupom.</span>";inp.setAttribute("aria-invalid","true");inp.focus();return}
       if(v!==String(CUPOM).toUpperCase()){m.className="of-cm er";m.innerHTML=ER+"<span>Esse cupom não vale. Confira o código.</span>";inp.setAttribute("aria-invalid","true");return}
-      cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;rolaPreco(2000,800);confete(this.querySelector("button"));$("of-u").textContent="pelos 20 vídeos · R$ 40 cada";
-      m.className="of-cm ok";m.innerHTML=OK+"<span>Cupom aplicado. De R$ 2.000 por R$ 800.</span>"});
+      var nv=vagas>0?500:800;cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;rolaPreco(2000,nv);confete(this.querySelector("button"));$("of-u").textContent="pelos 20 vídeos · R$ "+(nv/20)+" cada";
+      m.className="of-cm ok";m.innerHTML=OK+"<span>Cupom aplicado. De R$ 2.000 por R$ "+nv+".</span>"});
     $("of-c").addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){this.removeAttribute("aria-invalid");$("of-cm").innerHTML=""}});
-    $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk,preco:vagas>0?"R$ 500 (vaga de lançamento)":""})});
+    $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk,preco:cupomOk?(vagas>0?"R$ 500 (cupom, vaga de lançamento)":"R$ 800 (cupom)"):"R$ 2.000"})});
+  })();
+
+  /* Vídeos em telas cheias (18/11/2026): mede o rolador e o menu, liga os botões data-bx e toca os vídeos de cada tela quando ela aparece */
+  (function(){var bx=$("bx");if(!bx)return;var de=document.documentElement,pills=$("navpills"),hd=document.querySelector("header.nav"),
+      calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+    function rolador(){var s=$("screen");return s&&/(auto|scroll)/.test(getComputedStyle(s).overflowY)?s:null}
+    window.bxMede=function(){var s=rolador(),H=s?s.clientHeight:window.innerHeight,tp=pills?(parseFloat(getComputedStyle(pills).top)||0):0,
+      T=pills?Math.round(pills.offsetHeight+tp+4):74;de.style.setProperty("--bxh",H+"px");de.style.setProperty("--bxt",T+"px");var h0=$("bx-ab"),y0=h0?h0.getBoundingClientRect().top+(s?s.scrollTop:window.scrollY):0;if(h0&&h0.offsetParent)de.style.setProperty("--bxh0",Math.max(0,Math.round(y0-T))+"px")};
+    bxMede();window.addEventListener("resize",bxMede);window.addEventListener("orientationchange",function(){setTimeout(bxMede,250)});
+    bx.addEventListener("click",function(e){var b=e.target.closest("[data-bx]");if(!b)return;
+      if(b.hasAttribute("data-ver")){var pr=$("of-pr");if(pr&&pr.hidden)$("of-ver").click()}
+      var el=$(b.getAttribute("data-bx"));if(!el)return;try{el.scrollIntoView({block:"start",behavior:calmo?"auto":"smooth"})}catch(x){el.scrollIntoView()}});
+    var vs=[].slice.call(bx.querySelectorAll(".bx-tel video,.bx-vm video"));
+    function toca(v){if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!calmo)toca(e.target);else e.target.pause()})},{threshold:.4});vs.forEach(function(v){io.observe(v)})}
+    else if(!calmo)vs.forEach(toca);
   })();
   /* biblioteca de Motion (página Vídeos): porte do "Filterable Blog Index" do 21st.dev (olewandowski1/blog-3) pra JS puro.
      Só Pulsar Motion REAIS (só imagem + motion, sem cena de vídeo de IA). Cada item: v = nome do arquivo em assets
@@ -4876,7 +4999,8 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
       var resto=vs.filter(function(c){return c!==frente});
       ftEl.setAttribute("aria-label","Em destaque: "+frente.t);
       ftEl.innerHTML='<div class="mlb-m">'+vid(frente,true)+chip(frente)+'<button type="button" class="mlb-pp" id="mlb-pp" aria-pressed="false"></button></div>'+
-        '<div class="mlb-tx"><span class="mlb-b">'+esc(frente.area)+'</span><h2>'+esc(frente.t)+'</h2><p>Pulsar Motion de verdade, feito por mim. Só imagem, texto, traço e narração.</p></div>';
+        '<div class="mlb-tx"><span class="mlb-b">'+esc(frente.area)+'</span><h2>'+esc(frente.t)+'</h2><p>Pulsar Motion de verdade, feito por mim. Só imagem, texto, traço e narração.</p></div>'+
+        (vs.length>1?'<div class="mlb-nv"><button type="button" class="mlb-ar" data-d="-1" aria-label="Vídeo anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button><span class="num">'+(vs.indexOf(frente)+1)+' de '+vs.length+'</span><button type="button" class="mlb-ar" data-d="1" aria-label="Próximo vídeo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button></div>':'');
       gEl.className="mlb-g"+(resto.length===1?" um":resto.length===2?" dois":"");gEl.hidden=!resto.length;
       gEl.innerHTML=resto.map(function(c){var i=MOTION_LIB.indexOf(c);return '<li><button type="button" class="mlb-c" data-i="'+i+'" aria-label="Ver em destaque: '+esc(c.t)+'"><span class="mlb-m">'+vid(c,false)+chip(c)+'</span><span class="mlb-b">'+esc(c.area)+'</span><b>'+esc(c.t)+'</b></button></li>'}).join("");
       botao();liga()}
@@ -4889,7 +5013,11 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
         if(e.isIntersecting&&!parado&&!(calmo&&!naFrente))toca(v);else v.pause()})},{threshold:.25});
       vs.forEach(function(v){io.observe(v)})}
     root.addEventListener("contextmenu",function(e){if(e.target.closest(".mlb-m"))e.preventDefault()});
-    root.addEventListener("click",function(e){var p=e.target.closest(".mlb-p");
+    function passa(d){var vs=visiveis();if(vs.length<2)return;var i=vs.indexOf(frente);frente=vs[(i+d+vs.length)%vs.length];render()}
+    var tx0=null,ty0=0;ftEl.addEventListener("touchstart",function(e){if(!e.target.closest(".mlb-m"))return;tx0=e.touches[0].clientX;ty0=e.touches[0].clientY},{passive:true});
+    ftEl.addEventListener("touchend",function(e){if(tx0===null)return;var t=e.changedTouches[0],dx=t.clientX-tx0,dy=t.clientY-ty0;tx0=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.3)passa(dx<0?1:-1)},{passive:true});
+    root.addEventListener("click",function(e){var ar=e.target.closest(".mlb-ar");if(ar){passa(+ar.getAttribute("data-d"));var b2=ftEl.querySelector('.mlb-ar[data-d="'+ar.getAttribute("data-d")+'"]');if(b2)b2.focus({preventScroll:true});return}
+      var p=e.target.closest(".mlb-p");
       if(p){ativa=p.getAttribute("data-a");frente=null;[].forEach.call(fEl.querySelectorAll(".mlb-p"),function(b){b.setAttribute("aria-pressed",String(b===p))});render();return}
       var pp=e.target.closest(".mlb-pp");
       if(pp){parado=!parado;var v=ftEl.querySelector("video");if(parado)v.pause();else toca(v);if(!calmo)[].forEach.call(gEl.querySelectorAll("video"),function(x){if(parado)x.pause();else toca(x)});botao();return}
@@ -6233,5 +6361,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1795021884";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1795024254";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
