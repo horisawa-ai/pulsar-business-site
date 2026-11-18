@@ -3242,7 +3242,7 @@ html.bx-on .foot{scroll-snap-align:end}
 <main class="pg" id="pg-box">
   <!-- 18/11/2026: página de Vídeos em telas cheias que trocam com um arrasto (scroll-snap vertical, só nesta página).
        Cada tela é uma <section class="bx-s">. O botão .bx-nx com data-bx="id" leva pra tela com aquele id. -->
-  <div class="bxs" id="bx">
+  <div class="bxs" id="bx" data-novd>
   <section class="bx-s bx-hero" id="bx-ab" aria-label="Abertura"><div class="bx-in">
     <div class="bx-hd">
       <h1 class="display">20 vídeos de saúde <em>pro seu perfil.</em></h1>
@@ -4934,9 +4934,10 @@ html.bx-on .foot{scroll-snap-align:end}
   (function(){var bx=$("bx");if(!bx)return;var de=document.documentElement,pills=$("navpills"),hd=document.querySelector("header.nav"),
       calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
     function rolador(){var s=$("screen");return s&&/(auto|scroll)/.test(getComputedStyle(s).overflowY)?s:null}
-    window.bxMede=function(){var s=rolador(),H=s?s.clientHeight:window.innerHeight,tp=pills?(parseFloat(getComputedStyle(pills).top)||0):0,
-      T=pills?Math.round(pills.offsetHeight+tp+4):74;de.style.setProperty("--bxh",H+"px");de.style.setProperty("--bxt",T+"px");var h0=$("bx-ab"),y0=h0?h0.getBoundingClientRect().top+(s?s.scrollTop:window.scrollY):0;if(h0&&h0.offsetParent)de.style.setProperty("--bxh0",Math.max(0,Math.round(y0-T))+"px")};
-    bxMede();window.addEventListener("resize",bxMede);window.addEventListener("orientationchange",function(){setTimeout(bxMede,250)});
+    window.bxMede=function(){var s=rolador(),H=s?s.clientHeight:0,tp=pills?(parseFloat(getComputedStyle(pills).top)||0):0,
+      T=pills?Math.round(pills.offsetHeight+tp+4):74;if(H)de.style.setProperty("--bxh",H+"px");else de.style.removeProperty("--bxh");de.style.setProperty("--bxt",T+"px");var h0=$("bx-ab"),y0=h0?h0.getBoundingClientRect().top+(s?s.scrollTop:window.scrollY):0;if(h0&&h0.offsetParent)de.style.setProperty("--bxh0",Math.max(0,Math.round(y0-T))+"px")};
+    /* no celular a altura vem do CSS (100svh, que não muda quando a barra do Safari some e volta); só mede de novo se a largura mudar */
+    var lw=window.innerWidth;bxMede();window.addEventListener("resize",function(){if(rolador()||window.innerWidth!==lw){lw=window.innerWidth;bxMede()}});window.addEventListener("orientationchange",function(){setTimeout(bxMede,250)});
     bx.addEventListener("click",function(e){var b=e.target.closest("[data-bx]");if(!b)return;
       if(b.hasAttribute("data-ver")){var pr=$("of-pr");if(pr&&pr.hidden)$("of-ver").click()}
       var el=$(b.getAttribute("data-bx"));if(!el)return;try{el.scrollIntoView({block:"start",behavior:calmo?"auto":"smooth"})}catch(x){el.scrollIntoView()}});
@@ -6357,5 +6358,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
 </script>
-<script>(function(){var V="1795024386";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){var V="1795035400";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
