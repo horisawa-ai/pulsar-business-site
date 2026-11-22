@@ -3665,6 +3665,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
 #pg-academy .ak-sg-a svg{width:16px;height:16px}
 #pg-academy .ak-sg p{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted);text-align:center}
 @container site (min-width:700px){#pg-academy .ak-sg{justify-items:start}#pg-academy .ak-sg p{text-align:left}}
+#pg-academy .ak-yt-fb{font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}#pg-academy .ak-yt-fb[hidden]{display:none}
 </style>
 <style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
@@ -4011,6 +4012,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
         <h2 class="title">Um vídeo viral <em>em 10 minutos.</em></h2>
         <p class="ak-ad">Aula grátis. Eu te mostro, no Gemini, como gerar um vídeo rápido que viraliza.</p>
         <button type="button" class="btn ak-yt-go" id="ak-yt-go">Assistir à aula</button>
+        <a class="ak-yt-fb" id="ak-yt-fb" href="https://www.youtube.com/watch?v=cqnM1dfhMLk" target="_blank" rel="noopener" hidden>Não abriu? Assistir no YouTube</a>
         <div class="ak-sg">
           <a class="ak-sg-a" href="https://horisawa-ai.github.io/pulsar-business-site/assets/skill-gemini.zip" download="skill-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>Baixar a skill do Gemini, grátis</a>
           <p>A que eu uso na aula. Suba o zip em Skills, no Claude, e escreva "use a skill Gemini".</p>
@@ -7163,12 +7165,15 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   /* Aula grátis no YouTube (22/11/2026): o quadro e o botão trocam o vídeo de fundo pelo player do YouTube (sem cookies, só no toque) */
   var AULA_YT="cqnM1dfhMLk";window.AULA_YT=AULA_YT;
   (function(){var $=function(i){return document.getElementById(i)},tb=document.querySelector("#aula-inaugural .ak-tb"),pb=$("ac-pb"),go=$("ak-yt-go");if(!tb||!AULA_YT)return;
-    function abre(){if(tb.querySelector("iframe"))return;var f=document.createElement("iframe");
+    var URL_YT="https://www.youtube.com/watch?v="+AULA_YT;
+    /* dentro do app do Claude (página dentro de moldura, fora do site) o YouTube recusa tocar embutido: abre o próprio YouTube */
+    var fora=(function(){try{return window.top!==window.self||!/github\.io$|pulsarlabz\.com\.br$|^localhost$/.test(location.hostname)}catch(e){return true}})();
+    function abre(){if(fora){window.open(URL_YT,"_blank","noopener");return}if(tb.querySelector("iframe"))return;var f=document.createElement("iframe");
       f.src="https://www.youtube-nocookie.com/embed/"+AULA_YT+"?autoplay=1&rel=0&modestbranding=1&playsinline=1";
       f.title="Aula grátis: como gerar um vídeo viral em 10 minutos";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;
-      f.className="ak-yt";f.referrerPolicy="strict-origin-when-cross-origin";f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");[].forEach.call(tb.querySelectorAll("video"),function(v){try{v.pause()}catch(e){}});tb.appendChild(f);tb.classList.add("ak-tb-yt");
+      f.className="ak-yt";f.referrerPolicy="strict-origin-when-cross-origin";f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");[].forEach.call(tb.querySelectorAll("video"),function(v){try{v.pause()}catch(e){}});tb.appendChild(f);tb.classList.add("ak-tb-yt");var lk=document.getElementById("ak-yt-fb");if(lk)lk.hidden=false;
       if(go)go.style.display="none";try{f.focus()}catch(e){}}
     if(pb)pb.addEventListener("click",abre);if(go)go.addEventListener("click",function(){abre();try{tb.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}})})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795329527";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795329610";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
