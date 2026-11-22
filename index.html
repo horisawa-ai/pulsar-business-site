@@ -3769,7 +3769,7 @@ html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:
       <h1 class="display">Vídeos de saúde <em>pro seu perfil.</em></h1>
       <p class="lead">Feitos por mim, no estilo da Pulsar. Você só posta.</p>
     </div>
-    <div class="bx-tel"><video data-src="assets/pm-mix.mp4" poster="assets/pm-mix.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
+    <div class="bx-tel"><video id="bx-ab-v" data-src="assets/vt-lagarto.mp4" poster="assets/vt-lagarto.jpg" data-fila="vt-lagarto,vr-capsula-loop,mo-real-24-loop,vt-cordao,vr-cerebro-loop,vt-meconio,mo-real-18-loop,vr-bypass-loop,vt-rim,vr-fecaloma-loop,mo-real-2-loop,vt-unha" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
     <div class="bx-ac">
       <button type="button" class="btn" data-bx="bx-tipos">Ver os tipos</button>
       <button type="button" class="bx-lk" data-bx="bx-pr">Ver o preço</button>
@@ -7010,24 +7010,24 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       if(!fig.getBoundingClientRect().width){marca(i,false);segue();return}
       var g=document.createElement("div");g.className="ak-g";g.setAttribute("aria-hidden","true");g.innerHTML=b.innerHTML;
       g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=Math.max(B.width+20,Math.min(300,fig.clientWidth*.78))+"px";g.style.whiteSpace="nowrap";g.style.opacity="0";ak.appendChild(g);
-      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=2500,ok=false;
+      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=1500,ok=false;
       /* 20/11: começa grande no meio, por cima do notebook (pra dar pra ler o que é), segura e depois entra na tela encolhendo */
       var Fr=fig.getBoundingClientRect(),cx=Fr.left+Fr.width/2-gx,cy=Fr.top+Fr.height*.3-gy,big=Math.max(1.15,Math.min(1.75,(Fr.width*.9)/G.width));
       var acaba=function(){if(ok)return;ok=true;g.remove();marca(i,true);pisca();segue()};
       var ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
       requestAnimationFrame(function f(t){if(ok)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),
           S=(slots[i]||scr).getBoundingClientRect(),k1=Math.max(.12,Math.min(.6,S.width/G.width)),tx=S.left+S.width/2-gx,ty=S.top+S.height*.5-gy,dx,dy,sc,op;
-        if(p<.14){var a=1-Math.pow(1-p/.14,3);dx=cx;dy=cy+(1-a)*14;sc=big*(.82+.18*a);op=a}
-        else if(p<.64){dx=cx;dy=cy;sc=big;op=1}
-        else{var e=ez((p-.64)/.36);dx=cx+(tx-cx)*e;dy=cy+(ty-cy)*e-Math.sin(Math.PI*e)*26;sc=big+(k1-big)*e;op=e>.8?(1-e)/.2:1}
+        if(p<.16){var a=1-Math.pow(1-p/.16,3);dx=cx;dy=cy+(1-a)*14;sc=big*(.82+.18*a);op=a}
+        else if(p<.55){dx=cx;dy=cy;sc=big;op=1}
+        else{var e=ez((p-.55)/.45);dx=cx+(tx-cx)*e;dy=cy+(ty-cy)*e-Math.sin(Math.PI*e)*26;sc=big+(k1-big)*e;op=e>.8?(1-e)/.2:1}
         g.style.transform="translate("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px) scale("+sc.toFixed(3)+")";g.style.opacity=op.toFixed(3);
         if(p>=.9)segue();if(p<1)requestAnimationFrame(f);else acaba()});
-      ts.push(setTimeout(acaba,3600))}
+      ts.push(setTimeout(acaba,2400))}
     /* em cadeia: cada degrau só começa quando o cartão anterior já está chegando (num aparelho lento nada se atropela) */
     function degrau(i){if(i>=N){ts.push(setTimeout(acende,420));ts.push(setTimeout(solta,1700));return}
       vaiA(12+(L1-12)*(i+1)/N);ts.push(setTimeout(function(){voa(i,function(){degrau(i+1)})},160))}
     function roda(){if(rodou)return;rodou=true;
-      var vai=function(){ts.push(setTimeout(function(){degrau(0)},320))};
+      var vai=function(){ts.push(setTimeout(function(){degrau(0)},120))};
       if(document.readyState==="complete")vai();else window.addEventListener("load",vai)}
     var io=new IntersectionObserver(function(es){var e=es[es.length-1];if(e.isIntersecting&&$("pg-academy").classList.contains("on")){io.disconnect();roda()}},{threshold:.5});
     io.observe(fig);
@@ -7214,6 +7214,12 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       f.className="ak-yt";f.referrerPolicy="strict-origin-when-cross-origin";f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");[].forEach.call(tb.querySelectorAll("video"),function(v){try{v.pause()}catch(e){}});tb.appendChild(f);tb.classList.add("ak-tb-yt");var lk=document.getElementById("ak-yt-fb");if(lk)lk.hidden=false;
       if(go)go.style.display="none";try{f.focus()}catch(e){}}
     if(pb)pb.addEventListener("click",abre);if(go)go.addEventListener("click",function(){abre();try{tb.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}})})();
+
+  /* Abertura da página Vídeos (22/11/2026): em vez de só Motion, passa uma fila de vídeos reais e Motion, um atrás do outro */
+  (function(){var v=document.getElementById("bx-ab-v");if(!v)return;var f=(v.getAttribute("data-fila")||"").split(",").filter(Boolean),i=0;if(f.length<2){v.loop=true;return}
+    var poster=function(n){return "assets/"+n.replace(/-loop$/,"")+".jpg"};
+    v.addEventListener("ended",function(){i=(i+1)%f.length;v.poster=poster(f[i]);v.src="assets/"+f[i]+".mp4";v.setAttribute("data-src",v.src);var q=v.play();if(q&&q.catch)q.catch(function(){})});
+    if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)v.loop=true})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795330499";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795384143";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
