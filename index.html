@@ -37,7 +37,7 @@ a{color:inherit}
 img,video{max-width:100%;display:block}
 .num{font-variant-numeric:tabular-nums}
 [id]{scroll-margin-top:calc(84px + env(safe-area-inset-top,0px))}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition-property:opacity,color,background-color,border-color!important;transition-duration:150ms!important;transition-delay:0s!important;transition-timing-function:ease!important}}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
 
 /* ---------- tipografia ---------- */
@@ -91,10 +91,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .brand .pulse{stroke-dasharray:60;stroke-dashoffset:60;animation:beat 2.4s ease-in-out infinite}
 @keyframes beat{0%{stroke-dashoffset:60}45%,70%{stroke-dashoffset:0}100%{stroke-dashoffset:-60}}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--paper);font-size:15px;font-weight:500;padding:13px 24px;min-height:48px;text-decoration:none;white-space:nowrap;transition:background .2s,color .2s}
-.btn:hover{background:var(--ink-2)}
+@media (hover:hover) and (pointer:fine){.btn:hover{background:var(--ink-2)}}
 .btn.sm{font-size:13px;padding:8px 16px;min-height:36px}
 .btn.line{background:transparent;color:var(--ink)}
-.btn.line:hover{background:var(--ink);color:var(--paper)}
+@media (hover:hover) and (pointer:fine){.btn.line:hover{background:var(--ink);color:var(--paper)}}
 .night .btn{background:var(--on-night);color:var(--ink);border-color:var(--on-night)}
 .night .btn.line{background:transparent;color:var(--on-night)}
 .btn:disabled{opacity:.35;cursor:not-allowed}
@@ -106,8 +106,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .porta i{grid-column:2;grid-row:1/3;font-style:normal;font-size:20px;transition:transform .18s ease}
 .porta.pri{background:var(--card);border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .porta.pri small{color:var(--muted)}
-.porta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(12,10,9,.45)}
-.porta:hover i{transform:translateX(4px)}
+@media (hover:hover) and (pointer:fine){.porta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(12,10,9,.45)}.porta:hover i{transform:translateX(4px)}}
 .porta:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @container site (min-width:700px){.portas{grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}.porta{padding:24px 26px}.porta b{font-size:30px}.porta small{font-size:15px}}
 @media (prefers-reduced-motion:reduce){.porta,.porta i{transition:none}}
@@ -1450,7 +1449,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 #pg-academy .ak-l li.pop .ak-ok{animation:akPop .45s var(--ac-mola)}
 @keyframes akPop{0%{transform:scale(.6)}100%{transform:scale(1)}}
 /* o cartãozinho que sai da linha e voa pra dentro da tela */
-#pg-academy .ak-g{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;box-sizing:border-box;margin:0;padding:6px 14px 6px 6px;border-radius:14px;background:var(--card);box-shadow:0 14px 30px -14px rgba(12,10,9,.4),0 0 0 1px rgba(12,10,9,.08);font-size:15px;line-height:1.25;color:var(--ink);pointer-events:none;will-change:transform,opacity}
+#pg-academy .ak-g{position:absolute;z-index:6;transform-origin:50% 50%;display:flex;align-items:center;gap:10px;box-sizing:border-box;margin:0;padding:6px 14px 6px 6px;border-radius:14px;background:var(--card);box-shadow:0 14px 30px -14px rgba(12,10,9,.4),0 0 0 1px rgba(12,10,9,.08);font-size:15px;line-height:1.25;color:var(--ink);pointer-events:none;will-change:transform,opacity}
 #pg-academy .ak-g .ak-i{border-color:var(--line)}
 
 /* --- 2. aula inaugural --- */
@@ -1503,6 +1502,8 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 @keyframes akSobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 #pg-academy .ak-v{margin:0;font-family:var(--serif);font-size:44px;font-weight:var(--serif-w,600);line-height:1;letter-spacing:-.03em;color:var(--ink);outline:none}
 #pg-academy .ak-pn{font-size:13px;line-height:1.45;color:var(--muted);text-align:center}
+#pg-academy .ak-pr .of-de{margin:0 0 -6px}
+#pg-academy .ak-cp{margin:-4px 0 0;font-size:14px;color:var(--muted);text-align:center}
 
 /* --- 5. portas --- */
 #pg-academy .ak-s5{padding-block:44px 52px}
@@ -1565,6 +1566,17 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
   #pg-academy .ak-s5{padding-block:56px 104px}
   #pg-academy .ak-portas{max-width:560px;gap:14px}
   #pg-academy .ak-porta{padding:20px 18px}
+}
+/* computador largo: as quatro portas numa fileira só, na largura da página */
+@container site (min-width:900px){
+  #pg-academy .ak-portas{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1040px;gap:16px}
+  #pg-academy .ak-porta{padding:24px 22px;min-height:184px}
+  #pg-academy .ak-porta .ak-ir{margin-top:auto;padding-top:14px}
+  #pg-academy .ak-porta{grid-template-rows:auto auto auto 1fr;align-content:stretch}
+  #pg-academy .ak-pi{width:40px;height:40px;margin-bottom:12px}
+  #pg-academy .ak-pi svg{width:21px;height:21px}
+  #pg-academy .ak-porta b{font-size:17px}
+  #pg-academy .ak-porta small{font-size:14px}
 }
 #pg-academy .ak-ver[hidden]{display:none}
 /* o site esconde o play do quadro antigo em alguns modos (data-acq); o da aula inaugural fica sempre */
@@ -2647,6 +2659,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
   .sk-l{--sk-w:240px;grid-template-columns:repeat(2,minmax(0,380px));grid-template-rows:repeat(4,auto);justify-content:center;column-gap:clamp(32px,6cqw,88px);margin-top:64px;text-align:center}
   .sk-c{grid-row:span 4;grid-template-rows:subgrid;grid-template-columns:minmax(0,1fr);grid-template-areas:none;justify-items:center;align-items:start;row-gap:0}
   .sk-c+.sk-c{margin-top:0;padding-top:0;border-top:0}
+.sk-c:last-child:nth-child(odd){grid-column:1/-1}
   .sk-p{grid-area:auto;width:min(var(--sk-w),100%)}
   .sk-tx{grid-area:auto;margin-top:14px;justify-items:center;gap:8px}
   .sk-n{font-size:34px}
@@ -2746,13 +2759,21 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .of-op i svg{width:12px;height:12px}
 .of-op[aria-checked="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .of-op[aria-checked="true"] i{background:var(--ink);border-color:var(--ink);color:#fff}
+/* pacotes Pulsar Motion (19/11/2026): 10 · 20 · 40, marcado com borda e com o check, não só com cor */
+.of-pks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+.of-pk{display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:10px 6px;white-space:nowrap;border:1px solid var(--line-2);border-radius:14px;background:var(--card);color:var(--ink);font:600 14px/1.2 var(--sans);cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.of-pk i{flex:none;display:grid;place-items:center;width:18px;height:18px;border:1.5px solid var(--line-2);border-radius:50%;color:transparent}
+.of-pk i svg{width:10px;height:10px}
+.of-pk[aria-checked="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.of-pk[aria-checked="true"] i{background:var(--ink);border-color:var(--ink);color:#fff}
+a.of-go{text-decoration:none;text-align:center}
 .of-ver{margin-top:6px}
 .of-ver[hidden]{display:none}
 .of-cp input::placeholder{text-transform:none}
 .of-pr{display:grid;gap:12px;width:100%}
 .of-pr[hidden]{display:none}
 .of-pr .vg-pr{display:grid;gap:4px;justify-items:center}
-.of-de{margin:0;font-size:18px;color:var(--muted);text-decoration:line-through;text-decoration-thickness:1.5px}
+.of-de{margin:0;font-size:14px;color:var(--muted)}
 .of-de[hidden]{display:none}
 .of-pr .vg-pr .av{margin-top:6px}
 .of-cp{display:grid;gap:8px;text-align:left}
@@ -2779,7 +2800,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 @container site (max-width:699px){.mlb-f{contain:inline-size;min-width:0;width:calc(100% + 32px);box-sizing:border-box;align-self:stretch;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding:2px 16px 6px;scroll-padding-inline:16px;-webkit-mask:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 28px),transparent 100%)}.mlb-f::-webkit-scrollbar{display:none}.mlb-p{flex:none;white-space:nowrap}}
 .mlb-f[hidden]{display:none}
 .mlb-p{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--muted);font:500 14px/1 var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.mlb-p:hover{color:var(--ink);border-color:var(--ink)}
+@media (hover:hover) and (pointer:fine){.mlb-p:hover{color:var(--ink);border-color:var(--ink)}}
 .mlb-p svg{width:13px;height:13px;display:none}
 .mlb-p[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .mlb-p[aria-pressed="true"] svg{display:block}
@@ -2799,7 +2820,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 .mlb-g[hidden]{display:none}
 .mlb-g.um{grid-template-columns:minmax(0,1fr);max-width:200px}
 .mlb-c{display:grid;gap:10px;justify-items:center;width:100%;padding:8px 8px 14px;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--ink);font:inherit;text-align:center;cursor:pointer;transition:box-shadow .2s,border-color .2s}
-.mlb-c:hover{box-shadow:0 18px 40px -26px rgba(12,10,9,.4);border-color:var(--line-2)}
+@media (hover:hover) and (pointer:fine){.mlb-c:hover{box-shadow:0 18px 40px -26px rgba(12,10,9,.4);border-color:var(--line-2)}}
 .mlb-c .mlb-m{width:100%;border-radius:15px}
 .mlb-c .mlb-d{top:7px;right:7px;font-size:11px;padding:2px 7px}
 .mlb-c b{font-size:14px;font-weight:600;line-height:1.3;text-wrap:balance;padding-inline:2px}
@@ -2865,7 +2886,7 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
 @keyframes ct-s{to{opacity:0;transform:translateY(-20px)}}
 .ct-nav{display:flex;gap:18px;align-items:center}
 .ct-b{width:44px;height:44px;border-radius:50%;border:0;background:#141414;color:#f1f1f7;display:grid;place-items:center;cursor:pointer;transition:background-color .3s}
-.ct-b:hover{background:var(--gold)}
+@media (hover:hover) and (pointer:fine){.ct-b:hover{background:var(--gold)}}
 .ct-b svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .ct-c{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 @container site (min-width:768px){.ct{grid-template-columns:1fr 1fr;gap:70px;align-items:center}.ct-txt{text-align:left;align-items:flex-start}.ct-imgs{margin-top:40px}}
@@ -3121,15 +3142,16 @@ html[data-acq="antes"] .ac-frame:active{transform:none}
    --bxh = altura visível do rolador, --bxt = espaço do menu de vidro fixo, --bxh0 = altura da marca no topo. Medidos no JS (bxMede). ===== */
 html.bx-on,html.bx-on .screen{scroll-snap-type:y mandatory;scroll-padding-top:var(--bxt,74px)}
 html.bx-on .foot{scroll-snap-align:end}
-#pg-box .bx-s{margin:0;scroll-margin-top:0;scroll-snap-align:start;scroll-snap-stop:always;min-height:calc(var(--bxh,100svh) - var(--bxt,74px));display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;padding-block:10px 18px}
+/* 19/11/2026: o conteúdo começa logo abaixo do menu (24 px de respiro), não mais centrado na altura da tela */
+#pg-box .bx-s{margin:0;scroll-margin-top:0;scroll-snap-align:start;scroll-snap-stop:always;min-height:calc(var(--bxh,100svh) - var(--bxt,74px));display:flex;flex-direction:column;justify-content:flex-start;box-sizing:border-box;padding-block:24px 24px}
 #pg-box .bx-hero{scroll-margin-top:600px;min-height:calc(var(--bxh,100svh) - var(--bxt,74px) - var(--bxh0,48px))}
-#pg-box .bx-in{display:grid;gap:16px;justify-items:center;text-align:center;width:100%;max-width:980px;margin:0 auto;box-sizing:border-box;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));min-width:0}
+#pg-box .bx-in{display:grid;gap:22px;justify-items:center;text-align:center;width:100%;max-width:980px;margin:0 auto;box-sizing:border-box;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));min-width:0}
 #pg-box .bx-hd{display:grid;gap:8px;justify-items:center;max-width:560px}
 #pg-box .bx-hd .display{font-size:clamp(36px,10cqw,76px);line-height:1.02;margin:0;text-wrap:balance}
 #pg-box .bx-hd .title{margin:0;font-size:clamp(30px,8.4cqw,52px);line-height:1.05;text-wrap:balance}
-#pg-box .bx-hd .lead{margin:0;max-width:34ch}
-#pg-box .bx-tel{height:calc(var(--bxh,100svh) * .42);max-height:460px;aspect-ratio:9/16;max-width:100%;border-radius:24px;overflow:hidden;background:var(--night,#0c0a09);box-shadow:0 30px 60px -34px rgba(12,10,9,.6)}
-#pg-box .bx-tel video,#pg-box .bx-vm video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+#pg-box .bx-hd .lead{margin:0;max-width:34ch;text-wrap:balance}
+#pg-box .bx-tel{height:max(150px,min(calc(var(--bxh,100svh) * .42),calc(var(--bxh,100svh) - 480px)));max-height:460px;aspect-ratio:9/16;max-width:100%;border-radius:24px;overflow:hidden;background:var(--night,#0c0a09);box-shadow:0 30px 60px -34px rgba(12,10,9,.6)}
+#pg-box .bx-tel video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
 #pg-box .bx-ac{display:grid;gap:6px;justify-items:center}
 #pg-box .bx-lk{border:0;background:none;padding:10px 14px;min-height:44px;font:500 15px/1 var(--sans);color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;cursor:pointer}
 #pg-box .bx-dica{display:flex;align-items:center;gap:6px;margin:0;font-size:13px;color:var(--muted)}
@@ -3138,25 +3160,6 @@ html.bx-on .foot{scroll-snap-align:end}
 @media (prefers-reduced-motion:reduce){#pg-box .bx-dica svg{animation:none}}
 #pg-box .bx-nx{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 18px;border:1px solid var(--line-2);border-radius:999px;background:var(--card);color:var(--ink);font:500 15px/1 var(--sans);cursor:pointer}
 #pg-box .bx-nx svg{width:15px;height:15px}
-#pg-box .bx-vs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:520px}
-#pg-box .bx-v{margin:0;display:grid;gap:10px;justify-items:center;align-content:start;min-width:0}
-#pg-box .bx-vm{height:calc(var(--bxh,100svh) * .32);max-height:360px;aspect-ratio:9/16;max-width:100%;border-radius:18px;overflow:hidden;background:var(--night,#0c0a09)}
-#pg-box .bx-v figcaption{display:grid;gap:4px;justify-items:center}
-#pg-box .bx-v figcaption b{font-size:16px;font-weight:700}
-#pg-box .bx-v figcaption span{font-size:13.5px;line-height:1.35;color:var(--muted)}
-#pg-box .bx-v .bx-ok,#pg-box .bx-v .bx-no{margin-top:2px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
-#pg-box .bx-v .bx-ok{background:var(--ink);color:var(--paper)}
-#pg-box .bx-v .bx-no{border:1px dashed var(--line-2);color:var(--muted)}
-#pg-box .bx-v2 .bx-vm{opacity:.82}
-#pg-box .oq{gap:10px}
-#pg-box .oq-c{padding:16px 16px;gap:10px}
-#pg-box .oq-l{gap:4px}
-#pg-box .oq-l li{grid-template-columns:30px minmax(0,1fr);gap:10px;padding-block:5px}
-#pg-box .oq-i{width:30px;height:30px}
-#pg-box .oq-i svg{width:15px;height:15px}
-#pg-box .oq-h{font-size:18px}
-#pg-box .oq-l b{font-size:14.5px}
-#pg-box .oq-l span{font-size:13px;line-height:1.35}
 #pg-box .bx-of{display:grid;gap:14px;justify-items:center;width:100%;max-width:520px;min-width:0}
 #pg-box .of-tm{width:100%}
 #pg-box .steps{width:100%;max-width:560px;text-align:left}
@@ -3167,7 +3170,7 @@ html.bx-on .foot{scroll-snap-align:end}
 #pg-box .mlb{gap:12px}
 #pg-box .mlb-g{display:none}
 #pg-box .mlb-ft{padding:10px 10px 14px;gap:10px;border-radius:24px}
-#pg-box .mlb-ft .mlb-m{width:auto;height:calc(var(--bxh,100svh) * .4);max-height:480px;max-width:100%}
+#pg-box .mlb-ft .mlb-m{width:auto;height:max(200px,min(calc(var(--bxh,100svh) * .4),calc(var(--bxh,100svh) - 440px)));max-height:480px;max-width:100%}
 #pg-box .mlb-tx{gap:6px}
 #pg-box .mlb-tx p{display:none}
 #pg-box .mlb-tx h2{font-size:clamp(22px,6cqw,32px)}
@@ -3185,13 +3188,471 @@ html.bx-on .foot{scroll-snap-align:end}
 @container site (min-width:900px){
   #pg-box .cli{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;margin-inline:0;padding-inline:0;overflow:visible}
   #pg-box .cli-c{width:auto}
-  #pg-box .bx-vs{max-width:640px;gap:28px}
-  #pg-box .oq{grid-template-columns:repeat(2,minmax(0,1fr))}
   #pg-box .bx-hero .bx-hd{max-width:900px}
   #pg-box .bx-hd .display{font-size:clamp(48px,5.6cqw,72px)}
 }
+/* Revisão da página Vídeos (19/11/2026, 2ª rodada) */
+#pg-box .bx-nt{margin:4px 0 0;text-align:center}
+/* temas: o título cabe em uma linha no computador */
+@container site (min-width:900px){#pg-box .bx-hd{max-width:760px}#pg-box .bx-hd .lead{max-width:46ch}}
+#bx-tipos .tp-op small{white-space:nowrap}
+@container site (max-width:420px){#pg-box .tp-op{gap:8px;padding-inline:10px}}
+/* telas baixas (iPhone SE e afins): menos respiro e peças menores, pra nada ficar atrás do dock */
+@media (max-height:720px){
+  #pg-box .bx-s{padding-block:14px 16px}
+  #pg-box .bx-in{gap:14px}
+  #pg-box .bx-hd{gap:6px}
+  #pg-box .bx-hd .title{font-size:clamp(26px,7.6cqw,44px)}
+  #pg-box .tp-op{min-height:50px;padding-block:7px}
+  #bx-tipos .tp{row-gap:10px}
+  #pg-box .tp-tel{height:170px}
+  #pg-box .tp-li{gap:5px}
+  #pg-box .tp-li li{font-size:13.5px}
+  #pg-box .tp-tx{gap:12px}
+  #bx-pr .tp-op{min-height:42px}
+  #bx-tipos .bx-hd .lead,#bx-cmp .bx-hd .lead{display:none}
+  #bx-tipos .tp-op{min-height:46px;padding-block:6px}
+  #bx-tipos .tp-li li{line-height:1.3}
+  #bx-tipos .tp-li{gap:4px}
+  .cp-t{font-size:12.5px}
+  .cp-t .cp-c0{width:38%}
+}
+/* como funciona: no computador, 2x2 com respiro, em vez de 4 colunas apertadas */
+@container site (min-width:880px){
+  #pg-box .steps{max-width:880px;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
+  #pg-box .steps>div{grid-template-columns:44px 1fr;gap:6px 14px;padding:26px 0 28px;border-top:1px solid var(--line)}
+  #pg-box .steps .n{grid-row:1/3;padding:6px 0 0}
+  #pg-box .steps h3{font-size:26px}
+  #pg-box .steps p{font-size:16px}
+}
+/* exemplos no celular: as áreas encostam na borda e somem num degradê, pra mostrar que rolam */
+@container site (max-width:699px){#pg-box .mlb-f{width:calc(100% + 40px);margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px;-webkit-mask:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 64px),transparent 100%);mask:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 64px),transparent 100%)}}
+/* exemplos no computador: vídeo e texto juntos, texto à esquerda, setas embaixo do texto */
+@container site (min-width:700px){
+  #pg-box .mlb-ft{max-width:680px;grid-template-columns:auto minmax(0,1fr);grid-template-rows:1fr auto 1fr;column-gap:36px;row-gap:18px;padding:16px 40px 16px 16px;text-align:left}
+  #pg-box .mlb-ft>.mlb-m{grid-row:1/4}
+  #pg-box .mlb-ft>.mlb-tx{grid-row:2;justify-items:start;align-self:end}
+  #pg-box .mlb-ft>.mlb-nv{grid-column:2;grid-row:3;align-self:start;justify-content:flex-start}
+  #pg-box .mlb-tx p{display:block;max-width:34ch;font-size:15px}
+  #pg-box .mlb-tx h2{font-size:clamp(28px,3cqw,36px);text-wrap:balance}
+}
+/* resultados: mesma proporção nas 4 imagens, topos e legendas alinhados */
+#pg-box .cli{align-items:start}
+#pg-box .cli-c{align-content:start}
+#pg-box .cli-c img{aspect-ratio:1290/620;height:auto}
+/* tipos: os nomes de 1 e 2 linhas ocupam a mesma altura, então os subtítulos ficam na mesma linha */
+
+/* preço antes do clique: lista curta do tipo, sem número */
+.pr-li{width:100%;max-width:520px;text-align:left;padding:2px 4px}
+.pr-li[hidden]{display:none}
+#bx-pr .bx-of>.tp-ops{margin-bottom:2px}
+/* Página Vídeos: seletor de tipos (19/11/2026). Tela bx-tipos e o mesmo seletor em cima do preço (bx-pr).
+   Opção marcada = borda grossa + círculo com check (não só cor). Celular: 2x2 em cima, vídeo e lista embaixo lado a lado.
+   Computador: seletor, frase e lista à esquerda, vídeo à direita. */
+.tp{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"ops ops" "fr fr" "tel tx";column-gap:16px;row-gap:14px;width:100%;max-width:520px;text-align:left;min-width:0}
+.tp>.tp-ops{grid-area:ops}
+.tp-ops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;min-width:0}
+.tp-op{display:flex;align-items:center;gap:10px;min-width:0;min-height:58px;padding:9px 12px;border:1px solid var(--line-2);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.tp-op>i{flex:none;display:grid;place-items:center;width:20px;height:20px;border:1.5px solid var(--line-2);border-radius:50%;box-sizing:border-box;color:transparent}
+.tp-op>i svg{width:11px;height:11px}
+.tp-op>span{display:grid;gap:2px;min-width:0}
+.tp-op b{font:600 14.5px/1.2 var(--sans)}
+.tp-op small{font-size:12.5px;line-height:1.2;color:var(--muted)}
+.tp-op[aria-checked="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.tp-op[aria-checked="true"]>i{background:var(--ink);border-color:var(--ink);color:#fff}
+.tp-op:focus-visible,.cp-ver:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tp-fr{grid-area:fr;margin:0;font-size:15px;line-height:1.45;color:var(--ink-2);text-wrap:pretty}
+.tp-tel{grid-area:tel;align-self:start;height:clamp(190px,calc(var(--bxh,100svh) * .3),300px);aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:var(--night,#0c0a09);box-shadow:0 24px 48px -30px rgba(12,10,9,.55)}
+.tp-tel video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.tp-tx{grid-area:tx;display:grid;align-content:start;gap:16px;min-width:0}
+.tp-li{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tp-li li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;font-size:14px;line-height:1.35;color:var(--ink)}
+.tp-li svg{width:14px;height:14px;margin-top:2px;color:var(--ink)}
+.tp-tx .btn{justify-self:start;padding-inline:20px}
+/* no preço o seletor fica mais baixo (sem a linha de quantidade) e o cartão mais compacto, pra caber na tela do celular */
+#bx-pr .tp-op{min-height:46px;padding-block:6px}
+#bx-pr .tp-op small{display:none}
+#bx-pr .of-pr{gap:8px}
+#bx-pr .pc-card{padding:24px 18px 14px!important}
+/* com o preço aberto o selo do cartão já diz "Black Friday até 30/11": a frase de cima sai e o respiro diminui, pra tela caber */
+#bx-pr:has(#of-pr:not([hidden])) .bx-hd .lead{display:none}
+#bx-pr:has(#of-pr:not([hidden])) .bx-in{gap:12px}
+#bx-pr .pc-nm{margin-bottom:4px}
+#bx-pr .vg-pr .pr{font-size:42px}
+#bx-pr .vg-pr .av{margin-top:4px;font-size:14px}
+#bx-pr .pc-ft{margin-top:12px;padding-top:12px;gap:6px}
+#bx-pr .pc-ft li{font-size:14px;line-height:1.35}
+#bx-pr .of-pr .muted{font-size:13px;line-height:1.4}
+.of-pks[hidden],.pc-sel[hidden]{display:none}
+@media (max-height:720px){
+  #bx-pr .pc-ft{display:none}
+  #pg-box #bx-pr:has(#of-pr:not([hidden])){padding-block:10px 12px}
+  #bx-pr .pc-card{padding:22px 16px 14px!important}
+  #bx-pr .vg-pr .pr{font-size:40px}
+  #bx-pr .of-pr{gap:8px}
+  #bx-pr .of-pk{min-height:42px}
+}
+.pc-card.pc-sem{border:1px solid var(--line-2)!important}
+@container site (min-width:900px){
+  .tp{max-width:980px;grid-template-columns:minmax(0,440px) auto;grid-template-rows:auto auto 1fr;grid-template-areas:"ops tel" "fr tel" "tx tel";column-gap:64px;row-gap:20px;justify-content:center}
+  .tp-tel{height:clamp(380px,calc(var(--bxh,100svh) * .58),520px);border-radius:28px}
+  .tp-op{min-height:64px;padding:12px 14px}
+  .tp-op b{font-size:15.5px}
+  .tp-fr{font-size:17px}
+  .tp-li li{font-size:15.5px}
+  .tp-tx{gap:22px}
+}
+/* Página Vídeos: comparativo (19/11/2026). Tabela no jeito do "comparar iPhones": uma coluna por tipo, miniatura e nome no topo.
+   Celular: 2 colunas, cada uma com um seletor pra escolher o tipo. Computador: as 4. O JS remonta a tabela quando a largura muda.
+   Sim/Não sempre com texto escondido pro leitor de tela, e o — e o check desenhados (cor nunca é o único sinal). */
+#bx-cmp .bx-in{max-width:1080px}
+.cp{width:100%;max-width:980px;min-width:0}
+.cp-t{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;font-size:13.5px;line-height:1.3;color:var(--ink)}
+.cp-t .cp-c0{width:34%}
+.cp-t thead th{vertical-align:bottom;padding:0 4px 14px;font-weight:600}
+.cp-po{display:block;margin:0 auto 10px;height:84px;aspect-ratio:9/16;border-radius:12px;object-fit:cover;background:var(--tint);box-shadow:0 12px 24px -18px rgba(12,10,9,.5)}
+.cp-nm{display:block;font:600 14px/1.25 var(--sans);text-wrap:balance}
+.cp-ch{position:relative;display:flex;align-items:center;justify-content:center;gap:4px;min-height:44px;padding:4px 8px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);box-sizing:border-box}
+.cp-ch .cp-nm{font-size:13px}
+.cp-ch svg{flex:none;width:12px;height:12px;color:var(--muted)}
+.cp-ch:focus-within{outline:2px solid var(--ink);outline-offset:2px}
+/* o <select> de verdade fica por cima, transparente: o nome inteiro aparece quebrando linha e o toque abre a lista do sistema */
+.cp-sl{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;font-size:16px;cursor:pointer;-webkit-appearance:none;appearance:none}
+.cp-t tbody th,.cp-t tbody td{border-top:1px solid var(--line);padding:9px 4px;vertical-align:middle}
+.cp-t tbody th{text-align:left;font-weight:500;color:var(--ink-2);padding-left:0;padding-right:10px}
+.cp-y{display:inline-flex;align-items:center;justify-content:center;gap:4px;font-weight:600}
+.cp-y svg{width:15px;height:15px;flex:none}
+.cp-n{color:var(--muted);font-weight:500}
+.cp-ver{min-height:40px;padding:0 12px;border:1px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink);font:600 13px/1 var(--sans);white-space:nowrap;cursor:pointer}
+.cp-pr{display:grid;gap:3px;justify-items:center}
+.cp-pr s,.cp-pr .cp-dp{font-size:12.5px;color:var(--muted)}
+.cp-pr b{font-size:17px;font-variant-numeric:tabular-nums}
+.cp-pr small{font-size:12px;line-height:1.3;color:var(--muted);text-wrap:balance}
+.cp-pr .cp-vz{visibility:hidden}
+.cp-t tbody tr:last-child td{vertical-align:top}
+.cp-t tbody tr:last-child th{vertical-align:top;padding-top:16px}
+.cp-pr .btn{min-height:40px;padding:8px 18px;font-size:13.5px;margin-top:6px}
+.cp-pr .bx-lk{min-height:36px;padding:6px 4px;font-size:13px;white-space:nowrap}
+.cp-pr .cp-ob{min-height:0;margin-top:4px;font-size:11.5px;text-wrap:balance}
+.cp-bf{display:inline-block;text-wrap:balance}.cp-bf b{font-weight:600}.cp-bf>span{white-space:nowrap}
+.cp-em{display:flex;align-items:flex-start;justify-content:center;gap:6px;margin:14px auto 0;max-width:560px;font-size:13px;line-height:1.4;color:var(--ink-2);text-align:left;text-wrap:pretty}
+.cp-em svg{flex:none;width:14px;height:14px;margin-top:2px;color:var(--ink)}
+/* celular: com um preço aberto, as miniaturas saem (o nome continua no seletor) e a nota do checkout fica só no computador, pra tabela caber na tela */
+@container site (max-width:699px){.cp:has(.cp-pr) .cp-po{display:none}.cp-pr .cp-ob{display:none}}
+@media (max-height:720px){.cp-po{height:64px;margin-bottom:8px}.cp-t thead th{padding-bottom:10px}.cp-t tbody th,.cp-t tbody td{padding-block:7px}}
+@container site (min-width:900px){
+  .cp-t{font-size:15px}
+  .cp-t .cp-c0{width:24%}
+  .cp-po{height:96px;border-radius:14px;margin-bottom:10px}
+  .cp-nm{font-size:16px}
+  .cp-t thead th{padding-bottom:10px}
+  .cp-t tbody th,.cp-t tbody td{padding-block:9px}
+  .cp-em{font-size:14px}
+  .cp-pr b{font-size:20px}
+}
+/* Tela "Como eu faço o seu" (19/11/2026): um editor de vídeo em loop (~13 s) mostrando o processo Pulsar.
+   Celular 9:16 com um Pulsar Motion real (mo-real-9) + camadas que entram por etapa (data-st 1 a 5 no #fz, trocado no JS):
+   1 Roteiro (cartão com o texto), 2 Imagens (a imagem 3D parada, em close, sem o texto), 3 Motion (o Motion real desliza
+   pra dentro e fica), 4 Sua voz (pílula com onda), 5 Seu nome (lettering no canto). Embaixo/ao lado, 4 trilhas com agulha.
+   Sem cena de vídeo de IA nem marca d'água: é o mesmo tipo de vídeo que vem no pacote.
+   Dentro do celular tudo é medido em cqw do próprio .fz-scr. Prefixo fz- (pc- já é usado no preço). */
+#bx-proc .bx-in{max-width:1080px}
+#bx-proc .bx-hd .lead{max-width:36ch}
+.fz{--fz-e:cubic-bezier(.22,1,.36,1);--fz-lb:61px;--fz-g:8px;--fz-p:10px;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"tel st" "tel in" "tl tl";grid-template-rows:minmax(0,1fr) auto auto;column-gap:14px;row-gap:12px;width:100%;max-width:520px;text-align:left;min-width:0}
+.fz-tel{grid-area:tel;height:clamp(214px,calc(var(--bxh,100svh) * .4),340px);aspect-ratio:9/16;padding:3px;box-sizing:border-box;border-radius:26px;background:#3a3633;box-shadow:0 26px 50px -30px rgba(12,10,9,.55),0 0 0 1px rgba(12,10,9,.06)}
+.fz-scr{position:relative;height:100%;border-radius:23px;overflow:hidden;background:var(--tint);container-type:inline-size;isolation:isolate}
+.fz-scr video,.fz-base{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.fz-base{opacity:.85;filter:blur(3px) saturate(.85);transform-origin:50% 55%;transform:scale(1.12);transition:opacity .6s ease,transform 2.6s var(--fz-e),filter .6s ease}
+.fz:not([data-st="1"]) .fz-base{opacity:1;filter:none;transform:scale(1.02)}
+/* etapa 2: várias imagens passando rápido antes de ficar a escolhida */
+.fz-fl{position:absolute;inset:0;z-index:1;opacity:0;pointer-events:none}
+.fz-fl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.fz-fl img.on{opacity:1}
+.fz.fz-fl-on .fz-fl{opacity:1}
+/* 1 roteiro */
+.fz-rot{position:absolute;left:8%;right:8%;top:22%;padding:6cqw 6cqw 7cqw;border-radius:5cqw;background:var(--card);box-shadow:0 4cqw 10cqw -5cqw rgba(12,10,9,.35);opacity:0;transform:translateY(4cqw);transition:opacity .4s ease,transform .5s var(--fz-e)}
+.fz-rot b{display:flex;align-items:center;gap:2cqw;font:600 max(9px,5.6cqw)/1 var(--sans);color:var(--muted)}
+.fz-rot b svg{width:max(9px,5.6cqw);height:max(9px,5.6cqw)}
+.fz-rot p{margin:4cqw 0 0;display:grid;gap:2.4cqw}
+.fz-rot span{display:block;font:500 max(10px,6.6cqw)/1.28 var(--sans);color:var(--ink);opacity:0;transform:translateY(2cqw);transition:opacity .35s ease,transform .45s var(--fz-e)}
+.fz[data-st="1"] .fz-rot{opacity:1;transform:none}
+.fz[data-st="1"] .fz-rot span{opacity:1;transform:none}
+.fz[data-st="1"] .fz-rot span:nth-child(1){transition-delay:.35s}
+.fz[data-st="1"] .fz-rot span:nth-child(2){transition-delay:.9s}
+.fz[data-st="1"] .fz-rot span:nth-child(3){transition-delay:1.45s}
+/* 3 motion: entra pela direita e fica até o fim (o vídeo pronto é o próprio Motion) */
+.fz-mo{position:absolute;inset:0;z-index:2;transform:translateX(104%);transition:transform .65s var(--fz-e);box-shadow:-3cqw 0 8cqw -4cqw rgba(0,0,0,.5)}
+.fz[data-st="1"] .fz-mo,.fz[data-st="2"] .fz-mo{transition:none}
+.fz[data-st="3"] .fz-mo,.fz[data-st="4"] .fz-mo,.fz[data-st="5"] .fz-mo{transform:none}
+.fz-tag{position:absolute;left:5cqw;bottom:5cqw;display:flex;align-items:center;gap:1.6cqw;padding:1.8cqw 3.4cqw 1.8cqw 2.6cqw;border-radius:99px;background:rgba(255,255,255,.92);color:var(--ink);font:600 max(9px,5cqw)/1 var(--sans);transition:opacity .3s ease}
+.fz-tag svg{width:max(9px,4.6cqw);height:max(9px,4.6cqw)}
+.fz[data-st="4"] .fz-tag,.fz[data-st="5"] .fz-tag{opacity:0}
+/* 4 voz (o véu escurece de leve em cima e embaixo pra pílula e o nome lerem em fundo claro).
+   O texto no ritmo já vem gravado no próprio Motion, por isso não tem legenda por cima. */
+.fz-veu{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.3) 0,rgba(0,0,0,0) 24%,rgba(0,0,0,0) 46%,rgba(0,0,0,.42) 100%);opacity:0;transition:opacity .5s ease;pointer-events:none}
+.fz[data-st="4"] .fz-veu,.fz[data-st="5"] .fz-veu,.fz.fz-nm-on:not([data-st="1"]) .fz-veu{opacity:1}
+.fz-voz{position:absolute;left:50%;bottom:5cqw;z-index:3;display:flex;align-items:center;gap:2cqw;padding:2cqw 3.6cqw 2cqw 3cqw;border-radius:99px;background:rgba(255,255,255,.93);color:var(--ink);font:600 max(9px,4.8cqw)/1 var(--sans);white-space:nowrap;opacity:0;transform:translate(-50%,4cqw);transition:opacity .35s ease,transform .5s var(--fz-e)}
+.fz-voz svg{width:max(9px,5cqw);height:max(9px,5cqw);flex:none}
+.fz[data-st="4"] .fz-voz,.fz[data-st="5"] .fz-voz{opacity:1;transform:translate(-50%,0)}
+.fz-ondas{display:flex;align-items:center;gap:.9cqw;height:5cqw}
+.fz-ondas i{width:.9cqw;height:100%;border-radius:1cqw;background:currentColor;transform:scaleY(.35);animation:fzOnda .8s ease-in-out infinite alternate;animation-play-state:paused}
+.fz.vivo .fz-ondas i{animation-play-state:running}
+.fz-ondas i:nth-child(2n){animation-delay:-.3s;animation-duration:.62s}
+.fz-ondas i:nth-child(3n){animation-delay:-.55s;animation-duration:.95s}
+.fz-ondas i:nth-child(5n){animation-delay:-.15s;animation-duration:.7s}
+@keyframes fzOnda{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+/* 5 nome no canto */
+.fz-nome{position:absolute;left:6cqw;right:6cqw;top:50%;z-index:3;display:grid;justify-items:center;text-align:center;gap:1.6cqw;color:#fff;opacity:0;transform:translateY(-38%) scale(.94);filter:blur(1.6cqw);transition:opacity .5s ease,transform 1.1s var(--fz-e),filter .9s ease}
+.fz-nome::after{content:"";position:absolute;left:-12cqw;right:-12cqw;top:-10cqw;bottom:-10cqw;z-index:-1;background:radial-gradient(closest-side,rgba(12,10,9,.55),rgba(12,10,9,0))}
+/* acabamento do nome (19/11/2026): um traço reto e fino, centrado embaixo, que cresce do meio pros lados */
+.fz-nome::before{content:"";order:2;width:24cqw;height:max(1px,.55cqw);border-radius:1cqw;background:linear-gradient(90deg,rgba(242,215,154,0),#f2d79a 22%,#f2d79a 78%,rgba(242,215,154,0));box-shadow:0 .3cqw 1.4cqw rgba(0,0,0,.45);transform:scaleX(0);transition:transform 1s var(--fz-e) .35s}
+.fz-nome-t{font:italic 600 15cqw/1 "Cormorant Garamond",Georgia,serif;letter-spacing:-.01em;background:linear-gradient(180deg,#fff 0%,#fff 45%,#f2d79a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 .5cqw 2.2cqw rgba(0,0,0,.6));overflow-wrap:anywhere;max-width:100%;padding:0 1cqw .6cqw}
+.fz-nome[data-l="2"] .fz-nome-t{font-size:12cqw}
+.fz-nome[data-l="3"] .fz-nome-t{font-size:9.4cqw}
+.fz-nome[data-l="4"] .fz-nome-t{font-size:7.6cqw}
+.fz[data-st="5"] .fz-nome,.fz.fz-nm-on:not([data-st="1"]) .fz-nome{opacity:1;transform:translateY(-38%);filter:none}
+.fz[data-st="5"] .fz-nome::before,.fz.fz-nm-on:not([data-st="1"]) .fz-nome::before{transform:none}
+/* etapas: a atual tem borda e número cheio; as feitas têm um tique no lugar do número */
+.fz-st{grid-area:st;align-self:center;list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.fz-st li{display:flex;align-items:center;gap:8px;min-height:30px;padding:2px 12px 2px 3px;border:1.5px solid transparent;border-radius:999px;font:500 14px/1.1 var(--sans);color:var(--muted);transition:border-color .3s,background .3s,color .3s}
+.fz-n{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);box-sizing:border-box;font:600 12px/1 var(--sans);transition:background .3s,border-color .3s,color .3s}
+.fz-n svg{display:none;width:12px;height:12px}
+.fz-st li.ok{color:var(--ink)}
+.fz-st li.ok .fz-n{border-color:var(--ink)}
+.fz-st li.ok .fz-n b{display:none}
+.fz-st li.ok .fz-n svg{display:block}
+.fz-st li.on{border-color:var(--ink);background:var(--card);color:var(--ink);font-weight:600}
+.fz-st li.on .fz-n{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+/* campo do nome */
+.fz-in{grid-area:in;align-self:end;display:grid;gap:6px;min-width:0}
+.fz-in span{font:600 13px/1.2 var(--sans);color:var(--ink-2)}
+.fz-in input{width:100%;box-sizing:border-box;min-height:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:12px;background:var(--card);color:var(--ink);font:400 16px/1.2 var(--sans);-webkit-appearance:none;appearance:none}
+.fz-in input::placeholder{color:var(--muted);opacity:.8}
+.fz-in input:focus{outline:2px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+/* linha do tempo */
+.fz-tl{grid-area:tl;position:relative;display:grid;gap:6px;padding:var(--fz-p);border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 18px 40px -34px rgba(12,10,9,.4);min-width:0}
+.fz-rg{height:7px;margin-left:calc(var(--fz-lb) + var(--fz-g));background:repeating-linear-gradient(90deg,var(--line-2) 0 1px,transparent 1px 5%);border-bottom:1px solid var(--line)}
+.fz-tr{display:grid;grid-template-columns:var(--fz-lb) minmax(0,1fr);gap:var(--fz-g);align-items:center}
+.fz-lb{display:flex;align-items:center;gap:4px;font:500 11.5px/1 var(--sans);color:var(--ink-2);white-space:nowrap}
+.fz-lb svg{width:13px;height:13px;flex:none}
+.fz-ln{position:relative;height:18px;border-radius:6px;background:var(--tint);overflow:hidden}
+.fz-c{position:absolute;top:0;bottom:0;display:flex;align-items:center;gap:3px;padding:0 5px;box-sizing:border-box;border-radius:5px;font:600 10.5px/1 var(--sans);font-style:normal;white-space:nowrap;overflow:hidden;transform:scaleX(0);transform-origin:0 50%;transition:transform .55s var(--fz-e)}
+.fz-c.on{transform:none}
+.fz-ci{background-color:#ddd;background-image:url(assets/mo-real-23.jpg),url(assets/mo-real-24.jpg),url(assets/mo-real-20.jpg),url(assets/mo-real-17.jpg),url(assets/mo-real-9.jpg);background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat-x;background-size:auto 100%;background-position:0 0,13px 0,26px 0,39px 0,52px 0;box-shadow:inset 0 0 0 1px rgba(12,10,9,.14)}
+.fz-cm{background:#ccc url(assets/mo-real-9.jpg) repeat-x 0 0/auto 100%;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.fz-cm span{padding:2px 5px;border-radius:4px;background:rgba(255,255,255,.92);color:var(--ink)}
+.fz-cv{background:#e7e4df;color:var(--ink);padding:0}
+.fz-cv svg{width:100%;height:76%;display:block}
+.fz-ct{padding:0 3px;letter-spacing:-.01em;background:var(--ink);color:var(--paper)}
+.fz-ct b{font-weight:inherit}
+.fz-cn{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.fz-cn svg{width:10px;height:10px;flex:none}
+.fz-cn b{overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.fz-cn-n{display:none}
+.fz-agz{position:absolute;top:calc(var(--fz-p) - 2px);bottom:calc(var(--fz-p) - 2px);left:calc(var(--fz-p) + var(--fz-lb) + var(--fz-g));right:var(--fz-p);pointer-events:none}
+.fz-ag{position:absolute;top:0;bottom:0;left:0;width:2px;margin-left:-1px;background:var(--ink);border-radius:2px}
+.fz-ag::before{content:"";position:absolute;top:-1px;left:50%;width:10px;height:10px;margin-left:-5px;background:var(--ink);clip-path:polygon(0 0,100% 0,100% 55%,50% 100%,0 55%)}
+@container site (min-width:900px){
+  .fz{--fz-lb:82px;--fz-g:12px;--fz-p:16px;max-width:1040px;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"tel st" "tel tl" "tel in";grid-template-rows:auto auto 1fr;align-content:start;align-items:start;column-gap:44px;row-gap:22px;justify-self:center}
+  .fz-tel{height:clamp(380px,calc(var(--bxh,100svh) * .56),500px);border-radius:32px;padding:4px}
+  .fz-scr{border-radius:28px}
+  .fz-st{display:flex;flex-wrap:wrap;gap:6px;align-self:start}
+  .fz-st li{min-height:36px;padding:3px 14px 3px 5px;font-size:14.5px}
+  .fz-n{width:26px;height:26px;font-size:13px}
+  .fz-in{align-self:start;max-width:340px}
+  .fz-tl{gap:9px;border-radius:20px}
+  .fz-rg{height:9px}
+  .fz-lb{gap:7px;font-size:13px}
+  .fz-lb svg{width:15px;height:15px}
+  .fz-ln{height:32px;border-radius:8px}
+  .fz-c{border-radius:7px;padding:0 9px;gap:5px;font-size:12px}
+  .fz-cm span{padding:3px 7px}
+  .fz-cn svg{width:12px;height:12px}
+  .fz-cn-n{display:block}
+  .fz-cn-k{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fz *,.fz *::before{transition:none!important}
+  .fz-ondas i{animation:none!important}
+  .fz-ondas i{transform:scaleY(.7)}
+  .fz-ondas i:nth-child(2n){transform:scaleY(.45)}
+  .fz-ondas i:nth-child(3n){transform:scaleY(1)}
+}
+/* Acabamento (skills Emil Kowalski, 19/11/2026): estados de toque, entradas curtas e transições só de transform/opacity
+   (exceção: clip-path nos clipes da trilha). Curvas e tempos viram tokens. O JS que anima por WAAPI está no bloco de
+   mesmo título no fim do script principal. Movimento reduzido: sem escala nem deslize, ficam só os fades curtos. */
+:root{--ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--ease-drawer:cubic-bezier(.32,.72,0,1);--t-press:140ms;--t-ui:200ms}
+/* toque: sem o retângulo cinza do WebKit nem zoom de duplo toque; o :active com escala toma o lugar */
+button,a,[role=radio],[role=button]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+/* resposta ao toque: escala curta no :active (os hovers ficaram atrás de (hover:hover) and (pointer:fine), no próprio lugar) */
+.btn{transition:transform 160ms var(--ease-out),background-color .2s ease,color .2s ease}
+.btn:active{transform:scale(.97);transition-duration:100ms}
+.btn:disabled:active{transform:none}
+#pg-box .bx-nx,.cp-ver,.mlb-ar,.fls-ctl button{transition:transform var(--t-press) var(--ease-out)}
+#pg-box .bx-nx:active,.cp-ver:active{transform:scale(.97)}
+.tp-op,.of-op,.of-pk{transition:border-color .15s,box-shadow .15s,transform var(--t-press) var(--ease-out)}
+.mlb-p{transition:background .2s,color .2s,border-color .2s,transform var(--t-press) var(--ease-out)}
+.tp-op:active,.of-op:active,.of-pk:active,.mlb-p:active{transform:scale(.98)}
+.mlb-ar:active,.fls-ctl button:active{transform:scale(.94)}
+#pg-box .bx-lk{transition:opacity var(--t-press) ease}
+#pg-box .bx-lk:active{opacity:.6}
+.porta{transition:transform var(--t-press) var(--ease-out),box-shadow .18s ease}
+.porta:active{transform:scale(.985)}
+/* marca de seleção: a bolinha troca de cor com transição e o check cresce de .6 (o sinal é a forma, não só a cor) */
+.tp-op>i,.of-op i,.of-pk i{transition:background-color .15s ease,border-color .15s ease}
+.tp-op>i svg,.of-op i svg,.of-pk i svg{transform:scale(.6);opacity:0;transition:transform 180ms var(--ease-out),opacity 120ms ease}
+.tp-op[aria-checked="true"]>i svg,.of-op[aria-checked="true"] i svg,.of-pk[aria-checked="true"] i svg{transform:none;opacity:1}
+/* área de toque de 44px sem mudar o desenho de 36px */
+#vit .fls-ctl button{position:relative}
+#vit .fls-ctl button::after,.mlb-pp::after{content:"";position:absolute;inset:-4px}
+/* preço: o cartão nasce de onde estava o botão (uma entrada só, no container); sem @starting-style fica instantâneo, como antes */
+.of-pr{transform-origin:50% 0;transition:opacity 280ms var(--ease-out),transform 280ms var(--ease-out)}
+@starting-style{.of-pr{opacity:0;transform:translateY(8px) scale(.98)}}
+/* troca de página: só opacidade, rápida; não roda na primeira carga (a classe entra no primeiro hashchange) */
+html.pg-anim .pg.on{animation:pgIn 180ms var(--ease-out)}
+@keyframes pgIn{from{opacity:0}}
+/* Como eu faço: o clipe fica parado e uma tampa da cor da trilha recolhe por scaleX (o texto e a onda não esticam; só transform); na volta do loop a tampa volta mais rápido */
+.fz-c{transform:none;opacity:0;transition:opacity 0s linear .2s}
+.fz-c.on{opacity:1;transition-delay:0s}
+.fz-c::after{content:"";position:absolute;inset:-1px;background:var(--tint);transform-origin:100% 50%;transition:transform .55s var(--fz-e);pointer-events:none}
+.fz-c.on::after{transform:scaleX(0)}
+.fz[data-st="1"] .fz-c::after{transition-duration:.2s}
+/* fim do loop: as camadas saem juntas nos últimos 350 ms, antes de o roteiro voltar */
+#fz.fz-fim :is(.fz-mo,.fz-nome,.fz-voz,.fz-veu){opacity:0;transition:opacity .3s var(--ease-out)}
+.fz-st li.ok .fz-n svg{animation:skTique .22s var(--ease-out) both}
+/* agulha: continua com 2px e anda por transform em px (a largura da trilha vem de um ResizeObserver), sem caixa larga que vaze da página */
+.fz-ag{transition:opacity .2s ease;will-change:transform}
+.fz.fz-espera .fz-ag{opacity:.5}
+.fz-nome-t{text-wrap:balance}
+/* teclado aberto no campo do nome: o encaixe obrigatório solta até o campo perder o foco */
+html.bx-kb,html.bx-kb .screen{scroll-snap-type:none}
+/* tela mais alta que o espaço (celular deitado): encaixe por proximidade, pra dar pra chegar no pé de cada tela */
+html.bx-livre,html.bx-livre .screen{scroll-snap-type:y proximity}
+html.bx-livre #pg-box .bx-s{scroll-snap-stop:normal}
+/* carrosséis da Mentoria: propriedades exatas, sem "all" e sem o quique de uma troca feita por botão */
+.ct-imgs img{transition:transform 500ms var(--ease-drawer),opacity 300ms ease}
+/* cartão: escurece por uma camada com opacidade e a sombra maior do destaque é outra camada que só faz fade (nada de filter/box-shadow animado) */
+.cf-card{overflow:visible;box-shadow:none;transition:transform 500ms var(--ease-drawer),opacity 300ms ease}
+.cf-card.on{box-shadow:none}
+.cf-card video,.cf-vig{border-radius:17px}
+.cf-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;box-shadow:0 15px 35px rgba(0,0,0,.5);pointer-events:none}
+.cf-card::after{content:"";position:absolute;inset:-1px;border-radius:inherit;box-shadow:0 25px 60px rgba(0,0,0,.9),0 0 35px rgba(197,168,128,.25);opacity:0;transition:opacity 500ms ease;pointer-events:none}
+.cf-card.on::after{opacity:1}
+.cf-dim{position:absolute;inset:0;border-radius:17px;background:#000;opacity:var(--dim,0);transition:opacity 500ms ease;pointer-events:none}
+/* pontos: o botão troca de largura de uma vez; a pílula cresce por scaleX */
+.cf-dots button{position:relative;background:none;box-shadow:none;transition:none}
+.cf-dots button.on{background:none;box-shadow:none}
+.cf-dots button::before{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(255,255,255,.25);transition:background-color .3s ease}
+.cf-dots button.on::before{background:#c5a880;box-shadow:0 0 10px rgba(197,168,128,.7);animation:cfPonto .3s var(--ease-out)}
+@keyframes cfPonto{from{transform:scaleX(.29)}}
+/* opção marcada: o aro grosso é uma camada fixa que só faz fade */
+.opt::after{transition:border-color .15s}
+.opt[aria-pressed="true"]::after{border:1px solid var(--ink)}
+.opt::before{content:"";position:absolute;z-index:1;right:16px;top:18px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 5px var(--ink);opacity:0;transition:opacity .15s ease;pointer-events:none}
+.opt[aria-pressed="true"]::before{opacity:1}
+.opt.bn::before{top:14px;right:14px}
+@container site (min-width:880px){.opt.vid::before{top:20px;right:20px}}
+@media (prefers-reduced-motion:reduce){
+  :is(.btn,#pg-box .bx-nx,.cp-ver,.tp-op,.of-op,.of-pk,.mlb-p,.mlb-ar,.fls-ctl button,.porta):active{transform:none}
+  .tp-op>i svg,.of-op i svg,.of-pk i svg{transform:none}
+  .cf-dots button.on::before{animation:none}
+  .cf-dim,.cf-card::after{transition:none}
+}
+
+/* Academy: lançamento em 3/12 e o curso em números (19/11/2026) */
+#pg-academy .ak-lc{display:inline-flex;align-items:center;gap:8px;justify-self:center;margin:8px 0 0;padding:6px 13px;border:1px solid rgba(168,112,28,.35);border-radius:999px;background:#fbf3e3;color:#6f4a10;font-size:13.5px;font-weight:600;line-height:1.2}
+#pg-academy .ak-lc-d{width:7px;height:7px;border-radius:50%;background:#a8701c;box-shadow:0 0 0 3px rgba(168,112,28,.18)}
+#pg-academy .ak-sn{padding-top:36px}
+#pg-academy .ak-nums{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:100%}
+#pg-academy .ak-nu{border:1px solid var(--line-2);border-radius:18px;background:var(--card);min-width:0}
+#pg-academy .ak-nu>b,#pg-academy .ak-nu>span{display:block}
+#pg-academy .ak-nu,#pg-academy .ak-nu>a{display:grid;align-content:start;gap:4px;padding:16px 14px;text-align:left}
+#pg-academy .ak-nu:has(>a){padding:0}
+#pg-academy .ak-nu>a{color:inherit;text-decoration:none;height:100%;border-radius:inherit;-webkit-tap-highlight-color:transparent;transition:transform var(--t-press,140ms) var(--ease-out,ease)}
+#pg-academy .ak-nu>a:active{transform:scale(.97)}
+#pg-academy .ak-nu b{font-family:inherit;font-size:40px;line-height:1;font-weight:700;letter-spacing:-.035em;font-variant-numeric:lining-nums tabular-nums}
+#pg-academy .ak-nu span{font-size:14px;line-height:1.3;color:var(--muted)}
+#pg-academy .ak-nu .ak-nu-ir{margin-top:6px;font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+#pg-academy .ak-nu-w{grid-column:1/-1}
+#pg-academy .ak-pl{margin:4px 0 0;font-size:14.5px;line-height:1.4;color:#6f4a10;font-weight:500;max-width:34ch}
+@container site (min-width:700px){
+  #pg-academy .ak-sn{padding-top:56px}
+  #pg-academy .ak-nums{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:26px}
+  #pg-academy .ak-nu-w{grid-column:auto}
+  #pg-academy .ak-nu b{font-size:52px}
+  #pg-academy .ak-nu,#pg-academy .ak-nu>a{padding:20px 18px}
+}
+@media (hover:hover){#pg-academy .ak-nu>a:hover .ak-nu-ir{text-decoration-thickness:2px}}
+
+/* Tipos no celular (19/11/2026): nomes numa linha só (cartões iguais), e a frase sobe pra coluna da direita, junto da lista */
+#bx-tipos .tp{grid-template-rows:auto auto 1fr;grid-template-areas:"ops ops" "tel fr" "tel tx";row-gap:10px;column-gap:16px}
+#bx-tipos .tp-tel{grid-row:2/4;margin-top:8px}
+#bx-tipos .tp-fr{margin-top:8px;font-size:14.5px;line-height:1.4;font-weight:500;color:var(--ink)}
+#bx-tipos .tp-op{align-items:center}
+@container site (min-width:700px){
+  #bx-tipos .tp{grid-template-rows:auto auto 1fr;grid-template-areas:"ops tel" "fr tel" "tx tel";row-gap:20px;column-gap:64px}
+  #bx-tipos .tp-tel{grid-row:1/4;margin-top:0}
+  #bx-tipos .tp-fr{margin-top:0;font-size:17px;font-weight:400;color:var(--ink-2)}
+}
+
+/* Academy: bloco de pré-lançamento (20/11/2026) */
+#pg-academy .ak-lz{display:grid;justify-items:center;gap:10px;width:100%;max-width:420px;margin:14px auto 0;padding:16px 18px 18px;border:1px solid rgba(168,112,28,.32);border-radius:20px;background:linear-gradient(180deg,#fdf7ea,#fbf1dc);text-align:center}
+#pg-academy .ak-lz-tag{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#6f4a10}
+#pg-academy .ak-lz-t{margin:0;font-size:17px;line-height:1.3;font-weight:600;color:var(--ink);text-wrap:balance}
+#pg-academy .ak-lz-l{list-style:none;margin:0;padding:0;display:grid;gap:6px;justify-items:start;text-align:left}
+#pg-academy .ak-lz-l li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:start;font-size:15px;line-height:1.35;color:var(--ink)}
+#pg-academy .ak-lz-l svg{width:14px;height:14px;margin-top:3px;color:#8a5a12}
+#pg-academy .ak-lz-l b{font-weight:700}
+#pg-academy .ak-lz-go{margin-top:4px}
+#pg-academy .ak-pc .ak-pl{font-weight:600;margin:2px 0 0}
+#pg-academy .ak-pc .ak-lz-l{margin-bottom:2px}
+@container site (min-width:700px){#pg-academy .ak-lz{max-width:480px;padding:20px 24px 22px}#pg-academy .ak-lz-t{font-size:19px}}
+
+/* Academy: encaixe por seção (20/11 leve; 22/11 setorizado). Quando a pessoa para de rolar perto do começo de uma parte, a página assenta ali;
+   no meio de um texto ou de uma parte maior que a tela ela não mexe (proximity, nunca mandatory). Movimento reduzido: desligado. */
+html:has(#pg-academy.on),html:has(#pg-academy.on) .screen{scroll-snap-type:y mandatory;scroll-padding-top:var(--bxt,74px)}
+/* 22/11: setorizado como a página Vídeos: um toque leva exatamente à próxima parte (snap-stop always não deixa pular duas) */
+#pg-academy .ak-pn{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
+html:has(#pg-academy.on) .foot{scroll-snap-align:end}
+#pg-academy #curso{scroll-margin-top:600px}
+@media (prefers-reduced-motion:reduce){html:has(#pg-academy.on),html:has(#pg-academy.on) .screen{scroll-snap-type:none}}
+
+/* Academy em painéis (22/11/2026): cada parte ocupa exatamente uma tela, abaixo do menu, com o conteúdo centrado nela */
+#pg-academy .ak-pn{min-height:calc(var(--bxh,100svh) - var(--bxt,74px));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:20px 24px}
+#pg-academy .ak-pn>.wrap{width:100%}
+#pg-academy #curso.ak-pn{min-height:calc(var(--bxh,100svh) - var(--bxt,74px) - var(--bxh0,48px));justify-content:flex-start;padding-top:8px}
+#pg-academy .ak-s5.ak-pn{justify-content:flex-start;padding-top:24px}
+/* pré-lançamento: o painel inteiro é o destaque (fundo creme de ponta a ponta), sem cartão dentro */
+#pg-academy .ak-slz{background:linear-gradient(180deg,var(--bg,#fafaf9) 0%,#fbf1dc 22%,#f8ecd2 70%,var(--bg,#fafaf9) 100%)}
+#pg-academy .ak-slz .ak-lz{display:grid;justify-items:center;gap:14px;max-width:440px;margin:0 auto;padding:0;border:0;background:none;text-align:center}
+#pg-academy .ak-slz .title{margin:0;font-size:clamp(38px,11cqw,56px);line-height:1.02}
+#pg-academy .ak-slz .ak-lz-t{font-size:17px;font-weight:400;color:var(--ink-2);max-width:22em}
+#pg-academy .ak-slz .ak-lz-l{gap:12px;margin-top:6px;padding:18px 20px;border-radius:18px;background:rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(168,112,28,.18)}
+#pg-academy .ak-slz .ak-lz-l li{font-size:16px;grid-template-columns:18px minmax(0,1fr);gap:10px}
+#pg-academy .ak-slz .ak-lz-l svg{width:16px;height:16px}
+#pg-academy .ak-slz .ak-lz-go{margin-top:10px}
+/* números como ficha técnica: número grande à esquerda, o que é à direita, linhas finas entre eles */
+#pg-academy .ak-sn .ac-hd2{margin-bottom:18px}
+#pg-academy .ak-fx{text-align:left;margin:0 auto;padding:0;width:100%;max-width:520px;border-top:1px solid var(--line)}
+#pg-academy .ak-fx-r{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:14px 2px;border-bottom:1px solid var(--line)}
+#pg-academy .ak-fx dt{margin:0;font-family:inherit;font-size:40px;line-height:1;font-weight:700;letter-spacing:-.04em;font-variant-numeric:lining-nums tabular-nums;color:var(--ink)}
+#pg-academy .ak-fx dd{margin:0;display:grid;gap:2px;min-width:0}
+#pg-academy .ak-fx dd b{font-size:16.5px;font-weight:600;line-height:1.2}
+#pg-academy .ak-fx dd span{font-size:14px;line-height:1.3;color:var(--muted)}
+#pg-academy .ak-fx-ir{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink);font-size:13.5px;font-weight:600;text-decoration:none;-webkit-tap-highlight-color:transparent}
+#pg-academy .ak-fx-ir:active{transform:scale(.97)}
+/* grade e aula: um pouco mais compactas pra caber numa tela */
+#pg-academy .ak-s3 .ac-hd2{margin-bottom:12px}
+@container site (min-width:700px){
+  #pg-academy .ak-fx{max-width:640px}
+  #pg-academy .ak-fx-r{grid-template-columns:120px minmax(0,1fr) auto;padding:18px 4px}
+  #pg-academy .ak-fx dt{font-size:56px}
+  #pg-academy .ak-fx dd b{font-size:19px}
+  #pg-academy .ak-fx dd span{font-size:15.5px}
+  #pg-academy .ak-slz .ak-lz-t{font-size:19px}
+}
 </style>
-</head>
+<style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
 <div class="device" id="device"><div class="sb" aria-hidden="true"><span>9:41</span><span class="ic"><svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="5" y="5.5" width="3" height="6.5" rx=".8"/><rect x="10" y="3" width="3" height="9" rx=".8"/><rect x="15" y="0" width="3" height="12" rx=".8"/></svg><svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1.5 4.2a9.4 9.4 0 0 1 13 0M4 6.9a5.8 5.8 0 0 1 8 0"/><circle cx="8" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg><svg width="27" height="13" viewBox="0 0 27 13" fill="none"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.6" stroke="currentColor" opacity=".4"/><rect x="2.2" y="2.2" width="19.6" height="8.6" rx="2.2" fill="currentColor"/><path d="M25 4.4v4.2c.8-.3 1.4-1.1 1.4-2.1S25.800 4.700 25 4.400Z" fill="currentColor" opacity=".45"/></svg></span></div><div class="screen" id="screen">
 
@@ -3213,7 +3674,7 @@ html.bx-on .foot{scroll-snap-align:end}
     <div class="hero-top">
       <div class="head">
         <h1 class="display fxh" id="hero-h1">Posso fazer os seus<br><em>ou te ensinar.</em></h1>
-        <p class="rot" id="hero-rot"><span class="rot-a">Vídeos de saúde pra</span><span class="rot-w" aria-hidden="true">&nbsp;<span>médicos</span></span><span class="ps-sr">médicos, dentistas, nutricionistas, fisioterapeutas, clínicas, marcas e farmacêuticos.</span></p>
+        <p class="rot" id="hero-rot"><span class="rot-a">Vídeos de saúde para</span><span class="rot-w" aria-hidden="true">&nbsp;<span>você.</span></span><span class="ps-sr">médicos, dentistas, nutricionistas, fisioterapeutas, professores, personal trainers, clínicas, marcas, farmacêuticos e você.</span></p>
       </div>
       <div class="stat" aria-live="polite"><b class="num" id="st-n">5,3 mi</b><div class="st-row"><span class="label" id="st-l">visualizações</span><span class="st-ex" id="st-ex" hidden>número de exemplo</span></div><div class="st-row"><span class="st-t" id="st-t">Roer Unha</span><span class="st-c" id="st-c">01 / 18</span></div></div>
     </div>
@@ -3221,7 +3682,7 @@ html.bx-on .foot{scroll-snap-align:end}
   <div class="amb" id="amb" aria-hidden="true"><i></i><i></i></div>
   <div class="vitw" id="vitw"><div id="vit"></div><div class="hero-ov" id="hero-ov" aria-hidden="true"></div></div>
   <div class="wrap"><nav class="portas" aria-label="Por onde começar">
-    <a class="porta pri" href="#box"><b>Quero vídeos prontos</b><small>20 vídeos Pulsar Motion. Você escolhe os temas, ou eu escolho.</small><i aria-hidden="true">→</i></a>
+    <a class="porta pri" href="#box"><b>Quero vídeos prontos</b><small>Pulsar Motion, Vídeo Pulsar e Estreia. Temas da sua área: você escolhe, ou eu escolho.</small><i aria-hidden="true">→</i></a>
     <a class="porta" href="#academy"><b>Quero aprender a fazer</b><small>Pulsar Academy: curso, materiais grátis e mentoria.</small><i aria-hidden="true">→</i></a>
   </nav></div>
   <div class="wrap"></div></section>
@@ -3245,45 +3706,62 @@ html.bx-on .foot{scroll-snap-align:end}
   <div class="bxs" id="bx" data-novd>
   <section class="bx-s bx-hero" id="bx-ab" aria-label="Abertura"><div class="bx-in">
     <div class="bx-hd">
-      <h1 class="display">20 vídeos de saúde <em>pro seu perfil.</em></h1>
+      <h1 class="display">Vídeos de saúde <em>pro seu perfil.</em></h1>
       <p class="lead">Feitos por mim, no estilo da Pulsar. Você só posta.</p>
     </div>
     <div class="bx-tel"><video data-src="assets/pm-mix.mp4" poster="assets/pm-mix.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
     <div class="bx-ac">
-      <button type="button" class="btn" data-bx="o-que-e">O que é Pulsar Motion?</button>
+      <button type="button" class="btn" data-bx="bx-tipos">Ver os tipos</button>
       <button type="button" class="bx-lk" data-bx="bx-pr">Ver o preço</button>
     </div>
     <p class="bx-dica" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10l4.5-4.5L12.5 10"/></svg>Arraste pra cima</p>
   </div></section>
 
-  <section class="bx-s" id="o-que-e" aria-label="O que é um Pulsar Motion"><div class="bx-in">
-    <div class="bx-hd"><h2 class="title">O que é um <em>Pulsar Motion.</em></h2><p class="lead">Um vídeo de até 45 segundos feito de imagens 3D paradas. Quem dá vida a elas é o motion.</p></div>
-    <div class="bx-vs">
-      <figure class="bx-v"><div class="bx-vm"><video data-src="assets/mo-real-23-loop.mp4" poster="assets/mo-real-23.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div><figcaption><b>Pulsar Motion</b><span>A imagem fica parada. Zoom, texto, setas e brilho fazem o resto.</span><span class="bx-ok">Vem no pacote</span></figcaption></figure>
-      <figure class="bx-v bx-v2"><div class="bx-vm"><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div><figcaption><b>Vídeo Pulsar</b><span>Cada cena é animada por IA, do começo ao fim.</span><span class="bx-no">Não vem no pacote</span></figcaption></figure>
+  <!-- 19/11/2026: tela "Os tipos de vídeo". Um seletor com os 4 tipos; ao escolher, troca o vídeo, a frase e a lista (JS "seletor de tipos").
+       O tipo escolhido fica guardado e vai junto pro preço (bx-pr). Substitui as telas "O que é um Pulsar Motion" e "O que vem em cada um". -->
+  <section class="bx-s" id="bx-tipos" aria-label="Os tipos de vídeo"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Escolha o <em>tipo de vídeo.</em></h2><p class="lead">Muda o quanto cada cena é animada.</p></div>
+    <div class="tp" id="tp">
+      <div class="tp-ops" role="radiogroup" aria-label="Tipo de vídeo"><button type="button" class="tp-op" role="radio" aria-checked="true" data-tp="motion"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Pulsar Motion</b><small>10, 20 ou 40 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="mv"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Motion + Vídeo</b><small>10 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="vp"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Vídeo Pulsar</b><small>10 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="estreia"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Pulsar Estreia</b><small>5 vídeos</small></span></button></div>
+      <p class="tp-fr" id="tp-fr" aria-live="polite">Imagens 3D paradas que ganham vida com zoom, texto, setas e brilho.</p>
+      <div class="tp-tel"><video id="tp-v" data-src="assets/mo-real-23-loop.mp4" poster="assets/mo-real-23.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
+      <div class="tp-tx">
+        <ul class="tp-li" id="tp-li" aria-label="O que vem"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>10, 20 ou 40 Pulsar Motion de até 45 s</span></li></ul>
+        <button type="button" class="btn" data-bx="bx-pr" data-ver>Ver o preço</button>
+      </div>
     </div>
-    <button type="button" class="bx-nx" data-bx="bx-tem"><span>O que tem</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
+    <button type="button" class="bx-nx" data-bx="bx-proc"><span>Como eu faço</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
   </div></section>
 
-  <section class="bx-s" id="bx-tem" aria-label="O que tem e o que não tem"><div class="bx-in">
-    <div class="bx-hd"><h2 class="title">O que <em>vem em cada um.</em></h2></div>
-    <div class="oq mt-rv">
-      <div class="oq-c">
-        <h3 class="oq-h"><span class="oq-k" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Tem</h3>
-        <ul class="oq-l">
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg></span><span><b>Imagens 3D de saúde</b> Paradas, feitas pra cada tema.</span></li>
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></span><span><b>Texto no ritmo</b> Aparece junto com a fala.</span></li>
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-6 6 2 9-4s5-5 9-2"/><path d="M17 8.5l4 2.5-2.6 3.8"/></svg></span><span><b>Traços que se desenham</b> Setas e linhas em cima da anatomia.</span></li>
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></span><span><b>Narração</b> A sua voz ou uma voz de IA.</span></li>
-        </ul>
-      </div>
-      <div class="oq-c oq-nao">
-        <h3 class="oq-h"><span class="oq-k" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span>Não tem</h3>
-        <ul class="oq-l">
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Cena de vídeo gerada por IA</b> Nada se mexe dentro da imagem.</span></li>
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-2.5h6L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Filmagem</b> Você não precisa gravar nada.</span></li>
-          <li><span class="oq-i" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.8 3.6-5.6 7-5.6s6.2 1.8 7 5.6"/><path d="M2.5 2.5l19 19"/></svg></span><span><b>Avatar</b> Nenhum rosto falso falando.</span></li>
-        </ul>
+  <!-- 19/11/2026: tela "Como eu faço o seu". Um editor em loop: roteiro, imagens, motion, voz e nome entrando no vídeo.
+       O campo de nome só muda o que aparece na tela (não envia nem salva). CSS e JS marcados com o mesmo título. -->
+  <section class="bx-s" id="bx-proc" aria-label="Como eu faço o seu"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Como eu faço <em>o seu.</em></h2><p class="lead">Eu escrevo o roteiro, monto as cenas e coloco a sua voz e o seu nome.</p></div>
+    <div class="fz" id="fz" data-st="1">
+      <div class="fz-tel" aria-hidden="true"><div class="fz-scr">
+        <img class="fz-base" src="assets/mo-real-9.jpg" alt="" decoding="async" loading="lazy">
+        <div class="fz-fl" id="fz-fl"><img src="assets/mo-real-23.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-24.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-20.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-13.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-21.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-17.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-7.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-4.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-15.jpg" alt="" decoding="async" loading="lazy"><img src="assets/mo-real-3.jpg" alt="" decoding="async" loading="lazy"></div>
+        <div class="fz-rot"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></svg>Roteiro</b><p><span>Seu intestino conversa com o cérebro.</span><span>O nervo vago é a linha direta.</span><span>E o cérebro responde.</span></p></div>
+        <div class="fz-mo"><video data-src="assets/mo-real-9-loop.mp4" poster="assets/mo-real-9.jpg" muted loop playsinline preload="none" tabindex="-1"></video><span class="fz-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.3 6.3 2.2-6.3 2.2L12 19.5l-2.2-6.3L3.5 11l6.3-2.2z"/></svg>Motion</span></div>
+        <i class="fz-veu"></i>
+        <div class="fz-nome" id="fz-nome" data-l="1"><span class="fz-nome-t" id="fz-nome-t">Seu nome</span></div>
+        <div class="fz-voz"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg><span class="fz-ondas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Sua voz</span></div>
+      </div></div>
+      <ol class="fz-st" id="fz-st" aria-label="Etapas">
+        <li class="on"><span class="fz-n"><b>1</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Roteiro</li>
+        <li><span class="fz-n"><b>2</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Imagens</li>
+        <li><span class="fz-n"><b>3</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Motion</li>
+        <li><span class="fz-n"><b>4</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Sua voz</li>
+        <li><span class="fz-n"><b>5</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg></span>Seu nome</li>
+      </ol>
+      <label class="fz-in"><span>Seu nome ou @</span><input id="fz-nm" type="text" maxlength="40" placeholder="Seu nome" autocomplete="off" autocapitalize="words" spellcheck="false" enterkeyhint="done"></label>
+      <div class="fz-tl" aria-hidden="true">
+        <div class="fz-rg"></div>
+        <div class="fz-tr"><span class="fz-lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg>Imagem</span><div class="fz-ln"><i class="fz-c fz-ci" data-k="2" style="left:0;width:35%"></i></div></div>
+        <div class="fz-tr"><span class="fz-lb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.2 6.3 6.3 2.2-6.3 2.2L12 19.5l-2.2-6.3L3.5 11l6.3-2.2z"/></svg>Motion</span><div class="fz-ln"><i class="fz-c fz-cm" data-k="3" style="left:35%;width:65%"><span>Motion</span></i></div></div>
+        <div class="fz-tr"><span class="fz-lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>Voz</span><div class="fz-ln"><i class="fz-c fz-cv" data-k="4" id="fz-cv" style="left:56%;width:44%"></i></div></div>
+        <div class="fz-tr"><span class="fz-lb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg>Texto</span><div class="fz-ln"><i class="fz-c fz-ct" data-k="3" style="left:35%;width:21%"><b class="fz-cn-n">Seu intestino</b><b class="fz-cn-k">Intestino</b></i><i class="fz-c fz-ct" data-k="4" style="left:56.4%;width:18.2%"><b class="fz-cn-n">Linha direta</b><b class="fz-cn-k">Vago</b></i><i class="fz-c fz-cn" data-k="5" style="left:75%;width:25%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4.5 19.5l4-1 10.5-10.5-3-3L5.5 15.5z"/></svg><b class="fz-cn-n" id="fz-cn">Seu nome</b><b class="fz-cn-k">Nome</b></i></div></div>
+        <div class="fz-agz"><div class="fz-ag" id="fz-ag"></div></div>
       </div>
     </div>
     <button type="button" class="bx-nx" data-bx="bx-ex"><span>Ver exemplos</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
@@ -3301,45 +3779,45 @@ html.bx-on .foot{scroll-snap-align:end}
 
   <div id="oferta">
   <section class="bx-s" id="bx-tm" aria-label="Temas"><div class="bx-in">
-    <div class="bx-hd"><h2 class="title">20 vídeos <em>Pulsar Motion.</em></h2><p class="lead">Até 45 segundos cada. Roteiro, imagens, motion e narração.</p></div>
+    <div class="bx-hd"><h2 class="title">Os temas <em>dos seus vídeos.</em></h2><p class="lead">Sempre da sua área. Você escolhe como, e eu mostro cada tema antes de fazer.</p></div>
     <div class="bx-of"><fieldset class="of-tm">
-          <legend>Os 20 temas. <span>Você escolhe como.</span></legend>
+          <legend class="ps-sr">Como escolher os temas</legend>
           <div role="radiogroup" aria-label="Como escolher os temas" style="display:grid;gap:8px">
-            <button type="button" class="of-op" role="radio" aria-checked="true" data-tm="Eu escolho os 20 temas pra você"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Eu escolho os 20 temas pra você</button>
-            <button type="button" class="of-op" role="radio" aria-checked="false" tabindex="-1" data-tm="Você me manda os 20 temas"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Você me manda os 20 temas</button>
+            <button type="button" class="of-op" role="radio" aria-checked="true" data-tm="Eu escolho os temas pra você"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Eu escolho os temas pra você</button>
+            <button type="button" class="of-op" role="radio" aria-checked="false" tabindex="-1" data-tm="Você me manda os temas"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>Você me manda os temas</button>
             <button type="button" class="of-op" role="radio" aria-checked="false" tabindex="-1" data-tm="A gente mistura"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>A gente mistura</button>
           </div>
-        </fieldset></div>
+        </fieldset><p class="muted small bx-nt">Depois do pagamento eu te chamo no WhatsApp pra combinar os temas.</p></div>
     <button type="button" class="btn" data-bx="bx-pr" data-ver>Ver o preço</button>
   </div></section>
 
   <section class="bx-s" id="bx-pr" aria-label="Preço"><div class="bx-in">
-    <div class="bx-hd"><h2 class="title">O preço dos <em>20 vídeos.</em></h2><p class="lead">Tem cupom de lançamento pros 10 primeiros.</p></div>
+    <div class="bx-hd"><h2 class="title">O preço <em>dos pacotes.</em></h2><p class="lead">Pulsar Motion com preço de Black Friday até 30/11.</p></div>
     <div class="bx-of">
+      <div class="tp-ops" role="radiogroup" aria-label="Tipo de vídeo"><button type="button" class="tp-op" role="radio" aria-checked="true" data-tp="motion"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Pulsar Motion</b><small>10, 20 ou 40 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="mv"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Motion + Vídeo</b><small>10 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="vp"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Vídeo Pulsar</b><small>10 vídeos</small></span></button><button type="button" class="tp-op" role="radio" aria-checked="false" tabindex="-1" data-tp="estreia"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i><span><b>Pulsar Estreia</b><small>5 vídeos</small></span></button></div>
+      <ul class="tp-li pr-li" id="pr-li" aria-label="O que vem"></ul>
       <button class="btn of-ver" type="button" id="of-ver" aria-expanded="false" aria-controls="of-pr">Ver o preço</button>
       <div class="of-pr" id="of-pr" hidden>
-          <div class="vg-pr pc-card" aria-live="polite"><span class="pc-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Lançamento</span><p class="pc-nm">20 vídeos Pulsar Motion</p>
-            <div class="of-vg" id="of-vg" hidden><p class="of-vg-t"><b>10 primeiras vagas</b> · restam <b class="num" id="of-vg-n">10</b> de 10</p><div class="of-vg-b" id="of-vg-b" aria-hidden="true"></div></div>
-            <p class="of-ag">Preço de agora</p>
-            <p class="of-de num" id="of-de" hidden><span class="ps-sr">De </span>R$ 2.000</p><div class="pr num" id="of-v">R$ 2.000</div><p class="av" id="of-u">pelos 20 vídeos · R$ 100 cada</p>
-            <p class="of-dp" id="of-dp" hidden>Depois das 10 vagas: R$ 2.000, ou R$ 800 com cupom.</p>
-            <ul class="pc-ft"><li>20 vídeos de até 45 segundos</li><li>Temas escolhidos por mim, por você ou misturados</li><li>Roteiro, imagens, motion e narração</li><li>1 ajuste por vídeo</li></ul></div>
-          <form class="of-cp" id="of-cp" novalidate>
-            <label for="of-c">Tenho um cupom</label>
-            <div class="of-cp-r"><input id="of-c" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Código do cupom" aria-describedby="of-cm"><button class="btn line" type="submit">Aplicar</button></div>
-            <p class="of-cm" id="of-cm" aria-live="polite"></p>
-          </form>
-          <button class="btn of-go" type="button" id="of-ir">Quero os 20 vídeos</button>
-          <p class="muted small">Você preenche, eu te chamo no WhatsApp pra combinar os temas.</p>
+          <div class="of-pks" id="of-pks" role="radiogroup" aria-label="Tamanho do pacote">
+            <button type="button" class="of-pk" role="radio" aria-checked="false" tabindex="-1" data-pk="10"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>10 vídeos</button>
+            <button type="button" class="of-pk" role="radio" aria-checked="true" data-pk="20"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>20 vídeos</button>
+            <button type="button" class="of-pk" role="radio" aria-checked="false" tabindex="-1" data-pk="40"><i aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.4l3 3 6-6.6"/></svg></i>40 vídeos</button>
+          </div>
+          <div class="vg-pr pc-card" id="of-card" aria-live="polite"><span class="pc-sel" id="of-sel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>Black Friday até 30/11</span><p class="pc-nm" id="of-nm">Pulsar Motion 20</p>
+            <p class="of-de num" id="of-de">Até 30/11. Depois, R$ 1.997</p><div class="pr num" id="of-v">R$ 798,80</div><p class="av" id="of-u">com o cupom PULSAR60 · R$ 39,94 cada</p>
+            <ul class="pc-ft" id="of-ft"><li>20 vídeos de até 45 segundos</li><li>Temas da sua área, escolhidos por mim, por você ou misturados</li><li>Roteiro, imagens, motion e narração</li><li>1 ajuste por vídeo</li></ul></div>
+          <a class="btn of-go" id="of-ir" href="https://pay.cakto.com.br/36vn8mu?coupon=PULSAR60">Quero o Pulsar Motion 20</a>
+          <p class="muted small" id="of-nt">Você paga na Cakto, no Pix ou no cartão, com o cupom já aplicado. Depois eu te chamo no WhatsApp pra combinar os temas. Você aprova cada roteiro antes de eu fazer: o que vai ao ar na sua área passa por você. E tem 7 dias pra desistir, como manda a lei.</p>
         </div>
     </div>
+    <button type="button" class="bx-nx" data-bx="como"><span>Como funciona</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
   </div></section>
   </div>
 
   <section class="bx-s" id="como" aria-label="Como funciona"><div class="bx-in">
     <div class="bx-hd"><h2 class="title">Como <em>funciona.</em></h2></div>
     <div class="steps">
-      <div><span class="n">01</span><h3>Escolha e pague.</h3><p>Os temas e o cupom, na tela do preço.</p></div>
+      <div><span class="n">01</span><h3>Escolha e pague.</h3><p>O pacote e os temas. No Pulsar Motion, o cupom já vem aplicado.</p></div>
       <div><span class="n">02</span><h3>Eu faço o escopo.</h3><p>Roteiro, narração e o que cada cena mostra.</p></div>
       <div><span class="n">03</span><h3>Você aprova.</h3><p>E manda a narração, ou aprova a voz de IA.</p></div>
       <div><span class="n">04</span><h3>Você recebe e posta.</h3><p>Inclui 1 ajuste por vídeo.</p></div>
@@ -3350,8 +3828,15 @@ html.bx-on .foot{scroll-snap-align:end}
   <section class="bx-s" id="clientes" aria-label="Resultados"><div class="bx-in">
     <div class="bx-hd"><h2 class="title">Quem posta, <em>cresce.</em></h2><p class="lead">Seguidores que cada um ganhou com os vídeos da Pulsar.</p></div>
     <ul class="cli"><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+12 mil</b> seguidores</p><img src="assets/cli-alex.jpg" alt="Perfil de Alex Sato Tanaka no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Alex Sato Tanaka</b> · Urologista pediátrico</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+5 mil</b> seguidores</p><img src="assets/cli-master.jpg" alt="Perfil de Master Clínica no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Master Clínica</b> · Centro de urologia</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.400</b> seguidores</p><img src="assets/cli-safira.jpg" alt="Perfil de Safira Castro no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Safira Castro</b> · Proctologista</p></li><li class="cli-c mt-rv"><p class="cli-n"><b class="num">+2.300</b> seguidores</p><img src="assets/cli-carol.jpg" alt="Perfil de Carollyne Rodovalho no Instagram" loading="lazy" decoding="async"><p class="cli-q"><b>Carollyne Rodovalho</b> · Cirurgiã do aparelho digestivo</p></li></ul>
-    <button type="button" class="btn" data-bx="bx-pr" data-ver>Quero os 20 vídeos</button>
-    <p class="of-n mt-c">Quem faz os seus Motion fez <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi). Esses dois são Vídeos Pulsar completos, com cenas animadas. Não são Motion.</p>
+    <p class="of-n mt-c">Eu também fiz <b>Supositório</b> (5,4 mi de visualizações) e <b>Roer Unha</b> (5,3 mi). Os dois são Vídeos Pulsar, com cenas animadas por IA.</p>
+    <button type="button" class="bx-nx" data-bx="bx-cmp"><span>Compare os pacotes</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg></button>
+  </div></section>
+
+  <!-- 19/11/2026: comparativo dos 4 tipos, a última tela. A tabela é montada no JS "comparativo" (2 colunas com seletor no celular, 4 no computador).
+       O preço de cada coluna só aparece depois do clique em "Ver o preço". -->
+  <section class="bx-s" id="bx-cmp" aria-label="Compare os pacotes"><div class="bx-in">
+    <div class="bx-hd"><h2 class="title">Compare <em>os pacotes.</em></h2><p class="lead">Lado a lado, o que vem em cada um.</p></div>
+    <div class="cp" id="cp"></div>
   </div></section>
   </div>
 
@@ -3367,7 +3852,7 @@ html.bx-on .foot{scroll-snap-align:end}
         <button type="button" class="sqz-p" role="tab" data-i="3" aria-selected="false" aria-label="Pulsar Cirúrgico" tabindex="-1"><span class="sqz-m"><video data-src="assets/bypass.mp4" poster="assets/bypass.jpg" muted loop playsinline preload="none"></video></span><span class="sqz-ov">Pulsar Cirúrgico</span><span class="sqz-vl">Pulsar Cirúrgico</span></button>
       </div>
       <div class="sqz-cap" aria-live="polite">
-      <div class="sqz-c" data-i="0"><p><b>Pulsar Motion.</b> <span>Só imagens da Pulsar. Quem dá vida é o motion: zoom, texto, setas e brilho. A imagem não se mexe.</span></p><dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Manter o perfil vivo toda semana.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 4"><i class="on"></i><i></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl><a class="btn" href="#oferta">Ver a oferta de 20 vídeos</a></div>
+      <div class="sqz-c" data-i="0"><p><b>Pulsar Motion.</b> <span>Imagens da Pulsar com narração. Quem dá vida é o motion: zoom, texto, setas e brilho. A imagem não se mexe.</span></p><dl><div><dt>Bom pra</dt><dd>Explicar, listar, responder dúvida. Manter o perfil vivo toda semana.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="1 de 4"><i class="on"></i><i></i><i></i><i></i><b>1 imagem</b></dd></div><div><dt>Preço</dt><dd>O mais em conta</dd></div></dl><a class="btn" href="#oferta">Ver a oferta de 20 vídeos</a></div>
       <div class="sqz-c" data-i="1" aria-hidden="true"><p><b>Motion + Vídeo.</b> <span>A primeira cena é um vídeo acontecendo, pra prender quem está rolando. O resto é imagem com motion.</span></p><dl><div><dt>Bom pra</dt><dd>Segurar nos primeiros segundos sem pagar um vídeo todo animado.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="2 de 4"><i class="on"></i><i class="on"></i><i></i><i></i><b>imagens + 1 cena animada</b></dd></div><div><dt>Preço</dt><dd>Entre o Motion e o Vídeo Pulsar</dd></div></dl><button class="btn" type="button" data-vaga="sob" data-tipo-v="Motion + Vídeo">Pedir orçamento</button></div>
       <div class="sqz-c" data-i="2" aria-hidden="true"><p><b>Vídeo Pulsar.</b> <span>Cada cena animada de verdade, do começo ao fim. É o tipo de vídeo que já passou de 5 milhões de visualizações.</span></p><dl><div><dt>Bom pra</dt><dd>Parar o dedo de quem está rolando e trazer gente nova.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><b>imagem + animação</b></dd></div><div><dt>Preço</dt><dd>Intermediário</dd></div></dl><button class="btn" type="button" data-vaga="sob" data-tipo-v="Vídeo Pulsar">Pedir orçamento</button></div>
       <div class="sqz-c" data-i="3" aria-hidden="true"><p><b>Pulsar Cirúrgico.</b> <span>O procedimento, etapa por etapa. Cada cena pede três imagens do mesmo instante e só depois o movimento.</span></p><dl><div><dt>Bom pra</dt><dd>Mostrar uma técnica e tirar o medo de quem vai passar por ela.</dd></div><div><dt>Trabalho por cena</dt><dd class="tp-n" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><b>3 imagens + animação</b></dd></div><div><dt>Como pedir</dt><dd>Não entra nos pacotes. A gente conversa antes, porque cada procedimento é um projeto.</dd></div></dl><button class="btn" type="button" data-fila>Entrar na fila</button></div>
@@ -3451,7 +3936,7 @@ html.bx-on .foot{scroll-snap-align:end}
 <!-- ======================= ACADEMY ======================= -->
 <main class="pg" id="pg-academy" data-novd>
   <!-- 1. O MacBook fechado que abre e recebe o que vem no curso (desenhado em CSS 3D, sem imagem) -->
-  <section class="sec ac-s1" id="curso"><div class="wrap ac-w">
+  <section class="sec ac-s1 ak-pn" id="curso"><div class="wrap ac-w">
     <header class="ac-hd">
       <h1 class="display">Pulsar <em>Academy</em></h1>
       <p class="lead"><span>Aprenda a fazer os seus vídeos.</span> <span>Tudo o que eu uso, num curso só.</span></p>
@@ -3462,23 +3947,46 @@ html.bx-on .foot{scroll-snap-align:end}
           <div class="mb-base"><div class="mb-sh"></div><div class="mb-deck"><div class="mb-kb"></div><div class="mb-tp"></div><div class="mb-sp"></div></div><div class="mb-lip"></div></div>
           <div class="mb-lid" id="ak-lid"><div class="mb-bk"></div><div class="mb-tp2"></div><div class="mb-fr"><div class="mb-gl" id="ak-scr"><div class="mb-lit"></div><div class="mb-amb"></div><div class="mb-ui" id="ak-ui"><p class="mb-hd">Preparando seu acesso</p><div class="mb-gr"><i><b>Prompts</b></i><i><b>Skills</b></i><i><b>Aulas</b></i><i><b>Bônus</b></i><i><b>Vitalício</b></i></div><div class="mb-pg"></div></div><div class="mb-ref"></div><b class="mb-c" style="left:1px;top:1px"></b><b class="mb-c" style="right:1px;top:1px"></b><b class="mb-c" style="right:1px;bottom:1px"></b><b class="mb-c" style="left:1px;bottom:1px"></b></div></div></div>
         </div></div>
-        <div class="ak-fs" id="ak-fs" aria-hidden="true"><div class="fs-bg"><i class="fs-b1"></i><i class="fs-b2"></i><i class="fs-b3"></i></div><div class="fs-pt"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fs-sh"></div><div class="fs-toss"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></div><div class="fs-app"><div class="fs-top"><span class="fs-cap"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></span><span class="fs-brand">Pulsar <em>Academy</em></span><span class="fs-ok"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.6 6.3 5 8.6l4.4-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso liberado</span></div><div class="fs-main"><div class="fs-hero"><img src="assets/est-cerebro-poster.jpg" alt="" loading="lazy" decoding="async"><span class="fs-hg"></span><span class="fs-tag">Aula inaugural · grátis</span><b class="fs-ht">Como eu faço os meus vídeos</b><span class="fs-hp"><span class="fs-play"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 1.6v8.8L10.4 6z" fill="currentColor"/></svg></span><span class="fs-pb"></span></span></div><div class="fs-side"><div class="fs-row"><img src="assets/est-hernia-poster.jpg" alt="" loading="lazy" decoding="async"><span><b id="fs-nf">77</b> folhas de prompt</span></div><div class="fs-row"><img src="assets/estetica-dourado.jpg" alt="" loading="lazy" decoding="async"><span><b>Todas</b> as Skills</span></div><div class="fs-row"><img src="assets/vt-botox.jpg" alt="" loading="lazy" decoding="async"><span><b>27</b> aulas gravadas</span></div><div class="fs-row fs-inf"><i aria-hidden="true">∞</i><span><b>Vitalício</b> pros primeiros</span></div></div></div></div><div class="fs-rf"></div><div class="fs-fl"></div></div>
+        <div class="ak-fs" id="ak-fs" aria-hidden="true"><div class="fs-bg"><i class="fs-b1"></i><i class="fs-b2"></i><i class="fs-b3"></i></div><div class="fs-pt"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fs-sh"></div><div class="fs-toss"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></div><div class="fs-app"><div class="fs-top"><span class="fs-cap"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></span><span class="fs-brand">Pulsar <em>Academy</em></span><span class="fs-ok"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.6 6.3 5 8.6l4.4-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso liberado</span></div><div class="fs-main"><div class="fs-hero"><img src="assets/est-cerebro-poster.jpg" alt="" loading="lazy" decoding="async"><span class="fs-hg"></span><span class="fs-tag">Aula inaugural · grátis</span><b class="fs-ht">Como eu faço os meus vídeos</b><span class="fs-hp"><span class="fs-play"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 1.6v8.8L10.4 6z" fill="currentColor"/></svg></span><span class="fs-pb"></span></span></div><div class="fs-side"><div class="fs-row"><img src="assets/est-hernia-poster.jpg" alt="" loading="lazy" decoding="async"><span><b id="fs-nf">77</b> folhas de prompt</span></div><div class="fs-row"><img src="assets/estetica-dourado.jpg" alt="" loading="lazy" decoding="async"><span><b>Todas</b> as Skills</span></div><div class="fs-row"><img src="assets/vt-botox.jpg" alt="" loading="lazy" decoding="async"><span><b>28</b> aulas, a partir de 3/12</span></div><div class="fs-row fs-inf"><i aria-hidden="true">∞</i><span><b>Vitalício</b> até 30/11</span></div></div></div></div><div class="fs-rf"></div><div class="fs-fl"></div></div>
       </div>
       <div class="ak-in">
         <p class="ak-c" aria-hidden="true"><span>O que vem no curso</span><span><b class="num" id="ak-n">0</b> de 5</span></p>
         <ul class="ak-l" id="ak-l" aria-label="O que vem no curso">
           <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="ak-tt"><span id="ak-nf">Folhas de prompt</span></span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
           <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 13.9 8l4.6 1.9-4.6 1.9L12 16.3l-1.9-4.5L5.5 9.9 10.1 8z"/><path d="M18.5 15.2l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span><span class="ak-tt">Todas as Skills, inclusive a Master</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.2 9.4v5.2l4.4-2.6z"/></svg></span><span class="ak-tt">Aulas gravadas</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.2 9.4v5.2l4.4-2.6z"/></svg></span><span class="ak-tt">28 aulas, liberadas em 3/12</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
           <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M12 8.5V21M5.5 12.5V19a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-6.5"/><path d="M12 8.5S10.6 4 8.2 4.6C6.4 5.1 6.9 8.5 9.2 8.5M12 8.5s1.4-4.5 3.8-3.9c1.8.5 1.3 3.9-1 3.9"/></svg></span><span class="ak-tt">Aula bônus</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 8.5c-2 0-3.5 1.6-3.5 3.5S6 15.5 8 15.5c3.4 0 4.6-7 8-7 2 0 3.5 1.6 3.5 3.5S18 15.5 16 15.5c-3.4 0-4.6-7-8-7z"/></svg></span><span class="ak-tt">Primeiros alunos: acesso vitalício a todo curso novo que eu lançar</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 8.5c-2 0-3.5 1.6-3.5 3.5S6 15.5 8 15.5c3.4 0 4.6-7 8-7 2 0 3.5 1.6 3.5 3.5S18 15.5 16 15.5c-3.4 0-4.6-7-8-7z"/></svg></span><span class="ak-tt">Quem entrar até 30/11: acesso vitalício a todo curso novo que eu lançar</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
         </ul>
       </div>
     </div>
   </div></section>
 
+  <!-- 1a. Pré-lançamento (22/11/2026): painel próprio, uma tela só -->
+  <section class="sec ak-pn ak-slz" id="curso-lanc" aria-label="Pré-lançamento"><div class="wrap ac-w">
+    <div class="ak-lz">
+      <span class="ak-lz-tag"><span class="ak-lc-d" aria-hidden="true"></span>Pré-lançamento</span>
+      <h2 class="title">Entre agora, <em>pague menos.</em></h2>
+      <p class="ak-lz-t">Preço promocional de lançamento, só até as aulas saírem.</p>
+      <ul class="ak-lz-l"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span><b class="ak-lz-nf">141</b> folhas de prompt <b>na hora</b></span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>Aulas e Skills liberadas em <b>3 de dezembro</b></span></li></ul>
+      <button type="button" class="btn ak-lz-go" id="ak-lz-go">Ver o preço</button>
+    </div>
+  </div></section>
+
+  <!-- 1b. O curso em números (19/11/2026): o que vem no curso, contado. Prompts e Skills abrem as páginas deles. -->
+  <section class="sec ak-sn ak-pn" id="curso-numeros" aria-label="O curso em números"><div class="wrap ac-w">
+    <header class="ac-hd ac-hd2"><h2 class="title">O curso <em>em números.</em></h2></header>
+    <dl class="ak-fx">
+      <div class="ak-fx-r"><dt class="num">28</dt><dd><b>aulas</b><span>em 7 módulos, da ideia ao post</span></dd></div>
+      <div class="ak-fx-r"><dt class="num" id="ak-nu-f">141</dt><dd><b>folhas de prompt</b><span>dos meus virais, na hora da compra</span></dd><a class="ak-fx-ir" href="#prompts" aria-label="Ver as folhas de prompt">Ver</a></div>
+      <div class="ak-fx-r"><dt class="num">5</dt><dd><b>Skills</b><span>inclusive a Master</span></dd><a class="ak-fx-ir" href="#skills" aria-label="Ver as Skills">Ver</a></div>
+      <div class="ak-fx-r"><dt class="num">12</dt><dd><b>estéticas</b><span>da Pulsar</span></dd></div>
+      <div class="ak-fx-r"><dt class="num">∞</dt><dd><b>vitalício</b><span>pra quem entrar até 30/11, em todo curso novo</span></dd></div>
+    </dl>
+  </div></section>
+
   <!-- 2. Aula inaugural grátis (ainda vai ser gravada: em breve + o me avisa que já existia) -->
-  <section class="sec ak-s2" id="aula-inaugural"><div class="wrap ac-w">
+  <section class="sec ak-s2 ak-pn" id="aula-inaugural"><div class="wrap ac-w">
     <div class="ak-aula mt-rv">
       <div class="ak-tb">
         <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
@@ -3505,45 +4013,48 @@ html.bx-on .foot{scroll-snap-align:end}
   </div></section>
 
   <!-- 3. O conteúdo: a grade do doc "Curso Pulsar · Grade das aulas" -->
-  <section class="sec ak-s3" id="curso-grade"><div class="wrap ac-w">
+  <section class="sec ak-s3 ak-pn" id="curso-grade"><div class="wrap ac-w">
     <header class="ac-hd ac-hd2">
       <h2 class="title">O que tem <em>dentro.</em></h2>
-      <p class="lead">27 aulas em 7 módulos, na ordem em que um Reel nasce: da ideia ao post.</p>
+      <p class="lead">28 aulas em 7 módulos, na ordem em que um Reel nasce: da ideia ao post. Liberadas em 3 de dezembro.</p>
     </header>
     <div class="ak-mods mt-rv">
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">0</span><span class="ak-mt"><span class="ac-sr">Módulo 0: </span>Boas-vindas</span><span class="ak-qt">2 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">O aluno vê quem ensina e o fluxo inteiro antes de entrar em qualquer etapa.</p><ol class="ak-aulas"><li><span class="ak-an num">0.1</span><span><b>Quem eu sou e o que você vai fazer</b><small>Por que o método funciona: do perfil parado a 110 mil seguidores em 70 dias</small></span></li><li><span class="ak-an num">0.2</span><span><b>O mapa: um Reel do zero ao post</b><small>As etapas do fluxo em ordem e onde cada IA entra</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">0.1</span><span><b>Quem eu sou</b></span></li><li><span class="ak-an num">0.2</span><span><b>O mapa do curso</b></span></li></ol></div></details>
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">1</span><span class="ak-mt"><span class="ac-sr">Módulo 1: </span>A ideia</span><span class="ak-qt">3 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">Tudo aqui acontece antes de abrir qualquer IA de imagem ou vídeo.</p><ol class="ak-aulas"><li><span class="ak-an num">1.1</span><span><b>Por que esse vídeo cresce</b><small>O algoritmo mede quem assistiu até o fim; mostrar o que ninguém vê segura a pessoa</small></span></li><li><span class="ak-an num">1.2</span><span><b>Ache a dipirona do seu nicho</b><small>Sair com 10 temas do próprio nicho que têm o que mostrar, não só o que falar</small></span></li><li><span class="ak-an num">1.3</span><span><b>Pesquisa sem errar o fato</b><small>Checar cada afirmação em fonte primária antes de escrever uma linha</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">1.1</span><span><b>Por que esse vídeo cresce</b></span></li><li><span class="ak-an num">1.2</span><span><b>Os temas do seu nicho</b></span></li><li><span class="ak-an num">1.3</span><span><b>A pesquisa</b></span></li></ol></div></details>
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">2</span><span class="ak-mt"><span class="ac-sr">Módulo 2: </span>O roteiro</span><span class="ak-qt">3 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">A narração é o primeiro portão: nenhuma imagem é pensada antes dela estar fechada.</p><ol class="ak-aulas"><li><span class="ak-an num">2.1</span><span><b>Narração que segura até o fim</b><small>Escrever 30 a 45 s de fala com a cadeia completa e um fecho que fecha</small></span></li><li><span class="ak-an num">2.2</span><span><b>O gancho em par</b><small>Decidir juntos a primeira fala e a primeira imagem</small></span></li><li><span class="ak-an num">2.3</span><span><b>Decupar em cenas</b><small>Dividir em cenas de até 6 s, cada uma com um evento e nenhum quadro repetido</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">2.1</span><span><b>A narração</b></span></li><li><span class="ak-an num">2.2</span><span><b>O gancho</b></span></li><li><span class="ak-an num">2.3</span><span><b>As cenas</b></span></li></ol></div></details>
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">3</span><span class="ak-mt"><span class="ac-sr">Módulo 3: </span>A imagem</span><span class="ak-qt">4 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">A imagem tem que sair certa do próprio prompt, sem depender de edição depois.</p><ol class="ak-aulas"><li><span class="ak-an num">3.1</span><span><b>Estética: escolher, testar, travar</b><small>Rodar um teste com uma imagem por estética e travar a escolhida no vídeo inteiro</small></span></li><li><span class="ak-an num">3.2</span><span><b>Prompt que sai certo de primeira</b><small>Escrever o objeto fiel, sem exagero, em 3 ângulos do mesmo instante</small></span></li><li><span class="ak-an num">3.3</span><span><b>O filtro das IAs</b><small>Passar pelo bloqueio trocando a palavra, não a intenção; abrir conversa nova quando a sessão suja</small></span></li><li><span class="ak-an num">3.4</span><span><b>Gerar imagem de graça</b><small>Gerar e aprovar as imagens no ChatGPT e no Gemini sem gastar crédito</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">3.1</span><span><b>A estética</b></span></li><li><span class="ak-an num">3.2</span><span><b>O prompt de imagem</b></span></li><li><span class="ak-an num">3.3</span><span><b>O filtro das IAs</b></span></li><li><span class="ak-an num">3.4</span><span><b>Imagem de graça</b></span></li></ol></div></details>
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">4</span><span class="ak-mt"><span class="ac-sr">Módulo 4: </span>O vídeo</span><span class="ak-qt">6 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">O maior módulo e o núcleo do curso. Vídeo só pra cena com ação; objeto parado fica como imagem.</p><ol class="ak-aulas"><li><span class="ak-an num">4.1</span><span><b>Qual gerador pra qual cena</b><small>Decidir por cena: Kling, Grok, Veo/Omni, Gemini ou só imagem parada</small></span></li><li><span class="ak-an num">4.2</span><span><b>Kling: o prompt curto</b><small>Escrever 15 a 40 palavras só com o que se move, o que fica parado e a velocidade</small></span></li><li><span class="ak-an num">4.3</span><span><b>Movimento que não parece IA</b><small>Limitar o movimento a milímetros sem congelar a cena; nada pulsando</small></span></li><li><span class="ak-an num">4.4</span><span><b>Frame final com câmera de verdade</b><small>Saber quando a cena pede frame final e escrevê-lo mudando posição e ângulo</small></span></li><li><span class="ak-an num">4.5</span><span><b>Grok: gente e o que os outros bloqueiam</b><small>Gerar cena com pessoa direto do texto ou a partir de uma imagem</small></span></li><li><span class="ak-an num">4.6</span><span><b>Veo, Flow e Omni: várias referências</b><small>Usar 3 imagens de referência pra cena complexa</small></span></li></ol></div></details>
-      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">5</span><span class="ak-mt"><span class="ac-sr">Módulo 5: </span>Voz e montagem</span><span class="ak-qt">5 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">A voz nunca é alterada: só se corta silêncio. O ajuste de tempo acontece na cena.</p><ol class="ak-aulas"><li><span class="ak-an num">5.1</span><span><b>Voz no ElevenLabs</b><small>Gerar a narração com a própria voz clonada ou com voz pronta</small></span></li><li><span class="ak-an num">5.2</span><span><b>Cortar silêncio sem estragar a voz</b><small>Tirar todo respiro entre frases sem acelerar nem mexer na voz</small></span></li><li><span class="ak-an num">5.3</span><span><b>Encaixar a fala na cena</b><small>Fazer cada frase entrar na cena dela; a folga vira silêncio no corte</small></span></li><li><span class="ak-an num">5.4</span><span><b>Texto, marca e margem segura</b><small>Motion legível, assinatura de abertura, marca d'água alternando, nada na área que o Instagram cobre</small></span></li><li><span class="ak-an num">5.5</span><span><b>Exportar</b><small>Exportar em 2K 30 fps, leve e sem travar no final</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">4.1</span><span><b>Qual gerador usar</b></span></li><li><span class="ak-an num">4.2</span><span><b>Kling</b></span></li><li><span class="ak-an num">4.3</span><span><b>Movimento natural</b></span></li><li><span class="ak-an num">4.4</span><span><b>Frame final</b></span></li><li><span class="ak-an num">4.5</span><span><b>Grok</b></span></li><li><span class="ak-an num">4.6</span><span><b>Veo, Flow e Omni</b></span></li></ol></div></details>
+      <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">5</span><span class="ak-mt"><span class="ac-sr">Módulo 5: </span>Voz e montagem</span><span class="ak-qt">6 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">5.1</span><span><b>A voz</b></span></li><li><span class="ak-an num">5.2</span><span><b>Clone de voz</b></span></li><li><span class="ak-an num">5.3</span><span><b>Edição da voz</b></span></li><li><span class="ak-an num">5.4</span><span><b>Fala e cena</b></span></li><li><span class="ak-an num">5.5</span><span><b>Texto e marca</b></span></li><li><span class="ak-an num">5.6</span><span><b>Exportar</b></span></li></ol></div></details>
       <details class="ak-mod" name="ak-mod"><summary><span class="ak-num num" aria-hidden="true">6</span><span class="ak-mt"><span class="ac-sr">Módulo 6: </span>Publicar e transformar em resultado</span><span class="ak-qt">4 aulas</span><svg class="ak-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="ak-mb"><p class="ak-md">O vídeo só termina quando vira seguidor, lead ou o próximo tema.</p><ol class="ak-aulas"><li><span class="ak-an num">6.1</span><span><b>Legenda que faz assistir</b><small>Título forte na 1ª linha, até 400 caracteres, curiosidade extra no comentário fixado</small></span></li><li><span class="ak-an num">6.2</span><span><b>CTA com palavra-chave</b><small>Montar o funil “comenta a palavra, recebe no direct” no ManyChat</small></span></li><li><span class="ak-an num">6.3</span><span><b>Postar em todas as redes</b><small>Publicar em Instagram, TikTok, YouTube, Facebook e Kwai, e denunciar quem copia</small></span></li><li><span class="ak-an num">6.4</span><span><b>Ler os números e escolher o próximo</b><small>Decidir o próximo vídeo pela retenção, não pela curtida</small></span></li></ol></div></details>
+        <div class="ak-mb"><ol class="ak-aulas"><li><span class="ak-an num">6.1</span><span><b>A legenda</b></span></li><li><span class="ak-an num">6.2</span><span><b>O CTA</b></span></li><li><span class="ak-an num">6.3</span><span><b>Postar em todas as redes</b></span></li><li><span class="ak-an num">6.4</span><span><b>Os números</b></span></li></ol></div></details>
     </div>
   </div></section>
 
   <!-- 4. Preço: só depois do clique -->
-  <section class="sec ak-s4" id="curso-preco"><div class="wrap ac-w">
+  <section class="sec ak-s4 ak-pn" id="curso-preco"><div class="wrap ac-w">
     <div class="ak-pc mt-rv">
       <h2 class="ac-t">Curso completo</h2>
       <p class="ak-pd">As aulas, as folhas de prompt e as Skills, tudo o que aparece nesta página.</p>
+      <p class="ak-pl">Preço promocional de pré-lançamento.</p><ul class="ak-lz-l"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span><b class="ak-lz-nf">141</b> folhas de prompt na hora</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>Aulas e Skills liberadas em 3 de dezembro</span></li></ul>
       <button type="button" class="btn ak-ver" id="ak-ver" aria-expanded="false" aria-controls="ak-pr">Ver o preço</button>
       <div class="ak-pr" id="ak-pr" hidden>
-        <p class="ak-v num" id="ak-v" tabindex="-1">R$ 397</p>
+        <p class="of-de num">Até 30/11. Depois, R$ 397</p>
+        <p class="ak-v num" id="ak-v" tabindex="-1">R$ 297</p>
+        <p class="ak-cp">com o cupom PULSAR100 de pré-lançamento</p>
         <button type="button" class="btn" id="ak-buy">Quero o curso</button>
-        <small class="ak-pn" id="ak-pn">Você preenche, eu te chamo no WhatsApp. Não paga nada agora.</small>
+        <small class="ak-pn" id="ak-pn">Você paga na Cakto, no Pix ou no cartão, com o cupom já aplicado. O acesso às folhas chega no seu e-mail na hora. E você tem 7 dias pra desistir, como manda a lei.</small>
       </div>
     </div>
   </div></section>
 
   <!-- 5. Portas pequenas: Prompts, Skills, Biblioteca grátis e Mentoria (Prompts e Skills saíram do menu em 18/11/2026) -->
-  <section class="sec ak-s5"><div class="wrap ac-w">
+  <section class="sec ak-s5 ak-pn"><div class="wrap ac-w">
     <div class="ak-portas">
       <a class="ak-porta mt-rv" href="#prompts"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.3 4.2H7.3a2.4 2.4 0 0 0-2.4 2.4v11a2.4 2.4 0 0 0 2.4 2.4h7.9a2.4 2.4 0 0 0 2.4-2.4v-4.9"/><path d="M8.5 10.4h3.3M8.5 13.5h5.5M8.5 16.6h3.9"/><path d="M17.9 2.3c.3 2.1 1.4 3.2 3.5 3.5-2.1.3-3.2 1.4-3.5 3.5-.3-2.1-1.4-3.2-3.5-3.5 2.1-.3 3.2-1.4 3.5-3.5Z"/></svg></span><b>Prompts</b><small>As folhas de prompt que eu uso</small><span class="ak-ir">Abrir</span></a>
       <a class="ak-porta mt-rv" href="#skills"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span><b>Skills</b><small>O Claude fazendo do meu jeito</small><span class="ak-ir">Ver</span></a>
@@ -3559,7 +4070,7 @@ html.bx-on .foot{scroll-snap-align:end}
     <a class="ac-back" href="#academy">Pulsar Academy</a>
     <h1 class="display">Eu te ensino a fazer <em>tudo.</em></h1>
     <p class="lead">Só você e eu, ao vivo, na sua área. Do motion ao vídeo completo, você faz vários vídeos comigo e fica com todas as minhas Skills, inclusive as que eu lançar depois.</p>
-    <div class="mt-cta"><button class="btn" type="button" data-vaga>Quero minha vaga</button><small>Você preenche, eu te chamo no WhatsApp.</small></div>
+    <div class="mt-cta"><a class="btn" href="#mentoria" data-wa-mt>Quero minha vaga</a><small>Últimas 4 vagas. A gente conversa no WhatsApp.</small></div>
     <div class="mt-fan">
       <figure><video data-src="assets/cerebro.mp4" poster="assets/cerebro.jpg" muted loop playsinline preload="none"></video></figure>
       <figure><video data-src="assets/capsula.mp4" poster="assets/capsula.jpg" muted loop playsinline preload="none"></video><figcaption>1,7 mi de visualizações</figcaption></figure>
@@ -3649,8 +4160,8 @@ html.bx-on .foot{scroll-snap-align:end}
     <div class="mt-plan mt-rv">
       <div><h2 style="margin-top:0">Mentoria individual</h2><p class="sub">Dois encontros, só você e eu, online e ao vivo.</p></div>
       <div class="inc"><span>O que vem junto</span><ul><li>2 encontros individuais de 6 horas</li><li>Todas as minhas Skills do Claude, inclusive a Master</li><li>Atlas personalizado pra sua área</li><li>Apostila do seu acompanhamento</li><li>Meu WhatsApp pessoal depois dos encontros</li><li>Uma aula bônus</li></ul></div>
-      <div><button class="btn" type="button" data-vaga style="margin-top:0">Ver o valor</button><p class="dep">O valor aparece no próximo passo. Você não paga nada agora.</p></div>
-      <div class="fim">Como é individual, atendo poucas pessoas por mês.</div>
+      <div><a class="btn" href="#mentoria" data-wa-mt style="margin-top:0">Quero minha vaga</a><p class="dep">Últimas 4 vagas. O valor eu te passo no WhatsApp.</p></div>
+      <div class="fim">Como é individual, restam só 4 vagas.</div>
     </div>
   </div></section>
 
@@ -3666,7 +4177,7 @@ html.bx-on .foot{scroll-snap-align:end}
 
   <section class="sec"><div class="wrap mt-c">
     <h2 class="title mt-rv">Sua vaga começa <em>numa conversa.</em></h2>
-    <div class="mt-cta mt-rv"><button class="btn" type="button" data-vaga>Quero minha vaga</button><small>Você preenche, eu te chamo no WhatsApp.</small></div>
+    <div class="mt-cta mt-rv"><a class="btn" href="#mentoria" data-wa-mt>Quero minha vaga</a><small>Últimas 4 vagas. A gente conversa no WhatsApp.</small></div>
   </div></section>
 
 </main>
@@ -3728,10 +4239,28 @@ html.bx-on .foot{scroll-snap-align:end}
         <ul class="sk-i"><li>Roteiros nas estruturas que já viralizaram</li><li>As 12 estéticas da Pulsar</li><li>Prompts prontos pra Kling, Veo, Grok e Higgsfield</li><li>Narração e montagem, passo a passo</li></ul>
         <button class="btn line sk-b" type="button" data-sk="master" aria-haspopup="dialog">Só a Skill Master</button>
       </article>
+      <article class="sk-c" data-sk="pmotion">
+        <div class="sk-p"></div>
+        <div class="sk-tx"><h2 class="sk-n">Pulsar Motion</h2><p class="sk-d">Coloca o motion da Pulsar por cima das imagens.</p></div>
+        <ul class="sk-i"><li>Zoom, texto, setas e brilho</li><li>No ritmo da narração</li></ul>
+        <a class="btn line sk-b" href="#academy">Vem no curso</a>
+      </article>
+      <article class="sk-c" data-sk="edicao">
+        <div class="sk-p"></div>
+        <div class="sk-tx"><h2 class="sk-n">Edição</h2><p class="sk-d">Monta o vídeo do jeito da Pulsar.</p></div>
+        <ul class="sk-i"><li>Corte e montagem</li><li>Narração encaixada em cada cena</li></ul>
+        <a class="btn line sk-b" href="#academy">Vem no curso</a>
+      </article>
       <article class="sk-c" data-sk="motion">
         <div class="sk-p"></div>
-        <div class="sk-tx"><h2 class="sk-n">Motion de Imagens</h2><p class="sk-d">Transforma imagens paradas em vídeo com movimento.</p></div>
+        <div class="sk-tx"><h2 class="sk-n">Vídeo só com Imagem</h2><p class="sk-d">Transforma imagens paradas em vídeo com movimento.</p></div>
         <ul class="sk-i"><li>Você manda as imagens</li><li>Ela devolve o vídeo com movimento</li></ul>
+        <a class="btn line sk-b" href="#academy">Vem no curso</a>
+      </article>
+      <article class="sk-c" data-sk="evidencia">
+        <div class="sk-p"></div>
+        <div class="sk-tx"><h2 class="sk-n">Pesquisa e Roteiro</h2><p class="sk-d">Procura o que a evidência diz sobre o tema e escreve o roteiro.</p></div>
+        <ul class="sk-i"><li>Pesquisa baseada em evidência</li><li>Narração, gancho e CTA</li></ul>
         <a class="btn line sk-b" href="#academy">Vem no curso</a>
       </article>
     </div>
@@ -3946,6 +4475,7 @@ html.bx-on .foot{scroll-snap-align:end}
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
+  var ACAB=null;   /* Acabamento 19/11: preenchido no fim deste script */
   var brl=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
   /* aviso curto no pé da tela: usado onde o modelo ainda não tem o passo seguinte (pagamento) */
   var avT=0;function aviso(t){var a=$("aviso");if(!a){a=document.createElement("div");a.id="aviso";a.className="aviso";a.setAttribute("role","status");document.body.appendChild(a)}a.textContent=t;void a.offsetWidth;a.classList.add("on");clearTimeout(avT);avT=setTimeout(function(){a.classList.remove("on")},2800)}
@@ -3956,6 +4486,7 @@ html.bx-on .foot{scroll-snap-align:end}
   var anchors={curso:"academy",oferta:"box",boxes:"box",tipos:"box",montar:"box",resumo:"box",como:"box","mentoria-preco":"mentoria","skills-lista":"skills"};
   var pgAntes="";
   function route(){
+    var y0=null;try{var hs=history.state;if(hs&&typeof hs.y==="number")y0=hs.y}catch(x){}   /* Acabamento 19/11: voltar/avançar devolve a posição */
     var h=(location.hash||"#inicio").slice(1),alvo=null;
     if(anchors[h]){alvo=h==="resumo"?"sum":h;h=anchors[h]}
     if(pages.indexOf(h)<0)h="inicio";
@@ -3967,7 +4498,7 @@ html.bx-on .foot{scroll-snap-align:end}
     if(alvo==="montar"||alvo==="sum"||alvo==="boxes")alvo="oferta";
     if(h==="comparar")cmpOn();else cmpOff();
     RINGS.forEach(function(r){r.lay()});LIQ.forEach(function(f){f()});
-    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else{var de=document.documentElement;de.style.scrollBehavior="auto";window.scrollTo(0,0);$("screen").scrollTop=0;de.style.scrollBehavior=""}
+    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else if(y0!==null){var dr=document.documentElement;requestAnimationFrame(function(){dr.style.scrollBehavior="auto";window.scrollTo(0,y0);$("screen").scrollTop=y0;dr.style.scrollBehavior=""})}else{var de=document.documentElement;de.style.scrollBehavior="auto";window.scrollTo(0,0);$("screen").scrollTop=0;de.style.scrollBehavior=""}
   }
   window.addEventListener("hashchange",route);
   /* tocar no item do menu (ou na marca) da página em que a pessoa já está leva de volta ao topo */
@@ -4188,17 +4719,17 @@ html.bx-on .foot{scroll-snap-align:end}
       '<button type="button" class="cf-nav" data-d="-1" aria-label="Anterior" style="transform:translateY(-50%) scaleX(-1)">'+CH+'</button><button type="button" class="cf-nav r" data-d="1" aria-label="Próximo">'+CH+'</button>';
     var stage=el.querySelector(".cf-stage"),amb=el.querySelector(".cf-amb img"),dots=el.querySelector(".cf-dots");
     stage.innerHTML=list.map(function(c,i){var h=VIEWS[c[0]],seg=h[1].indexOf("seguidor")>=0;
-      return '<div class="cf-card" data-i="'+i+'"><video muted loop playsinline preload="none" poster="assets/'+c[0]+'.jpg" data-src="assets/'+c[0]+'.mp4"></video><span class="cf-vig"></span><div class="cf-body"><span class="cf-tag">#'+(i<9?"0":"")+(i+1)+'</span><div class="cf-txt"><b>'+c[1]+'</b><span>– '+(seg?"+":"")+fmt(h[0])+" "+h[1]+'</span><s></s><a class="cf-cta" href="#box">Quero um assim '+AR+'</a></div></div></div>'}).join("");
+      return '<div class="cf-card" data-i="'+i+'"><video muted loop playsinline preload="none" poster="assets/'+c[0]+'.jpg" data-src="assets/'+c[0]+'.mp4"></video><span class="cf-vig"></span><i class="cf-dim"></i><div class="cf-body"><span class="cf-tag">#'+(i<9?"0":"")+(i+1)+'</span><div class="cf-txt"><b>'+c[1]+'</b><span>– '+(seg?"+":"")+fmt(h[0])+" "+h[1]+'</span><s></s><a class="cf-cta" href="#box">Quero um assim '+AR+'</a></div></div></div>'}).join("");
     dots.innerHTML=list.map(function(c,i){return '<button type="button" data-g="'+i+'" aria-label="Ir para '+c[1]+'"></button>'}).join("");
     var cards=stage.children,ds=dots.children;
     function lay(){for(var i=0;i<n;i++){var o=(i-idx+n)%n,c=cards[i],st=c.style,P;
-        if(o===0)P=["translateX(0px) scale(1) rotateY(0deg)",1,30,"brightness(1)"];
-        else if(o===1)P=["translateX(calc(var(--cw) * .864)) scale(.84) rotateY(-24deg)",.65,20,"brightness(.75)"];
-        else if(o===2)P=["translateX(calc(var(--cw) * 1.545)) scale(.68) rotateY(-38deg)",.38,10,"brightness(.55) blur(1px)"];
-        else if(o===n-1)P=["translateX(calc(var(--cw) * -.864)) scale(.84) rotateY(24deg)",.65,20,"brightness(.75)"];
-        else if(o===n-2)P=["translateX(calc(var(--cw) * -1.545)) scale(.68) rotateY(38deg)",.38,10,"brightness(.55) blur(1px)"];
-        else P=["translateX(0px) scale(.4) rotateY(0deg)",0,0,"brightness(.4) blur(2px)"];
-        st.transform=P[0];st.opacity=P[1];st.zIndex=P[2];st.filter=P[3];c.classList.toggle("on",o===0);toca(c.firstChild,o===0);ds[i].classList.toggle("on",o===0)}
+        if(o===0)P=["translateX(0px) scale(1) rotateY(0deg)",1,30,0];
+        else if(o===1)P=["translateX(calc(var(--cw) * .864)) scale(.84) rotateY(-24deg)",.65,20,.25];
+        else if(o===2)P=["translateX(calc(var(--cw) * 1.545)) scale(.68) rotateY(-38deg)",.38,10,.45];
+        else if(o===n-1)P=["translateX(calc(var(--cw) * -.864)) scale(.84) rotateY(24deg)",.65,20,.25];
+        else if(o===n-2)P=["translateX(calc(var(--cw) * -1.545)) scale(.68) rotateY(38deg)",.38,10,.45];
+        else P=["translateX(0px) scale(.4) rotateY(0deg)",0,0,.6];
+        st.transform=P[0];st.opacity=P[1];st.zIndex=P[2];st.setProperty("--dim",P[3]);c.classList.toggle("on",o===0);toca(c.firstChild,o===0);ds[i].classList.toggle("on",o===0)}
       amb.src="assets/"+list[idx][0]+".jpg"}
     function go(i){idx=((i%n)+n)%n;lay()}
     el.addEventListener("click",function(e){var b=e.target.closest(".cf-nav");if(b){go(idx+ +b.dataset.d);return}
@@ -4573,7 +5104,7 @@ html.bx-on .foot{scroll-snap-align:end}
     var SV_HT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.4C1.7 7.6 3.8 4.4 7.1 4.4c2 0 3.6 1.1 4.9 2.9 1.3-1.8 2.9-2.9 4.9-2.9 3.3 0 5.4 3.2 4.3 6.5-1.6 4.8-9.2 9.4-9.2 9.4Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>';
 
     if(modo==="tipos"){
-      var TP=[["pm-mix","Pulsar Motion","Só imagens com motion. O mais em conta."],["mv-meconio","Motion + Vídeo","Abre com uma cena animada."],["capsula","Vídeo Pulsar","Como os meus virais."]],c=1,arr=false,x0=0,y0=0;
+      var TP=[["pm-mix","Pulsar Motion","Imagens com motion e narração. O mais em conta."],["mv-meconio","Motion + Vídeo","Abre com uma cena animada."],["capsula","Vídeo Pulsar","Como os meus virais."]],c=1,arr=false,x0=0,y0=0;
       root.innerHTML='<div class="avd-stage" role="group" aria-label="Os três tipos de vídeo">'+TP.map(function(t,i){return '<button type="button" class="avd-it" data-i="'+i+'"><span class="avd-ph"><span class="avd-sc"><video muted loop playsinline preload="none" poster="assets/'+t[0]+'.jpg" data-src="assets/'+t[0]+'.mp4" aria-hidden="true" tabindex="-1"></video></span></span></button>'}).join("")+'</div>'+
         '<div class="avd-nm" aria-hidden="true"><span data-k="-1"></span><span data-k="0"></span><span data-k="1"></span></div>'+
         '<button type="button" class="avd-cta"><span class="avd-tg"></span><span class="avd-go">Ver como é feito<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 1.5v9M2.2 6.8 6 10.5l3.8-3.7"/></svg></span></button>';
@@ -4900,36 +5431,122 @@ html.bx-on .foot{scroll-snap-align:end}
     $("pm-x").onclick=function(){d.close()};$("pm-ir").onclick=function(){d.close();aviso("No site final, aqui abre o acesso à folha completa (sem download).")};
     d.addEventListener("click",function(e){if(e.target===d)d.close()})})();
 
-  /* oferta de lançamento: 20 Pulsar Motion. Preço só depois do clique; cupom troca R$ 2.000 por R$ 800 */
-  var CUPOM="PULSAR800"; /* o Renan troca o código do cupom aqui (maiúscula ou minúscula tanto faz) */
-  var VAGAS_500=10; /* lançamento: vagas restantes a R$ 500 (de 10). O Renan/Claude atualiza à mão quando alguém fecha. Em 0 a faixa some e volta o preço normal (R$ 2.000, ou R$ 800 com cupom) */
-  (function(){var of=$("oferta");if(!of)return;var cupomOk=false,
-      ICO='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
-      OK=ICO+'<path d="M3.5 8.4l3 3 6-6.6"/></svg>',ER=ICO+'<circle cx="8" cy="8" r="6.2"/><path d="M8 4.9v3.6M8 11.1h.01"/></svg>';
-    var ops=[].slice.call(of.querySelectorAll(".of-op"));
-    function marca(b){ops.forEach(function(o){var on=o===b;o.setAttribute("aria-checked",String(on));o.tabIndex=on?0:-1})}
-    of.addEventListener("click",function(e){var b=e.target.closest(".of-op");if(b)marca(b)});
-    of.addEventListener("keydown",function(e){var b=e.target.closest&&e.target.closest(".of-op");if(!b)return;var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(b)+d+ops.length)%ops.length];marca(n);n.focus()});
-    var vagas=Math.max(0,Math.min(10,parseInt(VAGAS_500,10)||0));
-    /* 18/11/2026: preço cheio R$ 2.000 pra todo mundo; o cupom (divulgado no story) dá R$ 500 nas 10 primeiras vagas e R$ 800 depois */
-    if(vagas>0){$("of-vg").hidden=false;$("of-dp").hidden=false;$("of-vg-n").textContent=vagas;
-      var bb="";for(var k=0;k<10;k++)bb+='<i'+(k<vagas?'':' class="x"')+'></i>';$("of-vg-b").innerHTML=bb;
-      $("of-dp").textContent="Com cupom, R$ 500 nas 10 primeiras vagas. Depois, R$ 800."}
-    else{var sel=of.querySelector(".pc-sel");if(sel)sel.style.display="none"} /* sem vagas de lançamento, some a etiqueta "Lançamento" */
-    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");});
-    function calmoOf(){return !!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)}
-    function rolaPreco(a,b){var el=$("of-v"),fmt=function(v){return "R$ "+Math.round(v).toLocaleString("pt-BR")};
-      if(calmoOf()){el.textContent=fmt(b);return}var t0=null,D=500;(function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent=fmt(a+(b-a)*e);if(p<1)requestAnimationFrame(f)})(performance.now())}
-    /* confete do Pricing: canvas-confetti (cdnjs) carregado só quando o cupom vale; se não carregar, segue sem */
-    function confete(btn){if(calmoOf()||!btn)return;var dispara=function(){var r=btn.getBoundingClientRect();window.confetti({particleCount:50,spread:60,origin:{x:(r.left+r.width/2)/innerWidth,y:(r.top+r.height/2)/innerHeight},colors:["#a16207","#d6a85a","#0c0a09","#e7e5e4"],ticks:200,gravity:1.2,decay:.94,startVelocity:30,shapes:["circle"]})};
-      if(window.confetti){dispara();return}var sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.3/confetti.browser.min.js";sc.onload=dispara;document.head.appendChild(sc)}
-    $("of-cp").addEventListener("submit",function(e){e.preventDefault();var inp=$("of-c"),m=$("of-cm"),v=inp.value.trim().toUpperCase();
-      if(!v){m.className="of-cm er";m.innerHTML=ER+"<span>Digite o código do cupom.</span>";inp.setAttribute("aria-invalid","true");inp.focus();return}
-      if(v!==String(CUPOM).toUpperCase()){m.className="of-cm er";m.innerHTML=ER+"<span>Esse cupom não vale. Confira o código.</span>";inp.setAttribute("aria-invalid","true");return}
-      var nv=vagas>0?500:800;cupomOk=true;inp.setAttribute("aria-invalid","false");$("of-de").hidden=false;rolaPreco(2000,nv);confete(this.querySelector("button"));$("of-u").textContent="pelos 20 vídeos · R$ "+(nv/20)+" cada";
-      m.className="of-cm ok";m.innerHTML=OK+"<span>Cupom aplicado. De R$ 2.000 por R$ "+nv+".</span>"});
-    $("of-c").addEventListener("input",function(){if(this.getAttribute("aria-invalid")==="true"){this.removeAttribute("aria-invalid");$("of-cm").innerHTML=""}});
-    $("of-ir").addEventListener("click",function(){var t=of.querySelector('.of-op[aria-checked="true"]');pbVaga("videos",{temas:t?t.getAttribute("data-tm"):"",cupom:cupomOk,preco:cupomOk?(vagas>0?"R$ 500 (cupom, vaga de lançamento)":"R$ 800 (cupom)"):"R$ 2.000"})});
+  /* Mentoria (19/11/2026): sem valor na página, "últimas 4 vagas" e os botões vão direto pro WhatsApp do Renan.
+     WA_MENTORIA: o link do WhatsApp (ex.: https://wa.me/55DDDNUMERO?text=...). Vazio = o botão avisa que o link ainda não entrou. */
+  var WA_MENTORIA="";
+  (function(){var bs=[].slice.call(document.querySelectorAll("[data-wa-mt]"));
+    bs.forEach(function(b){if(WA_MENTORIA){b.href=WA_MENTORIA;b.target="_blank";b.rel="noopener"}
+      b.addEventListener("click",function(e){if(WA_MENTORIA)return;e.preventDefault();if(typeof aviso==="function")aviso("O link do WhatsApp da mentoria ainda vai entrar aqui.")})});
+  })();
+  /* Pacotes Pulsar Motion de Black Friday (19/11/2026). Preço só depois do clique. Cada pacote é um produto na Cakto;
+     o cupom vai dentro do link (?coupon=), então a pessoa não digita nada. Os preços e links aqui têm que bater com a Cakto. */
+  var CUPOM_MOTION="PULSAR60",DESC_MOTION=60; /* cupom do Modo Black Friday da Cakto e o desconto dele, em % */
+  var PACOTES={"10":{cheio:997,link:"https://pay.cakto.com.br/wbpat4p"},"20":{cheio:1997,link:"https://pay.cakto.com.br/36vn8mu"},"40":{cheio:3997,link:"https://pay.cakto.com.br/dhbe5g7"}};
+  /* Página Vídeos: seletor de tipos (19/11/2026). Os 4 tipos vendidos. motion usa PACOTES (10/20/40 com cupom); os outros têm
+     preço cheio, sem cupom, e link próprio na Cakto. li = lista curta da tela bx-tipos; pc = lista do cartão de preço.
+     PX_TIPO = tipo escolhido (no bx-tipos ou no bx-pr); os dois seletores ficam iguais. */
+  var PX_TIPOS={
+    motion:{nome:"Pulsar Motion",vid:"assets/mo-real-23-loop.mp4",pos:"assets/mo-real-23.jpg",
+      fr:"Imagens 3D que ganham vida com zoom, texto, setas e brilho. Com narração.",
+      li:["10, 20 ou 40 Pulsar Motion de até 45 s","Imagens 3D de saúde com motion","Narração com a sua voz ou voz de IA","Temas da sua área, aprovados por você","1 ajuste por vídeo"]},
+    mv:{nome:"Pulsar Motion + Vídeo",pnome:"Pulsar Motion + Vídeo 10",n:10,cheio:2497,link:"https://pay.cakto.com.br/4y8b4if",vid:"assets/mx-mv-meconio.mp4",pos:"assets/mx-mv-meconio-sn.jpg",
+      fr:"Os dois juntos: Vídeos Pulsar com cenas animadas por IA e Pulsar Motion.",
+      li:["4 Vídeos Pulsar completos","6 Pulsar Motion","Narração com a sua voz ou voz de IA","Temas da sua área, aprovados por você","1 ajuste por vídeo"],
+      pc:["4 Vídeos Pulsar completos, com cenas animadas por IA","6 Pulsar Motion de até 45 segundos","Temas da sua área, escolhidos por mim, por você ou misturados","Narração com a sua voz ou voz de IA","1 ajuste por vídeo"]},
+    vp:{nome:"Vídeo Pulsar",pnome:"Vídeo Pulsar 10",n:10,cheio:3997,link:"https://pay.cakto.com.br/56swau6",vid:"assets/vt-cordao.mp4",pos:"assets/vt-cordao.jpg",
+      fr:"Cada cena é animada por IA, do começo ao fim, como nos virais.",
+      li:["10 Vídeos Pulsar completos","Cenas animadas por IA","Narração com a sua voz ou voz de IA","Temas da sua área, aprovados por você","1 ajuste por vídeo"],
+      pc:["10 Vídeos Pulsar completos, com cenas animadas por IA","Temas da sua área, escolhidos por mim, por você ou misturados","Narração com a sua voz ou voz de IA","1 ajuste por vídeo"]},
+    estreia:{nome:"Pulsar Estreia",pnome:"Pulsar Estreia",n:5,cheio:1250,link:"https://pay.cakto.com.br/vdd48uk",vid:"assets/vt-lagarto.mp4",pos:"assets/vt-lagarto.jpg",
+      fr:"Pra começar: um pouco de cada tipo e um viral da Pulsar refeito pra você.",
+      li:["2 Vídeos Pulsar","2 Pulsar Motion","1 viral da Pulsar com a sua voz e o seu nome","Narração com a sua voz ou voz de IA","Temas da sua área, aprovados por você"],
+      pc:["2 Vídeos Pulsar e 2 Pulsar Motion","1 viral da Pulsar refeito com a sua voz e o seu nome","Temas da sua área, escolhidos por mim, por você ou misturados","Narração com a sua voz ou voz de IA","1 ajuste por vídeo"]}};
+  var PX_TIPO="motion",pxBrl=function(v){return "R$ "+v.toLocaleString("pt-BR",{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2})};
+  var pxTemas=function(){var t=document.querySelector('#oferta .of-op[aria-checked="true"]');return t?t.getAttribute("data-tm"):""};
+  var pxTipoOuvintes=[];
+  function pxTipo(t){if(!PX_TIPOS[t])return;PX_TIPO=t;
+    [].forEach.call(document.querySelectorAll(".tp-op[data-tp]"),function(o){var on=o.getAttribute("data-tp")===t;o.setAttribute("aria-checked",String(on));o.tabIndex=on?0:-1});
+    pxTipoOuvintes.forEach(function(f){f(t)})}
+  /* cada grupo .tp-ops é um radiogroup: clique escolhe, setas andam e escolhem */
+  [].forEach.call(document.querySelectorAll(".tp-ops"),function(g){var ops=[].slice.call(g.querySelectorAll(".tp-op"));
+    ops.forEach(function(o){o.addEventListener("click",function(){pxTipo(o.getAttribute("data-tp"))});
+      o.addEventListener("keydown",function(e){var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(o)+d+ops.length)%ops.length];pxTipo(n.getAttribute("data-tp"));n.focus()})})});
+  /* tela bx-tipos: troca frase, lista e vídeo; o vídeo só toca enquanto a tela aparece */
+  (function(){var sec=$("bx-tipos"),v=$("tp-v");if(!sec||!v)return;var vis=false,calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),
+      CKI='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg>';
+    function toca(){if(calmo)return;if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    function mostra(t){var T=PX_TIPOS[t];$("tp-fr").textContent=T.fr;
+      $("tp-li").innerHTML=T.li.map(function(x){return "<li>"+CKI+"<span>"+x+"</span></li>"}).join("");
+      if(v.getAttribute("data-src")!==T.vid){v.pause();v.setAttribute("data-src",T.vid);v.poster=T.pos;v.removeAttribute("src");v.load();if(vis)toca()}}
+    pxTipoOuvintes.push(mostra);mostra(PX_TIPO);
+    if(window.IntersectionObserver)new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)toca();else v.pause()},{threshold:.35}).observe(sec);
+  })();
+  (function(){var of=$("oferta");if(!of)return;
+    function radios(sel,cb){var ops=[].slice.call(of.querySelectorAll(sel));
+      function marca(b){ops.forEach(function(o){var on=o===b;o.setAttribute("aria-checked",String(on));o.tabIndex=on?0:-1});if(cb)cb(b)}
+      ops.forEach(function(o){o.addEventListener("click",function(){marca(o)});
+        o.addEventListener("keydown",function(e){var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;if(!d)return;e.preventDefault();var n=ops[(ops.indexOf(o)+d+ops.length)%ops.length];marca(n);n.focus()})});
+      return ops}
+    var brl=pxBrl,tms=radios(".of-op",function(){link();try{document.dispatchEvent(new CustomEvent("pxtemas"))}catch(x){}}),temas=pxTemas;
+    var pk="20",ft=function(a){$("of-ft").innerHTML=a.map(function(x){return "<li>"+x+"</li>"}).join("")};
+    function link(){var u;if(PX_TIPO==="motion")u=PACOTES[pk].link+"?coupon="+encodeURIComponent(CUPOM_MOTION)+"&utm_source=site&utm_content="+encodeURIComponent(temas());
+      else u=PX_TIPOS[PX_TIPO].link+"?utm_source=site&utm_content="+encodeURIComponent(temas());$("of-ir").href=u}
+    function mostra(n){var p=PACOTES[n];if(!p)return;pk=n;if(PX_TIPO!=="motion"){link();return}var por=Math.round(p.cheio*(100-DESC_MOTION))/100;
+      $("of-nm").textContent="Pulsar Motion "+n;$("of-de").textContent="Até 30/11. Depois, "+brl(p.cheio);$("of-v").textContent=brl(por);
+      $("of-u").textContent="com o cupom "+CUPOM_MOTION+" · "+brl(Math.round(por/Number(n)*100)/100)+" cada";
+      ft([n+" vídeos de até 45 segundos","Temas da sua área, escolhidos por mim, por você ou misturados","Roteiro, imagens e motion","Narração com a sua voz ou voz de IA","1 ajuste por vídeo"]);
+      $("of-ir").textContent="Quero o Pulsar Motion "+n;link()}
+    /* Página Vídeos: seletor de tipos (19/11/2026): o cartão muda com o tipo. Só o Motion tem 10·20·40, selo, "De" riscado e cupom */
+    function tipo(t){var m=t==="motion";$("of-pks").hidden=!m;$("of-sel").hidden=!m;$("of-de").hidden=!m;$("of-card").classList.toggle("pc-sem",!m);
+      $("of-nt").textContent=m?"Você paga na Cakto, no Pix ou no cartão, com o cupom já aplicado. Depois eu te chamo no WhatsApp pra combinar os temas. Você aprova cada roteiro antes de eu fazer: o que vai ao ar na sua área passa por você. E tem 7 dias pra desistir, como manda a lei.":"Você paga na Cakto, no Pix ou no cartão. Depois eu te chamo no WhatsApp pra combinar os temas. Você aprova cada roteiro antes de eu fazer: o que vai ao ar na sua área passa por você. E tem 7 dias pra desistir, como manda a lei.";
+      if(m){mostra(pk);return}var T=PX_TIPOS[t];$("of-nm").textContent=T.pnome;$("of-v").textContent=brl(T.cheio);
+      $("of-u").textContent=T.n+" vídeos · "+brl(Math.round(T.cheio/T.n*100)/100)+" cada";ft(T.pc);$("of-ir").textContent="Quero o "+T.pnome;link()}
+    radios(".of-pk",function(b){mostra(b.getAttribute("data-pk"))});
+    var CKI='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg>';
+    function curta(t){var l=$("pr-li");if(l)l.innerHTML=PX_TIPOS[t].li.map(function(x){return "<li>"+CKI+"<span>"+x+"</span></li>"}).join("")}
+    pxTipoOuvintes.push(tipo);pxTipoOuvintes.push(curta);tipo(PX_TIPO);curta(PX_TIPO);
+    $("of-ver").addEventListener("click",function(){var pr=$("of-pr");pr.hidden=false;this.hidden=true;this.setAttribute("aria-expanded","true");var l=$("pr-li");if(l)l.hidden=true});
+  })();
+  /* Página Vídeos: comparativo (19/11/2026). Monta a tabela da tela bx-cmp. Celular (caixa < 640 px): 2 colunas, cada uma com
+     um <select> do tipo; computador: as 4. Remonta quando a largura cruza o limite. Valor: texto, [1,"txt"] = sim com texto,
+     1 = sim, 0 = não. "Ver o preço" de cada coluna mostra o valor e o botão de compra daquela coluna. */
+  (function(){var box=$("cp");if(!box)return;var ORD=["motion","mv","vp","estreia"],par=["motion","vp"],abertos={},largo=null;
+    var LIN=[["Quantos vídeos",["10, 20 ou 40","10","10","5"]],
+      ["Pulsar Motion",[[1,"Todos"],[1,"6"],0,[1,"2"]]],
+      ["Animados por IA",[0,[1,"4"],[1,"10"],[1,"2"]]],
+      ["Narração",[[1,"Sua voz ou IA"],[1,"Sua voz ou IA"],[1,"Sua voz ou IA"],[1,"Sua voz ou IA"]]],
+      ["Viral refeito pra você",[0,0,0,1]],
+      ["Cada Motion",["Até 45 s","Até 45 s",0,"Até 45 s"]],
+      ["Black Friday",['<span class="cp-bf"><b>60%</b> <span>até 30/11</span></span>',0,0,0]]];
+    var SIM='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg>';
+    function cel(x){if(x===0)return '<span class="cp-n" aria-hidden="true">—</span><span class="ps-sr">Não</span>';
+      if(x===1)return '<span class="cp-y">'+SIM+'<span class="ps-sr">Sim</span></span>';
+      if(typeof x==="object")return '<span class="cp-y">'+SIM+'<span><span class="ps-sr">Sim, </span>'+x[1]+'</span></span>';return x}
+    function preco(t){var T=PX_TIPOS[t];if(!abertos[t])return '<button type="button" class="cp-ver" data-cp="'+t+'" aria-label="Ver o preço do '+T.nome+'">Ver o preço</button>';
+      var tm=encodeURIComponent(pxTemas());
+      if(t==="motion"){var p=PACOTES["10"],por=Math.round(p.cheio*(100-DESC_MOTION))/100;
+        return '<div class="cp-pr"><span class="cp-dp">Até 30/11. Depois, '+pxBrl(p.cheio)+'</span><b>'+pxBrl(por)+'</b><small>10 vídeos, cupom '+CUPOM_MOTION+'</small><a class="btn" href="'+p.link+'?coupon='+CUPOM_MOTION+'&utm_source=site&utm_content='+tm+'" aria-label="Quero o Pulsar Motion 10">Quero</a><small class="cp-ob">Dá pra somar no checkout</small><button type="button" class="bx-lk" data-bx="bx-pr" data-ver data-cpm>Ver 20 e 40</button></div>'}
+      return '<div class="cp-pr"><s aria-hidden="true" class="cp-vz">&nbsp;</s><b>'+pxBrl(T.cheio)+'</b><small>'+T.n+' vídeos</small><a class="btn" href="'+T.link+'?utm_source=site&utm_content='+tm+'" aria-label="Quero o '+T.pnome+'">Quero</a></div>'}
+    function monta(){var cols=largo?ORD:par,h='<table class="cp-t"><caption class="ps-sr">Compare os pacotes</caption><colgroup><col class="cp-c0">'+cols.map(function(){return "<col>"}).join("")+'</colgroup><thead><tr><td></td>';
+      cols.forEach(function(t,k){var T=PX_TIPOS[t];h+='<th scope="col"><img class="cp-po" src="'+T.pos+'" alt="" loading="lazy" decoding="async">';
+        if(largo)h+='<span class="cp-nm">'+T.nome+'</span>';
+        else h+='<span class="cp-ch"><span class="cp-nm" aria-hidden="true">'+T.nome+'</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg><label class="ps-sr" for="cp-s'+k+'">Tipo na coluna '+(k+1)+'</label><select class="cp-sl" id="cp-s'+k+'" data-k="'+k+'">'+ORD.map(function(o){return '<option value="'+o+'"'+(o===t?" selected":"")+'>'+PX_TIPOS[o].nome+'</option>'}).join("")+'</select></span>';
+        h+='</th>'});
+      h+='</tr></thead><tbody>';
+      LIN.forEach(function(l){h+='<tr><th scope="row">'+l[0]+'</th>'+cols.map(function(t){return "<td>"+cel(l[1][ORD.indexOf(t)])+"</td>"}).join("")+'</tr>'});
+      h+='<tr><th scope="row">Preço</th>'+cols.map(function(t){return "<td>"+preco(t)+"</td>"}).join("")+'</tr></tbody></table>';
+      h+='<p class="cp-em">'+SIM+'<span>Em todos: temas da sua área, aprovados por você, e 1 ajuste por vídeo.</span></p>';box.innerHTML=h}
+    box.addEventListener("change",function(e){var s=e.target.closest(".cp-sl");if(!s)return;var k=+s.getAttribute("data-k"),o=1-k,v=s.value;
+      var troca=par[o]===v;if(troca)par[o]=par[k];par[k]=v;monta();if(ACAB)ACAB.cpCol(box,k,troca?o:-1);var n=$("cp-s"+k);if(n)n.focus()});
+    box.addEventListener("click",function(e){var b=e.target.closest(".cp-ver");if(b){var t=b.getAttribute("data-cp");abertos[t]=1;
+        var col=(largo?ORD:par).indexOf(t),td=box.querySelectorAll("tbody tr:last-child td")[col],tb=box.querySelector("tbody"),y0=tb?tb.getBoundingClientRect().top:0;
+        if(td)td.innerHTML=preco(t);else{monta();td=box.querySelectorAll("tbody tr:last-child td")[col]}
+        if(ACAB&&tb)ACAB.cpAbre(tb,y0-tb.getBoundingClientRect().top,td&&td.querySelector(".cp-pr"));
+        var l=td&&td.querySelector("a");if(l)l.focus();return}
+      if(e.target.closest("[data-cpm]"))pxTipo("motion")});
+    function mede(){var w=box.clientWidth>=640;if(w!==largo){largo=w;monta()}}
+    document.addEventListener("pxtemas",monta);
+    mede();if(window.ResizeObserver)new ResizeObserver(mede).observe(box);else window.addEventListener("resize",mede);
   })();
 
   /* Vídeos em telas cheias (18/11/2026): mede o rolador e o menu, liga os botões data-bx e toca os vídeos de cada tela quando ela aparece */
@@ -4939,7 +5556,7 @@ html.bx-on .foot{scroll-snap-align:end}
     window.bxMede=function(){var s=rolador(),H=s?s.clientHeight:0,tp=pills?(parseFloat(getComputedStyle(pills).top)||0):0,
       T=pills?Math.round(pills.offsetHeight+tp+4):74;if(H)de.style.setProperty("--bxh",H+"px");else de.style.removeProperty("--bxh");de.style.setProperty("--bxt",T+"px");var h0=$("bx-ab"),y0=h0?h0.getBoundingClientRect().top+(s?s.scrollTop:window.scrollY):0;if(h0&&h0.offsetParent)de.style.setProperty("--bxh0",Math.max(0,Math.round(y0-T))+"px")};
     /* no celular a altura vem do CSS (100svh, que não muda quando a barra do Safari some e volta); só mede de novo se a largura mudar */
-    var lw=window.innerWidth;bxMede();window.addEventListener("resize",function(){if(rolador()||window.innerWidth!==lw){lw=window.innerWidth;bxMede()}});window.addEventListener("orientationchange",function(){setTimeout(bxMede,250)});
+    var lw=window.innerWidth;bxMede();window.addEventListener("resize",function(){if(rolador()||window.innerWidth!==lw){lw=window.innerWidth;bxMede()}});
     bx.addEventListener("click",function(e){var b=e.target.closest("[data-bx]");if(!b)return;
       if(b.hasAttribute("data-ver")){var pr=$("of-pr");if(pr&&pr.hidden)$("of-ver").click()}
       var el=$(b.getAttribute("data-bx"));if(!el)return;try{el.scrollIntoView({block:"start",behavior:calmo?"auto":"smooth"})}catch(x){el.scrollIntoView()}});
@@ -4948,34 +5565,78 @@ html.bx-on .foot{scroll-snap-align:end}
     if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!calmo)toca(e.target);else e.target.pause()})},{threshold:.4});vs.forEach(function(v){io.observe(v)})}
     else if(!calmo)vs.forEach(toca);
   })();
+  /* Tela "Como eu faço o seu" (19/11/2026): relógio próprio de 13 s que troca a etapa (data-st 1 a 5 no #fz), anda a agulha
+     e acende os clipes das trilhas. O Motion real (mo-real-9-loop) volta pro começo quando entra (etapa 3), então o texto
+     gravado nele bate com os clipes da trilha Texto: "Seu intestino" de 35% a 56%, "Linha direta" de 56% a 75%.
+     Só roda (e o vídeo só toca) enquanto a tela aparece.
+     Com "reduzir movimento" mostra o estado final parado. O nome digitado só muda o texto na tela: não envia nem salva. */
+  (function(){var R=$("fz");if(!R)return;var sec=$("bx-proc"),ag=$("fz-ag"),nm=$("fz-nm"),nmBox=$("fz-nome"),nmT=$("fz-nome-t"),nmC=$("fz-cn"),
+      lis=[].slice.call($("fz-st").children),clips=[].slice.call(R.querySelectorAll(".fz-c")),vids=[].slice.call(R.querySelectorAll("video")),
+      calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),
+      T=13000,ST=[0,2200,4600,7300,9800],
+      tc=0,st=0,run=false,raf=0,last=0,hold=false,dentro=false,fl=[].slice.call($("fz-fl").children),flk=-1;
+    /* onda da trilha Voz (desenho fixo) */
+    (function(){var s='<svg viewBox="0 0 160 20" preserveAspectRatio="none" fill="currentColor" opacity=".72">';for(var i=0;i<80;i++){var h=3+15*Math.abs(Math.sin(i*.61)*Math.cos(i*.17+1));s+='<rect x="'+(i*2+.4)+'" y="'+((20-h)/2).toFixed(2)+'" width="1.2" height="'+h.toFixed(2)+'" rx=".6"/>'}$("fz-cv").innerHTML=s+"</svg>"})();
+    var agZ=ag.parentNode,agW=agZ.clientWidth||0;
+    if(window.ResizeObserver)new ResizeObserver(function(){agW=agZ.clientWidth||0;aplica(tc)}).observe(agZ);
+    else window.addEventListener("resize",function(){agW=agZ.clientWidth||0});
+    function etapa(t){for(var k=ST.length;k>1;k--)if(t>=ST[k-1])return k;return 1}
+    function aplica(t){var s=etapa(t);
+      if(s!==st){st=s;R.setAttribute("data-st",s);
+        lis.forEach(function(li,i){li.classList.toggle("on",i+1===s);li.classList.toggle("ok",i+1<s)});
+        clips.forEach(function(c){c.classList.toggle("on",s>=+c.getAttribute("data-k"))});
+        if(s===3&&run){var b=vids[0];try{if(b.readyState)b.currentTime=0}catch(x){}if(b&&b.readyState<3)trava()}}
+      var fd=t-ST[1],fon=s===2&&fd<1500&&!calmo;R.classList.toggle("fz-fl-on",fon);
+      if(fon){var k=Math.floor(fd/150)%fl.length;if(k!==flk){if(fl[flk])fl[flk].classList.remove("on");fl[k].classList.add("on");flk=k}}
+      ag.style.transform="translateX("+(t/T*agW).toFixed(1)+"px)";R.classList.toggle("fz-fim",run&&!calmo&&t>T-350)}
+    function passo(now){var dt=Math.min(now-last,100);last=now;if(!hold&&!espera)tc=(tc+dt)%T;R.classList.toggle("fz-espera",espera);aplica(tc);raf=requestAnimationFrame(passo)}
+    /* Acabamento 19/11: com conexão lenta o relógio espera o Motion carregar (até 4 s), pra agulha, clipes e vídeo andarem juntos */
+    var espera=false,tEs=0;function solta(){espera=false;clearTimeout(tEs)}function trava(){if(!run)return;espera=true;clearTimeout(tEs);tEs=setTimeout(solta,4000)}
+    if(vids[0]){vids[0].addEventListener("waiting",function(){if(st>=3)trava()});vids[0].addEventListener("playing",solta);vids[0].addEventListener("canplay",solta)}
+    function toca(v){if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");var q=v.play();if(q&&q.catch)q.catch(function(){})}
+    function liga(){if(run||calmo)return;run=true;R.classList.add("vivo");vids.forEach(toca);last=performance.now();raf=requestAnimationFrame(passo)}
+    function desliga(){if(!run)return;run=false;R.classList.remove("vivo");cancelAnimationFrame(raf);vids.forEach(function(v){v.pause()})}
+    function pula5(){if(!calmo&&tc<ST[4])tc=ST[4]+60;if(calmo)aplica(T-1)}
+    if(calmo)aplica(T-1);else aplica(0);
+    if(window.IntersectionObserver){new IntersectionObserver(function(es){es.forEach(function(e){dentro=e.isIntersecting;if(dentro&&!document.hidden)liga();else desliga()})},{threshold:.35}).observe(sec)}
+    else{dentro=true;liga()}
+    document.addEventListener("visibilitychange",function(){if(document.hidden)desliga();else if(dentro)liga()});
+    nm.addEventListener("input",function(){var v=nm.value.replace(/\s+/g," ").trim().slice(0,40),n=v.length;
+      nmT.textContent=v||"Seu nome";nmC.textContent=v||"Seu nome";nmBox.setAttribute("data-l",n>28?"4":n>18?"3":n>11?"2":"1");
+      R.classList.toggle("fz-nm-on",!!v);if(v)pula5()});
+    nm.addEventListener("focus",function(){hold=true;pula5()});
+    nm.addEventListener("blur",function(){hold=false});
+    nm.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();nm.blur()}});
+  })();
   /* biblioteca de Motion (página Vídeos): porte do "Filterable Blog Index" do 21st.dev (olewandowski1/blog-3) pra JS puro.
      Só Pulsar Motion REAIS (só imagem + motion, sem cena de vídeo de IA). Cada item: v = nome do arquivo em assets
      (precisa ter v.mp4 inteiro, v-loop.mp4 e v.jpg), t = título, area = área (vira pílula de filtro sozinha), s = duração em segundos.
-     O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui. */
+     O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui.
+     19/11/2026: ordem pelos mais impactantes; os da Safira (abscesso perianal e fístula) abrem a lista; o do cérebro foi pro fim. */
   var MOTION_LIB=[
-    {v:"mo-real-4",t:"O cérebro não sente dor",area:"Neurocirurgia",s:27},
-    {v:"mo-real-20",t:"Por que pedra no rim dói tanto?",area:"Urologia",s:30},
-    {v:"mo-real-23",t:"Nos filmes, o coração para",area:"Cardiologia",s:31},
-    {v:"mo-real-5",t:"Por que no avião dá mais gases?",area:"Gastro",s:25},
+    {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
+    {v:"mo-real-14",t:"Drenou o abscesso: fístula anal",area:"Proctologia",s:30},
     {v:"mo-real-24",t:"Teu olho tem um buraco",area:"Oftalmologia",s:28},
+    {v:"mo-real-18",t:"Raiva",area:"Picadas e mordidas",s:32},
+    {v:"mo-real-19",t:"Pisou num prego enferrujado?",area:"Infectologia",s:30},
+    {v:"mo-real-23",t:"Nos filmes, o coração para",area:"Cardiologia",s:31},
     {v:"mo-real-11",t:"Cagar com celular",area:"Proctologia",s:33},
     {v:"mo-real-16",t:"O ferrão da abelha",area:"Picadas e mordidas",s:28},
+    {v:"mo-real-17",t:"Água-viva",area:"Picadas e mordidas",s:30},
+    {v:"mo-real-15",t:"Como o mosquito pica",area:"Picadas e mordidas",s:27},
+    {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
+    {v:"mo-real-20",t:"Por que pedra no rim dói tanto?",area:"Urologia",s:30},
+    {v:"mo-real-12",t:"Fissura anal: dor de caco de vidro",area:"Proctologia",s:28},
+    {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
     {v:"mo-real-22",t:"Metal na ressonância",area:"Exames",s:30},
     {v:"mo-real-25",t:"Por que o dedo enruga na água?",area:"Curiosidades",s:27},
-    {v:"mo-real-19",t:"Pisou num prego enferrujado?",area:"Infectologia",s:30},
     {v:"mo-real-21",t:"Apendicite",area:"Cirurgia",s:32},
-    {v:"mo-real-15",t:"Como o mosquito pica",area:"Picadas e mordidas",s:27},
     {v:"mo-real-7",t:"Seu fígado filtra tudo",area:"Gastro",s:26},
-    {v:"mo-real-12",t:"Fissura anal: dor de caco de vidro",area:"Proctologia",s:28},
-    {v:"mo-real-17",t:"Água-viva",area:"Picadas e mordidas",s:30},
-    {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
-    {v:"mo-real-13",t:"Sangue nas fezes nem sempre é o que parece",area:"Gastro",s:29},
-    {v:"mo-real-18",t:"Raiva",area:"Picadas e mordidas",s:32},
     {v:"mo-real-9",t:"Seu intestino conversa com o cérebro",area:"Gastro",s:25},
-    {v:"mo-real-14",t:"Drenou o abscesso: fístula anal",area:"Proctologia",s:30},
-    {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
-    {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
-    {v:"mo-real-1",t:"Operou a barriga?",area:"Cirurgia",s:31}
+    {v:"mo-real-13",t:"Sangue nas fezes nem sempre é o que parece",area:"Gastro",s:29},
+    {v:"mo-real-5",t:"Por que no avião dá mais gases?",area:"Gastro",s:25},
+    {v:"mo-real-1",t:"Operou a barriga?",area:"Cirurgia",s:31},
+    {v:"mo-real-4",t:"O cérebro não sente dor",area:"Neurocirurgia",s:27}
   ];
   (function(){var root=$("mlb");if(!root)return;var fEl=$("mlb-f"),ftEl=$("mlb-ft"),gEl=$("mlb-g"),
       calmo=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches),
@@ -5002,7 +5663,7 @@ html.bx-on .foot{scroll-snap-align:end}
         (vs.length>1?'<div class="mlb-nv"><button type="button" class="mlb-ar" data-d="-1" aria-label="Vídeo anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button><span class="num">'+(vs.indexOf(frente)+1)+' de '+vs.length+'</span><button type="button" class="mlb-ar" data-d="1" aria-label="Próximo vídeo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button></div>':'');
       gEl.className="mlb-g"+(resto.length===1?" um":resto.length===2?" dois":"");gEl.hidden=!resto.length;
       gEl.innerHTML=resto.map(function(c){var i=MOTION_LIB.indexOf(c);return '<li><button type="button" class="mlb-c" data-i="'+i+'" aria-label="Ver em destaque: '+esc(c.t)+'"><span class="mlb-m">'+vid(c,false)+chip(c)+'</span><span class="mlb-b">'+esc(c.area)+'</span><b>'+esc(c.t)+'</b></button></li>'}).join("");
-      botao();liga()}
+      botao();if(pulo){pulo=0;clearTimeout(tL);tL=setTimeout(liga,220)}else liga()}
     function botao(){var b=$("mlb-pp");if(!b)return;b.innerHTML=(parado?PLAY+"Tocar":PAUSE+"Pausar");b.setAttribute("aria-pressed",String(parado));b.setAttribute("aria-label",parado?"Tocar o vídeo":"Pausar o vídeo")}
     function toca(v){if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");var q=v.play();if(q&&q.catch)q.catch(function(){})}
     /* toca sozinho e mudo quando aparece na tela; com movimento reduzido fica o quadro parado até tocar em "Tocar" */
@@ -5012,9 +5673,9 @@ html.bx-on .foot{scroll-snap-align:end}
         if(e.isIntersecting&&!parado&&!(calmo&&!naFrente))toca(v);else v.pause()})},{threshold:.25});
       vs.forEach(function(v){io.observe(v)})}
     root.addEventListener("contextmenu",function(e){if(e.target.closest(".mlb-m"))e.preventDefault()});
-    function passa(d){var vs=visiveis();if(vs.length<2)return;var i=vs.indexOf(frente);frente=vs[(i+d+vs.length)%vs.length];render()}
-    var tx0=null,ty0=0;ftEl.addEventListener("touchstart",function(e){if(!e.target.closest(".mlb-m"))return;tx0=e.touches[0].clientX;ty0=e.touches[0].clientY},{passive:true});
-    ftEl.addEventListener("touchend",function(e){if(tx0===null)return;var t=e.changedTouches[0],dx=t.clientX-tx0,dy=t.clientY-ty0;tx0=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.3)passa(dx<0?1:-1)},{passive:true});
+    function passa(d){var vs=visiveis();if(vs.length<2)return;var i=vs.indexOf(frente);frente=vs[(i+d+vs.length)%vs.length];ftEl.setAttribute("data-dir",d);pulo=1;render()}
+    var tx0=null,ty0=0,tt0=0,pulo=0,tL=0;ftEl.addEventListener("touchstart",function(e){if(!e.target.closest(".mlb-m"))return;tx0=e.touches[0].clientX;ty0=e.touches[0].clientY;tt0=e.timeStamp},{passive:true});
+    ftEl.addEventListener("touchend",function(e){if(tx0===null)return;var t=e.changedTouches[0],dx=t.clientX-tx0,dy=t.clientY-ty0,vx=Math.abs(dx)/Math.max(1,e.timeStamp-tt0);tx0=null;if((Math.abs(dx)>40||(vx>.11&&Math.abs(dx)>12))&&Math.abs(dx)>Math.abs(dy)*1.3)passa(dx<0?1:-1)},{passive:true});
     root.addEventListener("click",function(e){var ar=e.target.closest(".mlb-ar");if(ar){passa(+ar.getAttribute("data-d"));var b2=ftEl.querySelector('.mlb-ar[data-d="'+ar.getAttribute("data-d")+'"]');if(b2)b2.focus({preventScroll:true});return}
       var p=e.target.closest(".mlb-p");
       if(p){ativa=p.getAttribute("data-a");frente=null;[].forEach.call(fEl.querySelectorAll(".mlb-p"),function(b){b.setAttribute("aria-pressed",String(b===p))});render();return}
@@ -5340,7 +6001,10 @@ html.bx-on .foot{scroll-snap-align:end}
     /* ---------- Skills ---------- */
         /* pos: o pedaço da imagem que aparece atrás da pasta (a cápsula e a lente; no Arrepio, sem o título de cima e sem a assinatura do rodapé) */
     var SK={master:{img:"capsula",pos:"50% 74%",valor:"R$ 97",folhas:[["Roteiro","em cenas"],["Estética","12 estilos"],["Prompts","imagem e vídeo"],["Narração","e montagem"]]},
-      motion:{img:"arrepio",pos:"50% 40%",valor:"R$ 19,90",folhas:[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]]}};
+      motion:{img:"arrepio",pos:"50% 40%",valor:"R$ 19,90",folhas:[["Imagem parada","entrada"],["Movimento","câmera e ritmo"],["Vídeo pronto","saída"]]},
+      pmotion:{img:"mo-real-23",pos:"50% 45%",folhas:[["Imagens","entrada"],["Motion","zoom e texto"],["Vídeo","pronto"]]},
+      edicao:{img:"vt-lagarto",pos:"50% 45%",folhas:[["Cenas","em ordem"],["Narração","encaixada"],["Vídeo","exportado"]]},
+      evidencia:{img:"est-cerebro-poster",pos:"50% 45%",folhas:[["Pesquisa","com evidência"],["Narração","e gancho"],["CTA","no fim"]]}};
     function folhasDe(k){return SK[k].folhas.map(function(f){return {name:f[0],meta:f[1]}})}
     if(skl){
       [].forEach.call(skl.querySelectorAll(".sk-c"),function(c,i){var k=c.getAttribute("data-sk"),s=SK[k],p=c.querySelector(".sk-p");if(!s||!p)return;
@@ -5703,7 +6367,7 @@ html.bx-on .foot{scroll-snap-align:end}
   /* frase que troca na abertura: porte fiel do "Animated Hero" (21st.dev). Todas as palavras ficam empilhadas; a da vez vai pra y=0 e aparece,
      as que já passaram sobem e somem, as próximas esperam embaixo. Tudo com mola (rigidez 50, amortecimento 10, massa 1, como o spring do framer-motion).
      Troca a cada 2 s, como no original. Parada com reduzir movimento */
-  (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","clínicas","marcas","farmacêuticos"],at=0;
+  (function(){var p=$("hero-rot");if(!p)return;var w=p.querySelector(".rot-w"),L=["médicos","dentistas","nutricionistas","fisioterapeutas","professores","personal trainers","clínicas","marcas","farmacêuticos","você."],at=0;
     if(calmo)return;
     w.textContent="\u00a0";w.classList.add("rot-sp");
     var S=L.map(function(t,k){var e=document.createElement("span");e.textContent=t;w.appendChild(e);return {e:e,y:-1.4,vy:0,o:0,vo:0}});
@@ -5718,10 +6382,11 @@ html.bx-on .foot{scroll-snap-align:end}
       if(mexe)requestAnimationFrame(passo);else{rodando=false;ult=0}}
     function anima(){if(!rodando){rodando=true;ult=0;requestAnimationFrame(passo)}}
     anima();
-    setInterval(function(){if(document.hidden||p.offsetParent===null)return;at=(at+1)%L.length;anima()},2000)})();
+    /* passa por todos e para em "você." */
+    var iv=setInterval(function(){if(document.hidden||p.offsetParent===null)return;at++;anima();if(at>=L.length-1)clearInterval(iv)},1700)})();
   $("dlg-x").onclick=function(){$("dlg").close()};
 
-  var TIPOS={motion:["Pulsar Motion","Só imagens, com motion por cima. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
+  var TIPOS={motion:["Pulsar Motion","Imagens com motion e narração. O mais em conta.","pm-mix"],hibrido:["Motion + Vídeo","A primeira cena é vídeo, o resto é imagem com motion.","mv-meconio"],completo:["Vídeo Pulsar","Todas as cenas animadas, como nos meus virais.","capsula"]};
   var BONUS=[["capsula","Cápsula Endoscópica"],["hpylori","H. Pylori"],["placa","Placa e Parafusos"],["roer","Roer Unha"],["supositorio","Supositório",1],["garrafa","Garrafa",1],["colposcopia","Colposcopia",1]];
   var DUR={30:"30s",60:"1min",90:"1min30"};
   var P={motion:{30:150,60:250,90:320},hibrido:{30:280,60:450,90:580},completo:{30:450,60:700,90:900}};
@@ -6233,19 +6898,19 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     function acende(){ak.classList.add("ak-on");poeFs()}
     /* as animações da tela só rodam enquanto ela está visível */
     if(window.IntersectionObserver)new IntersectionObserver(function(es){ak.classList.toggle("ak-vis",es[es.length-1].isIntersecting)}).observe(fig);else ak.classList.add("ak-vis");
-    var nf=$("ak-nf");if(nf&&window.PB_NFOLHAS)nf.textContent=window.PB_NFOLHAS+" folhas de prompt";var fn=$("fs-nf");if(fn&&window.PB_NFOLHAS)fn.textContent=window.PB_NFOLHAS;
+    var nf=$("ak-nf");if(nf&&window.PB_NFOLHAS)nf.textContent=window.PB_NFOLHAS+" folhas de prompt";var fn=$("fs-nf");if(fn&&window.PB_NFOLHAS)fn.textContent=window.PB_NFOLHAS;var nu=$("ak-nu-f");if(nu&&window.PB_NFOLHAS)nu.textContent=window.PB_NFOLHAS;if(window.PB_NFOLHAS)[].forEach.call(document.querySelectorAll(".ak-lz-nf"),function(e){e.textContent=window.PB_NFOLHAS});
     /* escala do palco (420x380) pra largura da figura */
     function esc(){var w=fig.clientWidth;if(w)fig.style.setProperty("--k",(w/420).toFixed(4));if(typeof poeFs=="function")requestAnimationFrame(poeFs)}
     esc();if(window.ResizeObserver)new ResizeObserver(esc).observe(fig);else window.addEventListener("resize",esc);
     /* a tampa: ângulo entre tampa e base (0 = fechada, 105 = aberta) numa mola suave */
     var ang=0,vel=0,alvo=0,raf=0,tA=0,L1=105;
-    function poe(){lid.style.transform="rotateX("+(ang-90).toFixed(2)+"deg)";poeFs()}
+    var angFs=-999;function poe(f){lid.style.transform="rotateX("+(ang-90).toFixed(2)+"deg)";if(f||Math.abs(ang-angFs)>.25){angFs=ang;poeFs()}}   /* Acabamento 19/11 */
     function passo(t){var dt=tA?Math.min(.033,(t-tA)/1000):.016;tA=t;
       var ac=70*(alvo-ang)-12.5*vel;vel+=ac*dt;ang+=vel*dt;
-      if(Math.abs(alvo-ang)<.04&&Math.abs(vel)<.04){ang=alvo;vel=0;poe();raf=0;tA=0;return}
+      if(Math.abs(alvo-ang)<.04&&Math.abs(vel)<.04){ang=alvo;vel=0;poe(1);raf=0;tA=0;return}
       poe();raf=requestAnimationFrame(passo)}
     function vaiA(a){alvo=a;if(!raf){tA=0;raf=requestAnimationFrame(passo)}}
-    function snap(a){alvo=ang=a;vel=0;if(raf){cancelAnimationFrame(raf);raf=0}poe()}
+    function snap(a){alvo=ang=a;vel=0;if(raf){cancelAnimationFrame(raf);raf=0}poe(1)}
     function marca(i,pop){var r=rows[i],sl=slots[i];if(!r||r.classList.contains("on"))return;r.classList.add("on");if(sl)sl.classList.add("on");
       if(pop){r.classList.remove("pop");void r.offsetWidth;r.classList.add("pop");if(sl){sl.classList.remove("pop");void sl.offsetWidth;sl.classList.add("pop")}}
       var n=lst.querySelectorAll("li.on").length;nEl.textContent=n;if(ui)ui.style.setProperty("--p",(n/N).toFixed(3))}
@@ -6263,15 +6928,20 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       var seg=false,segue=function(){if(seg)return;seg=true;if(prox)prox()};
       if(!fig.getBoundingClientRect().width){marca(i,false);segue();return}
       var g=document.createElement("div");g.className="ak-g";g.setAttribute("aria-hidden","true");g.innerHTML=b.innerHTML;
-      g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=(B.width+20)+"px";g.style.opacity="0";ak.appendChild(g);
-      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=920,ok=false;
+      g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=Math.max(B.width+20,Math.min(250,fig.clientWidth*.66))+"px";g.style.opacity="0";ak.appendChild(g);
+      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=1650,ok=false;
+      /* 20/11: começa grande no meio, por cima do notebook (pra dar pra ler o que é), segura e depois entra na tela encolhendo */
+      var Fr=fig.getBoundingClientRect(),cx=Fr.left+Fr.width/2-gx,cy=Fr.top+Fr.height*.3-gy,big=Math.max(1,Math.min(1.5,(Fr.width*.86)/G.width));
       var acaba=function(){if(ok)return;ok=true;g.remove();marca(i,true);pisca();segue()};
-      requestAnimationFrame(function f(t){if(ok)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2,
-          S=(slots[i]||scr).getBoundingClientRect(),k1=Math.max(.12,Math.min(.6,S.width/G.width)),dx=(S.left+S.width/2-gx)*e,dy=(S.top+S.height*.5-gy)*e-Math.sin(Math.PI*e)*34,
-          sc=1+.05*Math.sin(Math.PI*Math.min(1,p*3))-(1-k1)*e,op=p<.14?p/.14:p>.82?(1-p)/.18:1;
+      var ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+      requestAnimationFrame(function f(t){if(ok)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),
+          S=(slots[i]||scr).getBoundingClientRect(),k1=Math.max(.12,Math.min(.6,S.width/G.width)),tx=S.left+S.width/2-gx,ty=S.top+S.height*.5-gy,dx,dy,sc,op;
+        if(p<.2){var a=1-Math.pow(1-p/.2,3);dx=cx;dy=cy+(1-a)*14;sc=big*(.82+.18*a);op=a}
+        else if(p<.5){dx=cx;dy=cy;sc=big;op=1}
+        else{var e=ez((p-.5)/.5);dx=cx+(tx-cx)*e;dy=cy+(ty-cy)*e-Math.sin(Math.PI*e)*26;sc=big+(k1-big)*e;op=e>.8?(1-e)/.2:1}
         g.style.transform="translate("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px) scale("+sc.toFixed(3)+")";g.style.opacity=op.toFixed(3);
-        if(p>=.78)segue();if(p<1)requestAnimationFrame(f);else acaba()});
-      ts.push(setTimeout(acaba,1800))}
+        if(p>=.9)segue();if(p<1)requestAnimationFrame(f);else acaba()});
+      ts.push(setTimeout(acaba,2600))}
     /* em cadeia: cada degrau só começa quando o cartão anterior já está chegando (num aparelho lento nada se atropela) */
     function degrau(i){if(i>=N){ts.push(setTimeout(acende,420));ts.push(setTimeout(solta,1700));return}
       vaiA(12+(L1-12)*(i+1)/N);ts.push(setTimeout(function(){voa(i,function(){degrau(i+1)})},160))}
@@ -6285,10 +6955,9 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
 
   /* Preço do curso: só aparece depois do clique em "Ver o preço" */
   /* LINK_CURSO: o link de pagamento do curso. O sócio do Renan põe aqui quando tiver. Vazio = abre o pedido de sempre (nome e WhatsApp) */
-  var LINK_CURSO="";
+  var LINK_CURSO="https://pay.cakto.com.br/hpds9qc?coupon=PULSAR100&utm_source=site";
   (function(){
     var ver=$("ak-ver"),pr=$("ak-pr"),buy=$("ak-buy"),pn=$("ak-pn");if(!ver||!pr||!buy)return;
-    if(LINK_CURSO&&pn)pn.textContent="Você vai pra página de pagamento.";
     ver.addEventListener("click",function(){ver.setAttribute("aria-expanded","true");pr.hidden=false;ver.hidden=true;var v=$("ak-v");try{v.focus({preventScroll:true})}catch(x){v.focus()}});
     buy.addEventListener("click",function(){if(LINK_CURSO){location.href=LINK_CURSO;return}if(window.pbVaga)pbVaga("curso")});
   })();
@@ -6296,6 +6965,95 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   window.addEventListener("storage",function(e){if(e.key!=="pb-visual")return;try{var nv=JSON.parse(e.newValue||"{}"),mudou=nv.vit&&nv.vit!==T.vit,fxm=nv.frase&&nv.frase!==T.frase;for(var k in DEF)if(nv[k])T[k]=nv[k];T.nav="vidro";T.font="apple";aplica();if(mudou)mountVit();if(fxm)frase(true)}catch(x){}});
 
   route();
+  /* Acabamento (skills Emil Kowalski, 19/11/2026): animações programáticas em WAAPI (só transform/opacity, interrompíveis),
+     memória de posição no voltar/avançar, teclado e rotação na página Vídeos, nome que cabe na largura de verdade.
+     Os outros blocos chamam ACAB.cpAbre e ACAB.cpCol (comparativo). Movimento reduzido: só fade curto, sem deslize nem escala. */
+  ACAB=(function(){
+    var de=document.documentElement,mm=window.matchMedia,calmo=!!(mm&&mm("(prefers-reduced-motion: reduce)").matches),
+      toque=!!(mm&&mm("(pointer:coarse)").matches),EO="cubic-bezier(0.23,1,0.32,1)",scr=$("screen");
+    function an(el,kf,op){if(!el||!el.animate)return null;try{return el.animate(kf,op)}catch(x){return null}}
+    function fade(el,ms,dl){return an(el,[{opacity:0},{opacity:1}],{duration:ms,easing:EO,delay:dl||0,fill:"backwards"})}
+    function entra(el,de0,ms,dl){if(calmo)return fade(el,150);return an(el,[{opacity:0,transform:de0},{opacity:1,transform:"none"}],{duration:ms,easing:EO,delay:dl||0,fill:"backwards"})}
+
+    /* troca de página: a classe só entra no primeiro hashchange, pra não animar a primeira carga */
+    window.addEventListener("hashchange",function(){de.classList.add("pg-anim")},{once:true});
+
+    /* Tipos: frase e lista entram juntas; o vídeo novo só aparece quando tem quadro (ou em 220 ms), em crossfade só de opacidade */
+    var tpv=$("tp-v"),tpSrc=tpv&&tpv.getAttribute("data-src");
+    pxTipoOuvintes.push(function(){
+      [$("tp-fr"),$("tp-li")].forEach(function(el){entra(el,"translateY(4px)",200)});
+      if(!tpv)return;var s=tpv.getAttribute("data-src");if(s===tpSrc)return;tpSrc=s;
+      var feito=false,vem=function(){if(feito||tpv.getAttribute("data-src")!==s)return;feito=true;tpv.style.opacity="";
+        if(calmo)fade(tpv,150);else an(tpv,[{opacity:0},{opacity:1}],{duration:220,easing:EO})};
+      tpv.style.opacity="0";tpv.addEventListener("loadeddata",vem,{once:true});setTimeout(vem,220)});
+
+    /* Preço: quando o valor muda, o número novo vem de baixo se subiu e de cima se desceu; "cada" e o nome só fazem fade */
+    var ov=$("of-v"),opr=$("of-pr"),ovT=ov?ov.textContent:"",num=function(t){return parseFloat(String(t).replace(/[^\d,]/g,"").replace(",","."))||0};
+    if(ov&&window.MutationObserver)new MutationObserver(function(){var t=ov.textContent;if(t===ovT)return;var sobe=num(t)>num(ovT);ovT=t;if(!opr||opr.hidden)return;
+      if(calmo){[ov,$("of-u"),$("of-nm")].forEach(function(el){fade(el,120)});return}
+      an(ov,[{opacity:0,transform:"translateY("+(sobe?6:-6)+"px)"},{opacity:1,transform:"none"}],{duration:200,easing:EO});
+      [$("of-u"),$("of-nm")].forEach(function(el){fade(el,160)})}).observe(ov,{childList:true,characterData:true,subtree:true});
+
+    /* Exemplos: o destaque novo entra do lado da ação (Próximo pela direita); vídeos que saem do DOM param de baixar;
+       no arrasto o vídeo segue o dedo e, se não trocar, volta pro lugar */
+    var ft=$("mlb-ft"),gr=$("mlb-g");
+    function limpa(ms){ms.forEach(function(m){[].forEach.call(m.removedNodes,function(n){if(n.nodeType!==1)return;
+      [].forEach.call(n.tagName==="VIDEO"?[n]:n.querySelectorAll("video"),function(v){try{v.pause();v.removeAttribute("src");v.load()}catch(x){}})})})}
+    if(window.MutationObserver){
+      if(gr)new MutationObserver(limpa).observe(gr,{childList:true});
+      if(ft)new MutationObserver(function(ms){limpa(ms);var d=+ft.getAttribute("data-dir")||0;ft.removeAttribute("data-dir");
+        var m=ft.querySelector(":scope>.mlb-m"),tx=ft.querySelector(":scope>.mlb-tx");if(!m)return;
+        if(calmo||!d){fade(m,calmo?150:200);fade(tx,calmo?150:200);return}
+        an(m,[{opacity:0,transform:"translateX("+(d*24)+"px)"},{opacity:1,transform:"none"}],{duration:260,easing:EO});
+        an(tx,[{opacity:0,transform:"translateX("+(d*12)+"px)"},{opacity:1,transform:"none"}],{duration:220,easing:EO,delay:40,fill:"backwards"})}).observe(ft,{childList:true})}
+    if(ft&&!calmo){var sx=null,sy=0,mv=null;
+      ft.addEventListener("touchstart",function(e){var m=e.target.closest(".mlb-m");if(!m||!ft.querySelector(".mlb-ar")){mv=null;return}sx=e.touches[0].clientX;sy=e.touches[0].clientY;mv=m;m.style.transition="none"},{passive:true});
+      ft.addEventListener("touchmove",function(e){if(!mv)return;var dx=e.touches[0].clientX-sx,dy=e.touches[0].clientY-sy;if(Math.abs(dx)<Math.abs(dy))return;mv.style.transform="translateX("+(dx*.9).toFixed(1)+"px)"},{passive:true});
+      var volta=function(){if(!mv)return;var m=mv;mv=null;if(!m.isConnected)return;m.style.transition="transform 200ms "+EO;m.style.transform="";setTimeout(function(){m.style.transition=""},220)};
+      ft.addEventListener("touchend",volta,{passive:true});ft.addEventListener("touchcancel",volta,{passive:true})}
+
+    /* Como eu faço: o tamanho do nome sai da largura de verdade (a palavra mais longa cabe, no máximo 2 linhas);
+       só abaixo de 6cqw a quebra no meio da palavra age. A troca de tamanho anima só um scale curto */
+    var nm=$("fz-nm"),nT=$("fz-nome-t"),fsA=15,rq=0;
+    function cabe(){rq=0;var bw=nT&&nT.parentNode.clientWidth;if(!bw)return;var st=nT.style,fs;st.overflowWrap="normal";
+      /* busca binária entre 6 e 15 cqw: uns 6 layouts em vez de até 30 */
+      var ok=function(f){st.fontSize=f+"cqw";var px=parseFloat(getComputedStyle(nT).fontSize)||1;return nT.scrollWidth<=bw+1&&nT.offsetHeight<=px*2.6};
+      if(ok(15))fs=15;else{var lo=6,hi=15;for(var i=0;i<6;i++){var md=Math.round((lo+hi)*5)/10;if(md<=lo||md>=hi)break;if(ok(md))lo=md;else hi=md}fs=lo;st.fontSize=fs+"cqw"}
+      st.overflowWrap="";if(fs!==fsA){fsA=fs;if(!calmo)an(nT,[{transform:"scale(.96)"},{transform:"none"}],{duration:160,easing:EO})}}
+    if(nm&&nT)nm.addEventListener("input",function(){if(!rq)rq=requestAnimationFrame(cabe)});
+    /* teclado do celular: solta o encaixe enquanto digita e deixa a prévia e o campo juntos; ao sair, volta pra tela certa */
+    if(nm&&toque){nm.addEventListener("focus",function(){de.classList.add("bx-kb");requestAnimationFrame(function(){var f=$("fz");if(f)f.scrollIntoView({block:"start",behavior:"instant"})})});
+      nm.addEventListener("blur",function(){de.classList.remove("bx-kb");requestAnimationFrame(function(){var s=$("bx-proc");if(s&&de.classList.contains("bx-on"))s.scrollIntoView({block:"start",behavior:calmo?"instant":"smooth"})})})}
+
+    /* voltar/avançar: a posição fica guardada na própria entrada do histórico (route() lê e devolve) */
+    try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(x){}
+    var scT=0,curId=null;
+    function guarda(){clearTimeout(scT);scT=0;try{var hs=history.state&&typeof history.state==="object"?history.state:{},o={};for(var k in hs)o[k]=hs[k];
+        o.y=Math.max(window.scrollY||0,scr?scr.scrollTop:0);history.replaceState(o,"")}catch(x){}
+      if(de.classList.contains("bx-on")){var T=parseFloat(de.style.getPropertyValue("--bxt"))||74,mel=1e9;
+        [].forEach.call(document.querySelectorAll("#pg-box .bx-s"),function(x){var d=Math.abs(x.getBoundingClientRect().top-T);if(d<mel){mel=d;curId=x.id}})}}
+    function rolou(){clearTimeout(scT);scT=setTimeout(guarda,200)}
+    window.addEventListener("scroll",rolou,{passive:true});if(scr)scr.addEventListener("scroll",rolou,{passive:true});
+    document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a)guarda()},true);
+    window.addEventListener("pagehide",guarda);
+
+    /* Vídeos: se alguma tela não cabe no espaço (celular deitado), o encaixe vira por proximidade; na rotação mede de novo
+       quando a largura muda de fato e volta pra tela em que a pessoa estava */
+    function livre(){if(!de.classList.contains("bx-on")){de.classList.remove("bx-livre");return}
+      var s=scr&&/(auto|scroll)/.test(getComputedStyle(scr).overflowY)?scr:null,H=s?s.clientHeight:Math.min(window.innerHeight,de.clientHeight),
+        T=parseFloat(de.style.getPropertyValue("--bxt"))||74,alto=false;
+      [].forEach.call(document.querySelectorAll("#pg-box .bx-s"),function(x){if(x.offsetHeight>H-T+8)alto=true});de.classList.toggle("bx-livre",alto)}
+    var bxM=window.bxMede;if(bxM){window.bxMede=function(){bxM();livre()};livre()}
+    var vw=window.innerWidth;(window.visualViewport||window).addEventListener("resize",function(){if(window.innerWidth===vw)return;vw=window.innerWidth;
+      requestAnimationFrame(function(){if(window.bxMede)window.bxMede();if(curId&&de.classList.contains("bx-on")){var el=$(curId);if(el)el.scrollIntoView({block:"start",behavior:"instant"})}})});
+
+    /* comparativo: o preço da coluna entra subindo 6px; o pulo das miniaturas (somem no celular) vira um deslize (FLIP);
+       ao trocar o tipo da coluna, só as células dela fazem fade, sem se mexer */
+    return{
+      cpAbre:function(tb,dy,pr){if(pr)entra(pr,"translateY(6px)",240);if(Math.abs(dy)>1&&!calmo)an(tb,[{transform:"translateY("+dy.toFixed(1)+"px)"},{transform:"none"}],{duration:260,easing:EO})},
+      cpCol:function(box,k,k2){[k,k2].forEach(function(c){if(c<0)return;[].forEach.call(box.querySelectorAll("thead tr>:nth-child("+(c+2)+"),tbody tr>:nth-child("+(c+2)+")"),function(el){fade(el,calmo?150:200)})})}
+    }
+  })();
 })();
 </script>
 <script>/* controle geral de vídeo: o que está fora da tela (ou numa página fechada) pausa sozinho e volta quando aparece. Deixa o site leve. */
@@ -6359,6 +7117,9 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   window.addEventListener("resize",poe);poe();texto();
   if(!calmo)tm=setInterval(function(){vai(at+1)},5000);
 })();
+
+  /* Academy: "Ver o preço" do bloco de pré-lançamento desce até o cartão e já abre o preço */
+  (function(){var $=function(i){return document.getElementById(i)},b=$("ak-lz-go");if(!b)return;b.addEventListener("click",function(){var v=$("ak-ver"),c=$("curso-preco");if(v&&!v.hidden)v.click();if(c){try{c.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"})}catch(e){c.scrollIntoView()}}})})();
 </script>
-<script>(function(){var V="1795041672";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795322321";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
