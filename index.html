@@ -3651,6 +3651,20 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
   #pg-academy .ak-fx dd span{font-size:15.5px}
   #pg-academy .ak-slz .ak-lz-t{font-size:19px}
 }
+
+/* aula grátis no YouTube */
+#pg-academy .ak-tb .ak-yt{position:absolute;inset:0;z-index:5;width:100%;height:100%;border:0;border-radius:inherit;background:#000}
+#pg-academy .ak-tb-yt .ak-eb,#pg-academy .ak-tb-yt .ac-pb{display:none}
+#pg-academy .ak-yt-go{justify-self:center;margin-top:4px}
+@container site (min-width:700px){#pg-academy .ak-yt-go{justify-self:start}}
+
+/* skill do Gemini grátis, junto da aula (22/11/2026) */
+#pg-academy .ak-sg{display:grid;gap:6px;justify-items:center;margin-top:6px;max-width:30em}
+#pg-academy .ak-sg-a{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);color:var(--ink);font-size:15px;font-weight:600;text-decoration:none;-webkit-tap-highlight-color:transparent}
+#pg-academy .ak-sg-a:active{transform:scale(.97)}
+#pg-academy .ak-sg-a svg{width:16px;height:16px}
+#pg-academy .ak-sg p{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted);text-align:center}
+@container site (min-width:700px){#pg-academy .ak-sg{justify-items:start}#pg-academy .ak-sg p{text-align:left}}
 </style>
 <style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
@@ -3947,7 +3961,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
           <div class="mb-base"><div class="mb-sh"></div><div class="mb-deck"><div class="mb-kb"></div><div class="mb-tp"></div><div class="mb-sp"></div></div><div class="mb-lip"></div></div>
           <div class="mb-lid" id="ak-lid"><div class="mb-bk"></div><div class="mb-tp2"></div><div class="mb-fr"><div class="mb-gl" id="ak-scr"><div class="mb-lit"></div><div class="mb-amb"></div><div class="mb-ui" id="ak-ui"><p class="mb-hd">Preparando seu acesso</p><div class="mb-gr"><i><b>Prompts</b></i><i><b>Skills</b></i><i><b>Aulas</b></i><i><b>Bônus</b></i><i><b>Vitalício</b></i></div><div class="mb-pg"></div></div><div class="mb-ref"></div><b class="mb-c" style="left:1px;top:1px"></b><b class="mb-c" style="right:1px;top:1px"></b><b class="mb-c" style="right:1px;bottom:1px"></b><b class="mb-c" style="left:1px;bottom:1px"></b></div></div></div>
         </div></div>
-        <div class="ak-fs" id="ak-fs" aria-hidden="true"><div class="fs-bg"><i class="fs-b1"></i><i class="fs-b2"></i><i class="fs-b3"></i></div><div class="fs-pt"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fs-sh"></div><div class="fs-toss"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></div><div class="fs-app"><div class="fs-top"><span class="fs-cap"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></span><span class="fs-brand">Pulsar <em>Academy</em></span><span class="fs-ok"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.6 6.3 5 8.6l4.4-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso liberado</span></div><div class="fs-main"><div class="fs-hero"><img src="assets/est-cerebro-poster.jpg" alt="" loading="lazy" decoding="async"><span class="fs-hg"></span><span class="fs-tag">Aula inaugural · grátis</span><b class="fs-ht">Como eu faço os meus vídeos</b><span class="fs-hp"><span class="fs-play"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 1.6v8.8L10.4 6z" fill="currentColor"/></svg></span><span class="fs-pb"></span></span></div><div class="fs-side"><div class="fs-row"><img src="assets/est-hernia-poster.jpg" alt="" loading="lazy" decoding="async"><span><b id="fs-nf">77</b> folhas de prompt</span></div><div class="fs-row"><img src="assets/estetica-dourado.jpg" alt="" loading="lazy" decoding="async"><span><b>Todas</b> as Skills</span></div><div class="fs-row"><img src="assets/vt-botox.jpg" alt="" loading="lazy" decoding="async"><span><b>28</b> aulas, a partir de 3/12</span></div><div class="fs-row fs-inf"><i aria-hidden="true">∞</i><span><b>Vitalício</b> até 30/11</span></div></div></div></div><div class="fs-rf"></div><div class="fs-fl"></div></div>
+        <div class="ak-fs" id="ak-fs" aria-hidden="true"><div class="fs-bg"><i class="fs-b1"></i><i class="fs-b2"></i><i class="fs-b3"></i></div><div class="fs-pt"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="fs-sh"></div><div class="fs-toss"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></div><div class="fs-app"><div class="fs-top"><span class="fs-cap"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z" fill="currentColor"/><path d="M6 12.5V16c0 1.66 2.69 3 6 3s6-1.34 6-3v-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 10v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="22" cy="16.3" r="1.3" fill="currentColor"/></svg></span><span class="fs-brand">Pulsar <em>Academy</em></span><span class="fs-ok"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.6 6.3 5 8.6l4.4-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Acesso liberado</span></div><div class="fs-main"><div class="fs-hero"><img src="assets/est-cerebro-poster.jpg" alt="" loading="lazy" decoding="async"><span class="fs-hg"></span><span class="fs-tag">Aula grátis</span><b class="fs-ht">Um vídeo viral em 10 minutos</b><span class="fs-hp"><span class="fs-play"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 1.6v8.8L10.4 6z" fill="currentColor"/></svg></span><span class="fs-pb"></span></span></div><div class="fs-side"><div class="fs-row"><img src="assets/est-hernia-poster.jpg" alt="" loading="lazy" decoding="async"><span><b id="fs-nf">77</b> folhas de prompt</span></div><div class="fs-row"><img src="assets/estetica-dourado.jpg" alt="" loading="lazy" decoding="async"><span><b>Todas</b> as Skills</span></div><div class="fs-row"><img src="assets/vt-botox.jpg" alt="" loading="lazy" decoding="async"><span><b>28</b> aulas, a partir de 3/12</span></div><div class="fs-row fs-inf"><i aria-hidden="true">∞</i><span><b>Vitalício</b> até 30/11</span></div></div></div></div><div class="fs-rf"></div><div class="fs-fl"></div></div>
       </div>
       <div class="ak-in">
         <p class="ak-c" aria-hidden="true"><span>O que vem no curso</span><span><b class="num" id="ak-n">0</b> de 5</span></p>
@@ -3985,18 +3999,23 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
     </dl>
   </div></section>
 
-  <!-- 2. Aula inaugural grátis (ainda vai ser gravada: em breve + o me avisa que já existia) -->
+  <!-- 2. Aula grátis (22/11/2026): "Como gerar um vídeo viral em 10 minutos", no Gemini. Vídeo no YouTube não listado (cqnM1dfhMLk), carrega só no toque. O "me avisa" fica escondido (o JS dele continua de pé) -->
   <section class="sec ak-s2 ak-pn" id="aula-inaugural"><div class="wrap ac-w">
     <div class="ak-aula mt-rv">
       <div class="ak-tb">
         <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-        <button type="button" class="ac-pb" id="ac-pb" aria-label="Me avisa da aula inaugural"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
-        <span class="ak-eb">Em breve</span>
+        <button type="button" class="ac-pb" id="ac-pb" aria-label="Assistir à aula grátis: como gerar um vídeo viral em 10 minutos"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
+        <span class="ak-eb">Grátis · 13 min</span>
       </div>
       <div class="ak-at">
-        <h2 class="title">Como eu faço <em>os meus vídeos.</em></h2>
-        <p class="ak-ad">A aula inaugural é grátis. Eu te mostro como faço os meus vídeos.</p>
-        <div class="ac-cta">
+        <h2 class="title">Um vídeo viral <em>em 10 minutos.</em></h2>
+        <p class="ak-ad">Aula grátis. Eu te mostro, no Gemini, como gerar um vídeo rápido que viraliza.</p>
+        <button type="button" class="btn ak-yt-go" id="ak-yt-go">Assistir à aula</button>
+        <div class="ak-sg">
+          <a class="ak-sg-a" href="https://horisawa-ai.github.io/pulsar-business-site/assets/skill-gemini.zip" download="skill-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>Baixar a skill do Gemini, grátis</a>
+          <p>A que eu uso na aula. Suba o zip em Skills, no Claude, e escreva "use a skill Gemini".</p>
+        </div>
+        <div class="ac-cta" hidden style="display:none">
           <div class="ac-xi" id="ac-xi" data-st="idle">
             <span class="ac-sr" id="ac-xi-live" aria-live="polite"></span>
             <button type="button" class="ac-xi-b" id="ac-xi-b">Me avisa da aula inaugural</button>
@@ -6861,7 +6880,7 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     /* a aula inaugural ainda não existe: tocar no quadro não abre vídeo. Leva ao me avisa, abre o campo e põe o foco nele */
     function aVista(){var r=xi.getBoundingClientRect(),sc=$("screen"),b=sc&&sc.scrollHeight>sc.clientHeight+2&&getComputedStyle(sc).overflowY!=="visible"?sc.getBoundingClientRect():{top:0,bottom:window.innerHeight};
       return r.top>=b.top+132&&r.bottom<=b.bottom-88}
-    pb.addEventListener("click",function(){
+    pb.addEventListener("click",function(){if(window.AULA_YT)return;
       if(st==="idle")abre();else if(st==="open")foca(em);
       else if(st==="success"&&!calmo){xi.classList.remove("pulso");void xi.offsetWidth;xi.classList.add("pulso")}
       if(!aVista())xi.scrollIntoView({block:"center",behavior:calmo?"auto":"smooth"})});
@@ -7140,6 +7159,16 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
 
   /* Academy: "Ver o preço" do bloco de pré-lançamento desce até o cartão e já abre o preço */
   (function(){var $=function(i){return document.getElementById(i)},b=$("ak-lz-go");if(!b)return;b.addEventListener("click",function(){var v=$("ak-ver"),c=$("curso-preco");if(v&&!v.hidden)v.click();if(c){try{c.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"})}catch(e){c.scrollIntoView()}}})})();
+
+  /* Aula grátis no YouTube (22/11/2026): o quadro e o botão trocam o vídeo de fundo pelo player do YouTube (sem cookies, só no toque) */
+  var AULA_YT="cqnM1dfhMLk";window.AULA_YT=AULA_YT;
+  (function(){var $=function(i){return document.getElementById(i)},tb=document.querySelector("#aula-inaugural .ak-tb"),pb=$("ac-pb"),go=$("ak-yt-go");if(!tb||!AULA_YT)return;
+    function abre(){if(tb.querySelector("iframe"))return;var f=document.createElement("iframe");
+      f.src="https://www.youtube-nocookie.com/embed/"+AULA_YT+"?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+      f.title="Aula grátis: como gerar um vídeo viral em 10 minutos";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.allowFullscreen=true;
+      f.className="ak-yt";f.referrerPolicy="strict-origin-when-cross-origin";f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");[].forEach.call(tb.querySelectorAll("video"),function(v){try{v.pause()}catch(e){}});tb.appendChild(f);tb.classList.add("ak-tb-yt");
+      if(go)go.style.display="none";try{f.focus()}catch(e){}}
+    if(pb)pb.addEventListener("click",abre);if(go)go.addEventListener("click",function(){abre();try{tb.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}})})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795325323";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795329527";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
