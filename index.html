@@ -1501,7 +1501,7 @@ html[data-acf="serifa"] #pg-biblioteca .dl-t{font-size:30px;line-height:1}
 #pg-academy .ak-pr:not([hidden]){animation:akSobe .5s var(--ac-ease)}
 @keyframes akSobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 #pg-academy .ak-v{margin:0;font-family:var(--serif);font-size:44px;font-weight:var(--serif-w,600);line-height:1;letter-spacing:-.03em;color:var(--ink);outline:none}
-#pg-academy .ak-pn{font-size:13px;line-height:1.45;color:var(--muted);text-align:center}
+#pg-academy small.ak-pn{font-size:13px;line-height:1.45;color:var(--muted);text-align:center}
 #pg-academy .ak-pr .of-de{margin:0 0 -6px}
 #pg-academy .ak-cp{margin:-4px 0 0;font-size:14px;color:var(--muted);text-align:center}
 
@@ -3612,14 +3612,14 @@ html.bx-livre #pg-box .bx-s{scroll-snap-stop:normal}
    no meio de um texto ou de uma parte maior que a tela ela não mexe (proximity, nunca mandatory). Movimento reduzido: desligado. */
 html:has(#pg-academy.on),html:has(#pg-academy.on) .screen{scroll-snap-type:y mandatory;scroll-padding-top:var(--bxt,74px)}
 /* 22/11: setorizado como a página Vídeos: um toque leva exatamente à próxima parte (snap-stop always não deixa pular duas) */
-#pg-academy .ak-pn{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
+#pg-academy section.ak-pn{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:0}
 html:has(#pg-academy.on) .foot{scroll-snap-align:end}
 #pg-academy #curso{scroll-margin-top:600px}
 @media (prefers-reduced-motion:reduce){html:has(#pg-academy.on),html:has(#pg-academy.on) .screen{scroll-snap-type:none}}
 
 /* Academy em painéis (22/11/2026): cada parte ocupa exatamente uma tela, abaixo do menu, com o conteúdo centrado nela */
-#pg-academy .ak-pn{min-height:calc(var(--bxh,100svh) - var(--bxt,74px));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:20px 24px}
-#pg-academy .ak-pn>.wrap{width:100%}
+#pg-academy section.ak-pn{min-height:calc(var(--bxh,100svh) - var(--bxt,74px));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:20px 24px}
+#pg-academy section.ak-pn>.wrap{width:100%}
 #pg-academy #curso.ak-pn{min-height:calc(var(--bxh,100svh) - var(--bxt,74px) - var(--bxh0,48px));justify-content:flex-start;padding-top:8px}
 #pg-academy .ak-s5.ak-pn{justify-content:flex-start;padding-top:24px}
 /* pré-lançamento: o painel inteiro é o destaque (fundo creme de ponta a ponta), sem cartão dentro */
@@ -3670,7 +3670,7 @@ html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:
 
 /* Academy, revisão de layout (22/11/2026): nada de texto solto no meio do branco. As telas começam logo abaixo do menu
    e o conteúdo é grande o bastante pra ocupar a tela; cada tela tem uma imagem ou um bloco forte como âncora. */
-#pg-academy .ak-pn{justify-content:flex-start;padding-block:28px 28px}
+#pg-academy section.ak-pn{justify-content:flex-start;padding-block:28px 28px}
 #pg-academy #curso.ak-pn{padding-top:8px}
 /* aula aberta: mosaico com 3 vídeos meus e o número de cada um */
 #pg-academy .ak-tb.ak-mz{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:none;box-shadow:none;overflow:visible;border-radius:0}
@@ -3702,7 +3702,7 @@ html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:
 #pg-academy #curso-preco .ak-lz-l li{font-size:15.5px}
 #pg-academy #curso-preco .ak-pc{padding:22px 20px;gap:8px}
 @container site (min-width:700px){
-  #pg-academy .ak-pn{justify-content:center}
+  #pg-academy section.ak-pn{justify-content:center}
   #pg-academy .ak-tb.ak-mz{gap:12px}
   #pg-academy .ak-mz-t{border-radius:20px}
   #pg-academy .ak-st{grid-template-columns:repeat(2,minmax(0,200px))}
@@ -3711,6 +3711,57 @@ html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:
   #pg-academy #curso-preco .ak-lz{justify-items:start;text-align:left;margin:0}
 }
 #pg-academy .ak-s5{scroll-snap-align:start;scroll-snap-stop:always;padding-block:28px 40px}
+
+/* Início em telas (22/11/2026): cada parte ocupa uma tela e o dedo leva direto pra próxima, como em Vídeos e Academy */
+html:has(#pg-inicio.on),html:has(#pg-inicio.on) .screen{scroll-snap-type:y mandatory;scroll-padding-top:var(--bxt,74px)}
+#pg-inicio>section{scroll-snap-align:start;scroll-snap-stop:always}
+#pg-inicio>section:first-child{scroll-margin-top:600px}
+html:has(#pg-inicio.on) .foot{scroll-snap-align:end}
+#pg-inicio .in-pn{position:relative;min-height:calc(var(--bxh,100svh) - var(--bxt,74px));box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;overflow:hidden;isolation:isolate;padding-block:28px}
+#pg-inicio .ipt-w{position:relative;z-index:2;width:100%;display:grid;gap:18px}
+#pg-inicio .ipt-t{margin:0;text-align:center}
+#pg-inicio .in-portas .portas{margin-top:0}
+#pg-inicio .porta{position:relative;overflow:hidden;isolation:isolate}
+#pg-inicio .porta-bg{display:none}
+#pg-inicio .ipt-bg{display:none;position:absolute;inset:0;z-index:0;pointer-events:none}
+/* A: cada porta vira um cartão alto com um vídeo meu atrás */
+#pg-inicio .in-portas[data-pv="a"] .portas{grid-template-columns:1fr;gap:12px}
+#pg-inicio .in-portas[data-pv="a"] .porta{min-height:calc((var(--bxh,100svh) - var(--bxt,74px) - 150px) / 2);align-content:end;border:0;box-shadow:none;background:#0c0a09;color:#fff;padding:20px}
+#pg-inicio .in-portas[data-pv="a"] .porta-bg{display:block;position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+#pg-inicio .in-portas[data-pv="a"] .porta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,10,9,0) 25%,rgba(12,10,9,.78) 100%)}
+#pg-inicio .in-portas[data-pv="a"] .porta b{font-size:22px;color:#fff}
+#pg-inicio .in-portas[data-pv="a"] .porta small{color:rgba(255,255,255,.82)}
+#pg-inicio .in-portas[data-pv="a"] .porta i{color:#fff}
+/* B: parede de vídeos andando devagar, escurecida, e as portas em vidro por cima */
+#pg-inicio .in-portas[data-pv="b"]{background:#0c0a09}
+#pg-inicio .in-portas[data-pv="b"] .ipt-b{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 8px;opacity:.55}
+#pg-inicio .in-portas[data-pv="b"] .ipt-b::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(12,10,9,.25),rgba(12,10,9,.85))}
+#pg-inicio .ipt-col{overflow:hidden}
+#pg-inicio .ipt-col>div{display:grid;gap:8px;animation:ipt-sobe 60s linear infinite}
+#pg-inicio .ipt-c1>div{animation-direction:reverse;animation-duration:70s}
+#pg-inicio .ipt-col video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;display:block}
+@keyframes ipt-sobe{to{transform:translateY(-50%)}}
+#pg-inicio .in-portas[data-pv="b"] .ipt-t{color:#fff}
+#pg-inicio .in-portas[data-pv="b"] .ipt-t em{color:#d9a441}
+#pg-inicio .in-portas[data-pv="b"] .porta{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);box-shadow:none;color:#fff;-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+#pg-inicio .in-portas[data-pv="b"] .porta small{color:rgba(255,255,255,.8)}
+#pg-inicio .in-portas[data-pv="b"] .porta.pri{background:rgba(255,255,255,.92);color:var(--ink)}
+#pg-inicio .in-portas[data-pv="b"] .porta.pri small{color:var(--muted)}
+/* C: meus números enormes no fundo, bem claros, e as portas por cima */
+#pg-inicio .in-portas[data-pv="c"] .ipt-n{display:grid;align-content:center;justify-items:center;gap:0;opacity:1}
+#pg-inicio .ipt-n b{font-size:clamp(92px,30cqw,220px);line-height:.9;font-weight:800;letter-spacing:-.06em;color:rgba(168,112,28,.13)}
+#pg-inicio .ipt-n span{font-size:15px;font-weight:600;color:rgba(168,112,28,.5);margin:2px 0 26px}
+#pg-inicio .in-portas[data-pv="c"] .porta{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media (prefers-reduced-motion:reduce){#pg-inicio .ipt-col>div{animation:none}}
+@container site (min-width:700px){
+  #pg-inicio .in-portas[data-pv="a"] .portas{grid-template-columns:1fr 1fr;gap:16px}
+  #pg-inicio .in-portas[data-pv="a"] .porta{min-height:min(52svh,440px);padding:28px}
+  #pg-inicio .in-portas[data-pv="a"] .porta b{font-size:28px}
+  #pg-inicio .in-portas[data-pv="b"] .ipt-b{grid-template-columns:repeat(6,1fr)}
+}
+.dock #ipt-sw,button#ipt-sw{font-size:13px!important;padding:11px 14px!important;opacity:1!important;font-weight:700}
+#pg-inicio .ipt-n b{font-size:clamp(64px,21cqw,170px)}
+#pg-inicio .in-portas[data-pv="c"] .ipt-n{gap:0;padding-inline:12px}
 </style>
 <style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
@@ -3741,11 +3792,18 @@ html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:
   </div>
   <div class="amb" id="amb" aria-hidden="true"><i></i><i></i></div>
   <div class="vitw" id="vitw"><div id="vit"></div><div class="hero-ov" id="hero-ov" aria-hidden="true"></div></div>
-  <div class="wrap"><nav class="portas" aria-label="Por onde começar">
-    <a class="porta pri" href="#box"><b>Quero vídeos prontos</b><small>Pulsar Motion, Vídeo Pulsar e Estreia. Temas da sua área: você escolhe, ou eu escolho.</small><i aria-hidden="true">→</i></a>
-    <a class="porta" href="#academy"><b>Quero aprender a fazer</b><small>Pulsar Academy: curso, materiais grátis e mentoria.</small><i aria-hidden="true">→</i></a>
-  </nav></div>
   <div class="wrap"></div></section>
+
+  <!-- Início, tela 2 (22/11/2026): as duas portas numa tela só, com fundo. Fundo escolhido pelo Renan em 22/11: A, cada porta com um vídeo meu atrás (as opções B e C saíram) -->
+  <section class="sec in-pn in-portas" id="in-portas" data-pv="a" aria-label="Por onde começar">
+    <div class="wrap ipt-w">
+      <h2 class="title ipt-t">Por onde <em>você começa?</em></h2>
+      <nav class="portas" aria-label="Por onde começar">
+        <a class="porta pri" href="#box"><video class="porta-bg" data-src="assets/vt-lagarto.mp4" poster="assets/vt-lagarto.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><b>Quero vídeos prontos</b><small>Pulsar Motion, Vídeo Pulsar e Estreia. Temas da sua área: você escolhe, ou eu escolho.</small><i aria-hidden="true">→</i></a>
+        <a class="porta" href="#academy"><video class="porta-bg" data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><b>Quero aprender a fazer</b><small>Pulsar Academy: curso, aula aberta e mentoria.</small><i aria-hidden="true">→</i></a>
+      </nav>
+    </div>
+  </section>
 
   <section class="sec tint"><div class="wrap">
     <div class="head mt-c"><h2 class="title">Toque e <em>descubra.</em></h2></div>
@@ -7222,6 +7280,15 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     var poster=function(n){return "assets/"+n.replace(/-loop$/,"")+".jpg"};
     v.addEventListener("ended",function(){i=(i+1)%f.length;v.poster=poster(f[i]);v.src="assets/"+f[i]+".mp4";v.setAttribute("data-src",v.src);var q=v.play();if(q&&q.catch)q.catch(function(){})});
     if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)v.loop=true})();
+
+  /* Início: fundo das portas (teste A/B/C) e vídeos das portas tocando só na tela */
+  (function(){var sec=document.getElementById("in-portas"),sw=document.getElementById("ipt-sw");if(!sec)return;var O=["a","b","c"],v;
+    v="a";
+    function poe(x){sec.setAttribute("data-pv",x);if(sw)sw.textContent="Fundo "+x.toUpperCase();try{localStorage.setItem("pb-ipt",x)}catch(e){};liga()}
+    function liga(){[].forEach.call(sec.querySelectorAll("video[data-src]"),function(el){var vis=el.offsetParent!==null||getComputedStyle(el).display!=="none";if(vis&&dentro){if(!el.getAttribute("src"))el.src=el.getAttribute("data-src");var q=el.play();if(q&&q.catch)q.catch(function(){})}else el.pause()})}
+    var dentro=false;if(window.IntersectionObserver)new IntersectionObserver(function(es){dentro=es[es.length-1].isIntersecting;liga()},{threshold:.2}).observe(sec);
+    if(sw)sw.addEventListener("click",function(){poe(O[(O.indexOf(sec.getAttribute("data-pv"))+1)%O.length])});
+    window.addEventListener("storage",function(e){if(e.key==="pb-ipt"&&O.indexOf(e.newValue)>=0)poe(e.newValue)});poe(v)})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795384559";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795385695";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
