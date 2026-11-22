@@ -3666,6 +3666,51 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
 #pg-academy .ak-sg p{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted);text-align:center}
 @container site (min-width:700px){#pg-academy .ak-sg{justify-items:start}#pg-academy .ak-sg p{text-align:left}}
 #pg-academy .ak-yt-fb{font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px}#pg-academy .ak-yt-fb[hidden]{display:none}
+html.pg-nav,html.pg-nav .screen{scroll-snap-type:none!important;scroll-behavior:auto!important}
+
+/* Academy, revisão de layout (22/11/2026): nada de texto solto no meio do branco. As telas começam logo abaixo do menu
+   e o conteúdo é grande o bastante pra ocupar a tela; cada tela tem uma imagem ou um bloco forte como âncora. */
+#pg-academy .ak-pn{justify-content:flex-start;padding-block:28px 28px}
+#pg-academy #curso.ak-pn{padding-top:8px}
+/* aula aberta: mosaico com 3 vídeos meus e o número de cada um */
+#pg-academy .ak-tb.ak-mz{aspect-ratio:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;background:none;box-shadow:none;overflow:visible;border-radius:0}
+#pg-academy .ak-tb.ak-mz::after{display:none}
+#pg-academy .ak-mz-t{position:relative;display:block;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#1c1917;box-shadow:0 18px 36px -24px rgba(12,10,9,.5)}
+#pg-academy .ak-mz-t video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#pg-academy .ak-mz-t b{position:absolute;left:8px;bottom:8px;padding:3px 8px;border-radius:999px;background:rgba(12,10,9,.62);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:-.01em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#pg-academy .ak-mz .ac-pb{border-radius:16px}
+#pg-academy .ak-mz .ak-eb{left:50%;bottom:auto;top:-12px;transform:translateX(-50%);white-space:nowrap;box-shadow:0 0 0 1px rgba(12,10,9,.08)}
+#pg-academy .ak-tb-yt.ak-mz{display:block;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#000}
+#pg-academy .ak-tb-yt .ak-mz-t{display:none}
+#pg-academy .ak-s2 .ak-aula{gap:16px}
+#pg-academy .ak-s2 .ak-at{gap:10px}
+#pg-academy .ak-s2 .title{font-size:clamp(34px,10cqw,52px);margin:0}
+#pg-academy .ak-st{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 2px;width:100%;max-width:420px}
+#pg-academy .ak-st div{padding:12px 14px;border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line-2);text-align:left}
+#pg-academy .ak-st dt{margin:0;font-size:26px;line-height:1;font-weight:700;letter-spacing:-.03em}
+#pg-academy .ak-st dd{margin:4px 0 0;font-size:13px;line-height:1.3;color:var(--muted)}
+/* números: linhas mais altas, a lista ocupa a tela */
+#pg-academy .ak-fx-r{padding-block:18px}
+#pg-academy .ak-fx dt{font-size:44px}
+/* o que tem dentro: módulos mais altos, sem sobra embaixo */
+#pg-academy .ak-s3 .ak-mod summary{min-height:62px}
+/* preço: o pré-lançamento vem em cima do cartão, na mesma tela */
+#pg-academy #curso-preco .ak-lz{display:grid;justify-items:center;gap:12px;max-width:440px;margin:0 auto 18px;padding:0;border:0;background:none;text-align:center}
+#pg-academy #curso-preco .ak-lz .title{margin:0;font-size:clamp(36px,10.5cqw,54px);line-height:1.02}
+#pg-academy #curso-preco .ak-lz-t{font-size:16px;font-weight:400;color:var(--ink-2);margin:0}
+#pg-academy #curso-preco .ak-lz-l{gap:10px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(168,112,28,.18)}
+#pg-academy #curso-preco .ak-lz-l li{font-size:15.5px}
+#pg-academy #curso-preco .ak-pc{padding:22px 20px;gap:8px}
+@container site (min-width:700px){
+  #pg-academy .ak-pn{justify-content:center}
+  #pg-academy .ak-tb.ak-mz{gap:12px}
+  #pg-academy .ak-mz-t{border-radius:20px}
+  #pg-academy .ak-st{grid-template-columns:repeat(2,minmax(0,200px))}
+  #pg-academy .ak-st dt{font-size:32px}
+  #pg-academy #curso-preco>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);align-items:center;gap:56px;max-width:1040px}
+  #pg-academy #curso-preco .ak-lz{justify-items:start;text-align:left;margin:0}
+}
+#pg-academy .ak-s5{scroll-snap-align:start;scroll-snap-stop:always;padding-block:28px 40px}
 </style>
 <style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
@@ -3968,54 +4013,32 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
         <p class="ak-c" aria-hidden="true"><span>O que vem no curso</span><span><b class="num" id="ak-n">0</b> de 5</span></p>
         <ul class="ak-l" id="ak-l" aria-label="O que vem no curso">
           <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span class="ak-tt"><span id="ak-nf">Folhas de prompt</span></span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 13.9 8l4.6 1.9-4.6 1.9L12 16.3l-1.9-4.5L5.5 9.9 10.1 8z"/><path d="M18.5 15.2l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span><span class="ak-tt">Todas as Skills, inclusive a Master</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.2 9.4v5.2l4.4-2.6z"/></svg></span><span class="ak-tt">28 aulas, liberadas em 3/12</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3.5 13.9 8l4.6 1.9-4.6 1.9L12 16.3l-1.9-4.5L5.5 9.9 10.1 8z"/><path d="M18.5 15.2l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span><span class="ak-tt">5 Skills, inclusive a Master</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10.2 9.4v5.2l4.4-2.6z"/></svg></span><span class="ak-tt">28 aulas</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
           <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M12 8.5V21M5.5 12.5V19a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-6.5"/><path d="M12 8.5S10.6 4 8.2 4.6C6.4 5.1 6.9 8.5 9.2 8.5M12 8.5s1.4-4.5 3.8-3.9c1.8.5 1.3 3.9-1 3.9"/></svg></span><span class="ak-tt">Aula bônus</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 8.5c-2 0-3.5 1.6-3.5 3.5S6 15.5 8 15.5c3.4 0 4.6-7 8-7 2 0 3.5 1.6 3.5 3.5S18 15.5 16 15.5c-3.4 0-4.6-7-8-7z"/></svg></span><span class="ak-tt">Quem entrar até 30/11: acesso vitalício a todo curso novo que eu lançar</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+          <li><span class="ak-b"><span class="ak-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 8.5c-2 0-3.5 1.6-3.5 3.5S6 15.5 8 15.5c3.4 0 4.6-7 8-7 2 0 3.5 1.6 3.5 3.5S18 15.5 16 15.5c-3.4 0-4.6-7-8-7z"/></svg></span><span class="ak-tt">Acesso vitalício</span></span><svg class="ak-ok" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8.2"/><path d="m6.3 10.3 2.5 2.5 5-5.4" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
         </ul>
       </div>
     </div>
   </div></section>
 
-  <!-- 1a. Pré-lançamento (22/11/2026): painel próprio, uma tela só -->
-  <section class="sec ak-pn ak-slz" id="curso-lanc" aria-label="Pré-lançamento"><div class="wrap ac-w">
-    <div class="ak-lz">
-      <span class="ak-lz-tag"><span class="ak-lc-d" aria-hidden="true"></span>Pré-lançamento</span>
-      <h2 class="title">Entre agora, <em>pague menos.</em></h2>
-      <p class="ak-lz-t">Preço promocional de lançamento, só até as aulas saírem.</p>
-      <ul class="ak-lz-l"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span><b class="ak-lz-nf">141</b> folhas de prompt <b>na hora</b></span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>Aulas e Skills liberadas em <b>3 de dezembro</b></span></li></ul>
-      <button type="button" class="btn ak-lz-go" id="ak-lz-go">Ver o preço</button>
-    </div>
-  </div></section>
-
-  <!-- 1b. O curso em números (19/11/2026): o que vem no curso, contado. Prompts e Skills abrem as páginas deles. -->
-  <section class="sec ak-sn ak-pn" id="curso-numeros" aria-label="O curso em números"><div class="wrap ac-w">
-    <header class="ac-hd ac-hd2"><h2 class="title">O curso <em>em números.</em></h2></header>
-    <dl class="ak-fx">
-      <div class="ak-fx-r"><dt class="num">28</dt><dd><b>aulas</b><span>em 7 módulos, da ideia ao post</span></dd></div>
-      <div class="ak-fx-r"><dt class="num" id="ak-nu-f">141</dt><dd><b>folhas de prompt</b><span>dos meus virais, na hora da compra</span></dd><a class="ak-fx-ir" href="#prompts" aria-label="Ver as folhas de prompt">Ver</a></div>
-      <div class="ak-fx-r"><dt class="num">5</dt><dd><b>Skills</b><span>inclusive a Master</span></dd><a class="ak-fx-ir" href="#skills" aria-label="Ver as Skills">Ver</a></div>
-      <div class="ak-fx-r"><dt class="num">12</dt><dd><b>estéticas</b><span>da Pulsar</span></dd></div>
-      <div class="ak-fx-r"><dt class="num">∞</dt><dd><b>vitalício</b><span>pra quem entrar até 30/11, em todo curso novo</span></dd></div>
-    </dl>
-  </div></section>
-
-  <!-- 2. Aula grátis (22/11/2026): "Como gerar um vídeo viral em 10 minutos", no Gemini. Vídeo no YouTube não listado (cqnM1dfhMLk), carrega só no toque. O "me avisa" fica escondido (o JS dele continua de pé) -->
+  <!-- 2. Aula aberta (22/11/2026; mosaico dos meus vídeos e números reais do Instagram, prints de 19/11): "Como gerar um vídeo viral em 10 minutos", no Gemini. Vídeo no YouTube não listado (cqnM1dfhMLk), carrega só no toque. O "me avisa" fica escondido (o JS dele continua de pé) -->
   <section class="sec ak-s2 ak-pn" id="aula-inaugural"><div class="wrap ac-w">
     <div class="ak-aula mt-rv">
-      <div class="ak-tb">
-        <video data-src="assets/est-cerebro-hd.mp4" poster="assets/est-cerebro-poster.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      <div class="ak-tb ak-mz">
+        <span class="ak-mz-t"><video data-src="assets/vt-rim.mp4" poster="assets/vt-rim.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><b class="num">3,9 mi</b></span><span class="ak-mz-t"><video data-src="assets/vr-capsula-loop.mp4" poster="assets/vr-capsula.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><b class="num">1,8 mi</b></span><span class="ak-mz-t"><video data-src="assets/vt-dipirona.mp4" poster="assets/vt-dipirona.jpg" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><b class="num">1 mi</b></span>
         <button type="button" class="ac-pb" id="ac-pb" aria-label="Assistir à aula grátis: como gerar um vídeo viral em 10 minutos"><span class="ac-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/></svg></span></button>
-        <span class="ak-eb">Grátis · 13 min</span>
+        <span class="ak-eb">Aula aberta · 13 min</span>
       </div>
       <div class="ak-at">
         <h2 class="title">Um vídeo viral <em>em 10 minutos.</em></h2>
-        <p class="ak-ad">Aula grátis. Eu te mostro, no Gemini, como gerar um vídeo rápido que viraliza.</p>
+        <p class="ak-ad">Meus vídeos saem assim, no Gemini. Na aula aberta eu te mostro o passo a passo.</p>
+        <dl class="ak-st"><div><dt class="num">23,8 mi</dt><dd>visualizações em 90 dias</dd></div><div><dt class="num">152 mil</dt><dd>seguidores, começando do zero</dd></div></dl>
         <button type="button" class="btn ak-yt-go" id="ak-yt-go">Assistir à aula</button>
         <a class="ak-yt-fb" id="ak-yt-fb" href="https://www.youtube.com/watch?v=cqnM1dfhMLk" target="_blank" rel="noopener" hidden>Não abriu? Assistir no YouTube</a>
         <div class="ak-sg">
-          <a class="ak-sg-a" href="https://horisawa-ai.github.io/pulsar-business-site/assets/skill-gemini.zip" download="skill-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>Baixar a skill do Gemini, grátis</a>
-          <p>A que eu uso na aula. Suba o zip em Skills, no Claude, e escreva "use a skill Gemini".</p>
+          <a class="ak-sg-a" href="https://horisawa-ai.github.io/pulsar-business-site/assets/skill-gemini.zip" download="skill-gemini.zip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>Baixar a skill do Gemini</a>
+          <p>A que eu uso na aula, de presente. Suba o zip em Skills, no Claude.</p>
         </div>
         <div class="ac-cta" hidden style="display:none">
           <div class="ac-xi" id="ac-xi" data-st="idle">
@@ -4031,6 +4054,18 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
         </div>
       </div>
     </div>
+  </div></section>
+
+  <!-- 1b. O curso em números (19/11/2026): o que vem no curso, contado. Prompts e Skills abrem as páginas deles. -->
+  <section class="sec ak-sn ak-pn" id="curso-numeros" aria-label="O curso em números"><div class="wrap ac-w">
+    <header class="ac-hd ac-hd2"><h2 class="title">O curso <em>em números.</em></h2></header>
+    <dl class="ak-fx">
+      <div class="ak-fx-r"><dt class="num">28</dt><dd><b>aulas</b><span>em 7 módulos, da ideia ao post</span></dd></div>
+      <div class="ak-fx-r"><dt class="num" id="ak-nu-f">141</dt><dd><b>folhas de prompt</b><span>dos meus virais, na hora da compra</span></dd><a class="ak-fx-ir" href="#prompts" aria-label="Ver as folhas de prompt">Ver</a></div>
+      <div class="ak-fx-r"><dt class="num">5</dt><dd><b>Skills</b><span>inclusive a Master</span></dd><a class="ak-fx-ir" href="#skills" aria-label="Ver as Skills">Ver</a></div>
+      <div class="ak-fx-r"><dt class="num">12</dt><dd><b>estéticas</b><span>da Pulsar</span></dd></div>
+      <div class="ak-fx-r"><dt class="num">∞</dt><dd><b>vitalício</b><span>pra quem entrar até 30/11, em todo curso novo</span></dd></div>
+    </dl>
   </div></section>
 
   <!-- 3. O conteúdo: a grade do doc "Curso Pulsar · Grade das aulas" -->
@@ -4058,11 +4093,16 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
   </div></section>
 
   <!-- 4. Preço: só depois do clique -->
-  <section class="sec ak-s4 ak-pn" id="curso-preco"><div class="wrap ac-w">
+  <section class="sec ak-s4 ak-pn ak-slz" id="curso-preco"><div class="wrap ac-w">
+    <div class="ak-lz">
+      <span class="ak-lz-tag"><span class="ak-lc-d" aria-hidden="true"></span>Pré-lançamento</span>
+      <h2 class="title">Entre agora, <em>pague menos.</em></h2>
+      <p class="ak-lz-t">Preço promocional de lançamento, só até as aulas saírem.</p>
+      <ul class="ak-lz-l"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span><b class="ak-lz-nf">141</b> folhas de prompt <b>na hora</b></span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>Aulas e Skills liberadas em <b>3 de dezembro</b></span></li></ul>
+    </div>
     <div class="ak-pc mt-rv">
       <h2 class="ac-t">Curso completo</h2>
-      <p class="ak-pd">As aulas, as folhas de prompt e as Skills, tudo o que aparece nesta página.</p>
-      <p class="ak-pl">Preço promocional de pré-lançamento.</p><ul class="ak-lz-l"><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span><b class="ak-lz-nf">141</b> folhas de prompt na hora</span></li><li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.4l3 3 6-6.6"/></svg><span>Aulas e Skills liberadas em 3 de dezembro</span></li></ul>
+      <p class="ak-pd">Aulas, folhas de prompt e Skills.</p>
       <button type="button" class="btn ak-ver" id="ak-ver" aria-expanded="false" aria-controls="ak-pr">Ver o preço</button>
       <div class="ak-pr" id="ak-pr" hidden>
         <p class="of-de num">Até 30/11. Depois, R$ 397</p>
@@ -4075,7 +4115,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
   </div></section>
 
   <!-- 5. Portas pequenas: Prompts, Skills, Biblioteca grátis e Mentoria (Prompts e Skills saíram do menu em 18/11/2026) -->
-  <section class="sec ak-s5 ak-pn"><div class="wrap ac-w">
+  <section class="sec ak-s5"><div class="wrap ac-w">
     <div class="ak-portas">
       <a class="ak-porta mt-rv" href="#prompts"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12.3 4.2H7.3a2.4 2.4 0 0 0-2.4 2.4v11a2.4 2.4 0 0 0 2.4 2.4h7.9a2.4 2.4 0 0 0 2.4-2.4v-4.9"/><path d="M8.5 10.4h3.3M8.5 13.5h5.5M8.5 16.6h3.9"/><path d="M17.9 2.3c.3 2.1 1.4 3.2 3.5 3.5-2.1.3-3.2 1.4-3.5 3.5-.3-2.1-1.4-3.2-3.5-3.5 2.1-.3 3.2-1.4 3.5-3.5Z"/></svg></span><b>Prompts</b><small>As folhas de prompt que eu uso</small><span class="ak-ir">Abrir</span></a>
       <a class="ak-porta mt-rv" href="#skills"><span class="ak-pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13.4 2.8 5.4 13.4h5.6l-1.4 7.8 8-10.6h-5.6Z"/></svg></span><b>Skills</b><small>O Claude fazendo do meu jeito</small><span class="ak-ir">Ver</span></a>
@@ -4519,7 +4559,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
     if(alvo==="montar"||alvo==="sum"||alvo==="boxes")alvo="oferta";
     if(h==="comparar")cmpOn();else cmpOff();
     RINGS.forEach(function(r){r.lay()});LIQ.forEach(function(f){f()});
-    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else if(y0!==null){var dr=document.documentElement;requestAnimationFrame(function(){dr.style.scrollBehavior="auto";window.scrollTo(0,y0);$("screen").scrollTop=y0;dr.style.scrollBehavior=""})}else{var de=document.documentElement;de.style.scrollBehavior="auto";window.scrollTo(0,0);$("screen").scrollTop=0;de.style.scrollBehavior=""}
+    if(alvo){setTimeout(function(){var el=$(alvo);if(el)el.scrollIntoView({block:"start"})},20)}else if(y0!==null){var dr=document.documentElement;requestAnimationFrame(function(){dr.style.scrollBehavior="auto";window.scrollTo(0,y0);$("screen").scrollTop=y0;dr.style.scrollBehavior=""})}else{var de=document.documentElement;de.classList.add("pg-nav");de.style.scrollBehavior="auto";window.scrollTo(0,0);$("screen").scrollTop=0;de.style.scrollBehavior="";/* 22/11: com o encaixe por telas a página nova abria no meio e pulava pro topo; agora vai pro topo sem encaixe e só depois liga o encaixe */requestAnimationFrame(function(){window.scrollTo(0,0);$("screen").scrollTop=0;setTimeout(function(){window.scrollTo(0,0);$("screen").scrollTop=0;de.classList.remove("pg-nav")},160)})}
   }
   window.addEventListener("hashchange",route);
   /* tocar no item do menu (ou na marca) da página em que a pessoa já está leva de volta ao topo */
@@ -6969,20 +7009,20 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       var seg=false,segue=function(){if(seg)return;seg=true;if(prox)prox()};
       if(!fig.getBoundingClientRect().width){marca(i,false);segue();return}
       var g=document.createElement("div");g.className="ak-g";g.setAttribute("aria-hidden","true");g.innerHTML=b.innerHTML;
-      g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=Math.max(B.width+20,Math.min(250,fig.clientWidth*.66))+"px";g.style.opacity="0";ak.appendChild(g);
-      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=1650,ok=false;
+      g.style.left=(B.left-A.left-6)+"px";g.style.top=(B.top-A.top-6)+"px";g.style.maxWidth=Math.max(B.width+20,Math.min(300,fig.clientWidth*.78))+"px";g.style.whiteSpace="nowrap";g.style.opacity="0";ak.appendChild(g);
+      var G=g.getBoundingClientRect(),gx=G.left+G.width/2,gy=G.top+G.height/2,t0=0,D=2500,ok=false;
       /* 20/11: começa grande no meio, por cima do notebook (pra dar pra ler o que é), segura e depois entra na tela encolhendo */
-      var Fr=fig.getBoundingClientRect(),cx=Fr.left+Fr.width/2-gx,cy=Fr.top+Fr.height*.3-gy,big=Math.max(1,Math.min(1.5,(Fr.width*.86)/G.width));
+      var Fr=fig.getBoundingClientRect(),cx=Fr.left+Fr.width/2-gx,cy=Fr.top+Fr.height*.3-gy,big=Math.max(1.15,Math.min(1.75,(Fr.width*.9)/G.width));
       var acaba=function(){if(ok)return;ok=true;g.remove();marca(i,true);pisca();segue()};
       var ez=function(x){return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
       requestAnimationFrame(function f(t){if(ok)return;if(!t0)t0=t;var p=Math.min(1,(t-t0)/D),
           S=(slots[i]||scr).getBoundingClientRect(),k1=Math.max(.12,Math.min(.6,S.width/G.width)),tx=S.left+S.width/2-gx,ty=S.top+S.height*.5-gy,dx,dy,sc,op;
-        if(p<.2){var a=1-Math.pow(1-p/.2,3);dx=cx;dy=cy+(1-a)*14;sc=big*(.82+.18*a);op=a}
-        else if(p<.5){dx=cx;dy=cy;sc=big;op=1}
-        else{var e=ez((p-.5)/.5);dx=cx+(tx-cx)*e;dy=cy+(ty-cy)*e-Math.sin(Math.PI*e)*26;sc=big+(k1-big)*e;op=e>.8?(1-e)/.2:1}
+        if(p<.14){var a=1-Math.pow(1-p/.14,3);dx=cx;dy=cy+(1-a)*14;sc=big*(.82+.18*a);op=a}
+        else if(p<.64){dx=cx;dy=cy;sc=big;op=1}
+        else{var e=ez((p-.64)/.36);dx=cx+(tx-cx)*e;dy=cy+(ty-cy)*e-Math.sin(Math.PI*e)*26;sc=big+(k1-big)*e;op=e>.8?(1-e)/.2:1}
         g.style.transform="translate("+dx.toFixed(1)+"px,"+dy.toFixed(1)+"px) scale("+sc.toFixed(3)+")";g.style.opacity=op.toFixed(3);
         if(p>=.9)segue();if(p<1)requestAnimationFrame(f);else acaba()});
-      ts.push(setTimeout(acaba,2600))}
+      ts.push(setTimeout(acaba,3600))}
     /* em cadeia: cada degrau só começa quando o cartão anterior já está chegando (num aparelho lento nada se atropela) */
     function degrau(i){if(i>=N){ts.push(setTimeout(acende,420));ts.push(setTimeout(solta,1700));return}
       vaiA(12+(L1-12)*(i+1)/N);ts.push(setTimeout(function(){voa(i,function(){degrau(i+1)})},160))}
@@ -7175,5 +7215,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
       if(go)go.style.display="none";try{f.focus()}catch(e){}}
     if(pb)pb.addEventListener("click",abre);if(go)go.addEventListener("click",function(){abre();try{tb.scrollIntoView({block:"center",behavior:"smooth"})}catch(e){}})})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795329610";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795330499";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
