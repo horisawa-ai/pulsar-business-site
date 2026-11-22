@@ -5612,27 +5612,39 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
      Só Pulsar Motion REAIS (só imagem + motion, sem cena de vídeo de IA). Cada item: v = nome do arquivo em assets
      (precisa ter v.mp4 inteiro, v-loop.mp4 e v.jpg), t = título, area = área (vira pílula de filtro sozinha), s = duração em segundos.
      O Renan vai mandar mais Motion de todas as áreas: é só acrescentar linhas aqui.
-     19/11/2026: ordem pelos mais impactantes; os da Safira (abscesso perianal e fístula) abrem a lista; 22/11: trechos de vídeos reais (real:1, vt-*, mesmo arquivo no loop) intercalados com os Motion; o do cérebro foi pro fim. */
+     19/11/2026: ordem pelos mais impactantes; os da Safira (abscesso perianal e fístula) abrem a lista; 22/11: trechos de vídeos reais (real:1, vt-*, mesmo arquivo no loop) e vídeos reais completos (vp:1, vr-*) intercalados com os Motion, 2 reais pra 1 Motion; o do cérebro foi pro fim. */
   var MOTION_LIB=[
     {v:"mo-real-2",t:"Abscesso perianal",area:"Proctologia",s:29},
     {v:"mo-real-14",t:"Drenou o abscesso: fístula anal",area:"Proctologia",s:30},
     {v:"vt-lagarto",t:"Mounjaro veio de um lagarto",area:"Endocrinologia",real:1},
+    {v:"vr-capsula",t:"Cápsula endoscópica",area:"Gastro",s:32,vp:1},
     {v:"mo-real-24",t:"Teu olho tem um buraco",area:"Oftalmologia",s:28},
     {v:"vt-cordao",t:"Cordão umbilical e placenta",area:"Obstetrícia",real:1},
+    {v:"vr-cerebro",t:"Cirurgia no cérebro acordado",area:"Neurocirurgia",s:52,vp:1},
     {v:"mo-real-18",t:"Raiva",area:"Picadas e mordidas",s:32},
     {v:"vt-meconio",t:"Mecônio, o primeiro cocô",area:"Obstetrícia",real:1},
+    {v:"vr-bypass",t:"Bypass gástrico",area:"Cirurgia",s:42,vp:1},
     {v:"mo-real-19",t:"Pisou num prego enferrujado?",area:"Infectologia",s:30},
+    {v:"vr-fecaloma",t:"Fecaloma: o cocô que vira pedra",area:"Proctologia",s:38,vp:1},
     {v:"vt-unha",t:"Por que cortar a unha não dói",area:"Curiosidades",real:1},
     {v:"mo-real-23",t:"Nos filmes, o coração para",area:"Cardiologia",s:31},
-    {v:"vt-capsula2",t:"Cápsula endoscópica",area:"Gastro",real:1},
+    {v:"vr-cebola",t:"Por que a cebola faz chorar",area:"Curiosidades",s:37,vp:1},
+    {v:"vr-hpylori",t:"H. pylori",area:"Gastro",s:54,vp:1},
     {v:"mo-real-11",t:"Cagar com celular",area:"Proctologia",s:33},
     {v:"vt-supositorio",t:"Como o supositório funciona",area:"Gastro",real:1},
+    {v:"vr-papada",t:"Lipo de papada",area:"Estética",s:54,vp:1},
     {v:"mo-real-16",t:"O ferrão da abelha",area:"Picadas e mordidas",s:28},
-    {v:"vt-rim",t:"Pedra no rim",area:"Urologia",real:1},
+    {v:"vr-olho",t:"Olho tremendo",area:"Oftalmologia",s:49,vp:1},
+    {v:"vr-hernia",t:"Hérnia inguinal",area:"Cirurgia",s:57,vp:1},
     {v:"mo-real-17",t:"Água-viva",area:"Picadas e mordidas",s:30},
-    {v:"vt-roer",t:"Roer unha",area:"Curiosidades",real:1},
+    {v:"vt-rim",t:"Pedra no rim",area:"Urologia",real:1},
+    {v:"vr-placa",t:"Placa e parafusos",area:"Ortopedia",s:40,vp:1},
     {v:"mo-real-15",t:"Como o mosquito pica",area:"Picadas e mordidas",s:27},
+    {v:"vr-vesicula",t:"Retirada da vesícula",area:"Cirurgia",s:48,vp:1},
+    {v:"vr-xixi",t:"Xixi na cama",area:"Pediatria",s:39,vp:1},
     {v:"mo-real-8",t:"Seu dedo de perto",area:"Infectologia",s:26},
+    {v:"vr-lifting",t:"Lifting facial",area:"Estética",s:50,vp:1},
+    {v:"vt-roer",t:"Roer unha",area:"Curiosidades",real:1},
     {v:"mo-real-20",t:"Por que pedra no rim dói tanto?",area:"Urologia",s:30},
     {v:"mo-real-12",t:"Fissura anal: dor de caco de vidro",area:"Proctologia",s:28},
     {v:"mo-real-3",t:"A colonoscopia pode furar o intestino?",area:"Gastro",s:37},
@@ -5667,7 +5679,7 @@ html:has(#pg-academy.on) .foot{scroll-snap-align:end}
       var resto=vs.filter(function(c){return c!==frente});
       ftEl.setAttribute("aria-label","Em destaque: "+frente.t);
       ftEl.innerHTML='<div class="mlb-m">'+vid(frente,true)+chip(frente)+'<button type="button" class="mlb-pp" id="mlb-pp" aria-pressed="false"></button></div>'+
-        '<div class="mlb-tx"><span class="mlb-b">'+esc(frente.area)+'</span><h2>'+esc(frente.t)+'</h2><p>'+(frente.real?'Vídeo Pulsar, feito por mim: cenas animadas por IA, como nos meus virais.':'Pulsar Motion de verdade, feito por mim. Só imagem, texto, traço e narração.')+'</p></div>'+
+        '<div class="mlb-tx"><span class="mlb-b">'+esc(frente.area)+'</span><h2>'+esc(frente.t)+'</h2><p>'+(frente.real||frente.vp?'Vídeo Pulsar, feito por mim: cenas animadas por IA, como nos meus virais.':'Pulsar Motion de verdade, feito por mim. Só imagem, texto, traço e narração.')+'</p></div>'+
         (vs.length>1?'<div class="mlb-nv"><button type="button" class="mlb-ar" data-d="-1" aria-label="Vídeo anterior"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button><span class="num">'+(vs.indexOf(frente)+1)+' de '+vs.length+'</span><button type="button" class="mlb-ar" data-d="1" aria-label="Próximo vídeo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button></div>':'');
       gEl.className="mlb-g"+(resto.length===1?" um":resto.length===2?" dois":"");gEl.hidden=!resto.length;
       gEl.innerHTML=resto.map(function(c){var i=MOTION_LIB.indexOf(c);return '<li><button type="button" class="mlb-c" data-i="'+i+'" aria-label="Ver em destaque: '+esc(c.t)+'"><span class="mlb-m">'+vid(c,false)+chip(c)+'</span><span class="mlb-b">'+esc(c.area)+'</span><b>'+esc(c.t)+'</b></button></li>'}).join("");
@@ -7129,5 +7141,5 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
   /* Academy: "Ver o preço" do bloco de pré-lançamento desce até o cartão e já abre o preço */
   (function(){var $=function(i){return document.getElementById(i)},b=$("ak-lz-go");if(!b)return;b.addEventListener("click",function(){var v=$("ak-ver"),c=$("curso-preco");if(v&&!v.hidden)v.click();if(c){try{c.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"})}catch(e){c.scrollIntoView()}}})})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795324205";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795325323";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
