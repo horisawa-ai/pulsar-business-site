@@ -3762,6 +3762,13 @@ html:has(#pg-inicio.on) .foot{scroll-snap-align:end}
 .dock #ipt-sw,button#ipt-sw{font-size:13px!important;padding:11px 14px!important;opacity:1!important;font-weight:700}
 #pg-inicio .ipt-n b{font-size:clamp(64px,21cqw,170px)}
 #pg-inicio .in-portas[data-pv="c"] .ipt-n{gap:0;padding-inline:12px}
+
+/* modo gravação (25/11/2026): botão de recarregar pra refazer as animações na hora de gravar a tela.
+   Aparece só depois de abrir o site uma vez com ?gravar=1 (fica guardado no aparelho); ?gravar=0 tira */
+.rec-rf{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:90;display:grid;place-items:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:rgba(12,10,9,.78);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 10px 24px -12px rgba(12,10,9,.6);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.rec-rf[hidden]{display:none}
+.rec-rf svg{width:22px;height:22px}
+.rec-rf:active{transform:scale(.92)}
 </style>
 <style>/* cópia pública: sem as ferramentas de protótipo */.dock,#tune,#pg-comparar{display:none!important}</style></head>
 <body>
@@ -4502,6 +4509,7 @@ html:has(#pg-inicio.on) .foot{scroll-snap-align:end}
 
 </div><i class="hb" aria-hidden="true"></i></div>
 
+<button type="button" class="rec-rf" id="rec-rf" hidden aria-label="Recarregar a página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg></button>
 <div class="dock"><button class="tune-btn" id="tune-open" type="button" aria-controls="tune" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 4h7M13 4h1M2 12h1M7 12h7"/><circle cx="11" cy="4" r="2"/><circle cx="5" cy="12" r="2"/></svg>Ajustar visual</button><button class="tune-btn rever" id="frase-rever" type="button" aria-label="Rever a frase da abertura"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.7-4"/><path d="M13.6 2.2v3.2h-3.2"/></svg>Rever frase</button><div class="viewsw" role="group" aria-label="Ver como"><button type="button" data-view="cel" aria-pressed="false">Celular</button><button type="button" data-view="site" aria-pressed="false">Site</button></div></div>
 <section class="tune" id="tune" hidden aria-label="Ajustar visual">
   <div class="tune-h"><b>Ajustar visual</b><button class="tune-x" id="tune-x" type="button" aria-label="Fechar">&times;</button></div>
@@ -7289,6 +7297,12 @@ if(!EMB&&window.top===window&&location.port==="8765"&&!/[?&]solo=1/.test(locatio
     var dentro=false;if(window.IntersectionObserver)new IntersectionObserver(function(es){dentro=es[es.length-1].isIntersecting;liga()},{threshold:.2}).observe(sec);
     if(sw)sw.addEventListener("click",function(){poe(O[(O.indexOf(sec.getAttribute("data-pv"))+1)%O.length])});
     window.addEventListener("storage",function(e){if(e.key==="pb-ipt"&&O.indexOf(e.newValue)>=0)poe(e.newValue)});poe(v)})();
+
+  /* modo gravação: ?gravar=1 liga o botão de recarregar (guardado no aparelho), ?gravar=0 desliga. Recarrega no topo da página atual */
+  (function(){var b=document.getElementById("rec-rf");if(!b)return;var q=location.search,on=false;
+    try{if(/[?&]gravar=1/.test(q))localStorage.setItem("pb-gravar","1");if(/[?&]gravar=0/.test(q))localStorage.removeItem("pb-gravar");on=localStorage.getItem("pb-gravar")==="1"}catch(e){on=/[?&]gravar=1/.test(q)}
+    b.hidden=!on;b.addEventListener("click",function(){try{history.replaceState(null,"")}catch(e){}window.scrollTo(0,0);location.reload()})})();
 </script>
-<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795385695";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
+
+<script>(function(){function f(){if(location.hash==="#comparar")location.replace(location.pathname+location.search+"#inicio")}f();window.addEventListener("hashchange",f)})();</script><script>(function(){var V="1795628381";function ve(){fetch("versao.txt?"+Date.now(),{cache:"no-store"}).then(function(r){return r.text()}).then(function(t){t=t.trim();if(t&&t!==V&&location.search.indexOf("v="+t)<0)location.replace(location.pathname+"?v="+t+location.hash)}).catch(function(){})}ve();document.addEventListener("visibilitychange",function(){if(!document.hidden)ve()})})();</script></body>
 </html>
